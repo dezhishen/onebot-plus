@@ -5,12 +5,22 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Launch",
+      "name": "Main",
       "type": "go",
       "request": "launch",
       "mode": "debug",
       "program": "${workspaceFolder}/cmd/main.go",
       "cwd": "${workspaceFolder}",
+      "env": {
+      }
+    },
+    {
+      "name": "Example_Rpc",
+      "type": "go",
+      "request": "launch",
+      "mode": "debug",
+      "program": "${workspaceFolder}/example/rpc/main.go",
+      "cwd": "${workspaceFolder}/example/rpc",
       "env": {
       }
     }
