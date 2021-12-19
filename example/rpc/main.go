@@ -36,12 +36,12 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-
 	// Request the plugin
 	raw, err := rpcClient.Dispense("demo")
 	if err != nil {
 		log.Fatal(err)
 	}
 	greeter := raw.(common.Demo)
+	fmt.Println(greeter.SayHi())
 	fmt.Println(greeter.SayHi())
 }
