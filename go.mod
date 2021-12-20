@@ -4,38 +4,28 @@ go 1.17
 
 require (
 	github.com/dezhishen/onebot-sdk v0.0.0-20211219062046-d702632d5a56
+	github.com/hashicorp/go-hclog v1.0.0
 	github.com/sirupsen/logrus v1.8.1
+	google.golang.org/grpc v1.43.0
+	google.golang.org/protobuf v1.27.1
 )
 
 require (
-	github.com/Logiase/MiraiGo-Template v0.0.0-20210524064918-229c83f88d32 // indirect
-	github.com/Mrs4s/MiraiGo v0.0.0-20210525010101-8f0cd9494d64 // indirect
 	github.com/fatih/color v1.13.0 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
-	github.com/hashicorp/go-hclog v1.0.0 // indirect
+	github.com/gorilla/websocket v1.4.2 // indirect
 	github.com/hashicorp/yamux v0.0.0-20180604194846-3520598351bb // indirect
-	github.com/json-iterator/go v1.1.12 // indirect
-	github.com/lestrrat-go/file-rotatelogs v2.4.0+incompatible // indirect
-	github.com/lestrrat-go/strftime v1.0.4 // indirect
+	github.com/kr/text v0.2.0 // indirect
 	github.com/mattn/go-colorable v0.1.12 // indirect
 	github.com/mattn/go-isatty v0.0.14 // indirect
 	github.com/mitchellh/go-testing-interface v1.0.0 // indirect
-	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
-	github.com/modern-go/reflect2 v1.0.2 // indirect
-	github.com/nfnt/resize v0.0.0-20180221191011-83c6a9932646 // indirect
 	github.com/oklog/run v1.0.0 // indirect
-	github.com/pkg/errors v0.9.1 // indirect
-	github.com/rifflock/lfshook v0.0.0-20180920164130-b9218ef580f5 // indirect
-	github.com/robfig/cron v1.2.0 // indirect
-	github.com/yinghau76/go-ascii-art v0.0.0-20190517192627-e7f465a30189 // indirect
 	golang.org/x/net v0.0.0-20210813160813-60bc85c4be6d // indirect
 	google.golang.org/genproto v0.0.0-20211208223120-3a66f561d7aa // indirect
-	google.golang.org/grpc v1.43.0 // indirect
-	google.golang.org/protobuf v1.27.1 // indirect
+	gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c // indirect
 )
 
 require (
-	github.com/dezhiShen/MiraiGo-Bot v0.0.0-20210809031413-00f889071388
 	github.com/fsnotify/fsnotify v1.5.1 // indirect
 	github.com/hashicorp/go-plugin v1.4.3
 	github.com/hashicorp/hcl v1.0.0 // indirect

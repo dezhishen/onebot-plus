@@ -1,4 +1,4 @@
-package plugins
+package plugin
 
 type OnebotPlusPluginSetting struct {
 	Key          string

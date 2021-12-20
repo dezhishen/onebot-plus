@@ -11,18 +11,25 @@
       "mode": "debug",
       "program": "${workspaceFolder}/cmd/main.go",
       "cwd": "${workspaceFolder}",
-      "env": {
-      }
+      "env": {}
     },
     {
-      "name": "Example_Rpc",
+      "name": "Example_RPC",
       "type": "go",
       "request": "launch",
       "mode": "debug",
       "program": "${workspaceFolder}/example/rpc/main.go",
       "cwd": "${workspaceFolder}/example/rpc",
-      "env": {
-      }
+      "env": {}
+    },
+    {
+      "name": "Example_GRPC",
+      "type": "go",
+      "request": "launch",
+      "mode": "debug",
+      "program": "${workspaceFolder}/example/grpc/main.go",
+      "cwd": "${workspaceFolder}/example/grpc",
+      "env": {}
     }
   ]
 }

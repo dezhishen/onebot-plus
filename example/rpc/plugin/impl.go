@@ -4,7 +4,7 @@ import (
 	"os"
 
 	"github.com/dezhishen/onebot-plus/example/rpc/common"
-	"github.com/dezhishen/onebot-plus/pkg/plugins"
+	onebotPlugin "github.com/dezhishen/onebot-plus/pkg/plugin"
 	"github.com/hashicorp/go-hclog"
 	"github.com/hashicorp/go-plugin"
 )
@@ -36,7 +36,7 @@ func main() {
 	logger.Debug("message from plugin", "sayhello")
 
 	plugin.Serve(&plugin.ServeConfig{
-		HandshakeConfig: plugins.HandshakeConfig,
+		HandshakeConfig: onebotPlugin.HandshakeConfig,
 		Plugins:         pluginMap,
 	})
 }

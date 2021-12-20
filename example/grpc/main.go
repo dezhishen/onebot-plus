@@ -2,35 +2,29 @@ package main
 
 import (
 	"fmt"
+	"io/ioutil"
 	"log"
-	"os"
 	"os/exec"
 
-	"github.com/dezhishen/onebot-plus/example/rpc/common"
+	"github.com/dezhishen/onebot-plus/example/grpc/common"
 	onebotPlugin "github.com/dezhishen/onebot-plus/pkg/plugin"
-	"github.com/hashicorp/go-hclog"
 	"github.com/hashicorp/go-plugin"
 )
 
 func main() {
-	// Create an hclog.Logger
-	logger := hclog.New(&hclog.LoggerOptions{
-		Name:   "plugin",
-		Output: os.Stdout,
-		Level:  hclog.Debug,
-	})
-
+	// We don't want to see the plugin logs.
+	log.SetOutput(ioutil.Discard)
 	// We're a host! Start by launching the plugin process.
 	client := plugin.NewClient(&plugin.ClientConfig{
 		HandshakeConfig: onebotPlugin.HandshakeConfig,
 		Plugins: map[string]plugin.Plugin{
-			"demo": &common.DemoPlugin{},
+			"demo": &common.DemoGRPCPlugin{},
 		},
-		Cmd:    exec.Command("./demo_impl.exe"),
-		Logger: logger,
+		Cmd: exec.Command("./demo_impl.exe"),
+		AllowedProtocols: []plugin.Protocol{
+			plugin.ProtocolNetRPC, plugin.ProtocolGRPC},
 	})
 	defer client.Kill()
-
 	// Connect via RPC
 	rpcClient, err := client.Client()
 	if err != nil {
@@ -41,7 +35,10 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	greeter := raw.(common.Demo)
-	fmt.Println(greeter.SayHi())
-	fmt.Println(greeter.SayHi())
+	demoGRPC := raw.(common.DemoGRPC)
+	msg, err := demoGRPC.SayHi("main")
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println(msg)
 }
