@@ -16,6 +16,7 @@ func (d DemoGRPCRelImp) SayHi(name string) (string, error) {
 }
 
 func main() {
+	logrus.Info("start...")
 	demo := &DemoGRPCRelImp{}
 	// pluginMap is the map of plugins we can dispense.
 	var pluginMap = map[string]plugin.Plugin{
@@ -26,4 +27,5 @@ func main() {
 		Plugins:         pluginMap,
 		GRPCServer:      plugin.DefaultGRPCServer,
 	})
+	logrus.Info("exit...")
 }

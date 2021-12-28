@@ -9,6 +9,7 @@ import (
 	"github.com/dezhishen/onebot-plus/example/grpc/common"
 	onebotPlugin "github.com/dezhishen/onebot-plus/pkg/plugin"
 	"github.com/hashicorp/go-plugin"
+	"github.com/sirupsen/logrus"
 )
 
 func main() {
@@ -20,7 +21,7 @@ func main() {
 		Plugins: map[string]plugin.Plugin{
 			"demo": &common.DemoGRPCPlugin{},
 		},
-		Cmd: exec.Command("./demo_impl.exe"),
+		Cmd: exec.Command("./plugin/plugin.exe"),
 		AllowedProtocols: []plugin.Protocol{
 			plugin.ProtocolNetRPC, plugin.ProtocolGRPC},
 	})
@@ -28,6 +29,7 @@ func main() {
 	// Connect via RPC
 	rpcClient, err := client.Client()
 	if err != nil {
+		logrus.Errorf("%v", err)
 		log.Fatal(err)
 	}
 	// Request the plugin
