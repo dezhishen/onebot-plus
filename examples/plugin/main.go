@@ -8,12 +8,6 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
-type addHelper struct{}
-
-func (*addHelper) Sum(a, b int64) (int64, error) {
-	return a + b, nil
-}
-
 func main() {
 	logrus.SetOutput(ioutil.Discard)
 	path := "./impl/plugin.exe"
@@ -25,11 +19,5 @@ func main() {
 	gMsg.Sender = &model.Sender{
 		UserId: 123456,
 	}
-	// gMsg.Anonymous = &model.Anonymous{}
 	d.MessageGroup(gMsg)
-	// msg := &model.EventMessagePrivate{}
-	// msg.Sender = &model.Sender{
-	// 	UserId: 123456,
-	// }
-	// d.MessagePrivate(msg, &cli.MessageCliRealImpl{})
 }
