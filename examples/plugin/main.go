@@ -3,7 +3,6 @@ package main
 import (
 	"io/ioutil"
 
-	"github.com/dezhishen/onebot-plus/pkg/cli"
 	"github.com/dezhishen/onebot-plus/pkg/plugin"
 	"github.com/dezhishen/onebot-sdk/pkg/model"
 	"github.com/sirupsen/logrus"
@@ -26,11 +25,11 @@ func main() {
 	gMsg.Sender = &model.Sender{
 		UserId: 123456,
 	}
-	gMsg.Anonymous = &model.Anonymous{}
+	// gMsg.Anonymous = &model.Anonymous{}
 	d.MessageGroup(gMsg)
-	msg := &model.EventMessagePrivate{}
-	msg.Sender = &model.Sender{
-		UserId: 123456,
-	}
-	d.MessagePrivate(msg, &cli.MessageCliRealImpl{})
+	// msg := &model.EventMessagePrivate{}
+	// msg.Sender = &model.Sender{
+	// 	UserId: 123456,
+	// }
+	// d.MessagePrivate(msg, &cli.MessageCliRealImpl{})
 }

@@ -7,12 +7,8 @@
 package plugin
 
 import (
-	context "context"
-	reflect "reflect"
-	sync "sync"
-
 	model "github.com/dezhishen/onebot-sdk/pkg/model"
-	"github.com/sirupsen/logrus"
+	context "context"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -20,6 +16,8 @@ import (
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	emptypb "google.golang.org/protobuf/types/known/emptypb"
 	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
+	reflect "reflect"
+	sync "sync"
 )
 
 const (
@@ -691,9 +689,6 @@ func _OnebotEventGRPC_Id_Handler(srv interface{}, ctx context.Context, dec func(
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	logrus.Info("========================")
-	logrus.Infof("interceptor:%v",interceptor)
-	logrus.Info("========================")
 	if interceptor == nil {
 		return srv.(OnebotEventGRPCServer).Id(ctx, in)
 	}
@@ -766,11 +761,7 @@ func _OnebotEventGRPC_MessagePrivate_Handler(srv interface{}, ctx context.Contex
 	if err := dec(in); err != nil {
 		return nil, err
 	}
-	logrus.Info("========================")
-	logrus.Infof("interceptor:%v",interceptor)
-	logrus.Info("========================")
 	if interceptor == nil {
-		logrus.Info(reflect.TypeOf(srv))
 		return srv.(OnebotEventGRPCServer).MessagePrivate(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
