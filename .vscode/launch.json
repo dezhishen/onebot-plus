@@ -18,8 +18,8 @@
       "type": "go",
       "request": "launch",
       "mode": "debug",
-      "program": "${workspaceFolder}/example/rpc/main.go",
-      "cwd": "${workspaceFolder}/example/rpc",
+      "program": "${workspaceFolder}/examples/rpc/main.go",
+      "cwd": "${workspaceFolder}/examples/rpc",
       "env": {}
     },
     {
@@ -27,17 +27,17 @@
       "type": "go",
       "request": "launch",
       "mode": "debug",
-      "program": "${workspaceFolder}/example/grpc/main.go",
-      "cwd": "${workspaceFolder}/example/grpc",
+      "program": "${workspaceFolder}/examples/grpc/main.go",
+      "cwd": "${workspaceFolder}/examples/grpc",
       "env": {}
     },
     {
-      "name": "example.plugin",
+      "name": "examples.plugin",
       "type": "go",
       "request": "launch",
       "mode": "debug",
-      "program": "${workspaceFolder}/example/plugin/main.go",
-      "cwd": "${workspaceFolder}/example/plugin",
+      "program": "${workspaceFolder}/examples/plugin/main.go",
+      "cwd": "${workspaceFolder}/examples/plugin",
       "env": {}
     }
   ]
