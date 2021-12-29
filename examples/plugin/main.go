@@ -3,6 +3,7 @@ package main
 import (
 	"io/ioutil"
 
+	"github.com/dezhishen/onebot-plus/pkg/cli"
 	"github.com/dezhishen/onebot-plus/pkg/plugin"
 	"github.com/dezhishen/onebot-sdk/pkg/model"
 	"github.com/sirupsen/logrus"
@@ -19,5 +20,13 @@ func main() {
 	gMsg.Sender = &model.Sender{
 		UserId: 123456,
 	}
-	d.MessageGroup(gMsg)
+	cli := &cli.OnebotCliRealImpl{}
+	d.MessageGroup(gMsg, cli)
+	pM := &model.EventMessagePrivate{}
+	pM.Sender = &model.Sender{
+		UserId: 123456,
+	}
+	d.MessagePrivate(pM, cli)
+	d.MetaHeartbeat(&model.EventMetaHeartbeat{}, cli)
+	d.MetaLifecycle(&model.EventMetaLifecycle{}, cli)
 }

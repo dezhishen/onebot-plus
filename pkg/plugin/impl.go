@@ -20,37 +20,37 @@ type onebotEventPluginRealImpl struct {
 	//私聊消息
 	messagePrivateCallback func(*model.EventMessagePrivate, cli.OnebotCli) error
 	//群组消息
-	messageGroupCallback func(*model.EventMessageGroup) error
+	messageGroupCallback func(*model.EventMessageGroup, cli.OnebotCli) error
 	//生命周期
-	metaLifecycleCallback func(*model.EventMetaLifecycle) error
+	metaLifecycleCallback func(*model.EventMetaLifecycle, cli.OnebotCli) error
 	//心跳
-	metaHeartbeatCallback func(*model.EventMetaHeartbeat) error
+	metaHeartbeatCallback func(*model.EventMetaHeartbeat, cli.OnebotCli) error
 	//群文件上传
-	noticeGroupUploadCallback func(*model.EventNoticeGroupUpload) error
+	noticeGroupUploadCallback func(*model.EventNoticeGroupUpload, cli.OnebotCli) error
 	//群管理员变动
-	noticeGroupAdminCallback func(*model.EventNoticeGroupAdmin) error
+	noticeGroupAdminCallback func(*model.EventNoticeGroupAdmin, cli.OnebotCli) error
 	//群成员减少
-	noticeGroupDecreaseCallback func(*model.EventNoticeGroupDecrease) error
+	noticeGroupDecreaseCallback func(*model.EventNoticeGroupDecrease, cli.OnebotCli) error
 	//群成员增加
-	noticeGroupIncreaseCallback func(*model.EventNoticeGroupIncrease) error
+	noticeGroupIncreaseCallback func(*model.EventNoticeGroupIncrease, cli.OnebotCli) error
 	//群禁言
-	noticeGroupBanCallback func(*model.EventNoticeGroupBan) error
+	noticeGroupBanCallback func(*model.EventNoticeGroupBan, cli.OnebotCli) error
 	//群消息撤回
-	noticeGroupRecallCallback func(*model.EventNoticeGroupRecall) error
+	noticeGroupRecallCallback func(*model.EventNoticeGroupRecall, cli.OnebotCli) error
 	//群内戳一戳
-	noticeGroupNotifyPokeCallback func(*model.EventNoticeGroupNotifyPoke) error
+	noticeGroupNotifyPokeCallback func(*model.EventNoticeGroupNotifyPoke, cli.OnebotCli) error
 	//群红包运气王
-	noticeGroupNotifyLuckyKingCallback func(*model.EventNoticeGroupNotifyLuckyKing) error
+	noticeGroupNotifyLuckyKingCallback func(*model.EventNoticeGroupNotifyLuckyKing, cli.OnebotCli) error
 	//群成员荣誉变更
-	noticeGroupNotifyHonorCallback func(*model.EventNoticeGroupNotifyHonor) error
+	noticeGroupNotifyHonorCallback func(*model.EventNoticeGroupNotifyHonor, cli.OnebotCli) error
 	//好友添加
-	noticeFriendAddCallback func(*model.EventNoticeFriendAdd) error
+	noticeFriendAddCallback func(*model.EventNoticeFriendAdd, cli.OnebotCli) error
 	//好友消息撤回
-	noticeFriendRecallCallback func(*model.EventNoticeFriendRecall) error
+	noticeFriendRecallCallback func(*model.EventNoticeFriendRecall, cli.OnebotCli) error
 	//好友添加请求
-	requestFriendCallback func(*model.EventRequestFriend) error
+	requestFriendCallback func(*model.EventRequestFriend, cli.OnebotCli) error
 	//群添加/邀请请求
-	requestGroupCallback func(*model.EventRequestGroup) error
+	requestGroupCallback func(*model.EventRequestGroup, cli.OnebotCli) error
 }
 
 func newDefaultOnebotEventPluginRealImpl() *onebotEventPluginRealImpl {
@@ -66,37 +66,37 @@ func newDefaultOnebotEventPluginRealImpl() *onebotEventPluginRealImpl {
 		//私聊消息
 		messagePrivateCallback: func(*model.EventMessagePrivate, cli.OnebotCli) error { return nil },
 		//群组消息
-		messageGroupCallback: func(*model.EventMessageGroup) error { return nil },
+		messageGroupCallback: func(*model.EventMessageGroup, cli.OnebotCli) error { return nil },
 		//生命周期
-		metaLifecycleCallback: func(*model.EventMetaLifecycle) error { return nil },
+		metaLifecycleCallback: func(*model.EventMetaLifecycle, cli.OnebotCli) error { return nil },
 		//心跳
-		metaHeartbeatCallback: func(*model.EventMetaHeartbeat) error { return nil },
+		metaHeartbeatCallback: func(*model.EventMetaHeartbeat, cli.OnebotCli) error { return nil },
 		//群文件上传
-		noticeGroupUploadCallback: func(*model.EventNoticeGroupUpload) error { return nil },
+		noticeGroupUploadCallback: func(*model.EventNoticeGroupUpload, cli.OnebotCli) error { return nil },
 		//群管理员变动
-		noticeGroupAdminCallback: func(*model.EventNoticeGroupAdmin) error { return nil },
+		noticeGroupAdminCallback: func(*model.EventNoticeGroupAdmin, cli.OnebotCli) error { return nil },
 		//群成员减少
-		noticeGroupDecreaseCallback: func(*model.EventNoticeGroupDecrease) error { return nil },
+		noticeGroupDecreaseCallback: func(*model.EventNoticeGroupDecrease, cli.OnebotCli) error { return nil },
 		//群成员增加
-		noticeGroupIncreaseCallback: func(*model.EventNoticeGroupIncrease) error { return nil },
+		noticeGroupIncreaseCallback: func(*model.EventNoticeGroupIncrease, cli.OnebotCli) error { return nil },
 		//群禁言
-		noticeGroupBanCallback: func(*model.EventNoticeGroupBan) error { return nil },
+		noticeGroupBanCallback: func(*model.EventNoticeGroupBan, cli.OnebotCli) error { return nil },
 		//群消息撤回
-		noticeGroupRecallCallback: func(*model.EventNoticeGroupRecall) error { return nil },
+		noticeGroupRecallCallback: func(*model.EventNoticeGroupRecall, cli.OnebotCli) error { return nil },
 		//群内戳一戳
-		noticeGroupNotifyPokeCallback: func(*model.EventNoticeGroupNotifyPoke) error { return nil },
+		noticeGroupNotifyPokeCallback: func(*model.EventNoticeGroupNotifyPoke, cli.OnebotCli) error { return nil },
 		//群红包运气王
-		noticeGroupNotifyLuckyKingCallback: func(*model.EventNoticeGroupNotifyLuckyKing) error { return nil },
+		noticeGroupNotifyLuckyKingCallback: func(*model.EventNoticeGroupNotifyLuckyKing, cli.OnebotCli) error { return nil },
 		//群成员荣誉变更
-		noticeGroupNotifyHonorCallback: func(*model.EventNoticeGroupNotifyHonor) error { return nil },
+		noticeGroupNotifyHonorCallback: func(*model.EventNoticeGroupNotifyHonor, cli.OnebotCli) error { return nil },
 		//好友添加
-		noticeFriendAddCallback: func(*model.EventNoticeFriendAdd) error { return nil },
+		noticeFriendAddCallback: func(*model.EventNoticeFriendAdd, cli.OnebotCli) error { return nil },
 		//好友消息撤回
-		noticeFriendRecallCallback: func(*model.EventNoticeFriendRecall) error { return nil },
+		noticeFriendRecallCallback: func(*model.EventNoticeFriendRecall, cli.OnebotCli) error { return nil },
 		//好友添加请求
-		requestFriendCallback: func(*model.EventRequestFriend) error { return nil },
+		requestFriendCallback: func(*model.EventRequestFriend, cli.OnebotCli) error { return nil },
 		//群添加/邀请请求
-		requestGroupCallback: func(*model.EventRequestGroup) error { return nil },
+		requestGroupCallback: func(*model.EventRequestGroup, cli.OnebotCli) error { return nil },
 	}
 }
 
@@ -126,83 +126,83 @@ func (m *onebotEventPluginRealImpl) MessagePrivate(req *model.EventMessagePrivat
 }
 
 //群组消息
-func (m *onebotEventPluginRealImpl) MessageGroup(req *model.EventMessageGroup) error {
-	return m.messageGroupCallback(req)
+func (m *onebotEventPluginRealImpl) MessageGroup(req *model.EventMessageGroup, cli cli.OnebotCli) error {
+	return m.messageGroupCallback(req, cli)
 }
 
 //生命周期
-func (m *onebotEventPluginRealImpl) MetaLifecycle(req *model.EventMetaLifecycle) error {
-	return m.metaLifecycleCallback(req)
+func (m *onebotEventPluginRealImpl) MetaLifecycle(req *model.EventMetaLifecycle, cli cli.OnebotCli) error {
+	return m.metaLifecycleCallback(req, cli)
 }
 
 //心跳
-func (m *onebotEventPluginRealImpl) MetaHeartbeat(req *model.EventMetaHeartbeat) error {
-	return m.metaHeartbeatCallback(req)
+func (m *onebotEventPluginRealImpl) MetaHeartbeat(req *model.EventMetaHeartbeat, cli cli.OnebotCli) error {
+	return m.metaHeartbeatCallback(req, cli)
 }
 
 //群文件上传
-func (m *onebotEventPluginRealImpl) NoticeGroupUpload(req *model.EventNoticeGroupUpload) error {
-	return m.noticeGroupUploadCallback(req)
+func (m *onebotEventPluginRealImpl) NoticeGroupUpload(req *model.EventNoticeGroupUpload, cli cli.OnebotCli) error {
+	return m.noticeGroupUploadCallback(req, cli)
 }
 
 //群管理员变动
-func (m *onebotEventPluginRealImpl) NoticeGroupAdmin(req *model.EventNoticeGroupAdmin) error {
-	return m.noticeGroupAdminCallback(req)
+func (m *onebotEventPluginRealImpl) NoticeGroupAdmin(req *model.EventNoticeGroupAdmin, cli cli.OnebotCli) error {
+	return m.noticeGroupAdminCallback(req, cli)
 }
 
 //群成员减少
-func (m *onebotEventPluginRealImpl) NoticeGroupDecrease(req *model.EventNoticeGroupDecrease) error {
-	return m.noticeGroupDecreaseCallback(req)
+func (m *onebotEventPluginRealImpl) NoticeGroupDecrease(req *model.EventNoticeGroupDecrease, cli cli.OnebotCli) error {
+	return m.noticeGroupDecreaseCallback(req, cli)
 }
 
 //群成员增加
-func (m *onebotEventPluginRealImpl) NoticeGroupIncrease(req *model.EventNoticeGroupIncrease) error {
-	return m.noticeGroupIncreaseCallback(req)
+func (m *onebotEventPluginRealImpl) NoticeGroupIncrease(req *model.EventNoticeGroupIncrease, cli cli.OnebotCli) error {
+	return m.noticeGroupIncreaseCallback(req, cli)
 }
 
 //群禁言
-func (m *onebotEventPluginRealImpl) NoticeGroupBan(req *model.EventNoticeGroupBan) error {
-	return m.noticeGroupBanCallback(req)
+func (m *onebotEventPluginRealImpl) NoticeGroupBan(req *model.EventNoticeGroupBan, cli cli.OnebotCli) error {
+	return m.noticeGroupBanCallback(req, cli)
 }
 
 //群消息撤回
-func (m *onebotEventPluginRealImpl) NoticeGroupRecall(req *model.EventNoticeGroupRecall) error {
-	return m.noticeGroupRecallCallback(req)
+func (m *onebotEventPluginRealImpl) NoticeGroupRecall(req *model.EventNoticeGroupRecall, cli cli.OnebotCli) error {
+	return m.noticeGroupRecallCallback(req, cli)
 }
 
 //群内戳一戳
-func (m *onebotEventPluginRealImpl) NoticeGroupNotifyPoke(req *model.EventNoticeGroupNotifyPoke) error {
-	return m.noticeGroupNotifyPokeCallback(req)
+func (m *onebotEventPluginRealImpl) NoticeGroupNotifyPoke(req *model.EventNoticeGroupNotifyPoke, cli cli.OnebotCli) error {
+	return m.noticeGroupNotifyPokeCallback(req, cli)
 }
 
 //群红包运气王
-func (m *onebotEventPluginRealImpl) NoticeGroupNotifyLuckyKing(req *model.EventNoticeGroupNotifyLuckyKing) error {
-	return m.noticeGroupNotifyLuckyKingCallback(req)
+func (m *onebotEventPluginRealImpl) NoticeGroupNotifyLuckyKing(req *model.EventNoticeGroupNotifyLuckyKing, cli cli.OnebotCli) error {
+	return m.noticeGroupNotifyLuckyKingCallback(req, cli)
 }
 
 //群成员荣誉变更
-func (m *onebotEventPluginRealImpl) NoticeGroupNotifyHonor(req *model.EventNoticeGroupNotifyHonor) error {
-	return m.noticeGroupNotifyHonorCallback(req)
+func (m *onebotEventPluginRealImpl) NoticeGroupNotifyHonor(req *model.EventNoticeGroupNotifyHonor, cli cli.OnebotCli) error {
+	return m.noticeGroupNotifyHonorCallback(req, cli)
 }
 
 //好友添加
-func (m *onebotEventPluginRealImpl) NoticeFriendAdd(req *model.EventNoticeFriendAdd) error {
-	return m.noticeFriendAddCallback(req)
+func (m *onebotEventPluginRealImpl) NoticeFriendAdd(req *model.EventNoticeFriendAdd, cli cli.OnebotCli) error {
+	return m.noticeFriendAddCallback(req, cli)
 }
 
 //好友消息撤回
-func (m *onebotEventPluginRealImpl) NoticeFriendRecall(req *model.EventNoticeFriendRecall) error {
-	return m.noticeFriendRecallCallback(req)
+func (m *onebotEventPluginRealImpl) NoticeFriendRecall(req *model.EventNoticeFriendRecall, cli cli.OnebotCli) error {
+	return m.noticeFriendRecallCallback(req, cli)
 }
 
 //好友添加请求
-func (m *onebotEventPluginRealImpl) RequestFriend(req *model.EventRequestFriend) error {
-	return m.requestFriendCallback(req)
+func (m *onebotEventPluginRealImpl) RequestFriend(req *model.EventRequestFriend, cli cli.OnebotCli) error {
+	return m.requestFriendCallback(req, cli)
 }
 
 //群添加/邀请请求
-func (m *onebotEventPluginRealImpl) RequestGroup(req *model.EventRequestGroup) error {
-	return m.requestGroupCallback(req)
+func (m *onebotEventPluginRealImpl) RequestGroup(req *model.EventRequestGroup, cli cli.OnebotCli) error {
+	return m.requestGroupCallback(req, cli)
 }
 
 //启动插件

@@ -27,37 +27,37 @@ type OnebotEventPlugin interface {
 	//私聊消息
 	MessagePrivate(*model.EventMessagePrivate, cli.OnebotCli) error
 	//群组消息
-	MessageGroup(*model.EventMessageGroup) error
+	MessageGroup(*model.EventMessageGroup, cli.OnebotCli) error
 	//生命周期
-	MetaLifecycle(*model.EventMetaLifecycle) error
+	MetaLifecycle(*model.EventMetaLifecycle, cli.OnebotCli) error
 	//心跳
-	MetaHeartbeat(*model.EventMetaHeartbeat) error
+	MetaHeartbeat(*model.EventMetaHeartbeat, cli.OnebotCli) error
 	//群文件上传
-	NoticeGroupUpload(*model.EventNoticeGroupUpload) error
+	NoticeGroupUpload(*model.EventNoticeGroupUpload, cli.OnebotCli) error
 	//群管理员变动
-	NoticeGroupAdmin(*model.EventNoticeGroupAdmin) error
+	NoticeGroupAdmin(*model.EventNoticeGroupAdmin, cli.OnebotCli) error
 	//群成员减少
-	NoticeGroupDecrease(*model.EventNoticeGroupDecrease) error
+	NoticeGroupDecrease(*model.EventNoticeGroupDecrease, cli.OnebotCli) error
 	//群成员增加
-	NoticeGroupIncrease(*model.EventNoticeGroupIncrease) error
+	NoticeGroupIncrease(*model.EventNoticeGroupIncrease, cli.OnebotCli) error
 	//群禁言
-	NoticeGroupBan(*model.EventNoticeGroupBan) error
+	NoticeGroupBan(*model.EventNoticeGroupBan, cli.OnebotCli) error
 	//群消息撤回
-	NoticeGroupRecall(*model.EventNoticeGroupRecall) error
+	NoticeGroupRecall(*model.EventNoticeGroupRecall, cli.OnebotCli) error
 	//群内戳一戳
-	NoticeGroupNotifyPoke(*model.EventNoticeGroupNotifyPoke) error
+	NoticeGroupNotifyPoke(*model.EventNoticeGroupNotifyPoke, cli.OnebotCli) error
 	//群红包运气王
-	NoticeGroupNotifyLuckyKing(*model.EventNoticeGroupNotifyLuckyKing) error
+	NoticeGroupNotifyLuckyKing(*model.EventNoticeGroupNotifyLuckyKing, cli.OnebotCli) error
 	//群成员荣誉变更
-	NoticeGroupNotifyHonor(*model.EventNoticeGroupNotifyHonor) error
+	NoticeGroupNotifyHonor(*model.EventNoticeGroupNotifyHonor, cli.OnebotCli) error
 	//好友添加
-	NoticeFriendAdd(*model.EventNoticeFriendAdd) error
+	NoticeFriendAdd(*model.EventNoticeFriendAdd, cli.OnebotCli) error
 	//好友消息撤回
-	NoticeFriendRecall(*model.EventNoticeFriendRecall) error
+	NoticeFriendRecall(*model.EventNoticeFriendRecall, cli.OnebotCli) error
 	//好友添加请求
-	RequestFriend(*model.EventRequestFriend) error
+	RequestFriend(*model.EventRequestFriend, cli.OnebotCli) error
 	//群添加/邀请请求
-	RequestGroup(*model.EventRequestGroup) error
+	RequestGroup(*model.EventRequestGroup, cli.OnebotCli) error
 }
 
 //插件实现
@@ -103,9 +103,7 @@ func (p *onebotEventPluginGRPCServerStub) Help(ctx context.Context, req *emptypb
 }
 
 //私聊消息
-func (p *onebotEventPluginGRPCServerStub) MessagePrivate(ctx context.Context, req *EventMessagePrivateGRPCWithCliGRPC) (*emptypb.Empty, error) {
-	logrus.Infof("req....%v", req)
-	logrus.Info("req.Cli...", req.Cli)
+func (p *onebotEventPluginGRPCServerStub) MessagePrivate(ctx context.Context, req *EventMessagePrivateGRPCWithCli) (*emptypb.Empty, error) {
 	conn, err := p.broker.Dial(req.Cli)
 	if err != nil {
 		logrus.Errorf("conn err %v", err)
@@ -115,104 +113,247 @@ func (p *onebotEventPluginGRPCServerStub) MessagePrivate(ctx context.Context, re
 	client := &cli.MessageCliClientStub{
 		Client: cli.NewOnebotGrpcCliClient(conn),
 	}
-	logrus.Infof("创建客户端....%v", client)
 	e := p.Impl.MessagePrivate(req.Message.ToStruct(), client)
 	return &emptypb.Empty{}, e
 }
 
 //群组消息
-func (p *onebotEventPluginGRPCServerStub) MessageGroup(ctx context.Context, req *model.EventMessageGroupGRPC) (*emptypb.Empty, error) {
-	e := p.Impl.MessageGroup(req.ToStruct())
+func (p *onebotEventPluginGRPCServerStub) MessageGroup(ctx context.Context, req *EventMessageGroupGRPCWithCli) (*emptypb.Empty, error) {
+	conn, err := p.broker.Dial(req.Cli)
+	if err != nil {
+		logrus.Errorf("conn err %v", err)
+		return nil, err
+	}
+	defer conn.Close()
+	client := &cli.MessageCliClientStub{
+		Client: cli.NewOnebotGrpcCliClient(conn),
+	}
+	e := p.Impl.MessageGroup(req.Message.ToStruct(), client)
 	return &emptypb.Empty{}, e
 }
 
 //生命周期
-func (p *onebotEventPluginGRPCServerStub) MetaLifecycle(ctx context.Context, req *model.EventMetaLifecycleGRPC) (*emptypb.Empty, error) {
-	e := p.Impl.MetaLifecycle(req.ToStruct())
+func (p *onebotEventPluginGRPCServerStub) MetaLifecycle(ctx context.Context, req *EventMetaLifecycleGRPCWithCli) (*emptypb.Empty, error) {
+	conn, err := p.broker.Dial(req.Cli)
+	if err != nil {
+		logrus.Errorf("conn err %v", err)
+		return nil, err
+	}
+	defer conn.Close()
+	client := &cli.MessageCliClientStub{
+		Client: cli.NewOnebotGrpcCliClient(conn),
+	}
+	e := p.Impl.MetaLifecycle(req.Message.ToStruct(), client)
 	return &emptypb.Empty{}, e
 }
 
 //心跳
-func (p *onebotEventPluginGRPCServerStub) MetaHeartbeat(ctx context.Context, req *model.EventMetaHeartbeatGRPC) (*emptypb.Empty, error) {
-	e := p.Impl.MetaHeartbeat(req.ToStruct())
+func (p *onebotEventPluginGRPCServerStub) MetaHeartbeat(ctx context.Context, req *EventMetaHeartbeatGRPCWithCli) (*emptypb.Empty, error) {
+	conn, err := p.broker.Dial(req.Cli)
+	if err != nil {
+		logrus.Errorf("conn err %v", err)
+		return nil, err
+	}
+	defer conn.Close()
+	client := &cli.MessageCliClientStub{
+		Client: cli.NewOnebotGrpcCliClient(conn),
+	}
+	e := p.Impl.MetaHeartbeat(req.Message.ToStruct(), client)
 	return &emptypb.Empty{}, e
 }
 
 //群文件上传
-func (p *onebotEventPluginGRPCServerStub) NoticeGroupUpload(ctx context.Context, req *model.EventNoticeGroupUploadGRPC) (*emptypb.Empty, error) {
-	e := p.Impl.NoticeGroupUpload(req.ToStruct())
+func (p *onebotEventPluginGRPCServerStub) NoticeGroupUpload(ctx context.Context, req *EventNoticeGroupUploadGRPCWithCli) (*emptypb.Empty, error) {
+	conn, err := p.broker.Dial(req.Cli)
+	if err != nil {
+		logrus.Errorf("conn err %v", err)
+		return nil, err
+	}
+	defer conn.Close()
+	client := &cli.MessageCliClientStub{
+		Client: cli.NewOnebotGrpcCliClient(conn),
+	}
+	e := p.Impl.NoticeGroupUpload(req.Message.ToStruct(), client)
 	return &emptypb.Empty{}, e
 }
 
 //群管理员变化
-func (p *onebotEventPluginGRPCServerStub) NoticeGroupAdmin(ctx context.Context, req *model.EventNoticeGroupAdminGRPC) (*emptypb.Empty, error) {
-	e := p.Impl.NoticeGroupAdmin(req.ToStruct())
+func (p *onebotEventPluginGRPCServerStub) NoticeGroupAdmin(ctx context.Context, req *EventNoticeGroupAdminGRPCWithCli) (*emptypb.Empty, error) {
+	conn, err := p.broker.Dial(req.Cli)
+	if err != nil {
+		logrus.Errorf("conn err %v", err)
+		return nil, err
+	}
+	defer conn.Close()
+	client := &cli.MessageCliClientStub{
+		Client: cli.NewOnebotGrpcCliClient(conn),
+	}
+	e := p.Impl.NoticeGroupAdmin(req.Message.ToStruct(), client)
 	return &emptypb.Empty{}, e
 }
 
 //群成员减少
-func (p *onebotEventPluginGRPCServerStub) NoticeGroupDecrease(ctx context.Context, req *model.EventNoticeGroupDecreaseGRPC) (*emptypb.Empty, error) {
-	e := p.Impl.NoticeGroupDecrease(req.ToStruct())
+func (p *onebotEventPluginGRPCServerStub) NoticeGroupDecrease(ctx context.Context, req *EventNoticeGroupDecreaseGRPCWithCli) (*emptypb.Empty, error) {
+	conn, err := p.broker.Dial(req.Cli)
+	if err != nil {
+		logrus.Errorf("conn err %v", err)
+		return nil, err
+	}
+	defer conn.Close()
+	client := &cli.MessageCliClientStub{
+		Client: cli.NewOnebotGrpcCliClient(conn),
+	}
+	e := p.Impl.NoticeGroupDecrease(req.Message.ToStruct(), client)
 	return &emptypb.Empty{}, e
 }
 
 //群成员增加
-func (p *onebotEventPluginGRPCServerStub) NoticeGroupIncrease(ctx context.Context, req *model.EventNoticeGroupIncreaseGRPC) (*emptypb.Empty, error) {
-	e := p.Impl.NoticeGroupIncrease(req.ToStruct())
+func (p *onebotEventPluginGRPCServerStub) NoticeGroupIncrease(ctx context.Context, req *EventNoticeGroupIncreaseGRPCWithCli) (*emptypb.Empty, error) {
+	conn, err := p.broker.Dial(req.Cli)
+	if err != nil {
+		logrus.Errorf("conn err %v", err)
+		return nil, err
+	}
+	defer conn.Close()
+	client := &cli.MessageCliClientStub{
+		Client: cli.NewOnebotGrpcCliClient(conn),
+	}
+	e := p.Impl.NoticeGroupIncrease(req.Message.ToStruct(), client)
 	return &emptypb.Empty{}, e
 }
 
 //群成员禁言
-func (p *onebotEventPluginGRPCServerStub) NoticeGroupBan(ctx context.Context, req *model.EventNoticeGroupBanGRPC) (*emptypb.Empty, error) {
-	e := p.Impl.NoticeGroupBan(req.ToStruct())
+func (p *onebotEventPluginGRPCServerStub) NoticeGroupBan(ctx context.Context, req *EventNoticeGroupBanGRPCWithCli) (*emptypb.Empty, error) {
+	conn, err := p.broker.Dial(req.Cli)
+	if err != nil {
+		logrus.Errorf("conn err %v", err)
+		return nil, err
+	}
+	defer conn.Close()
+	client := &cli.MessageCliClientStub{
+		Client: cli.NewOnebotGrpcCliClient(conn),
+	}
+	e := p.Impl.NoticeGroupBan(req.Message.ToStruct(), client)
 	return &emptypb.Empty{}, e
 }
 
 //群消息撤回
-func (p *onebotEventPluginGRPCServerStub) NoticeGroupRecall(ctx context.Context, req *model.EventNoticeGroupRecallGRPC) (*emptypb.Empty, error) {
-	e := p.Impl.NoticeGroupRecall(req.ToStruct())
+func (p *onebotEventPluginGRPCServerStub) NoticeGroupRecall(ctx context.Context, req *EventNoticeGroupRecallGRPCWithCli) (*emptypb.Empty, error) {
+	conn, err := p.broker.Dial(req.Cli)
+	if err != nil {
+		logrus.Errorf("conn err %v", err)
+		return nil, err
+	}
+	defer conn.Close()
+	client := &cli.MessageCliClientStub{
+		Client: cli.NewOnebotGrpcCliClient(conn),
+	}
+	e := p.Impl.NoticeGroupRecall(req.Message.ToStruct(), client)
 	return &emptypb.Empty{}, e
 }
 
 //群内戳一戳
-func (p *onebotEventPluginGRPCServerStub) NoticeGroupNotifyPoke(ctx context.Context, req *model.EventNoticeGroupNotifyPokeGRPC) (*emptypb.Empty, error) {
-	e := p.Impl.NoticeGroupNotifyPoke(req.ToStruct())
+func (p *onebotEventPluginGRPCServerStub) NoticeGroupNotifyPoke(ctx context.Context, req *EventNoticeGroupNotifyPokeGRPCWithCli) (*emptypb.Empty, error) {
+	conn, err := p.broker.Dial(req.Cli)
+	if err != nil {
+		logrus.Errorf("conn err %v", err)
+		return nil, err
+	}
+	defer conn.Close()
+	client := &cli.MessageCliClientStub{
+		Client: cli.NewOnebotGrpcCliClient(conn),
+	}
+	e := p.Impl.NoticeGroupNotifyPoke(req.Message.ToStruct(), client)
 	return &emptypb.Empty{}, e
 }
 
 //群红包运气王
-func (p *onebotEventPluginGRPCServerStub) NoticeGroupNotifyLuckyKing(ctx context.Context, req *model.EventNoticeGroupNotifyLuckyKingGRPC) (*emptypb.Empty, error) {
-	e := p.Impl.NoticeGroupNotifyLuckyKing(req.ToStruct())
+func (p *onebotEventPluginGRPCServerStub) NoticeGroupNotifyLuckyKing(ctx context.Context, req *EventNoticeGroupNotifyLuckyKingGRPCWithCli) (*emptypb.Empty, error) {
+	conn, err := p.broker.Dial(req.Cli)
+	if err != nil {
+		logrus.Errorf("conn err %v", err)
+		return nil, err
+	}
+	defer conn.Close()
+	client := &cli.MessageCliClientStub{
+		Client: cli.NewOnebotGrpcCliClient(conn),
+	}
+	e := p.Impl.NoticeGroupNotifyLuckyKing(req.Message.ToStruct(), client)
 	return &emptypb.Empty{}, e
 }
 
 //群成员荣誉变更
-func (p *onebotEventPluginGRPCServerStub) NoticeGroupNotifyHonor(ctx context.Context, req *model.EventNoticeGroupNotifyHonorGRPC) (*emptypb.Empty, error) {
-	e := p.Impl.NoticeGroupNotifyHonor(req.ToStruct())
+func (p *onebotEventPluginGRPCServerStub) NoticeGroupNotifyHonor(ctx context.Context, req *EventNoticeGroupNotifyHonorGRPCWithCli) (*emptypb.Empty, error) {
+	conn, err := p.broker.Dial(req.Cli)
+	if err != nil {
+		logrus.Errorf("conn err %v", err)
+		return nil, err
+	}
+	defer conn.Close()
+	client := &cli.MessageCliClientStub{
+		Client: cli.NewOnebotGrpcCliClient(conn),
+	}
+	e := p.Impl.NoticeGroupNotifyHonor(req.Message.ToStruct(), client)
 	return &emptypb.Empty{}, e
 }
 
 //好友添加
-func (p *onebotEventPluginGRPCServerStub) NoticeFriendAdd(ctx context.Context, req *model.EventNoticeFriendAddGRPC) (*emptypb.Empty, error) {
-	e := p.Impl.NoticeFriendAdd(req.ToStruct())
+func (p *onebotEventPluginGRPCServerStub) NoticeFriendAdd(ctx context.Context, req *EventNoticeFriendAddGRPCWithCli) (*emptypb.Empty, error) {
+	conn, err := p.broker.Dial(req.Cli)
+	if err != nil {
+		logrus.Errorf("conn err %v", err)
+		return nil, err
+	}
+	defer conn.Close()
+	client := &cli.MessageCliClientStub{
+		Client: cli.NewOnebotGrpcCliClient(conn),
+	}
+	e := p.Impl.NoticeFriendAdd(req.Message.ToStruct(), client)
 	return &emptypb.Empty{}, e
 }
 
 //好友消息撤回
-func (p *onebotEventPluginGRPCServerStub) NoticeFriendRecall(ctx context.Context, req *model.EventNoticeFriendRecallGRPC) (*emptypb.Empty, error) {
-	e := p.Impl.NoticeFriendRecall(req.ToStruct())
+func (p *onebotEventPluginGRPCServerStub) NoticeFriendRecall(ctx context.Context, req *EventNoticeFriendRecallGRPCWithCli) (*emptypb.Empty, error) {
+	conn, err := p.broker.Dial(req.Cli)
+	if err != nil {
+		logrus.Errorf("conn err %v", err)
+		return nil, err
+	}
+	defer conn.Close()
+	client := &cli.MessageCliClientStub{
+		Client: cli.NewOnebotGrpcCliClient(conn),
+	}
+	e := p.Impl.NoticeFriendRecall(req.Message.ToStruct(), client)
 	return &emptypb.Empty{}, e
 }
 
 //加好友请求
-func (p *onebotEventPluginGRPCServerStub) RequestFriend(ctx context.Context, req *model.EventRequestFriendGRPC) (*emptypb.Empty, error) {
-	e := p.Impl.RequestFriend(req.ToStruct())
+func (p *onebotEventPluginGRPCServerStub) RequestFriend(ctx context.Context, req *EventRequestFriendGRPCWithCli) (*emptypb.Empty, error) {
+	conn, err := p.broker.Dial(req.Cli)
+	if err != nil {
+		logrus.Errorf("conn err %v", err)
+		return nil, err
+	}
+	defer conn.Close()
+	client := &cli.MessageCliClientStub{
+		Client: cli.NewOnebotGrpcCliClient(conn),
+	}
+	e := p.Impl.RequestFriend(req.Message.ToStruct(), client)
 	return &emptypb.Empty{}, e
 }
 
 //加群请求／邀请
-func (p *onebotEventPluginGRPCServerStub) RequestGroup(ctx context.Context, req *model.EventRequestGroupGRPC) (*emptypb.Empty, error) {
-	e := p.Impl.RequestGroup(req.ToStruct())
+func (p *onebotEventPluginGRPCServerStub) RequestGroup(ctx context.Context, req *EventRequestGroupGRPCWithCli) (*emptypb.Empty, error) {
+	conn, err := p.broker.Dial(req.Cli)
+	if err != nil {
+		logrus.Errorf("conn err %v", err)
+		return nil, err
+	}
+	defer conn.Close()
+	client := &cli.MessageCliClientStub{
+		Client: cli.NewOnebotGrpcCliClient(conn),
+	}
+	e := p.Impl.RequestGroup(req.Message.ToStruct(), client)
 	return &emptypb.Empty{}, e
 }
 
@@ -285,7 +426,7 @@ func (m *onebotEventPluginGRPCClientStub) MessagePrivate(req *model.EventMessage
 	brokerID := m.broker.NextId()
 	go m.broker.AcceptAndServe(brokerID, serverFunc)
 	msg := req.ToGRPC()
-	_, err := m.client.MessagePrivate(context.Background(), &EventMessagePrivateGRPCWithCliGRPC{
+	_, err := m.client.MessagePrivate(context.Background(), &EventMessagePrivateGRPCWithCli{
 		Message: msg,
 		Cli:     brokerID,
 	})
@@ -294,130 +435,370 @@ func (m *onebotEventPluginGRPCClientStub) MessagePrivate(req *model.EventMessage
 }
 
 //群组消息
-func (m *onebotEventPluginGRPCClientStub) MessageGroup(req *model.EventMessageGroup) error {
+func (m *onebotEventPluginGRPCClientStub) MessageGroup(req *model.EventMessageGroup, msgCli cli.OnebotCli) error {
 	// 转发
-	grpc := req.ToGRPC()
-	_, err := m.client.MessageGroup(context.Background(), grpc)
+	messageCliServer := &cli.OnebotCliServerStub{
+		Impl: msgCli,
+	} //{Impl: cli}
+	var s *grpc.Server
+	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
+		s = grpc.NewServer(opts...)
+		cli.RegisterOnebotGrpcCliServer(s, messageCliServer)
+		return s
+	}
+	brokerID := m.broker.NextId()
+	go m.broker.AcceptAndServe(brokerID, serverFunc)
+	msg := req.ToGRPC()
+	_, err := m.client.MessageGroup(context.Background(), &EventMessageGroupGRPCWithCli{
+		Message: msg,
+		Cli:     brokerID,
+	})
+	s.Stop()
 	return err
 }
 
 //生命周期
-func (m *onebotEventPluginGRPCClientStub) MetaLifecycle(req *model.EventMetaLifecycle) error {
+func (m *onebotEventPluginGRPCClientStub) MetaLifecycle(req *model.EventMetaLifecycle, msgCli cli.OnebotCli) error {
 	// 转发
-	grpc := req.ToGRPC()
-	_, err := m.client.MetaLifecycle(context.Background(), grpc)
+	messageCliServer := &cli.OnebotCliServerStub{
+		Impl: msgCli,
+	} //{Impl: cli}
+	var s *grpc.Server
+	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
+		s = grpc.NewServer(opts...)
+		cli.RegisterOnebotGrpcCliServer(s, messageCliServer)
+		return s
+	}
+	brokerID := m.broker.NextId()
+	go m.broker.AcceptAndServe(brokerID, serverFunc)
+	msg := req.ToGRPC()
+	_, err := m.client.MetaLifecycle(context.Background(), &EventMetaLifecycleGRPCWithCli{
+		Message: msg,
+		Cli:     brokerID,
+	})
+	s.Stop()
 	return err
 }
 
 //心跳
-func (m *onebotEventPluginGRPCClientStub) MetaHeartbeat(req *model.EventMetaHeartbeat) error {
+func (m *onebotEventPluginGRPCClientStub) MetaHeartbeat(req *model.EventMetaHeartbeat, msgCli cli.OnebotCli) error {
 	// 转发
-	grpc := req.ToGRPC()
-	_, err := m.client.MetaHeartbeat(context.Background(), grpc)
+	messageCliServer := &cli.OnebotCliServerStub{
+		Impl: msgCli,
+	} //{Impl: cli}
+	var s *grpc.Server
+	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
+		s = grpc.NewServer(opts...)
+		cli.RegisterOnebotGrpcCliServer(s, messageCliServer)
+		return s
+	}
+	brokerID := m.broker.NextId()
+	go m.broker.AcceptAndServe(brokerID, serverFunc)
+	msg := req.ToGRPC()
+	_, err := m.client.MetaHeartbeat(context.Background(), &EventMetaHeartbeatGRPCWithCli{
+		Message: msg,
+		Cli:     brokerID,
+	})
+	s.Stop()
 	return err
 }
 
 //群文件上传
-func (m *onebotEventPluginGRPCClientStub) NoticeGroupUpload(req *model.EventNoticeGroupUpload) error {
+func (m *onebotEventPluginGRPCClientStub) NoticeGroupUpload(req *model.EventNoticeGroupUpload, msgCli cli.OnebotCli) error {
 	// 转发
-	grpc := req.ToGRPC()
-	_, err := m.client.NoticeGroupUpload(context.Background(), grpc)
+	messageCliServer := &cli.OnebotCliServerStub{
+		Impl: msgCli,
+	} //{Impl: cli}
+	var s *grpc.Server
+	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
+		s = grpc.NewServer(opts...)
+		cli.RegisterOnebotGrpcCliServer(s, messageCliServer)
+		return s
+	}
+	brokerID := m.broker.NextId()
+	go m.broker.AcceptAndServe(brokerID, serverFunc)
+	msg := req.ToGRPC()
+	_, err := m.client.NoticeGroupUpload(context.Background(), &EventNoticeGroupUploadGRPCWithCli{
+		Message: msg,
+		Cli:     brokerID,
+	})
+	s.Stop()
 	return err
 }
 
 //群管理员变动
-func (m *onebotEventPluginGRPCClientStub) NoticeGroupAdmin(req *model.EventNoticeGroupAdmin) error {
+func (m *onebotEventPluginGRPCClientStub) NoticeGroupAdmin(req *model.EventNoticeGroupAdmin, msgCli cli.OnebotCli) error {
 	// 转发
-	grpc := req.ToGRPC()
-	_, err := m.client.NoticeGroupAdmin(context.Background(), grpc)
+	messageCliServer := &cli.OnebotCliServerStub{
+		Impl: msgCli,
+	} //{Impl: cli}
+	var s *grpc.Server
+	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
+		s = grpc.NewServer(opts...)
+		cli.RegisterOnebotGrpcCliServer(s, messageCliServer)
+		return s
+	}
+	brokerID := m.broker.NextId()
+	go m.broker.AcceptAndServe(brokerID, serverFunc)
+	msg := req.ToGRPC()
+	_, err := m.client.NoticeGroupAdmin(context.Background(), &EventNoticeGroupAdminGRPCWithCli{
+		Message: msg,
+		Cli:     brokerID,
+	})
+	s.Stop()
 	return err
 }
 
 //群成员减少
-func (m *onebotEventPluginGRPCClientStub) NoticeGroupDecrease(req *model.EventNoticeGroupDecrease) error {
+func (m *onebotEventPluginGRPCClientStub) NoticeGroupDecrease(req *model.EventNoticeGroupDecrease, msgCli cli.OnebotCli) error {
 	// 转发
-	grpc := req.ToGRPC()
-	_, err := m.client.NoticeGroupDecrease(context.Background(), grpc)
+	messageCliServer := &cli.OnebotCliServerStub{
+		Impl: msgCli,
+	} //{Impl: cli}
+	var s *grpc.Server
+	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
+		s = grpc.NewServer(opts...)
+		cli.RegisterOnebotGrpcCliServer(s, messageCliServer)
+		return s
+	}
+	brokerID := m.broker.NextId()
+	go m.broker.AcceptAndServe(brokerID, serverFunc)
+	msg := req.ToGRPC()
+	_, err := m.client.NoticeGroupDecrease(context.Background(), &EventNoticeGroupDecreaseGRPCWithCli{
+		Message: msg,
+		Cli:     brokerID,
+	})
+	s.Stop()
 	return err
 }
 
 //群成员增加
-func (m *onebotEventPluginGRPCClientStub) NoticeGroupIncrease(req *model.EventNoticeGroupIncrease) error {
+func (m *onebotEventPluginGRPCClientStub) NoticeGroupIncrease(req *model.EventNoticeGroupIncrease, msgCli cli.OnebotCli) error {
 	// 转发
-	grpc := req.ToGRPC()
-	_, err := m.client.NoticeGroupIncrease(context.Background(), grpc)
+	messageCliServer := &cli.OnebotCliServerStub{
+		Impl: msgCli,
+	} //{Impl: cli}
+	var s *grpc.Server
+	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
+		s = grpc.NewServer(opts...)
+		cli.RegisterOnebotGrpcCliServer(s, messageCliServer)
+		return s
+	}
+	brokerID := m.broker.NextId()
+	go m.broker.AcceptAndServe(brokerID, serverFunc)
+	msg := req.ToGRPC()
+	_, err := m.client.NoticeGroupIncrease(context.Background(), &EventNoticeGroupIncreaseGRPCWithCli{
+		Message: msg,
+		Cli:     brokerID,
+	})
+	s.Stop()
 	return err
 }
 
 //群禁言
-func (m *onebotEventPluginGRPCClientStub) NoticeGroupBan(req *model.EventNoticeGroupBan) error {
+func (m *onebotEventPluginGRPCClientStub) NoticeGroupBan(req *model.EventNoticeGroupBan, msgCli cli.OnebotCli) error {
 	// 转发
-	grpc := req.ToGRPC()
-	_, err := m.client.NoticeGroupBan(context.Background(), grpc)
+	messageCliServer := &cli.OnebotCliServerStub{
+		Impl: msgCli,
+	} //{Impl: cli}
+	var s *grpc.Server
+	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
+		s = grpc.NewServer(opts...)
+		cli.RegisterOnebotGrpcCliServer(s, messageCliServer)
+		return s
+	}
+	brokerID := m.broker.NextId()
+	go m.broker.AcceptAndServe(brokerID, serverFunc)
+	msg := req.ToGRPC()
+	_, err := m.client.NoticeGroupBan(context.Background(), &EventNoticeGroupBanGRPCWithCli{
+		Message: msg,
+		Cli:     brokerID,
+	})
+	s.Stop()
 	return err
 }
 
 //群消息撤回
-func (m *onebotEventPluginGRPCClientStub) NoticeGroupRecall(req *model.EventNoticeGroupRecall) error {
+func (m *onebotEventPluginGRPCClientStub) NoticeGroupRecall(req *model.EventNoticeGroupRecall, msgCli cli.OnebotCli) error {
 	// 转发
-	grpc := req.ToGRPC()
-	_, err := m.client.NoticeGroupRecall(context.Background(), grpc)
+	messageCliServer := &cli.OnebotCliServerStub{
+		Impl: msgCli,
+	} //{Impl: cli}
+	var s *grpc.Server
+	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
+		s = grpc.NewServer(opts...)
+		cli.RegisterOnebotGrpcCliServer(s, messageCliServer)
+		return s
+	}
+	brokerID := m.broker.NextId()
+	go m.broker.AcceptAndServe(brokerID, serverFunc)
+	msg := req.ToGRPC()
+	_, err := m.client.NoticeGroupRecall(context.Background(), &EventNoticeGroupRecallGRPCWithCli{
+		Message: msg,
+		Cli:     brokerID,
+	})
+	s.Stop()
 	return err
 }
 
 //群内戳一戳
-func (m *onebotEventPluginGRPCClientStub) NoticeGroupNotifyPoke(req *model.EventNoticeGroupNotifyPoke) error {
+func (m *onebotEventPluginGRPCClientStub) NoticeGroupNotifyPoke(req *model.EventNoticeGroupNotifyPoke, msgCli cli.OnebotCli) error {
 	// 转发
-	grpc := req.ToGRPC()
-	_, err := m.client.NoticeGroupNotifyPoke(context.Background(), grpc)
+	messageCliServer := &cli.OnebotCliServerStub{
+		Impl: msgCli,
+	} //{Impl: cli}
+	var s *grpc.Server
+	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
+		s = grpc.NewServer(opts...)
+		cli.RegisterOnebotGrpcCliServer(s, messageCliServer)
+		return s
+	}
+	brokerID := m.broker.NextId()
+	go m.broker.AcceptAndServe(brokerID, serverFunc)
+	msg := req.ToGRPC()
+	_, err := m.client.NoticeGroupNotifyPoke(context.Background(), &EventNoticeGroupNotifyPokeGRPCWithCli{
+		Message: msg,
+		Cli:     brokerID,
+	})
+	s.Stop()
 	return err
 }
 
 //群红包运气王
-func (m *onebotEventPluginGRPCClientStub) NoticeGroupNotifyLuckyKing(req *model.EventNoticeGroupNotifyLuckyKing) error {
+func (m *onebotEventPluginGRPCClientStub) NoticeGroupNotifyLuckyKing(req *model.EventNoticeGroupNotifyLuckyKing, msgCli cli.OnebotCli) error {
 	// 转发
-	grpc := req.ToGRPC()
-	_, err := m.client.NoticeGroupNotifyLuckyKing(context.Background(), grpc)
+	messageCliServer := &cli.OnebotCliServerStub{
+		Impl: msgCli,
+	} //{Impl: cli}
+	var s *grpc.Server
+	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
+		s = grpc.NewServer(opts...)
+		cli.RegisterOnebotGrpcCliServer(s, messageCliServer)
+		return s
+	}
+	brokerID := m.broker.NextId()
+	go m.broker.AcceptAndServe(brokerID, serverFunc)
+	msg := req.ToGRPC()
+	_, err := m.client.NoticeGroupNotifyLuckyKing(context.Background(), &EventNoticeGroupNotifyLuckyKingGRPCWithCli{
+		Message: msg,
+		Cli:     brokerID,
+	})
+	s.Stop()
 	return err
 }
 
 //群成员荣誉变更
-func (m *onebotEventPluginGRPCClientStub) NoticeGroupNotifyHonor(req *model.EventNoticeGroupNotifyHonor) error {
+func (m *onebotEventPluginGRPCClientStub) NoticeGroupNotifyHonor(req *model.EventNoticeGroupNotifyHonor, msgCli cli.OnebotCli) error {
 	// 转发
-	grpc := req.ToGRPC()
-	_, err := m.client.NoticeGroupNotifyHonor(context.Background(), grpc)
+	messageCliServer := &cli.OnebotCliServerStub{
+		Impl: msgCli,
+	} //{Impl: cli}
+	var s *grpc.Server
+	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
+		s = grpc.NewServer(opts...)
+		cli.RegisterOnebotGrpcCliServer(s, messageCliServer)
+		return s
+	}
+	brokerID := m.broker.NextId()
+	go m.broker.AcceptAndServe(brokerID, serverFunc)
+	msg := req.ToGRPC()
+	_, err := m.client.NoticeGroupNotifyHonor(context.Background(), &EventNoticeGroupNotifyHonorGRPCWithCli{
+		Message: msg,
+		Cli:     brokerID,
+	})
+	s.Stop()
 	return err
 }
 
 //好友添加
-func (m *onebotEventPluginGRPCClientStub) NoticeFriendAdd(req *model.EventNoticeFriendAdd) error {
+func (m *onebotEventPluginGRPCClientStub) NoticeFriendAdd(req *model.EventNoticeFriendAdd, msgCli cli.OnebotCli) error {
 	// 转发
-	grpc := req.ToGRPC()
-	_, err := m.client.NoticeFriendAdd(context.Background(), grpc)
+	messageCliServer := &cli.OnebotCliServerStub{
+		Impl: msgCli,
+	} //{Impl: cli}
+	var s *grpc.Server
+	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
+		s = grpc.NewServer(opts...)
+		cli.RegisterOnebotGrpcCliServer(s, messageCliServer)
+		return s
+	}
+	brokerID := m.broker.NextId()
+	go m.broker.AcceptAndServe(brokerID, serverFunc)
+	msg := req.ToGRPC()
+	_, err := m.client.NoticeFriendAdd(context.Background(), &EventNoticeFriendAddGRPCWithCli{
+		Message: msg,
+		Cli:     brokerID,
+	})
+	s.Stop()
 	return err
 }
 
 //好友消息撤回
-func (m *onebotEventPluginGRPCClientStub) NoticeFriendRecall(req *model.EventNoticeFriendRecall) error {
+func (m *onebotEventPluginGRPCClientStub) NoticeFriendRecall(req *model.EventNoticeFriendRecall, msgCli cli.OnebotCli) error {
 	// 转发
-	grpc := req.ToGRPC()
-	_, err := m.client.NoticeFriendRecall(context.Background(), grpc)
+	messageCliServer := &cli.OnebotCliServerStub{
+		Impl: msgCli,
+	} //{Impl: cli}
+	var s *grpc.Server
+	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
+		s = grpc.NewServer(opts...)
+		cli.RegisterOnebotGrpcCliServer(s, messageCliServer)
+		return s
+	}
+	brokerID := m.broker.NextId()
+	go m.broker.AcceptAndServe(brokerID, serverFunc)
+	msg := req.ToGRPC()
+	_, err := m.client.NoticeFriendRecall(context.Background(), &EventNoticeFriendRecallGRPCWithCli{
+		Message: msg,
+		Cli:     brokerID,
+	})
+	s.Stop()
 	return err
 }
 
 //好友添加请求
-func (m *onebotEventPluginGRPCClientStub) RequestFriend(req *model.EventRequestFriend) error {
+func (m *onebotEventPluginGRPCClientStub) RequestFriend(req *model.EventRequestFriend, msgCli cli.OnebotCli) error {
 	// 转发
-	grpc := req.ToGRPC()
-	_, err := m.client.RequestFriend(context.Background(), grpc)
+	messageCliServer := &cli.OnebotCliServerStub{
+		Impl: msgCli,
+	} //{Impl: cli}
+	var s *grpc.Server
+	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
+		s = grpc.NewServer(opts...)
+		cli.RegisterOnebotGrpcCliServer(s, messageCliServer)
+		return s
+	}
+	brokerID := m.broker.NextId()
+	go m.broker.AcceptAndServe(brokerID, serverFunc)
+	msg := req.ToGRPC()
+	_, err := m.client.RequestFriend(context.Background(), &EventRequestFriendGRPCWithCli{
+		Message: msg,
+		Cli:     brokerID,
+	})
+	s.Stop()
 	return err
 }
 
 //群添加/邀请请求
-func (m *onebotEventPluginGRPCClientStub) RequestGroup(req *model.EventRequestGroup) error {
+func (m *onebotEventPluginGRPCClientStub) RequestGroup(req *model.EventRequestGroup, msgCli cli.OnebotCli) error {
 	// 转发
-	grpc := req.ToGRPC()
-	_, err := m.client.RequestGroup(context.Background(), grpc)
+	messageCliServer := &cli.OnebotCliServerStub{
+		Impl: msgCli,
+	} //{Impl: cli}
+	var s *grpc.Server
+	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
+		s = grpc.NewServer(opts...)
+		cli.RegisterOnebotGrpcCliServer(s, messageCliServer)
+		return s
+	}
+	brokerID := m.broker.NextId()
+	go m.broker.AcceptAndServe(brokerID, serverFunc)
+	msg := req.ToGRPC()
+	_, err := m.client.RequestGroup(context.Background(), &EventRequestGroupGRPCWithCli{
+		Message: msg,
+		Cli:     brokerID,
+	})
+	s.Stop()
 	return err
 }
 

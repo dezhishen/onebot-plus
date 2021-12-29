@@ -27,7 +27,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type EventMessagePrivateGRPCWithCliGRPC struct {
+type EventMessagePrivateGRPCWithCli struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -36,8 +36,8 @@ type EventMessagePrivateGRPCWithCliGRPC struct {
 	Message *model.EventMessagePrivateGRPC `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
 }
 
-func (x *EventMessagePrivateGRPCWithCliGRPC) Reset() {
-	*x = EventMessagePrivateGRPCWithCliGRPC{}
+func (x *EventMessagePrivateGRPCWithCli) Reset() {
+	*x = EventMessagePrivateGRPCWithCli{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_onebot_plus_pkg_plugin_plugin_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -45,13 +45,13 @@ func (x *EventMessagePrivateGRPCWithCliGRPC) Reset() {
 	}
 }
 
-func (x *EventMessagePrivateGRPCWithCliGRPC) String() string {
+func (x *EventMessagePrivateGRPCWithCli) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*EventMessagePrivateGRPCWithCliGRPC) ProtoMessage() {}
+func (*EventMessagePrivateGRPCWithCli) ProtoMessage() {}
 
-func (x *EventMessagePrivateGRPCWithCliGRPC) ProtoReflect() protoreflect.Message {
+func (x *EventMessagePrivateGRPCWithCli) ProtoReflect() protoreflect.Message {
 	mi := &file_onebot_plus_pkg_plugin_plugin_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -63,19 +63,899 @@ func (x *EventMessagePrivateGRPCWithCliGRPC) ProtoReflect() protoreflect.Message
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use EventMessagePrivateGRPCWithCliGRPC.ProtoReflect.Descriptor instead.
-func (*EventMessagePrivateGRPCWithCliGRPC) Descriptor() ([]byte, []int) {
+// Deprecated: Use EventMessagePrivateGRPCWithCli.ProtoReflect.Descriptor instead.
+func (*EventMessagePrivateGRPCWithCli) Descriptor() ([]byte, []int) {
 	return file_onebot_plus_pkg_plugin_plugin_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *EventMessagePrivateGRPCWithCliGRPC) GetCli() uint32 {
+func (x *EventMessagePrivateGRPCWithCli) GetCli() uint32 {
 	if x != nil {
 		return x.Cli
 	}
 	return 0
 }
 
-func (x *EventMessagePrivateGRPCWithCliGRPC) GetMessage() *model.EventMessagePrivateGRPC {
+func (x *EventMessagePrivateGRPCWithCli) GetMessage() *model.EventMessagePrivateGRPC {
+	if x != nil {
+		return x.Message
+	}
+	return nil
+}
+
+type EventMessageGroupGRPCWithCli struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Cli     uint32                       `protobuf:"varint,1,opt,name=cli,proto3" json:"cli,omitempty"`
+	Message *model.EventMessageGroupGRPC `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
+}
+
+func (x *EventMessageGroupGRPCWithCli) Reset() {
+	*x = EventMessageGroupGRPCWithCli{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_onebot_plus_pkg_plugin_plugin_proto_msgTypes[1]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *EventMessageGroupGRPCWithCli) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EventMessageGroupGRPCWithCli) ProtoMessage() {}
+
+func (x *EventMessageGroupGRPCWithCli) ProtoReflect() protoreflect.Message {
+	mi := &file_onebot_plus_pkg_plugin_plugin_proto_msgTypes[1]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EventMessageGroupGRPCWithCli.ProtoReflect.Descriptor instead.
+func (*EventMessageGroupGRPCWithCli) Descriptor() ([]byte, []int) {
+	return file_onebot_plus_pkg_plugin_plugin_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *EventMessageGroupGRPCWithCli) GetCli() uint32 {
+	if x != nil {
+		return x.Cli
+	}
+	return 0
+}
+
+func (x *EventMessageGroupGRPCWithCli) GetMessage() *model.EventMessageGroupGRPC {
+	if x != nil {
+		return x.Message
+	}
+	return nil
+}
+
+type EventMetaLifecycleGRPCWithCli struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Cli     uint32                        `protobuf:"varint,1,opt,name=cli,proto3" json:"cli,omitempty"`
+	Message *model.EventMetaLifecycleGRPC `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
+}
+
+func (x *EventMetaLifecycleGRPCWithCli) Reset() {
+	*x = EventMetaLifecycleGRPCWithCli{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_onebot_plus_pkg_plugin_plugin_proto_msgTypes[2]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *EventMetaLifecycleGRPCWithCli) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EventMetaLifecycleGRPCWithCli) ProtoMessage() {}
+
+func (x *EventMetaLifecycleGRPCWithCli) ProtoReflect() protoreflect.Message {
+	mi := &file_onebot_plus_pkg_plugin_plugin_proto_msgTypes[2]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EventMetaLifecycleGRPCWithCli.ProtoReflect.Descriptor instead.
+func (*EventMetaLifecycleGRPCWithCli) Descriptor() ([]byte, []int) {
+	return file_onebot_plus_pkg_plugin_plugin_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *EventMetaLifecycleGRPCWithCli) GetCli() uint32 {
+	if x != nil {
+		return x.Cli
+	}
+	return 0
+}
+
+func (x *EventMetaLifecycleGRPCWithCli) GetMessage() *model.EventMetaLifecycleGRPC {
+	if x != nil {
+		return x.Message
+	}
+	return nil
+}
+
+type EventMetaHeartbeatGRPCWithCli struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Cli     uint32                        `protobuf:"varint,1,opt,name=cli,proto3" json:"cli,omitempty"`
+	Message *model.EventMetaHeartbeatGRPC `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
+}
+
+func (x *EventMetaHeartbeatGRPCWithCli) Reset() {
+	*x = EventMetaHeartbeatGRPCWithCli{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_onebot_plus_pkg_plugin_plugin_proto_msgTypes[3]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *EventMetaHeartbeatGRPCWithCli) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EventMetaHeartbeatGRPCWithCli) ProtoMessage() {}
+
+func (x *EventMetaHeartbeatGRPCWithCli) ProtoReflect() protoreflect.Message {
+	mi := &file_onebot_plus_pkg_plugin_plugin_proto_msgTypes[3]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EventMetaHeartbeatGRPCWithCli.ProtoReflect.Descriptor instead.
+func (*EventMetaHeartbeatGRPCWithCli) Descriptor() ([]byte, []int) {
+	return file_onebot_plus_pkg_plugin_plugin_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *EventMetaHeartbeatGRPCWithCli) GetCli() uint32 {
+	if x != nil {
+		return x.Cli
+	}
+	return 0
+}
+
+func (x *EventMetaHeartbeatGRPCWithCli) GetMessage() *model.EventMetaHeartbeatGRPC {
+	if x != nil {
+		return x.Message
+	}
+	return nil
+}
+
+type EventNoticeGroupUploadGRPCWithCli struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Cli     uint32                            `protobuf:"varint,1,opt,name=cli,proto3" json:"cli,omitempty"`
+	Message *model.EventNoticeGroupUploadGRPC `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
+}
+
+func (x *EventNoticeGroupUploadGRPCWithCli) Reset() {
+	*x = EventNoticeGroupUploadGRPCWithCli{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_onebot_plus_pkg_plugin_plugin_proto_msgTypes[4]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *EventNoticeGroupUploadGRPCWithCli) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EventNoticeGroupUploadGRPCWithCli) ProtoMessage() {}
+
+func (x *EventNoticeGroupUploadGRPCWithCli) ProtoReflect() protoreflect.Message {
+	mi := &file_onebot_plus_pkg_plugin_plugin_proto_msgTypes[4]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EventNoticeGroupUploadGRPCWithCli.ProtoReflect.Descriptor instead.
+func (*EventNoticeGroupUploadGRPCWithCli) Descriptor() ([]byte, []int) {
+	return file_onebot_plus_pkg_plugin_plugin_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *EventNoticeGroupUploadGRPCWithCli) GetCli() uint32 {
+	if x != nil {
+		return x.Cli
+	}
+	return 0
+}
+
+func (x *EventNoticeGroupUploadGRPCWithCli) GetMessage() *model.EventNoticeGroupUploadGRPC {
+	if x != nil {
+		return x.Message
+	}
+	return nil
+}
+
+type EventNoticeGroupAdminGRPCWithCli struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Cli     uint32                           `protobuf:"varint,1,opt,name=cli,proto3" json:"cli,omitempty"`
+	Message *model.EventNoticeGroupAdminGRPC `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
+}
+
+func (x *EventNoticeGroupAdminGRPCWithCli) Reset() {
+	*x = EventNoticeGroupAdminGRPCWithCli{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_onebot_plus_pkg_plugin_plugin_proto_msgTypes[5]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *EventNoticeGroupAdminGRPCWithCli) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EventNoticeGroupAdminGRPCWithCli) ProtoMessage() {}
+
+func (x *EventNoticeGroupAdminGRPCWithCli) ProtoReflect() protoreflect.Message {
+	mi := &file_onebot_plus_pkg_plugin_plugin_proto_msgTypes[5]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EventNoticeGroupAdminGRPCWithCli.ProtoReflect.Descriptor instead.
+func (*EventNoticeGroupAdminGRPCWithCli) Descriptor() ([]byte, []int) {
+	return file_onebot_plus_pkg_plugin_plugin_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *EventNoticeGroupAdminGRPCWithCli) GetCli() uint32 {
+	if x != nil {
+		return x.Cli
+	}
+	return 0
+}
+
+func (x *EventNoticeGroupAdminGRPCWithCli) GetMessage() *model.EventNoticeGroupAdminGRPC {
+	if x != nil {
+		return x.Message
+	}
+	return nil
+}
+
+type EventNoticeGroupDecreaseGRPCWithCli struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Cli     uint32                              `protobuf:"varint,1,opt,name=cli,proto3" json:"cli,omitempty"`
+	Message *model.EventNoticeGroupDecreaseGRPC `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
+}
+
+func (x *EventNoticeGroupDecreaseGRPCWithCli) Reset() {
+	*x = EventNoticeGroupDecreaseGRPCWithCli{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_onebot_plus_pkg_plugin_plugin_proto_msgTypes[6]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *EventNoticeGroupDecreaseGRPCWithCli) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EventNoticeGroupDecreaseGRPCWithCli) ProtoMessage() {}
+
+func (x *EventNoticeGroupDecreaseGRPCWithCli) ProtoReflect() protoreflect.Message {
+	mi := &file_onebot_plus_pkg_plugin_plugin_proto_msgTypes[6]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EventNoticeGroupDecreaseGRPCWithCli.ProtoReflect.Descriptor instead.
+func (*EventNoticeGroupDecreaseGRPCWithCli) Descriptor() ([]byte, []int) {
+	return file_onebot_plus_pkg_plugin_plugin_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *EventNoticeGroupDecreaseGRPCWithCli) GetCli() uint32 {
+	if x != nil {
+		return x.Cli
+	}
+	return 0
+}
+
+func (x *EventNoticeGroupDecreaseGRPCWithCli) GetMessage() *model.EventNoticeGroupDecreaseGRPC {
+	if x != nil {
+		return x.Message
+	}
+	return nil
+}
+
+type EventNoticeGroupIncreaseGRPCWithCli struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Cli     uint32                              `protobuf:"varint,1,opt,name=cli,proto3" json:"cli,omitempty"`
+	Message *model.EventNoticeGroupIncreaseGRPC `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
+}
+
+func (x *EventNoticeGroupIncreaseGRPCWithCli) Reset() {
+	*x = EventNoticeGroupIncreaseGRPCWithCli{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_onebot_plus_pkg_plugin_plugin_proto_msgTypes[7]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *EventNoticeGroupIncreaseGRPCWithCli) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EventNoticeGroupIncreaseGRPCWithCli) ProtoMessage() {}
+
+func (x *EventNoticeGroupIncreaseGRPCWithCli) ProtoReflect() protoreflect.Message {
+	mi := &file_onebot_plus_pkg_plugin_plugin_proto_msgTypes[7]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EventNoticeGroupIncreaseGRPCWithCli.ProtoReflect.Descriptor instead.
+func (*EventNoticeGroupIncreaseGRPCWithCli) Descriptor() ([]byte, []int) {
+	return file_onebot_plus_pkg_plugin_plugin_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *EventNoticeGroupIncreaseGRPCWithCli) GetCli() uint32 {
+	if x != nil {
+		return x.Cli
+	}
+	return 0
+}
+
+func (x *EventNoticeGroupIncreaseGRPCWithCli) GetMessage() *model.EventNoticeGroupIncreaseGRPC {
+	if x != nil {
+		return x.Message
+	}
+	return nil
+}
+
+type EventNoticeGroupBanGRPCWithCli struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Cli     uint32                         `protobuf:"varint,1,opt,name=cli,proto3" json:"cli,omitempty"`
+	Message *model.EventNoticeGroupBanGRPC `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
+}
+
+func (x *EventNoticeGroupBanGRPCWithCli) Reset() {
+	*x = EventNoticeGroupBanGRPCWithCli{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_onebot_plus_pkg_plugin_plugin_proto_msgTypes[8]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *EventNoticeGroupBanGRPCWithCli) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EventNoticeGroupBanGRPCWithCli) ProtoMessage() {}
+
+func (x *EventNoticeGroupBanGRPCWithCli) ProtoReflect() protoreflect.Message {
+	mi := &file_onebot_plus_pkg_plugin_plugin_proto_msgTypes[8]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EventNoticeGroupBanGRPCWithCli.ProtoReflect.Descriptor instead.
+func (*EventNoticeGroupBanGRPCWithCli) Descriptor() ([]byte, []int) {
+	return file_onebot_plus_pkg_plugin_plugin_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *EventNoticeGroupBanGRPCWithCli) GetCli() uint32 {
+	if x != nil {
+		return x.Cli
+	}
+	return 0
+}
+
+func (x *EventNoticeGroupBanGRPCWithCli) GetMessage() *model.EventNoticeGroupBanGRPC {
+	if x != nil {
+		return x.Message
+	}
+	return nil
+}
+
+type EventNoticeGroupRecallGRPCWithCli struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Cli     uint32                            `protobuf:"varint,1,opt,name=cli,proto3" json:"cli,omitempty"`
+	Message *model.EventNoticeGroupRecallGRPC `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
+}
+
+func (x *EventNoticeGroupRecallGRPCWithCli) Reset() {
+	*x = EventNoticeGroupRecallGRPCWithCli{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_onebot_plus_pkg_plugin_plugin_proto_msgTypes[9]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *EventNoticeGroupRecallGRPCWithCli) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EventNoticeGroupRecallGRPCWithCli) ProtoMessage() {}
+
+func (x *EventNoticeGroupRecallGRPCWithCli) ProtoReflect() protoreflect.Message {
+	mi := &file_onebot_plus_pkg_plugin_plugin_proto_msgTypes[9]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EventNoticeGroupRecallGRPCWithCli.ProtoReflect.Descriptor instead.
+func (*EventNoticeGroupRecallGRPCWithCli) Descriptor() ([]byte, []int) {
+	return file_onebot_plus_pkg_plugin_plugin_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *EventNoticeGroupRecallGRPCWithCli) GetCli() uint32 {
+	if x != nil {
+		return x.Cli
+	}
+	return 0
+}
+
+func (x *EventNoticeGroupRecallGRPCWithCli) GetMessage() *model.EventNoticeGroupRecallGRPC {
+	if x != nil {
+		return x.Message
+	}
+	return nil
+}
+
+type EventNoticeGroupNotifyPokeGRPCWithCli struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Cli     uint32                                `protobuf:"varint,1,opt,name=cli,proto3" json:"cli,omitempty"`
+	Message *model.EventNoticeGroupNotifyPokeGRPC `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
+}
+
+func (x *EventNoticeGroupNotifyPokeGRPCWithCli) Reset() {
+	*x = EventNoticeGroupNotifyPokeGRPCWithCli{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_onebot_plus_pkg_plugin_plugin_proto_msgTypes[10]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *EventNoticeGroupNotifyPokeGRPCWithCli) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EventNoticeGroupNotifyPokeGRPCWithCli) ProtoMessage() {}
+
+func (x *EventNoticeGroupNotifyPokeGRPCWithCli) ProtoReflect() protoreflect.Message {
+	mi := &file_onebot_plus_pkg_plugin_plugin_proto_msgTypes[10]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EventNoticeGroupNotifyPokeGRPCWithCli.ProtoReflect.Descriptor instead.
+func (*EventNoticeGroupNotifyPokeGRPCWithCli) Descriptor() ([]byte, []int) {
+	return file_onebot_plus_pkg_plugin_plugin_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *EventNoticeGroupNotifyPokeGRPCWithCli) GetCli() uint32 {
+	if x != nil {
+		return x.Cli
+	}
+	return 0
+}
+
+func (x *EventNoticeGroupNotifyPokeGRPCWithCli) GetMessage() *model.EventNoticeGroupNotifyPokeGRPC {
+	if x != nil {
+		return x.Message
+	}
+	return nil
+}
+
+type EventNoticeGroupNotifyLuckyKingGRPCWithCli struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Cli     uint32                                     `protobuf:"varint,1,opt,name=cli,proto3" json:"cli,omitempty"`
+	Message *model.EventNoticeGroupNotifyLuckyKingGRPC `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
+}
+
+func (x *EventNoticeGroupNotifyLuckyKingGRPCWithCli) Reset() {
+	*x = EventNoticeGroupNotifyLuckyKingGRPCWithCli{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_onebot_plus_pkg_plugin_plugin_proto_msgTypes[11]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *EventNoticeGroupNotifyLuckyKingGRPCWithCli) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EventNoticeGroupNotifyLuckyKingGRPCWithCli) ProtoMessage() {}
+
+func (x *EventNoticeGroupNotifyLuckyKingGRPCWithCli) ProtoReflect() protoreflect.Message {
+	mi := &file_onebot_plus_pkg_plugin_plugin_proto_msgTypes[11]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EventNoticeGroupNotifyLuckyKingGRPCWithCli.ProtoReflect.Descriptor instead.
+func (*EventNoticeGroupNotifyLuckyKingGRPCWithCli) Descriptor() ([]byte, []int) {
+	return file_onebot_plus_pkg_plugin_plugin_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *EventNoticeGroupNotifyLuckyKingGRPCWithCli) GetCli() uint32 {
+	if x != nil {
+		return x.Cli
+	}
+	return 0
+}
+
+func (x *EventNoticeGroupNotifyLuckyKingGRPCWithCli) GetMessage() *model.EventNoticeGroupNotifyLuckyKingGRPC {
+	if x != nil {
+		return x.Message
+	}
+	return nil
+}
+
+type EventNoticeGroupNotifyHonorGRPCWithCli struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Cli     uint32                                 `protobuf:"varint,1,opt,name=cli,proto3" json:"cli,omitempty"`
+	Message *model.EventNoticeGroupNotifyHonorGRPC `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
+}
+
+func (x *EventNoticeGroupNotifyHonorGRPCWithCli) Reset() {
+	*x = EventNoticeGroupNotifyHonorGRPCWithCli{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_onebot_plus_pkg_plugin_plugin_proto_msgTypes[12]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *EventNoticeGroupNotifyHonorGRPCWithCli) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EventNoticeGroupNotifyHonorGRPCWithCli) ProtoMessage() {}
+
+func (x *EventNoticeGroupNotifyHonorGRPCWithCli) ProtoReflect() protoreflect.Message {
+	mi := &file_onebot_plus_pkg_plugin_plugin_proto_msgTypes[12]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EventNoticeGroupNotifyHonorGRPCWithCli.ProtoReflect.Descriptor instead.
+func (*EventNoticeGroupNotifyHonorGRPCWithCli) Descriptor() ([]byte, []int) {
+	return file_onebot_plus_pkg_plugin_plugin_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *EventNoticeGroupNotifyHonorGRPCWithCli) GetCli() uint32 {
+	if x != nil {
+		return x.Cli
+	}
+	return 0
+}
+
+func (x *EventNoticeGroupNotifyHonorGRPCWithCli) GetMessage() *model.EventNoticeGroupNotifyHonorGRPC {
+	if x != nil {
+		return x.Message
+	}
+	return nil
+}
+
+type EventNoticeFriendAddGRPCWithCli struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Cli     uint32                          `protobuf:"varint,1,opt,name=cli,proto3" json:"cli,omitempty"`
+	Message *model.EventNoticeFriendAddGRPC `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
+}
+
+func (x *EventNoticeFriendAddGRPCWithCli) Reset() {
+	*x = EventNoticeFriendAddGRPCWithCli{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_onebot_plus_pkg_plugin_plugin_proto_msgTypes[13]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *EventNoticeFriendAddGRPCWithCli) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EventNoticeFriendAddGRPCWithCli) ProtoMessage() {}
+
+func (x *EventNoticeFriendAddGRPCWithCli) ProtoReflect() protoreflect.Message {
+	mi := &file_onebot_plus_pkg_plugin_plugin_proto_msgTypes[13]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EventNoticeFriendAddGRPCWithCli.ProtoReflect.Descriptor instead.
+func (*EventNoticeFriendAddGRPCWithCli) Descriptor() ([]byte, []int) {
+	return file_onebot_plus_pkg_plugin_plugin_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *EventNoticeFriendAddGRPCWithCli) GetCli() uint32 {
+	if x != nil {
+		return x.Cli
+	}
+	return 0
+}
+
+func (x *EventNoticeFriendAddGRPCWithCli) GetMessage() *model.EventNoticeFriendAddGRPC {
+	if x != nil {
+		return x.Message
+	}
+	return nil
+}
+
+type EventNoticeFriendRecallGRPCWithCli struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Cli     uint32                             `protobuf:"varint,1,opt,name=cli,proto3" json:"cli,omitempty"`
+	Message *model.EventNoticeFriendRecallGRPC `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
+}
+
+func (x *EventNoticeFriendRecallGRPCWithCli) Reset() {
+	*x = EventNoticeFriendRecallGRPCWithCli{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_onebot_plus_pkg_plugin_plugin_proto_msgTypes[14]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *EventNoticeFriendRecallGRPCWithCli) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EventNoticeFriendRecallGRPCWithCli) ProtoMessage() {}
+
+func (x *EventNoticeFriendRecallGRPCWithCli) ProtoReflect() protoreflect.Message {
+	mi := &file_onebot_plus_pkg_plugin_plugin_proto_msgTypes[14]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EventNoticeFriendRecallGRPCWithCli.ProtoReflect.Descriptor instead.
+func (*EventNoticeFriendRecallGRPCWithCli) Descriptor() ([]byte, []int) {
+	return file_onebot_plus_pkg_plugin_plugin_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *EventNoticeFriendRecallGRPCWithCli) GetCli() uint32 {
+	if x != nil {
+		return x.Cli
+	}
+	return 0
+}
+
+func (x *EventNoticeFriendRecallGRPCWithCli) GetMessage() *model.EventNoticeFriendRecallGRPC {
+	if x != nil {
+		return x.Message
+	}
+	return nil
+}
+
+type EventRequestFriendGRPCWithCli struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Cli     uint32                        `protobuf:"varint,1,opt,name=cli,proto3" json:"cli,omitempty"`
+	Message *model.EventRequestFriendGRPC `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
+}
+
+func (x *EventRequestFriendGRPCWithCli) Reset() {
+	*x = EventRequestFriendGRPCWithCli{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_onebot_plus_pkg_plugin_plugin_proto_msgTypes[15]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *EventRequestFriendGRPCWithCli) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EventRequestFriendGRPCWithCli) ProtoMessage() {}
+
+func (x *EventRequestFriendGRPCWithCli) ProtoReflect() protoreflect.Message {
+	mi := &file_onebot_plus_pkg_plugin_plugin_proto_msgTypes[15]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EventRequestFriendGRPCWithCli.ProtoReflect.Descriptor instead.
+func (*EventRequestFriendGRPCWithCli) Descriptor() ([]byte, []int) {
+	return file_onebot_plus_pkg_plugin_plugin_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *EventRequestFriendGRPCWithCli) GetCli() uint32 {
+	if x != nil {
+		return x.Cli
+	}
+	return 0
+}
+
+func (x *EventRequestFriendGRPCWithCli) GetMessage() *model.EventRequestFriendGRPC {
+	if x != nil {
+		return x.Message
+	}
+	return nil
+}
+
+type EventRequestGroupGRPCWithCli struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Cli     uint32                       `protobuf:"varint,1,opt,name=cli,proto3" json:"cli,omitempty"`
+	Message *model.EventRequestGroupGRPC `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
+}
+
+func (x *EventRequestGroupGRPCWithCli) Reset() {
+	*x = EventRequestGroupGRPCWithCli{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_onebot_plus_pkg_plugin_plugin_proto_msgTypes[16]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *EventRequestGroupGRPCWithCli) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EventRequestGroupGRPCWithCli) ProtoMessage() {}
+
+func (x *EventRequestGroupGRPCWithCli) ProtoReflect() protoreflect.Message {
+	mi := &file_onebot_plus_pkg_plugin_plugin_proto_msgTypes[16]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EventRequestGroupGRPCWithCli.ProtoReflect.Descriptor instead.
+func (*EventRequestGroupGRPCWithCli) Descriptor() ([]byte, []int) {
+	return file_onebot_plus_pkg_plugin_plugin_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *EventRequestGroupGRPCWithCli) GetCli() uint32 {
+	if x != nil {
+		return x.Cli
+	}
+	return 0
+}
+
+func (x *EventRequestGroupGRPCWithCli) GetMessage() *model.EventRequestGroupGRPC {
 	if x != nil {
 		return x.Message
 	}
@@ -101,117 +981,239 @@ var file_onebot_plus_pkg_plugin_plugin_proto_rawDesc = []byte{
 	0x1a, 0x1b, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75,
 	0x66, 0x2f, 0x65, 0x6d, 0x70, 0x74, 0x79, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x1e, 0x67,
 	0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2f, 0x77,
-	0x72, 0x61, 0x70, 0x70, 0x65, 0x72, 0x73, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x70, 0x0a,
-	0x22, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x50, 0x72, 0x69,
-	0x76, 0x61, 0x74, 0x65, 0x47, 0x52, 0x50, 0x43, 0x57, 0x69, 0x74, 0x68, 0x43, 0x6c, 0x69, 0x47,
-	0x52, 0x50, 0x43, 0x12, 0x10, 0x0a, 0x03, 0x63, 0x6c, 0x69, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0d,
-	0x52, 0x03, 0x63, 0x6c, 0x69, 0x12, 0x38, 0x0a, 0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65,
-	0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1e, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x45,
-	0x76, 0x65, 0x6e, 0x74, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x50, 0x72, 0x69, 0x76, 0x61,
-	0x74, 0x65, 0x47, 0x52, 0x50, 0x43, 0x52, 0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x32,
-	0xd9, 0x0c, 0x0a, 0x0f, 0x4f, 0x6e, 0x65, 0x62, 0x6f, 0x74, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x47,
-	0x52, 0x50, 0x43, 0x12, 0x3a, 0x0a, 0x02, 0x49, 0x64, 0x12, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67,
-	0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74,
-	0x79, 0x1a, 0x1c, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f,
-	0x62, 0x75, 0x66, 0x2e, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x12,
-	0x3c, 0x0a, 0x04, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65,
-	0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x1a,
-	0x1c, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75,
-	0x66, 0x2e, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x12, 0x43, 0x0a,
-	0x0b, 0x44, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x16, 0x2e, 0x67,
+	0x72, 0x61, 0x70, 0x70, 0x65, 0x72, 0x73, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x6c, 0x0a,
+	0x1e, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x50, 0x72, 0x69,
+	0x76, 0x61, 0x74, 0x65, 0x47, 0x52, 0x50, 0x43, 0x57, 0x69, 0x74, 0x68, 0x43, 0x6c, 0x69, 0x12,
+	0x10, 0x0a, 0x03, 0x63, 0x6c, 0x69, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0d, 0x52, 0x03, 0x63, 0x6c,
+	0x69, 0x12, 0x38, 0x0a, 0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x18, 0x02, 0x20, 0x01,
+	0x28, 0x0b, 0x32, 0x1e, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x45, 0x76, 0x65, 0x6e, 0x74,
+	0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x50, 0x72, 0x69, 0x76, 0x61, 0x74, 0x65, 0x47, 0x52,
+	0x50, 0x43, 0x52, 0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x22, 0x68, 0x0a, 0x1c, 0x45,
+	0x76, 0x65, 0x6e, 0x74, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x47, 0x72, 0x6f, 0x75, 0x70,
+	0x47, 0x52, 0x50, 0x43, 0x57, 0x69, 0x74, 0x68, 0x43, 0x6c, 0x69, 0x12, 0x10, 0x0a, 0x03, 0x63,
+	0x6c, 0x69, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0d, 0x52, 0x03, 0x63, 0x6c, 0x69, 0x12, 0x36, 0x0a,
+	0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1c,
+	0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x4d, 0x65, 0x73, 0x73,
+	0x61, 0x67, 0x65, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x47, 0x52, 0x50, 0x43, 0x52, 0x07, 0x6d, 0x65,
+	0x73, 0x73, 0x61, 0x67, 0x65, 0x22, 0x6a, 0x0a, 0x1d, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x4d, 0x65,
+	0x74, 0x61, 0x4c, 0x69, 0x66, 0x65, 0x63, 0x79, 0x63, 0x6c, 0x65, 0x47, 0x52, 0x50, 0x43, 0x57,
+	0x69, 0x74, 0x68, 0x43, 0x6c, 0x69, 0x12, 0x10, 0x0a, 0x03, 0x63, 0x6c, 0x69, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x0d, 0x52, 0x03, 0x63, 0x6c, 0x69, 0x12, 0x37, 0x0a, 0x07, 0x6d, 0x65, 0x73, 0x73,
+	0x61, 0x67, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1d, 0x2e, 0x6d, 0x6f, 0x64, 0x65,
+	0x6c, 0x2e, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x4d, 0x65, 0x74, 0x61, 0x4c, 0x69, 0x66, 0x65, 0x63,
+	0x79, 0x63, 0x6c, 0x65, 0x47, 0x52, 0x50, 0x43, 0x52, 0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67,
+	0x65, 0x22, 0x6a, 0x0a, 0x1d, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x4d, 0x65, 0x74, 0x61, 0x48, 0x65,
+	0x61, 0x72, 0x74, 0x62, 0x65, 0x61, 0x74, 0x47, 0x52, 0x50, 0x43, 0x57, 0x69, 0x74, 0x68, 0x43,
+	0x6c, 0x69, 0x12, 0x10, 0x0a, 0x03, 0x63, 0x6c, 0x69, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0d, 0x52,
+	0x03, 0x63, 0x6c, 0x69, 0x12, 0x37, 0x0a, 0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x18,
+	0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1d, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x45, 0x76,
+	0x65, 0x6e, 0x74, 0x4d, 0x65, 0x74, 0x61, 0x48, 0x65, 0x61, 0x72, 0x74, 0x62, 0x65, 0x61, 0x74,
+	0x47, 0x52, 0x50, 0x43, 0x52, 0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x22, 0x72, 0x0a,
+	0x21, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x4e, 0x6f, 0x74, 0x69, 0x63, 0x65, 0x47, 0x72, 0x6f, 0x75,
+	0x70, 0x55, 0x70, 0x6c, 0x6f, 0x61, 0x64, 0x47, 0x52, 0x50, 0x43, 0x57, 0x69, 0x74, 0x68, 0x43,
+	0x6c, 0x69, 0x12, 0x10, 0x0a, 0x03, 0x63, 0x6c, 0x69, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0d, 0x52,
+	0x03, 0x63, 0x6c, 0x69, 0x12, 0x3b, 0x0a, 0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x18,
+	0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x21, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x45, 0x76,
+	0x65, 0x6e, 0x74, 0x4e, 0x6f, 0x74, 0x69, 0x63, 0x65, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x55, 0x70,
+	0x6c, 0x6f, 0x61, 0x64, 0x47, 0x52, 0x50, 0x43, 0x52, 0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67,
+	0x65, 0x22, 0x70, 0x0a, 0x20, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x4e, 0x6f, 0x74, 0x69, 0x63, 0x65,
+	0x47, 0x72, 0x6f, 0x75, 0x70, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x47, 0x52, 0x50, 0x43, 0x57, 0x69,
+	0x74, 0x68, 0x43, 0x6c, 0x69, 0x12, 0x10, 0x0a, 0x03, 0x63, 0x6c, 0x69, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x0d, 0x52, 0x03, 0x63, 0x6c, 0x69, 0x12, 0x3a, 0x0a, 0x07, 0x6d, 0x65, 0x73, 0x73, 0x61,
+	0x67, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x20, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c,
+	0x2e, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x4e, 0x6f, 0x74, 0x69, 0x63, 0x65, 0x47, 0x72, 0x6f, 0x75,
+	0x70, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x47, 0x52, 0x50, 0x43, 0x52, 0x07, 0x6d, 0x65, 0x73, 0x73,
+	0x61, 0x67, 0x65, 0x22, 0x76, 0x0a, 0x23, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x4e, 0x6f, 0x74, 0x69,
+	0x63, 0x65, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x44, 0x65, 0x63, 0x72, 0x65, 0x61, 0x73, 0x65, 0x47,
+	0x52, 0x50, 0x43, 0x57, 0x69, 0x74, 0x68, 0x43, 0x6c, 0x69, 0x12, 0x10, 0x0a, 0x03, 0x63, 0x6c,
+	0x69, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0d, 0x52, 0x03, 0x63, 0x6c, 0x69, 0x12, 0x3d, 0x0a, 0x07,
+	0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x23, 0x2e,
+	0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x4e, 0x6f, 0x74, 0x69, 0x63,
+	0x65, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x44, 0x65, 0x63, 0x72, 0x65, 0x61, 0x73, 0x65, 0x47, 0x52,
+	0x50, 0x43, 0x52, 0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x22, 0x76, 0x0a, 0x23, 0x45,
+	0x76, 0x65, 0x6e, 0x74, 0x4e, 0x6f, 0x74, 0x69, 0x63, 0x65, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x49,
+	0x6e, 0x63, 0x72, 0x65, 0x61, 0x73, 0x65, 0x47, 0x52, 0x50, 0x43, 0x57, 0x69, 0x74, 0x68, 0x43,
+	0x6c, 0x69, 0x12, 0x10, 0x0a, 0x03, 0x63, 0x6c, 0x69, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0d, 0x52,
+	0x03, 0x63, 0x6c, 0x69, 0x12, 0x3d, 0x0a, 0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x18,
+	0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x23, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x45, 0x76,
+	0x65, 0x6e, 0x74, 0x4e, 0x6f, 0x74, 0x69, 0x63, 0x65, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x49, 0x6e,
+	0x63, 0x72, 0x65, 0x61, 0x73, 0x65, 0x47, 0x52, 0x50, 0x43, 0x52, 0x07, 0x6d, 0x65, 0x73, 0x73,
+	0x61, 0x67, 0x65, 0x22, 0x6c, 0x0a, 0x1e, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x4e, 0x6f, 0x74, 0x69,
+	0x63, 0x65, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x42, 0x61, 0x6e, 0x47, 0x52, 0x50, 0x43, 0x57, 0x69,
+	0x74, 0x68, 0x43, 0x6c, 0x69, 0x12, 0x10, 0x0a, 0x03, 0x63, 0x6c, 0x69, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x0d, 0x52, 0x03, 0x63, 0x6c, 0x69, 0x12, 0x38, 0x0a, 0x07, 0x6d, 0x65, 0x73, 0x73, 0x61,
+	0x67, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1e, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c,
+	0x2e, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x4e, 0x6f, 0x74, 0x69, 0x63, 0x65, 0x47, 0x72, 0x6f, 0x75,
+	0x70, 0x42, 0x61, 0x6e, 0x47, 0x52, 0x50, 0x43, 0x52, 0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67,
+	0x65, 0x22, 0x72, 0x0a, 0x21, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x4e, 0x6f, 0x74, 0x69, 0x63, 0x65,
+	0x47, 0x72, 0x6f, 0x75, 0x70, 0x52, 0x65, 0x63, 0x61, 0x6c, 0x6c, 0x47, 0x52, 0x50, 0x43, 0x57,
+	0x69, 0x74, 0x68, 0x43, 0x6c, 0x69, 0x12, 0x10, 0x0a, 0x03, 0x63, 0x6c, 0x69, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x0d, 0x52, 0x03, 0x63, 0x6c, 0x69, 0x12, 0x3b, 0x0a, 0x07, 0x6d, 0x65, 0x73, 0x73,
+	0x61, 0x67, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x21, 0x2e, 0x6d, 0x6f, 0x64, 0x65,
+	0x6c, 0x2e, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x4e, 0x6f, 0x74, 0x69, 0x63, 0x65, 0x47, 0x72, 0x6f,
+	0x75, 0x70, 0x52, 0x65, 0x63, 0x61, 0x6c, 0x6c, 0x47, 0x52, 0x50, 0x43, 0x52, 0x07, 0x6d, 0x65,
+	0x73, 0x73, 0x61, 0x67, 0x65, 0x22, 0x7a, 0x0a, 0x25, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x4e, 0x6f,
+	0x74, 0x69, 0x63, 0x65, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x4e, 0x6f, 0x74, 0x69, 0x66, 0x79, 0x50,
+	0x6f, 0x6b, 0x65, 0x47, 0x52, 0x50, 0x43, 0x57, 0x69, 0x74, 0x68, 0x43, 0x6c, 0x69, 0x12, 0x10,
+	0x0a, 0x03, 0x63, 0x6c, 0x69, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0d, 0x52, 0x03, 0x63, 0x6c, 0x69,
+	0x12, 0x3f, 0x0a, 0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28,
+	0x0b, 0x32, 0x25, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x4e,
+	0x6f, 0x74, 0x69, 0x63, 0x65, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x4e, 0x6f, 0x74, 0x69, 0x66, 0x79,
+	0x50, 0x6f, 0x6b, 0x65, 0x47, 0x52, 0x50, 0x43, 0x52, 0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67,
+	0x65, 0x22, 0x84, 0x01, 0x0a, 0x2a, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x4e, 0x6f, 0x74, 0x69, 0x63,
+	0x65, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x4e, 0x6f, 0x74, 0x69, 0x66, 0x79, 0x4c, 0x75, 0x63, 0x6b,
+	0x79, 0x4b, 0x69, 0x6e, 0x67, 0x47, 0x52, 0x50, 0x43, 0x57, 0x69, 0x74, 0x68, 0x43, 0x6c, 0x69,
+	0x12, 0x10, 0x0a, 0x03, 0x63, 0x6c, 0x69, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0d, 0x52, 0x03, 0x63,
+	0x6c, 0x69, 0x12, 0x44, 0x0a, 0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x18, 0x02, 0x20,
+	0x01, 0x28, 0x0b, 0x32, 0x2a, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x45, 0x76, 0x65, 0x6e,
+	0x74, 0x4e, 0x6f, 0x74, 0x69, 0x63, 0x65, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x4e, 0x6f, 0x74, 0x69,
+	0x66, 0x79, 0x4c, 0x75, 0x63, 0x6b, 0x79, 0x4b, 0x69, 0x6e, 0x67, 0x47, 0x52, 0x50, 0x43, 0x52,
+	0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x22, 0x7c, 0x0a, 0x26, 0x45, 0x76, 0x65, 0x6e,
+	0x74, 0x4e, 0x6f, 0x74, 0x69, 0x63, 0x65, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x4e, 0x6f, 0x74, 0x69,
+	0x66, 0x79, 0x48, 0x6f, 0x6e, 0x6f, 0x72, 0x47, 0x52, 0x50, 0x43, 0x57, 0x69, 0x74, 0x68, 0x43,
+	0x6c, 0x69, 0x12, 0x10, 0x0a, 0x03, 0x63, 0x6c, 0x69, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0d, 0x52,
+	0x03, 0x63, 0x6c, 0x69, 0x12, 0x40, 0x0a, 0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x18,
+	0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x26, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x45, 0x76,
+	0x65, 0x6e, 0x74, 0x4e, 0x6f, 0x74, 0x69, 0x63, 0x65, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x4e, 0x6f,
+	0x74, 0x69, 0x66, 0x79, 0x48, 0x6f, 0x6e, 0x6f, 0x72, 0x47, 0x52, 0x50, 0x43, 0x52, 0x07, 0x6d,
+	0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x22, 0x6e, 0x0a, 0x1f, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x4e,
+	0x6f, 0x74, 0x69, 0x63, 0x65, 0x46, 0x72, 0x69, 0x65, 0x6e, 0x64, 0x41, 0x64, 0x64, 0x47, 0x52,
+	0x50, 0x43, 0x57, 0x69, 0x74, 0x68, 0x43, 0x6c, 0x69, 0x12, 0x10, 0x0a, 0x03, 0x63, 0x6c, 0x69,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x0d, 0x52, 0x03, 0x63, 0x6c, 0x69, 0x12, 0x39, 0x0a, 0x07, 0x6d,
+	0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1f, 0x2e, 0x6d,
+	0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x4e, 0x6f, 0x74, 0x69, 0x63, 0x65,
+	0x46, 0x72, 0x69, 0x65, 0x6e, 0x64, 0x41, 0x64, 0x64, 0x47, 0x52, 0x50, 0x43, 0x52, 0x07, 0x6d,
+	0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x22, 0x74, 0x0a, 0x22, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x4e,
+	0x6f, 0x74, 0x69, 0x63, 0x65, 0x46, 0x72, 0x69, 0x65, 0x6e, 0x64, 0x52, 0x65, 0x63, 0x61, 0x6c,
+	0x6c, 0x47, 0x52, 0x50, 0x43, 0x57, 0x69, 0x74, 0x68, 0x43, 0x6c, 0x69, 0x12, 0x10, 0x0a, 0x03,
+	0x63, 0x6c, 0x69, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0d, 0x52, 0x03, 0x63, 0x6c, 0x69, 0x12, 0x3c,
+	0x0a, 0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32,
+	0x22, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x4e, 0x6f, 0x74,
+	0x69, 0x63, 0x65, 0x46, 0x72, 0x69, 0x65, 0x6e, 0x64, 0x52, 0x65, 0x63, 0x61, 0x6c, 0x6c, 0x47,
+	0x52, 0x50, 0x43, 0x52, 0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x22, 0x6a, 0x0a, 0x1d,
+	0x45, 0x76, 0x65, 0x6e, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x46, 0x72, 0x69, 0x65,
+	0x6e, 0x64, 0x47, 0x52, 0x50, 0x43, 0x57, 0x69, 0x74, 0x68, 0x43, 0x6c, 0x69, 0x12, 0x10, 0x0a,
+	0x03, 0x63, 0x6c, 0x69, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0d, 0x52, 0x03, 0x63, 0x6c, 0x69, 0x12,
+	0x37, 0x0a, 0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b,
+	0x32, 0x1d, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x52, 0x65,
+	0x71, 0x75, 0x65, 0x73, 0x74, 0x46, 0x72, 0x69, 0x65, 0x6e, 0x64, 0x47, 0x52, 0x50, 0x43, 0x52,
+	0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x22, 0x68, 0x0a, 0x1c, 0x45, 0x76, 0x65, 0x6e,
+	0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x47, 0x52, 0x50,
+	0x43, 0x57, 0x69, 0x74, 0x68, 0x43, 0x6c, 0x69, 0x12, 0x10, 0x0a, 0x03, 0x63, 0x6c, 0x69, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x0d, 0x52, 0x03, 0x63, 0x6c, 0x69, 0x12, 0x36, 0x0a, 0x07, 0x6d, 0x65,
+	0x73, 0x73, 0x61, 0x67, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1c, 0x2e, 0x6d, 0x6f,
+	0x64, 0x65, 0x6c, 0x2e, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
+	0x47, 0x72, 0x6f, 0x75, 0x70, 0x47, 0x52, 0x50, 0x43, 0x52, 0x07, 0x6d, 0x65, 0x73, 0x73, 0x61,
+	0x67, 0x65, 0x32, 0xc5, 0x0d, 0x0a, 0x0f, 0x4f, 0x6e, 0x65, 0x62, 0x6f, 0x74, 0x45, 0x76, 0x65,
+	0x6e, 0x74, 0x47, 0x52, 0x50, 0x43, 0x12, 0x3a, 0x0a, 0x02, 0x49, 0x64, 0x12, 0x16, 0x2e, 0x67,
 	0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45,
 	0x6d, 0x70, 0x74, 0x79, 0x1a, 0x1c, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72,
 	0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x56, 0x61, 0x6c,
-	0x75, 0x65, 0x12, 0x3c, 0x0a, 0x04, 0x48, 0x65, 0x6c, 0x70, 0x12, 0x16, 0x2e, 0x67, 0x6f, 0x6f,
+	0x75, 0x65, 0x12, 0x3c, 0x0a, 0x04, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x16, 0x2e, 0x67, 0x6f, 0x6f,
 	0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70,
 	0x74, 0x79, 0x1a, 0x1c, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74,
 	0x6f, 0x62, 0x75, 0x66, 0x2e, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x56, 0x61, 0x6c, 0x75, 0x65,
-	0x12, 0x53, 0x0a, 0x0e, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x50, 0x72, 0x69, 0x76, 0x61,
-	0x74, 0x65, 0x12, 0x29, 0x2e, 0x65, 0x76, 0x65, 0x6e, 0x74, 0x2e, 0x45, 0x76, 0x65, 0x6e, 0x74,
-	0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x50, 0x72, 0x69, 0x76, 0x61, 0x74, 0x65, 0x47, 0x52,
-	0x50, 0x43, 0x57, 0x69, 0x74, 0x68, 0x43, 0x6c, 0x69, 0x47, 0x52, 0x50, 0x43, 0x1a, 0x16, 0x2e,
+	0x12, 0x43, 0x0a, 0x0b, 0x44, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x12,
+	0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75,
+	0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x1a, 0x1c, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65,
+	0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67,
+	0x56, 0x61, 0x6c, 0x75, 0x65, 0x12, 0x3c, 0x0a, 0x04, 0x48, 0x65, 0x6c, 0x70, 0x12, 0x16, 0x2e,
 	0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e,
-	0x45, 0x6d, 0x70, 0x74, 0x79, 0x12, 0x44, 0x0a, 0x0c, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65,
-	0x47, 0x72, 0x6f, 0x75, 0x70, 0x12, 0x1c, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x45, 0x76,
-	0x65, 0x6e, 0x74, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x47,
-	0x52, 0x50, 0x43, 0x1a, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f,
-	0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x12, 0x46, 0x0a, 0x0d, 0x4d,
-	0x65, 0x74, 0x61, 0x4c, 0x69, 0x66, 0x65, 0x63, 0x79, 0x63, 0x6c, 0x65, 0x12, 0x1d, 0x2e, 0x6d,
-	0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x4d, 0x65, 0x74, 0x61, 0x4c, 0x69,
-	0x66, 0x65, 0x63, 0x79, 0x63, 0x6c, 0x65, 0x47, 0x52, 0x50, 0x43, 0x1a, 0x16, 0x2e, 0x67, 0x6f,
-	0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d,
-	0x70, 0x74, 0x79, 0x12, 0x46, 0x0a, 0x0d, 0x4d, 0x65, 0x74, 0x61, 0x48, 0x65, 0x61, 0x72, 0x74,
-	0x62, 0x65, 0x61, 0x74, 0x12, 0x1d, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x45, 0x76, 0x65,
-	0x6e, 0x74, 0x4d, 0x65, 0x74, 0x61, 0x48, 0x65, 0x61, 0x72, 0x74, 0x62, 0x65, 0x61, 0x74, 0x47,
-	0x52, 0x50, 0x43, 0x1a, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f,
-	0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x12, 0x4e, 0x0a, 0x11, 0x4e,
-	0x6f, 0x74, 0x69, 0x63, 0x65, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x55, 0x70, 0x6c, 0x6f, 0x61, 0x64,
-	0x12, 0x21, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x4e, 0x6f,
-	0x74, 0x69, 0x63, 0x65, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x55, 0x70, 0x6c, 0x6f, 0x61, 0x64, 0x47,
-	0x52, 0x50, 0x43, 0x1a, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f,
-	0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x12, 0x4c, 0x0a, 0x10, 0x4e,
-	0x6f, 0x74, 0x69, 0x63, 0x65, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x12,
-	0x20, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x4e, 0x6f, 0x74,
-	0x69, 0x63, 0x65, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x47, 0x52, 0x50,
-	0x43, 0x1a, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f,
-	0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x12, 0x52, 0x0a, 0x13, 0x4e, 0x6f, 0x74,
-	0x69, 0x63, 0x65, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x44, 0x65, 0x63, 0x72, 0x65, 0x61, 0x73, 0x65,
-	0x12, 0x23, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x4e, 0x6f,
-	0x74, 0x69, 0x63, 0x65, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x44, 0x65, 0x63, 0x72, 0x65, 0x61, 0x73,
-	0x65, 0x47, 0x52, 0x50, 0x43, 0x1a, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70,
-	0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x12, 0x52, 0x0a,
-	0x13, 0x4e, 0x6f, 0x74, 0x69, 0x63, 0x65, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x49, 0x6e, 0x63, 0x72,
-	0x65, 0x61, 0x73, 0x65, 0x12, 0x23, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x45, 0x76, 0x65,
-	0x6e, 0x74, 0x4e, 0x6f, 0x74, 0x69, 0x63, 0x65, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x49, 0x6e, 0x63,
-	0x72, 0x65, 0x61, 0x73, 0x65, 0x47, 0x52, 0x50, 0x43, 0x1a, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67,
+	0x45, 0x6d, 0x70, 0x74, 0x79, 0x1a, 0x1c, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70,
+	0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x56, 0x61,
+	0x6c, 0x75, 0x65, 0x12, 0x4f, 0x0a, 0x0e, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x50, 0x72,
+	0x69, 0x76, 0x61, 0x74, 0x65, 0x12, 0x25, 0x2e, 0x65, 0x76, 0x65, 0x6e, 0x74, 0x2e, 0x45, 0x76,
+	0x65, 0x6e, 0x74, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x50, 0x72, 0x69, 0x76, 0x61, 0x74,
+	0x65, 0x47, 0x52, 0x50, 0x43, 0x57, 0x69, 0x74, 0x68, 0x43, 0x6c, 0x69, 0x1a, 0x16, 0x2e, 0x67,
+	0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45,
+	0x6d, 0x70, 0x74, 0x79, 0x12, 0x4b, 0x0a, 0x0c, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x47,
+	0x72, 0x6f, 0x75, 0x70, 0x12, 0x23, 0x2e, 0x65, 0x76, 0x65, 0x6e, 0x74, 0x2e, 0x45, 0x76, 0x65,
+	0x6e, 0x74, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x47, 0x52,
+	0x50, 0x43, 0x57, 0x69, 0x74, 0x68, 0x43, 0x6c, 0x69, 0x1a, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67,
 	0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74,
-	0x79, 0x12, 0x48, 0x0a, 0x0e, 0x4e, 0x6f, 0x74, 0x69, 0x63, 0x65, 0x47, 0x72, 0x6f, 0x75, 0x70,
-	0x42, 0x61, 0x6e, 0x12, 0x1e, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x45, 0x76, 0x65, 0x6e,
-	0x74, 0x4e, 0x6f, 0x74, 0x69, 0x63, 0x65, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x42, 0x61, 0x6e, 0x47,
-	0x52, 0x50, 0x43, 0x1a, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f,
-	0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x12, 0x4e, 0x0a, 0x11, 0x4e,
-	0x6f, 0x74, 0x69, 0x63, 0x65, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x52, 0x65, 0x63, 0x61, 0x6c, 0x6c,
-	0x12, 0x21, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x4e, 0x6f,
-	0x74, 0x69, 0x63, 0x65, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x52, 0x65, 0x63, 0x61, 0x6c, 0x6c, 0x47,
-	0x52, 0x50, 0x43, 0x1a, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f,
-	0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x12, 0x56, 0x0a, 0x15, 0x4e,
-	0x6f, 0x74, 0x69, 0x63, 0x65, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x4e, 0x6f, 0x74, 0x69, 0x66, 0x79,
-	0x50, 0x6f, 0x6b, 0x65, 0x12, 0x25, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x45, 0x76, 0x65,
-	0x6e, 0x74, 0x4e, 0x6f, 0x74, 0x69, 0x63, 0x65, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x4e, 0x6f, 0x74,
-	0x69, 0x66, 0x79, 0x50, 0x6f, 0x6b, 0x65, 0x47, 0x52, 0x50, 0x43, 0x1a, 0x16, 0x2e, 0x67, 0x6f,
-	0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d,
-	0x70, 0x74, 0x79, 0x12, 0x60, 0x0a, 0x1a, 0x4e, 0x6f, 0x74, 0x69, 0x63, 0x65, 0x47, 0x72, 0x6f,
-	0x75, 0x70, 0x4e, 0x6f, 0x74, 0x69, 0x66, 0x79, 0x4c, 0x75, 0x63, 0x6b, 0x79, 0x4b, 0x69, 0x6e,
-	0x67, 0x12, 0x2a, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x4e,
-	0x6f, 0x74, 0x69, 0x63, 0x65, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x4e, 0x6f, 0x74, 0x69, 0x66, 0x79,
-	0x4c, 0x75, 0x63, 0x6b, 0x79, 0x4b, 0x69, 0x6e, 0x67, 0x47, 0x52, 0x50, 0x43, 0x1a, 0x16, 0x2e,
-	0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e,
-	0x45, 0x6d, 0x70, 0x74, 0x79, 0x12, 0x58, 0x0a, 0x16, 0x4e, 0x6f, 0x74, 0x69, 0x63, 0x65, 0x47,
-	0x72, 0x6f, 0x75, 0x70, 0x4e, 0x6f, 0x74, 0x69, 0x66, 0x79, 0x48, 0x6f, 0x6e, 0x6f, 0x72, 0x12,
-	0x26, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x4e, 0x6f, 0x74,
-	0x69, 0x63, 0x65, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x4e, 0x6f, 0x74, 0x69, 0x66, 0x79, 0x48, 0x6f,
-	0x6e, 0x6f, 0x72, 0x47, 0x52, 0x50, 0x43, 0x1a, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65,
+	0x79, 0x12, 0x4d, 0x0a, 0x0d, 0x4d, 0x65, 0x74, 0x61, 0x4c, 0x69, 0x66, 0x65, 0x63, 0x79, 0x63,
+	0x6c, 0x65, 0x12, 0x24, 0x2e, 0x65, 0x76, 0x65, 0x6e, 0x74, 0x2e, 0x45, 0x76, 0x65, 0x6e, 0x74,
+	0x4d, 0x65, 0x74, 0x61, 0x4c, 0x69, 0x66, 0x65, 0x63, 0x79, 0x63, 0x6c, 0x65, 0x47, 0x52, 0x50,
+	0x43, 0x57, 0x69, 0x74, 0x68, 0x43, 0x6c, 0x69, 0x1a, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c,
+	0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79,
+	0x12, 0x4d, 0x0a, 0x0d, 0x4d, 0x65, 0x74, 0x61, 0x48, 0x65, 0x61, 0x72, 0x74, 0x62, 0x65, 0x61,
+	0x74, 0x12, 0x24, 0x2e, 0x65, 0x76, 0x65, 0x6e, 0x74, 0x2e, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x4d,
+	0x65, 0x74, 0x61, 0x48, 0x65, 0x61, 0x72, 0x74, 0x62, 0x65, 0x61, 0x74, 0x47, 0x52, 0x50, 0x43,
+	0x57, 0x69, 0x74, 0x68, 0x43, 0x6c, 0x69, 0x1a, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65,
 	0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x12,
-	0x4a, 0x0a, 0x0f, 0x4e, 0x6f, 0x74, 0x69, 0x63, 0x65, 0x46, 0x72, 0x69, 0x65, 0x6e, 0x64, 0x41,
-	0x64, 0x64, 0x12, 0x1f, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x45, 0x76, 0x65, 0x6e, 0x74,
-	0x4e, 0x6f, 0x74, 0x69, 0x63, 0x65, 0x46, 0x72, 0x69, 0x65, 0x6e, 0x64, 0x41, 0x64, 0x64, 0x47,
-	0x52, 0x50, 0x43, 0x1a, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f,
-	0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x12, 0x50, 0x0a, 0x12, 0x4e,
-	0x6f, 0x74, 0x69, 0x63, 0x65, 0x46, 0x72, 0x69, 0x65, 0x6e, 0x64, 0x52, 0x65, 0x63, 0x61, 0x6c,
-	0x6c, 0x12, 0x22, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x4e,
-	0x6f, 0x74, 0x69, 0x63, 0x65, 0x46, 0x72, 0x69, 0x65, 0x6e, 0x64, 0x52, 0x65, 0x63, 0x61, 0x6c,
-	0x6c, 0x47, 0x52, 0x50, 0x43, 0x1a, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70,
-	0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x12, 0x46, 0x0a,
-	0x0d, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x46, 0x72, 0x69, 0x65, 0x6e, 0x64, 0x12, 0x1d,
-	0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x52, 0x65, 0x71, 0x75,
-	0x65, 0x73, 0x74, 0x46, 0x72, 0x69, 0x65, 0x6e, 0x64, 0x47, 0x52, 0x50, 0x43, 0x1a, 0x16, 0x2e,
+	0x55, 0x0a, 0x11, 0x4e, 0x6f, 0x74, 0x69, 0x63, 0x65, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x55, 0x70,
+	0x6c, 0x6f, 0x61, 0x64, 0x12, 0x28, 0x2e, 0x65, 0x76, 0x65, 0x6e, 0x74, 0x2e, 0x45, 0x76, 0x65,
+	0x6e, 0x74, 0x4e, 0x6f, 0x74, 0x69, 0x63, 0x65, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x55, 0x70, 0x6c,
+	0x6f, 0x61, 0x64, 0x47, 0x52, 0x50, 0x43, 0x57, 0x69, 0x74, 0x68, 0x43, 0x6c, 0x69, 0x1a, 0x16,
+	0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66,
+	0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x12, 0x53, 0x0a, 0x10, 0x4e, 0x6f, 0x74, 0x69, 0x63, 0x65,
+	0x47, 0x72, 0x6f, 0x75, 0x70, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x12, 0x27, 0x2e, 0x65, 0x76, 0x65,
+	0x6e, 0x74, 0x2e, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x4e, 0x6f, 0x74, 0x69, 0x63, 0x65, 0x47, 0x72,
+	0x6f, 0x75, 0x70, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x47, 0x52, 0x50, 0x43, 0x57, 0x69, 0x74, 0x68,
+	0x43, 0x6c, 0x69, 0x1a, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f,
+	0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x12, 0x59, 0x0a, 0x13, 0x4e,
+	0x6f, 0x74, 0x69, 0x63, 0x65, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x44, 0x65, 0x63, 0x72, 0x65, 0x61,
+	0x73, 0x65, 0x12, 0x2a, 0x2e, 0x65, 0x76, 0x65, 0x6e, 0x74, 0x2e, 0x45, 0x76, 0x65, 0x6e, 0x74,
+	0x4e, 0x6f, 0x74, 0x69, 0x63, 0x65, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x44, 0x65, 0x63, 0x72, 0x65,
+	0x61, 0x73, 0x65, 0x47, 0x52, 0x50, 0x43, 0x57, 0x69, 0x74, 0x68, 0x43, 0x6c, 0x69, 0x1a, 0x16,
+	0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66,
+	0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x12, 0x59, 0x0a, 0x13, 0x4e, 0x6f, 0x74, 0x69, 0x63, 0x65,
+	0x47, 0x72, 0x6f, 0x75, 0x70, 0x49, 0x6e, 0x63, 0x72, 0x65, 0x61, 0x73, 0x65, 0x12, 0x2a, 0x2e,
+	0x65, 0x76, 0x65, 0x6e, 0x74, 0x2e, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x4e, 0x6f, 0x74, 0x69, 0x63,
+	0x65, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x49, 0x6e, 0x63, 0x72, 0x65, 0x61, 0x73, 0x65, 0x47, 0x52,
+	0x50, 0x43, 0x57, 0x69, 0x74, 0x68, 0x43, 0x6c, 0x69, 0x1a, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67,
+	0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74,
+	0x79, 0x12, 0x4f, 0x0a, 0x0e, 0x4e, 0x6f, 0x74, 0x69, 0x63, 0x65, 0x47, 0x72, 0x6f, 0x75, 0x70,
+	0x42, 0x61, 0x6e, 0x12, 0x25, 0x2e, 0x65, 0x76, 0x65, 0x6e, 0x74, 0x2e, 0x45, 0x76, 0x65, 0x6e,
+	0x74, 0x4e, 0x6f, 0x74, 0x69, 0x63, 0x65, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x42, 0x61, 0x6e, 0x47,
+	0x52, 0x50, 0x43, 0x57, 0x69, 0x74, 0x68, 0x43, 0x6c, 0x69, 0x1a, 0x16, 0x2e, 0x67, 0x6f, 0x6f,
+	0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70,
+	0x74, 0x79, 0x12, 0x55, 0x0a, 0x11, 0x4e, 0x6f, 0x74, 0x69, 0x63, 0x65, 0x47, 0x72, 0x6f, 0x75,
+	0x70, 0x52, 0x65, 0x63, 0x61, 0x6c, 0x6c, 0x12, 0x28, 0x2e, 0x65, 0x76, 0x65, 0x6e, 0x74, 0x2e,
+	0x45, 0x76, 0x65, 0x6e, 0x74, 0x4e, 0x6f, 0x74, 0x69, 0x63, 0x65, 0x47, 0x72, 0x6f, 0x75, 0x70,
+	0x52, 0x65, 0x63, 0x61, 0x6c, 0x6c, 0x47, 0x52, 0x50, 0x43, 0x57, 0x69, 0x74, 0x68, 0x43, 0x6c,
+	0x69, 0x1a, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f,
+	0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x12, 0x5d, 0x0a, 0x15, 0x4e, 0x6f, 0x74,
+	0x69, 0x63, 0x65, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x4e, 0x6f, 0x74, 0x69, 0x66, 0x79, 0x50, 0x6f,
+	0x6b, 0x65, 0x12, 0x2c, 0x2e, 0x65, 0x76, 0x65, 0x6e, 0x74, 0x2e, 0x45, 0x76, 0x65, 0x6e, 0x74,
+	0x4e, 0x6f, 0x74, 0x69, 0x63, 0x65, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x4e, 0x6f, 0x74, 0x69, 0x66,
+	0x79, 0x50, 0x6f, 0x6b, 0x65, 0x47, 0x52, 0x50, 0x43, 0x57, 0x69, 0x74, 0x68, 0x43, 0x6c, 0x69,
+	0x1a, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62,
+	0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x12, 0x67, 0x0a, 0x1a, 0x4e, 0x6f, 0x74, 0x69,
+	0x63, 0x65, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x4e, 0x6f, 0x74, 0x69, 0x66, 0x79, 0x4c, 0x75, 0x63,
+	0x6b, 0x79, 0x4b, 0x69, 0x6e, 0x67, 0x12, 0x31, 0x2e, 0x65, 0x76, 0x65, 0x6e, 0x74, 0x2e, 0x45,
+	0x76, 0x65, 0x6e, 0x74, 0x4e, 0x6f, 0x74, 0x69, 0x63, 0x65, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x4e,
+	0x6f, 0x74, 0x69, 0x66, 0x79, 0x4c, 0x75, 0x63, 0x6b, 0x79, 0x4b, 0x69, 0x6e, 0x67, 0x47, 0x52,
+	0x50, 0x43, 0x57, 0x69, 0x74, 0x68, 0x43, 0x6c, 0x69, 0x1a, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67,
+	0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74,
+	0x79, 0x12, 0x5f, 0x0a, 0x16, 0x4e, 0x6f, 0x74, 0x69, 0x63, 0x65, 0x47, 0x72, 0x6f, 0x75, 0x70,
+	0x4e, 0x6f, 0x74, 0x69, 0x66, 0x79, 0x48, 0x6f, 0x6e, 0x6f, 0x72, 0x12, 0x2d, 0x2e, 0x65, 0x76,
+	0x65, 0x6e, 0x74, 0x2e, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x4e, 0x6f, 0x74, 0x69, 0x63, 0x65, 0x47,
+	0x72, 0x6f, 0x75, 0x70, 0x4e, 0x6f, 0x74, 0x69, 0x66, 0x79, 0x48, 0x6f, 0x6e, 0x6f, 0x72, 0x47,
+	0x52, 0x50, 0x43, 0x57, 0x69, 0x74, 0x68, 0x43, 0x6c, 0x69, 0x1a, 0x16, 0x2e, 0x67, 0x6f, 0x6f,
+	0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70,
+	0x74, 0x79, 0x12, 0x51, 0x0a, 0x0f, 0x4e, 0x6f, 0x74, 0x69, 0x63, 0x65, 0x46, 0x72, 0x69, 0x65,
+	0x6e, 0x64, 0x41, 0x64, 0x64, 0x12, 0x26, 0x2e, 0x65, 0x76, 0x65, 0x6e, 0x74, 0x2e, 0x45, 0x76,
+	0x65, 0x6e, 0x74, 0x4e, 0x6f, 0x74, 0x69, 0x63, 0x65, 0x46, 0x72, 0x69, 0x65, 0x6e, 0x64, 0x41,
+	0x64, 0x64, 0x47, 0x52, 0x50, 0x43, 0x57, 0x69, 0x74, 0x68, 0x43, 0x6c, 0x69, 0x1a, 0x16, 0x2e,
 	0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e,
-	0x45, 0x6d, 0x70, 0x74, 0x79, 0x12, 0x44, 0x0a, 0x0c, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
-	0x47, 0x72, 0x6f, 0x75, 0x70, 0x12, 0x1c, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x45, 0x76,
-	0x65, 0x6e, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x47,
-	0x52, 0x50, 0x43, 0x1a, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f,
-	0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x42, 0x0b, 0x5a, 0x09, 0x2e,
-	0x2e, 0x2f, 0x70, 0x6c, 0x75, 0x67, 0x69, 0x6e, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x45, 0x6d, 0x70, 0x74, 0x79, 0x12, 0x57, 0x0a, 0x12, 0x4e, 0x6f, 0x74, 0x69, 0x63, 0x65, 0x46,
+	0x72, 0x69, 0x65, 0x6e, 0x64, 0x52, 0x65, 0x63, 0x61, 0x6c, 0x6c, 0x12, 0x29, 0x2e, 0x65, 0x76,
+	0x65, 0x6e, 0x74, 0x2e, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x4e, 0x6f, 0x74, 0x69, 0x63, 0x65, 0x46,
+	0x72, 0x69, 0x65, 0x6e, 0x64, 0x52, 0x65, 0x63, 0x61, 0x6c, 0x6c, 0x47, 0x52, 0x50, 0x43, 0x57,
+	0x69, 0x74, 0x68, 0x43, 0x6c, 0x69, 0x1a, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x12, 0x4d,
+	0x0a, 0x0d, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x46, 0x72, 0x69, 0x65, 0x6e, 0x64, 0x12,
+	0x24, 0x2e, 0x65, 0x76, 0x65, 0x6e, 0x74, 0x2e, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x52, 0x65, 0x71,
+	0x75, 0x65, 0x73, 0x74, 0x46, 0x72, 0x69, 0x65, 0x6e, 0x64, 0x47, 0x52, 0x50, 0x43, 0x57, 0x69,
+	0x74, 0x68, 0x43, 0x6c, 0x69, 0x1a, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70,
+	0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x12, 0x4b, 0x0a,
+	0x0c, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x12, 0x23, 0x2e,
+	0x65, 0x76, 0x65, 0x6e, 0x74, 0x2e, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65,
+	0x73, 0x74, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x47, 0x52, 0x50, 0x43, 0x57, 0x69, 0x74, 0x68, 0x43,
+	0x6c, 0x69, 0x1a, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74,
+	0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x42, 0x0b, 0x5a, 0x09, 0x2e, 0x2e,
+	0x2f, 0x70, 0x6c, 0x75, 0x67, 0x69, 0x6e, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -226,78 +1228,110 @@ func file_onebot_plus_pkg_plugin_plugin_proto_rawDescGZIP() []byte {
 	return file_onebot_plus_pkg_plugin_plugin_proto_rawDescData
 }
 
-var file_onebot_plus_pkg_plugin_plugin_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
+var file_onebot_plus_pkg_plugin_plugin_proto_msgTypes = make([]protoimpl.MessageInfo, 17)
 var file_onebot_plus_pkg_plugin_plugin_proto_goTypes = []interface{}{
-	(*EventMessagePrivateGRPCWithCliGRPC)(nil),        // 0: event.EventMessagePrivateGRPCWithCliGRPC
-	(*model.EventMessagePrivateGRPC)(nil),             // 1: model.EventMessagePrivateGRPC
-	(*emptypb.Empty)(nil),                             // 2: google.protobuf.Empty
-	(*model.EventMessageGroupGRPC)(nil),               // 3: model.EventMessageGroupGRPC
-	(*model.EventMetaLifecycleGRPC)(nil),              // 4: model.EventMetaLifecycleGRPC
-	(*model.EventMetaHeartbeatGRPC)(nil),              // 5: model.EventMetaHeartbeatGRPC
-	(*model.EventNoticeGroupUploadGRPC)(nil),          // 6: model.EventNoticeGroupUploadGRPC
-	(*model.EventNoticeGroupAdminGRPC)(nil),           // 7: model.EventNoticeGroupAdminGRPC
-	(*model.EventNoticeGroupDecreaseGRPC)(nil),        // 8: model.EventNoticeGroupDecreaseGRPC
-	(*model.EventNoticeGroupIncreaseGRPC)(nil),        // 9: model.EventNoticeGroupIncreaseGRPC
-	(*model.EventNoticeGroupBanGRPC)(nil),             // 10: model.EventNoticeGroupBanGRPC
-	(*model.EventNoticeGroupRecallGRPC)(nil),          // 11: model.EventNoticeGroupRecallGRPC
-	(*model.EventNoticeGroupNotifyPokeGRPC)(nil),      // 12: model.EventNoticeGroupNotifyPokeGRPC
-	(*model.EventNoticeGroupNotifyLuckyKingGRPC)(nil), // 13: model.EventNoticeGroupNotifyLuckyKingGRPC
-	(*model.EventNoticeGroupNotifyHonorGRPC)(nil),     // 14: model.EventNoticeGroupNotifyHonorGRPC
-	(*model.EventNoticeFriendAddGRPC)(nil),            // 15: model.EventNoticeFriendAddGRPC
-	(*model.EventNoticeFriendRecallGRPC)(nil),         // 16: model.EventNoticeFriendRecallGRPC
-	(*model.EventRequestFriendGRPC)(nil),              // 17: model.EventRequestFriendGRPC
-	(*model.EventRequestGroupGRPC)(nil),               // 18: model.EventRequestGroupGRPC
-	(*wrapperspb.StringValue)(nil),                    // 19: google.protobuf.StringValue
+	(*EventMessagePrivateGRPCWithCli)(nil),             // 0: event.EventMessagePrivateGRPCWithCli
+	(*EventMessageGroupGRPCWithCli)(nil),               // 1: event.EventMessageGroupGRPCWithCli
+	(*EventMetaLifecycleGRPCWithCli)(nil),              // 2: event.EventMetaLifecycleGRPCWithCli
+	(*EventMetaHeartbeatGRPCWithCli)(nil),              // 3: event.EventMetaHeartbeatGRPCWithCli
+	(*EventNoticeGroupUploadGRPCWithCli)(nil),          // 4: event.EventNoticeGroupUploadGRPCWithCli
+	(*EventNoticeGroupAdminGRPCWithCli)(nil),           // 5: event.EventNoticeGroupAdminGRPCWithCli
+	(*EventNoticeGroupDecreaseGRPCWithCli)(nil),        // 6: event.EventNoticeGroupDecreaseGRPCWithCli
+	(*EventNoticeGroupIncreaseGRPCWithCli)(nil),        // 7: event.EventNoticeGroupIncreaseGRPCWithCli
+	(*EventNoticeGroupBanGRPCWithCli)(nil),             // 8: event.EventNoticeGroupBanGRPCWithCli
+	(*EventNoticeGroupRecallGRPCWithCli)(nil),          // 9: event.EventNoticeGroupRecallGRPCWithCli
+	(*EventNoticeGroupNotifyPokeGRPCWithCli)(nil),      // 10: event.EventNoticeGroupNotifyPokeGRPCWithCli
+	(*EventNoticeGroupNotifyLuckyKingGRPCWithCli)(nil), // 11: event.EventNoticeGroupNotifyLuckyKingGRPCWithCli
+	(*EventNoticeGroupNotifyHonorGRPCWithCli)(nil),     // 12: event.EventNoticeGroupNotifyHonorGRPCWithCli
+	(*EventNoticeFriendAddGRPCWithCli)(nil),            // 13: event.EventNoticeFriendAddGRPCWithCli
+	(*EventNoticeFriendRecallGRPCWithCli)(nil),         // 14: event.EventNoticeFriendRecallGRPCWithCli
+	(*EventRequestFriendGRPCWithCli)(nil),              // 15: event.EventRequestFriendGRPCWithCli
+	(*EventRequestGroupGRPCWithCli)(nil),               // 16: event.EventRequestGroupGRPCWithCli
+	(*model.EventMessagePrivateGRPC)(nil),              // 17: model.EventMessagePrivateGRPC
+	(*model.EventMessageGroupGRPC)(nil),                // 18: model.EventMessageGroupGRPC
+	(*model.EventMetaLifecycleGRPC)(nil),               // 19: model.EventMetaLifecycleGRPC
+	(*model.EventMetaHeartbeatGRPC)(nil),               // 20: model.EventMetaHeartbeatGRPC
+	(*model.EventNoticeGroupUploadGRPC)(nil),           // 21: model.EventNoticeGroupUploadGRPC
+	(*model.EventNoticeGroupAdminGRPC)(nil),            // 22: model.EventNoticeGroupAdminGRPC
+	(*model.EventNoticeGroupDecreaseGRPC)(nil),         // 23: model.EventNoticeGroupDecreaseGRPC
+	(*model.EventNoticeGroupIncreaseGRPC)(nil),         // 24: model.EventNoticeGroupIncreaseGRPC
+	(*model.EventNoticeGroupBanGRPC)(nil),              // 25: model.EventNoticeGroupBanGRPC
+	(*model.EventNoticeGroupRecallGRPC)(nil),           // 26: model.EventNoticeGroupRecallGRPC
+	(*model.EventNoticeGroupNotifyPokeGRPC)(nil),       // 27: model.EventNoticeGroupNotifyPokeGRPC
+	(*model.EventNoticeGroupNotifyLuckyKingGRPC)(nil),  // 28: model.EventNoticeGroupNotifyLuckyKingGRPC
+	(*model.EventNoticeGroupNotifyHonorGRPC)(nil),      // 29: model.EventNoticeGroupNotifyHonorGRPC
+	(*model.EventNoticeFriendAddGRPC)(nil),             // 30: model.EventNoticeFriendAddGRPC
+	(*model.EventNoticeFriendRecallGRPC)(nil),          // 31: model.EventNoticeFriendRecallGRPC
+	(*model.EventRequestFriendGRPC)(nil),               // 32: model.EventRequestFriendGRPC
+	(*model.EventRequestGroupGRPC)(nil),                // 33: model.EventRequestGroupGRPC
+	(*emptypb.Empty)(nil),                              // 34: google.protobuf.Empty
+	(*wrapperspb.StringValue)(nil),                     // 35: google.protobuf.StringValue
 }
 var file_onebot_plus_pkg_plugin_plugin_proto_depIdxs = []int32{
-	1,  // 0: event.EventMessagePrivateGRPCWithCliGRPC.message:type_name -> model.EventMessagePrivateGRPC
-	2,  // 1: event.OnebotEventGRPC.Id:input_type -> google.protobuf.Empty
-	2,  // 2: event.OnebotEventGRPC.Name:input_type -> google.protobuf.Empty
-	2,  // 3: event.OnebotEventGRPC.Description:input_type -> google.protobuf.Empty
-	2,  // 4: event.OnebotEventGRPC.Help:input_type -> google.protobuf.Empty
-	0,  // 5: event.OnebotEventGRPC.MessagePrivate:input_type -> event.EventMessagePrivateGRPCWithCliGRPC
-	3,  // 6: event.OnebotEventGRPC.MessageGroup:input_type -> model.EventMessageGroupGRPC
-	4,  // 7: event.OnebotEventGRPC.MetaLifecycle:input_type -> model.EventMetaLifecycleGRPC
-	5,  // 8: event.OnebotEventGRPC.MetaHeartbeat:input_type -> model.EventMetaHeartbeatGRPC
-	6,  // 9: event.OnebotEventGRPC.NoticeGroupUpload:input_type -> model.EventNoticeGroupUploadGRPC
-	7,  // 10: event.OnebotEventGRPC.NoticeGroupAdmin:input_type -> model.EventNoticeGroupAdminGRPC
-	8,  // 11: event.OnebotEventGRPC.NoticeGroupDecrease:input_type -> model.EventNoticeGroupDecreaseGRPC
-	9,  // 12: event.OnebotEventGRPC.NoticeGroupIncrease:input_type -> model.EventNoticeGroupIncreaseGRPC
-	10, // 13: event.OnebotEventGRPC.NoticeGroupBan:input_type -> model.EventNoticeGroupBanGRPC
-	11, // 14: event.OnebotEventGRPC.NoticeGroupRecall:input_type -> model.EventNoticeGroupRecallGRPC
-	12, // 15: event.OnebotEventGRPC.NoticeGroupNotifyPoke:input_type -> model.EventNoticeGroupNotifyPokeGRPC
-	13, // 16: event.OnebotEventGRPC.NoticeGroupNotifyLuckyKing:input_type -> model.EventNoticeGroupNotifyLuckyKingGRPC
-	14, // 17: event.OnebotEventGRPC.NoticeGroupNotifyHonor:input_type -> model.EventNoticeGroupNotifyHonorGRPC
-	15, // 18: event.OnebotEventGRPC.NoticeFriendAdd:input_type -> model.EventNoticeFriendAddGRPC
-	16, // 19: event.OnebotEventGRPC.NoticeFriendRecall:input_type -> model.EventNoticeFriendRecallGRPC
-	17, // 20: event.OnebotEventGRPC.RequestFriend:input_type -> model.EventRequestFriendGRPC
-	18, // 21: event.OnebotEventGRPC.RequestGroup:input_type -> model.EventRequestGroupGRPC
-	19, // 22: event.OnebotEventGRPC.Id:output_type -> google.protobuf.StringValue
-	19, // 23: event.OnebotEventGRPC.Name:output_type -> google.protobuf.StringValue
-	19, // 24: event.OnebotEventGRPC.Description:output_type -> google.protobuf.StringValue
-	19, // 25: event.OnebotEventGRPC.Help:output_type -> google.protobuf.StringValue
-	2,  // 26: event.OnebotEventGRPC.MessagePrivate:output_type -> google.protobuf.Empty
-	2,  // 27: event.OnebotEventGRPC.MessageGroup:output_type -> google.protobuf.Empty
-	2,  // 28: event.OnebotEventGRPC.MetaLifecycle:output_type -> google.protobuf.Empty
-	2,  // 29: event.OnebotEventGRPC.MetaHeartbeat:output_type -> google.protobuf.Empty
-	2,  // 30: event.OnebotEventGRPC.NoticeGroupUpload:output_type -> google.protobuf.Empty
-	2,  // 31: event.OnebotEventGRPC.NoticeGroupAdmin:output_type -> google.protobuf.Empty
-	2,  // 32: event.OnebotEventGRPC.NoticeGroupDecrease:output_type -> google.protobuf.Empty
-	2,  // 33: event.OnebotEventGRPC.NoticeGroupIncrease:output_type -> google.protobuf.Empty
-	2,  // 34: event.OnebotEventGRPC.NoticeGroupBan:output_type -> google.protobuf.Empty
-	2,  // 35: event.OnebotEventGRPC.NoticeGroupRecall:output_type -> google.protobuf.Empty
-	2,  // 36: event.OnebotEventGRPC.NoticeGroupNotifyPoke:output_type -> google.protobuf.Empty
-	2,  // 37: event.OnebotEventGRPC.NoticeGroupNotifyLuckyKing:output_type -> google.protobuf.Empty
-	2,  // 38: event.OnebotEventGRPC.NoticeGroupNotifyHonor:output_type -> google.protobuf.Empty
-	2,  // 39: event.OnebotEventGRPC.NoticeFriendAdd:output_type -> google.protobuf.Empty
-	2,  // 40: event.OnebotEventGRPC.NoticeFriendRecall:output_type -> google.protobuf.Empty
-	2,  // 41: event.OnebotEventGRPC.RequestFriend:output_type -> google.protobuf.Empty
-	2,  // 42: event.OnebotEventGRPC.RequestGroup:output_type -> google.protobuf.Empty
-	22, // [22:43] is the sub-list for method output_type
-	1,  // [1:22] is the sub-list for method input_type
-	1,  // [1:1] is the sub-list for extension type_name
-	1,  // [1:1] is the sub-list for extension extendee
-	0,  // [0:1] is the sub-list for field type_name
+	17, // 0: event.EventMessagePrivateGRPCWithCli.message:type_name -> model.EventMessagePrivateGRPC
+	18, // 1: event.EventMessageGroupGRPCWithCli.message:type_name -> model.EventMessageGroupGRPC
+	19, // 2: event.EventMetaLifecycleGRPCWithCli.message:type_name -> model.EventMetaLifecycleGRPC
+	20, // 3: event.EventMetaHeartbeatGRPCWithCli.message:type_name -> model.EventMetaHeartbeatGRPC
+	21, // 4: event.EventNoticeGroupUploadGRPCWithCli.message:type_name -> model.EventNoticeGroupUploadGRPC
+	22, // 5: event.EventNoticeGroupAdminGRPCWithCli.message:type_name -> model.EventNoticeGroupAdminGRPC
+	23, // 6: event.EventNoticeGroupDecreaseGRPCWithCli.message:type_name -> model.EventNoticeGroupDecreaseGRPC
+	24, // 7: event.EventNoticeGroupIncreaseGRPCWithCli.message:type_name -> model.EventNoticeGroupIncreaseGRPC
+	25, // 8: event.EventNoticeGroupBanGRPCWithCli.message:type_name -> model.EventNoticeGroupBanGRPC
+	26, // 9: event.EventNoticeGroupRecallGRPCWithCli.message:type_name -> model.EventNoticeGroupRecallGRPC
+	27, // 10: event.EventNoticeGroupNotifyPokeGRPCWithCli.message:type_name -> model.EventNoticeGroupNotifyPokeGRPC
+	28, // 11: event.EventNoticeGroupNotifyLuckyKingGRPCWithCli.message:type_name -> model.EventNoticeGroupNotifyLuckyKingGRPC
+	29, // 12: event.EventNoticeGroupNotifyHonorGRPCWithCli.message:type_name -> model.EventNoticeGroupNotifyHonorGRPC
+	30, // 13: event.EventNoticeFriendAddGRPCWithCli.message:type_name -> model.EventNoticeFriendAddGRPC
+	31, // 14: event.EventNoticeFriendRecallGRPCWithCli.message:type_name -> model.EventNoticeFriendRecallGRPC
+	32, // 15: event.EventRequestFriendGRPCWithCli.message:type_name -> model.EventRequestFriendGRPC
+	33, // 16: event.EventRequestGroupGRPCWithCli.message:type_name -> model.EventRequestGroupGRPC
+	34, // 17: event.OnebotEventGRPC.Id:input_type -> google.protobuf.Empty
+	34, // 18: event.OnebotEventGRPC.Name:input_type -> google.protobuf.Empty
+	34, // 19: event.OnebotEventGRPC.Description:input_type -> google.protobuf.Empty
+	34, // 20: event.OnebotEventGRPC.Help:input_type -> google.protobuf.Empty
+	0,  // 21: event.OnebotEventGRPC.MessagePrivate:input_type -> event.EventMessagePrivateGRPCWithCli
+	1,  // 22: event.OnebotEventGRPC.MessageGroup:input_type -> event.EventMessageGroupGRPCWithCli
+	2,  // 23: event.OnebotEventGRPC.MetaLifecycle:input_type -> event.EventMetaLifecycleGRPCWithCli
+	3,  // 24: event.OnebotEventGRPC.MetaHeartbeat:input_type -> event.EventMetaHeartbeatGRPCWithCli
+	4,  // 25: event.OnebotEventGRPC.NoticeGroupUpload:input_type -> event.EventNoticeGroupUploadGRPCWithCli
+	5,  // 26: event.OnebotEventGRPC.NoticeGroupAdmin:input_type -> event.EventNoticeGroupAdminGRPCWithCli
+	6,  // 27: event.OnebotEventGRPC.NoticeGroupDecrease:input_type -> event.EventNoticeGroupDecreaseGRPCWithCli
+	7,  // 28: event.OnebotEventGRPC.NoticeGroupIncrease:input_type -> event.EventNoticeGroupIncreaseGRPCWithCli
+	8,  // 29: event.OnebotEventGRPC.NoticeGroupBan:input_type -> event.EventNoticeGroupBanGRPCWithCli
+	9,  // 30: event.OnebotEventGRPC.NoticeGroupRecall:input_type -> event.EventNoticeGroupRecallGRPCWithCli
+	10, // 31: event.OnebotEventGRPC.NoticeGroupNotifyPoke:input_type -> event.EventNoticeGroupNotifyPokeGRPCWithCli
+	11, // 32: event.OnebotEventGRPC.NoticeGroupNotifyLuckyKing:input_type -> event.EventNoticeGroupNotifyLuckyKingGRPCWithCli
+	12, // 33: event.OnebotEventGRPC.NoticeGroupNotifyHonor:input_type -> event.EventNoticeGroupNotifyHonorGRPCWithCli
+	13, // 34: event.OnebotEventGRPC.NoticeFriendAdd:input_type -> event.EventNoticeFriendAddGRPCWithCli
+	14, // 35: event.OnebotEventGRPC.NoticeFriendRecall:input_type -> event.EventNoticeFriendRecallGRPCWithCli
+	15, // 36: event.OnebotEventGRPC.RequestFriend:input_type -> event.EventRequestFriendGRPCWithCli
+	16, // 37: event.OnebotEventGRPC.RequestGroup:input_type -> event.EventRequestGroupGRPCWithCli
+	35, // 38: event.OnebotEventGRPC.Id:output_type -> google.protobuf.StringValue
+	35, // 39: event.OnebotEventGRPC.Name:output_type -> google.protobuf.StringValue
+	35, // 40: event.OnebotEventGRPC.Description:output_type -> google.protobuf.StringValue
+	35, // 41: event.OnebotEventGRPC.Help:output_type -> google.protobuf.StringValue
+	34, // 42: event.OnebotEventGRPC.MessagePrivate:output_type -> google.protobuf.Empty
+	34, // 43: event.OnebotEventGRPC.MessageGroup:output_type -> google.protobuf.Empty
+	34, // 44: event.OnebotEventGRPC.MetaLifecycle:output_type -> google.protobuf.Empty
+	34, // 45: event.OnebotEventGRPC.MetaHeartbeat:output_type -> google.protobuf.Empty
+	34, // 46: event.OnebotEventGRPC.NoticeGroupUpload:output_type -> google.protobuf.Empty
+	34, // 47: event.OnebotEventGRPC.NoticeGroupAdmin:output_type -> google.protobuf.Empty
+	34, // 48: event.OnebotEventGRPC.NoticeGroupDecrease:output_type -> google.protobuf.Empty
+	34, // 49: event.OnebotEventGRPC.NoticeGroupIncrease:output_type -> google.protobuf.Empty
+	34, // 50: event.OnebotEventGRPC.NoticeGroupBan:output_type -> google.protobuf.Empty
+	34, // 51: event.OnebotEventGRPC.NoticeGroupRecall:output_type -> google.protobuf.Empty
+	34, // 52: event.OnebotEventGRPC.NoticeGroupNotifyPoke:output_type -> google.protobuf.Empty
+	34, // 53: event.OnebotEventGRPC.NoticeGroupNotifyLuckyKing:output_type -> google.protobuf.Empty
+	34, // 54: event.OnebotEventGRPC.NoticeGroupNotifyHonor:output_type -> google.protobuf.Empty
+	34, // 55: event.OnebotEventGRPC.NoticeFriendAdd:output_type -> google.protobuf.Empty
+	34, // 56: event.OnebotEventGRPC.NoticeFriendRecall:output_type -> google.protobuf.Empty
+	34, // 57: event.OnebotEventGRPC.RequestFriend:output_type -> google.protobuf.Empty
+	34, // 58: event.OnebotEventGRPC.RequestGroup:output_type -> google.protobuf.Empty
+	38, // [38:59] is the sub-list for method output_type
+	17, // [17:38] is the sub-list for method input_type
+	17, // [17:17] is the sub-list for extension type_name
+	17, // [17:17] is the sub-list for extension extendee
+	0,  // [0:17] is the sub-list for field type_name
 }
 
 func init() { file_onebot_plus_pkg_plugin_plugin_proto_init() }
@@ -307,7 +1341,199 @@ func file_onebot_plus_pkg_plugin_plugin_proto_init() {
 	}
 	if !protoimpl.UnsafeEnabled {
 		file_onebot_plus_pkg_plugin_plugin_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*EventMessagePrivateGRPCWithCliGRPC); i {
+			switch v := v.(*EventMessagePrivateGRPCWithCli); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_onebot_plus_pkg_plugin_plugin_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*EventMessageGroupGRPCWithCli); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_onebot_plus_pkg_plugin_plugin_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*EventMetaLifecycleGRPCWithCli); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_onebot_plus_pkg_plugin_plugin_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*EventMetaHeartbeatGRPCWithCli); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_onebot_plus_pkg_plugin_plugin_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*EventNoticeGroupUploadGRPCWithCli); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_onebot_plus_pkg_plugin_plugin_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*EventNoticeGroupAdminGRPCWithCli); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_onebot_plus_pkg_plugin_plugin_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*EventNoticeGroupDecreaseGRPCWithCli); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_onebot_plus_pkg_plugin_plugin_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*EventNoticeGroupIncreaseGRPCWithCli); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_onebot_plus_pkg_plugin_plugin_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*EventNoticeGroupBanGRPCWithCli); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_onebot_plus_pkg_plugin_plugin_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*EventNoticeGroupRecallGRPCWithCli); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_onebot_plus_pkg_plugin_plugin_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*EventNoticeGroupNotifyPokeGRPCWithCli); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_onebot_plus_pkg_plugin_plugin_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*EventNoticeGroupNotifyLuckyKingGRPCWithCli); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_onebot_plus_pkg_plugin_plugin_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*EventNoticeGroupNotifyHonorGRPCWithCli); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_onebot_plus_pkg_plugin_plugin_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*EventNoticeFriendAddGRPCWithCli); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_onebot_plus_pkg_plugin_plugin_proto_msgTypes[14].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*EventNoticeFriendRecallGRPCWithCli); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_onebot_plus_pkg_plugin_plugin_proto_msgTypes[15].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*EventRequestFriendGRPCWithCli); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_onebot_plus_pkg_plugin_plugin_proto_msgTypes[16].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*EventRequestGroupGRPCWithCli); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -325,7 +1551,7 @@ func file_onebot_plus_pkg_plugin_plugin_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_onebot_plus_pkg_plugin_plugin_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   1,
+			NumMessages:   17,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
@@ -360,26 +1586,26 @@ type OnebotEventGRPCClient interface {
 	//插件帮助
 	Help(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*wrapperspb.StringValue, error)
 	//私聊消息
-	MessagePrivate(ctx context.Context, in *EventMessagePrivateGRPCWithCliGRPC, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	MessagePrivate(ctx context.Context, in *EventMessagePrivateGRPCWithCli, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	//群组消息
-	MessageGroup(ctx context.Context, in *model.EventMessageGroupGRPC, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	MessageGroup(ctx context.Context, in *EventMessageGroupGRPCWithCli, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	//
-	MetaLifecycle(ctx context.Context, in *model.EventMetaLifecycleGRPC, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	MetaLifecycle(ctx context.Context, in *EventMetaLifecycleGRPCWithCli, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	//
-	MetaHeartbeat(ctx context.Context, in *model.EventMetaHeartbeatGRPC, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	NoticeGroupUpload(ctx context.Context, in *model.EventNoticeGroupUploadGRPC, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	NoticeGroupAdmin(ctx context.Context, in *model.EventNoticeGroupAdminGRPC, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	NoticeGroupDecrease(ctx context.Context, in *model.EventNoticeGroupDecreaseGRPC, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	NoticeGroupIncrease(ctx context.Context, in *model.EventNoticeGroupIncreaseGRPC, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	NoticeGroupBan(ctx context.Context, in *model.EventNoticeGroupBanGRPC, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	NoticeGroupRecall(ctx context.Context, in *model.EventNoticeGroupRecallGRPC, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	NoticeGroupNotifyPoke(ctx context.Context, in *model.EventNoticeGroupNotifyPokeGRPC, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	NoticeGroupNotifyLuckyKing(ctx context.Context, in *model.EventNoticeGroupNotifyLuckyKingGRPC, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	NoticeGroupNotifyHonor(ctx context.Context, in *model.EventNoticeGroupNotifyHonorGRPC, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	NoticeFriendAdd(ctx context.Context, in *model.EventNoticeFriendAddGRPC, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	NoticeFriendRecall(ctx context.Context, in *model.EventNoticeFriendRecallGRPC, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	RequestFriend(ctx context.Context, in *model.EventRequestFriendGRPC, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	RequestGroup(ctx context.Context, in *model.EventRequestGroupGRPC, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	MetaHeartbeat(ctx context.Context, in *EventMetaHeartbeatGRPCWithCli, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	NoticeGroupUpload(ctx context.Context, in *EventNoticeGroupUploadGRPCWithCli, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	NoticeGroupAdmin(ctx context.Context, in *EventNoticeGroupAdminGRPCWithCli, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	NoticeGroupDecrease(ctx context.Context, in *EventNoticeGroupDecreaseGRPCWithCli, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	NoticeGroupIncrease(ctx context.Context, in *EventNoticeGroupIncreaseGRPCWithCli, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	NoticeGroupBan(ctx context.Context, in *EventNoticeGroupBanGRPCWithCli, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	NoticeGroupRecall(ctx context.Context, in *EventNoticeGroupRecallGRPCWithCli, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	NoticeGroupNotifyPoke(ctx context.Context, in *EventNoticeGroupNotifyPokeGRPCWithCli, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	NoticeGroupNotifyLuckyKing(ctx context.Context, in *EventNoticeGroupNotifyLuckyKingGRPCWithCli, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	NoticeGroupNotifyHonor(ctx context.Context, in *EventNoticeGroupNotifyHonorGRPCWithCli, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	NoticeFriendAdd(ctx context.Context, in *EventNoticeFriendAddGRPCWithCli, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	NoticeFriendRecall(ctx context.Context, in *EventNoticeFriendRecallGRPCWithCli, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	RequestFriend(ctx context.Context, in *EventRequestFriendGRPCWithCli, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	RequestGroup(ctx context.Context, in *EventRequestGroupGRPCWithCli, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type onebotEventGRPCClient struct {
@@ -426,7 +1652,7 @@ func (c *onebotEventGRPCClient) Help(ctx context.Context, in *emptypb.Empty, opt
 	return out, nil
 }
 
-func (c *onebotEventGRPCClient) MessagePrivate(ctx context.Context, in *EventMessagePrivateGRPCWithCliGRPC, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *onebotEventGRPCClient) MessagePrivate(ctx context.Context, in *EventMessagePrivateGRPCWithCli, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/event.OnebotEventGRPC/MessagePrivate", in, out, opts...)
 	if err != nil {
@@ -435,7 +1661,7 @@ func (c *onebotEventGRPCClient) MessagePrivate(ctx context.Context, in *EventMes
 	return out, nil
 }
 
-func (c *onebotEventGRPCClient) MessageGroup(ctx context.Context, in *model.EventMessageGroupGRPC, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *onebotEventGRPCClient) MessageGroup(ctx context.Context, in *EventMessageGroupGRPCWithCli, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/event.OnebotEventGRPC/MessageGroup", in, out, opts...)
 	if err != nil {
@@ -444,7 +1670,7 @@ func (c *onebotEventGRPCClient) MessageGroup(ctx context.Context, in *model.Even
 	return out, nil
 }
 
-func (c *onebotEventGRPCClient) MetaLifecycle(ctx context.Context, in *model.EventMetaLifecycleGRPC, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *onebotEventGRPCClient) MetaLifecycle(ctx context.Context, in *EventMetaLifecycleGRPCWithCli, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/event.OnebotEventGRPC/MetaLifecycle", in, out, opts...)
 	if err != nil {
@@ -453,7 +1679,7 @@ func (c *onebotEventGRPCClient) MetaLifecycle(ctx context.Context, in *model.Eve
 	return out, nil
 }
 
-func (c *onebotEventGRPCClient) MetaHeartbeat(ctx context.Context, in *model.EventMetaHeartbeatGRPC, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *onebotEventGRPCClient) MetaHeartbeat(ctx context.Context, in *EventMetaHeartbeatGRPCWithCli, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/event.OnebotEventGRPC/MetaHeartbeat", in, out, opts...)
 	if err != nil {
@@ -462,7 +1688,7 @@ func (c *onebotEventGRPCClient) MetaHeartbeat(ctx context.Context, in *model.Eve
 	return out, nil
 }
 
-func (c *onebotEventGRPCClient) NoticeGroupUpload(ctx context.Context, in *model.EventNoticeGroupUploadGRPC, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *onebotEventGRPCClient) NoticeGroupUpload(ctx context.Context, in *EventNoticeGroupUploadGRPCWithCli, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/event.OnebotEventGRPC/NoticeGroupUpload", in, out, opts...)
 	if err != nil {
@@ -471,7 +1697,7 @@ func (c *onebotEventGRPCClient) NoticeGroupUpload(ctx context.Context, in *model
 	return out, nil
 }
 
-func (c *onebotEventGRPCClient) NoticeGroupAdmin(ctx context.Context, in *model.EventNoticeGroupAdminGRPC, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *onebotEventGRPCClient) NoticeGroupAdmin(ctx context.Context, in *EventNoticeGroupAdminGRPCWithCli, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/event.OnebotEventGRPC/NoticeGroupAdmin", in, out, opts...)
 	if err != nil {
@@ -480,7 +1706,7 @@ func (c *onebotEventGRPCClient) NoticeGroupAdmin(ctx context.Context, in *model.
 	return out, nil
 }
 
-func (c *onebotEventGRPCClient) NoticeGroupDecrease(ctx context.Context, in *model.EventNoticeGroupDecreaseGRPC, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *onebotEventGRPCClient) NoticeGroupDecrease(ctx context.Context, in *EventNoticeGroupDecreaseGRPCWithCli, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/event.OnebotEventGRPC/NoticeGroupDecrease", in, out, opts...)
 	if err != nil {
@@ -489,7 +1715,7 @@ func (c *onebotEventGRPCClient) NoticeGroupDecrease(ctx context.Context, in *mod
 	return out, nil
 }
 
-func (c *onebotEventGRPCClient) NoticeGroupIncrease(ctx context.Context, in *model.EventNoticeGroupIncreaseGRPC, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *onebotEventGRPCClient) NoticeGroupIncrease(ctx context.Context, in *EventNoticeGroupIncreaseGRPCWithCli, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/event.OnebotEventGRPC/NoticeGroupIncrease", in, out, opts...)
 	if err != nil {
@@ -498,7 +1724,7 @@ func (c *onebotEventGRPCClient) NoticeGroupIncrease(ctx context.Context, in *mod
 	return out, nil
 }
 
-func (c *onebotEventGRPCClient) NoticeGroupBan(ctx context.Context, in *model.EventNoticeGroupBanGRPC, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *onebotEventGRPCClient) NoticeGroupBan(ctx context.Context, in *EventNoticeGroupBanGRPCWithCli, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/event.OnebotEventGRPC/NoticeGroupBan", in, out, opts...)
 	if err != nil {
@@ -507,7 +1733,7 @@ func (c *onebotEventGRPCClient) NoticeGroupBan(ctx context.Context, in *model.Ev
 	return out, nil
 }
 
-func (c *onebotEventGRPCClient) NoticeGroupRecall(ctx context.Context, in *model.EventNoticeGroupRecallGRPC, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *onebotEventGRPCClient) NoticeGroupRecall(ctx context.Context, in *EventNoticeGroupRecallGRPCWithCli, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/event.OnebotEventGRPC/NoticeGroupRecall", in, out, opts...)
 	if err != nil {
@@ -516,7 +1742,7 @@ func (c *onebotEventGRPCClient) NoticeGroupRecall(ctx context.Context, in *model
 	return out, nil
 }
 
-func (c *onebotEventGRPCClient) NoticeGroupNotifyPoke(ctx context.Context, in *model.EventNoticeGroupNotifyPokeGRPC, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *onebotEventGRPCClient) NoticeGroupNotifyPoke(ctx context.Context, in *EventNoticeGroupNotifyPokeGRPCWithCli, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/event.OnebotEventGRPC/NoticeGroupNotifyPoke", in, out, opts...)
 	if err != nil {
@@ -525,7 +1751,7 @@ func (c *onebotEventGRPCClient) NoticeGroupNotifyPoke(ctx context.Context, in *m
 	return out, nil
 }
 
-func (c *onebotEventGRPCClient) NoticeGroupNotifyLuckyKing(ctx context.Context, in *model.EventNoticeGroupNotifyLuckyKingGRPC, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *onebotEventGRPCClient) NoticeGroupNotifyLuckyKing(ctx context.Context, in *EventNoticeGroupNotifyLuckyKingGRPCWithCli, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/event.OnebotEventGRPC/NoticeGroupNotifyLuckyKing", in, out, opts...)
 	if err != nil {
@@ -534,7 +1760,7 @@ func (c *onebotEventGRPCClient) NoticeGroupNotifyLuckyKing(ctx context.Context, 
 	return out, nil
 }
 
-func (c *onebotEventGRPCClient) NoticeGroupNotifyHonor(ctx context.Context, in *model.EventNoticeGroupNotifyHonorGRPC, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *onebotEventGRPCClient) NoticeGroupNotifyHonor(ctx context.Context, in *EventNoticeGroupNotifyHonorGRPCWithCli, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/event.OnebotEventGRPC/NoticeGroupNotifyHonor", in, out, opts...)
 	if err != nil {
@@ -543,7 +1769,7 @@ func (c *onebotEventGRPCClient) NoticeGroupNotifyHonor(ctx context.Context, in *
 	return out, nil
 }
 
-func (c *onebotEventGRPCClient) NoticeFriendAdd(ctx context.Context, in *model.EventNoticeFriendAddGRPC, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *onebotEventGRPCClient) NoticeFriendAdd(ctx context.Context, in *EventNoticeFriendAddGRPCWithCli, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/event.OnebotEventGRPC/NoticeFriendAdd", in, out, opts...)
 	if err != nil {
@@ -552,7 +1778,7 @@ func (c *onebotEventGRPCClient) NoticeFriendAdd(ctx context.Context, in *model.E
 	return out, nil
 }
 
-func (c *onebotEventGRPCClient) NoticeFriendRecall(ctx context.Context, in *model.EventNoticeFriendRecallGRPC, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *onebotEventGRPCClient) NoticeFriendRecall(ctx context.Context, in *EventNoticeFriendRecallGRPCWithCli, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/event.OnebotEventGRPC/NoticeFriendRecall", in, out, opts...)
 	if err != nil {
@@ -561,7 +1787,7 @@ func (c *onebotEventGRPCClient) NoticeFriendRecall(ctx context.Context, in *mode
 	return out, nil
 }
 
-func (c *onebotEventGRPCClient) RequestFriend(ctx context.Context, in *model.EventRequestFriendGRPC, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *onebotEventGRPCClient) RequestFriend(ctx context.Context, in *EventRequestFriendGRPCWithCli, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/event.OnebotEventGRPC/RequestFriend", in, out, opts...)
 	if err != nil {
@@ -570,7 +1796,7 @@ func (c *onebotEventGRPCClient) RequestFriend(ctx context.Context, in *model.Eve
 	return out, nil
 }
 
-func (c *onebotEventGRPCClient) RequestGroup(ctx context.Context, in *model.EventRequestGroupGRPC, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *onebotEventGRPCClient) RequestGroup(ctx context.Context, in *EventRequestGroupGRPCWithCli, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/event.OnebotEventGRPC/RequestGroup", in, out, opts...)
 	if err != nil {
@@ -590,26 +1816,26 @@ type OnebotEventGRPCServer interface {
 	//插件帮助
 	Help(context.Context, *emptypb.Empty) (*wrapperspb.StringValue, error)
 	//私聊消息
-	MessagePrivate(context.Context, *EventMessagePrivateGRPCWithCliGRPC) (*emptypb.Empty, error)
+	MessagePrivate(context.Context, *EventMessagePrivateGRPCWithCli) (*emptypb.Empty, error)
 	//群组消息
-	MessageGroup(context.Context, *model.EventMessageGroupGRPC) (*emptypb.Empty, error)
+	MessageGroup(context.Context, *EventMessageGroupGRPCWithCli) (*emptypb.Empty, error)
 	//
-	MetaLifecycle(context.Context, *model.EventMetaLifecycleGRPC) (*emptypb.Empty, error)
+	MetaLifecycle(context.Context, *EventMetaLifecycleGRPCWithCli) (*emptypb.Empty, error)
 	//
-	MetaHeartbeat(context.Context, *model.EventMetaHeartbeatGRPC) (*emptypb.Empty, error)
-	NoticeGroupUpload(context.Context, *model.EventNoticeGroupUploadGRPC) (*emptypb.Empty, error)
-	NoticeGroupAdmin(context.Context, *model.EventNoticeGroupAdminGRPC) (*emptypb.Empty, error)
-	NoticeGroupDecrease(context.Context, *model.EventNoticeGroupDecreaseGRPC) (*emptypb.Empty, error)
-	NoticeGroupIncrease(context.Context, *model.EventNoticeGroupIncreaseGRPC) (*emptypb.Empty, error)
-	NoticeGroupBan(context.Context, *model.EventNoticeGroupBanGRPC) (*emptypb.Empty, error)
-	NoticeGroupRecall(context.Context, *model.EventNoticeGroupRecallGRPC) (*emptypb.Empty, error)
-	NoticeGroupNotifyPoke(context.Context, *model.EventNoticeGroupNotifyPokeGRPC) (*emptypb.Empty, error)
-	NoticeGroupNotifyLuckyKing(context.Context, *model.EventNoticeGroupNotifyLuckyKingGRPC) (*emptypb.Empty, error)
-	NoticeGroupNotifyHonor(context.Context, *model.EventNoticeGroupNotifyHonorGRPC) (*emptypb.Empty, error)
-	NoticeFriendAdd(context.Context, *model.EventNoticeFriendAddGRPC) (*emptypb.Empty, error)
-	NoticeFriendRecall(context.Context, *model.EventNoticeFriendRecallGRPC) (*emptypb.Empty, error)
-	RequestFriend(context.Context, *model.EventRequestFriendGRPC) (*emptypb.Empty, error)
-	RequestGroup(context.Context, *model.EventRequestGroupGRPC) (*emptypb.Empty, error)
+	MetaHeartbeat(context.Context, *EventMetaHeartbeatGRPCWithCli) (*emptypb.Empty, error)
+	NoticeGroupUpload(context.Context, *EventNoticeGroupUploadGRPCWithCli) (*emptypb.Empty, error)
+	NoticeGroupAdmin(context.Context, *EventNoticeGroupAdminGRPCWithCli) (*emptypb.Empty, error)
+	NoticeGroupDecrease(context.Context, *EventNoticeGroupDecreaseGRPCWithCli) (*emptypb.Empty, error)
+	NoticeGroupIncrease(context.Context, *EventNoticeGroupIncreaseGRPCWithCli) (*emptypb.Empty, error)
+	NoticeGroupBan(context.Context, *EventNoticeGroupBanGRPCWithCli) (*emptypb.Empty, error)
+	NoticeGroupRecall(context.Context, *EventNoticeGroupRecallGRPCWithCli) (*emptypb.Empty, error)
+	NoticeGroupNotifyPoke(context.Context, *EventNoticeGroupNotifyPokeGRPCWithCli) (*emptypb.Empty, error)
+	NoticeGroupNotifyLuckyKing(context.Context, *EventNoticeGroupNotifyLuckyKingGRPCWithCli) (*emptypb.Empty, error)
+	NoticeGroupNotifyHonor(context.Context, *EventNoticeGroupNotifyHonorGRPCWithCli) (*emptypb.Empty, error)
+	NoticeFriendAdd(context.Context, *EventNoticeFriendAddGRPCWithCli) (*emptypb.Empty, error)
+	NoticeFriendRecall(context.Context, *EventNoticeFriendRecallGRPCWithCli) (*emptypb.Empty, error)
+	RequestFriend(context.Context, *EventRequestFriendGRPCWithCli) (*emptypb.Empty, error)
+	RequestGroup(context.Context, *EventRequestGroupGRPCWithCli) (*emptypb.Empty, error)
 }
 
 // UnimplementedOnebotEventGRPCServer can be embedded to have forward compatible implementations.
@@ -628,55 +1854,55 @@ func (*UnimplementedOnebotEventGRPCServer) Description(context.Context, *emptypb
 func (*UnimplementedOnebotEventGRPCServer) Help(context.Context, *emptypb.Empty) (*wrapperspb.StringValue, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Help not implemented")
 }
-func (*UnimplementedOnebotEventGRPCServer) MessagePrivate(context.Context, *EventMessagePrivateGRPCWithCliGRPC) (*emptypb.Empty, error) {
+func (*UnimplementedOnebotEventGRPCServer) MessagePrivate(context.Context, *EventMessagePrivateGRPCWithCli) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MessagePrivate not implemented")
 }
-func (*UnimplementedOnebotEventGRPCServer) MessageGroup(context.Context, *model.EventMessageGroupGRPC) (*emptypb.Empty, error) {
+func (*UnimplementedOnebotEventGRPCServer) MessageGroup(context.Context, *EventMessageGroupGRPCWithCli) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MessageGroup not implemented")
 }
-func (*UnimplementedOnebotEventGRPCServer) MetaLifecycle(context.Context, *model.EventMetaLifecycleGRPC) (*emptypb.Empty, error) {
+func (*UnimplementedOnebotEventGRPCServer) MetaLifecycle(context.Context, *EventMetaLifecycleGRPCWithCli) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MetaLifecycle not implemented")
 }
-func (*UnimplementedOnebotEventGRPCServer) MetaHeartbeat(context.Context, *model.EventMetaHeartbeatGRPC) (*emptypb.Empty, error) {
+func (*UnimplementedOnebotEventGRPCServer) MetaHeartbeat(context.Context, *EventMetaHeartbeatGRPCWithCli) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MetaHeartbeat not implemented")
 }
-func (*UnimplementedOnebotEventGRPCServer) NoticeGroupUpload(context.Context, *model.EventNoticeGroupUploadGRPC) (*emptypb.Empty, error) {
+func (*UnimplementedOnebotEventGRPCServer) NoticeGroupUpload(context.Context, *EventNoticeGroupUploadGRPCWithCli) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method NoticeGroupUpload not implemented")
 }
-func (*UnimplementedOnebotEventGRPCServer) NoticeGroupAdmin(context.Context, *model.EventNoticeGroupAdminGRPC) (*emptypb.Empty, error) {
+func (*UnimplementedOnebotEventGRPCServer) NoticeGroupAdmin(context.Context, *EventNoticeGroupAdminGRPCWithCli) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method NoticeGroupAdmin not implemented")
 }
-func (*UnimplementedOnebotEventGRPCServer) NoticeGroupDecrease(context.Context, *model.EventNoticeGroupDecreaseGRPC) (*emptypb.Empty, error) {
+func (*UnimplementedOnebotEventGRPCServer) NoticeGroupDecrease(context.Context, *EventNoticeGroupDecreaseGRPCWithCli) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method NoticeGroupDecrease not implemented")
 }
-func (*UnimplementedOnebotEventGRPCServer) NoticeGroupIncrease(context.Context, *model.EventNoticeGroupIncreaseGRPC) (*emptypb.Empty, error) {
+func (*UnimplementedOnebotEventGRPCServer) NoticeGroupIncrease(context.Context, *EventNoticeGroupIncreaseGRPCWithCli) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method NoticeGroupIncrease not implemented")
 }
-func (*UnimplementedOnebotEventGRPCServer) NoticeGroupBan(context.Context, *model.EventNoticeGroupBanGRPC) (*emptypb.Empty, error) {
+func (*UnimplementedOnebotEventGRPCServer) NoticeGroupBan(context.Context, *EventNoticeGroupBanGRPCWithCli) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method NoticeGroupBan not implemented")
 }
-func (*UnimplementedOnebotEventGRPCServer) NoticeGroupRecall(context.Context, *model.EventNoticeGroupRecallGRPC) (*emptypb.Empty, error) {
+func (*UnimplementedOnebotEventGRPCServer) NoticeGroupRecall(context.Context, *EventNoticeGroupRecallGRPCWithCli) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method NoticeGroupRecall not implemented")
 }
-func (*UnimplementedOnebotEventGRPCServer) NoticeGroupNotifyPoke(context.Context, *model.EventNoticeGroupNotifyPokeGRPC) (*emptypb.Empty, error) {
+func (*UnimplementedOnebotEventGRPCServer) NoticeGroupNotifyPoke(context.Context, *EventNoticeGroupNotifyPokeGRPCWithCli) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method NoticeGroupNotifyPoke not implemented")
 }
-func (*UnimplementedOnebotEventGRPCServer) NoticeGroupNotifyLuckyKing(context.Context, *model.EventNoticeGroupNotifyLuckyKingGRPC) (*emptypb.Empty, error) {
+func (*UnimplementedOnebotEventGRPCServer) NoticeGroupNotifyLuckyKing(context.Context, *EventNoticeGroupNotifyLuckyKingGRPCWithCli) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method NoticeGroupNotifyLuckyKing not implemented")
 }
-func (*UnimplementedOnebotEventGRPCServer) NoticeGroupNotifyHonor(context.Context, *model.EventNoticeGroupNotifyHonorGRPC) (*emptypb.Empty, error) {
+func (*UnimplementedOnebotEventGRPCServer) NoticeGroupNotifyHonor(context.Context, *EventNoticeGroupNotifyHonorGRPCWithCli) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method NoticeGroupNotifyHonor not implemented")
 }
-func (*UnimplementedOnebotEventGRPCServer) NoticeFriendAdd(context.Context, *model.EventNoticeFriendAddGRPC) (*emptypb.Empty, error) {
+func (*UnimplementedOnebotEventGRPCServer) NoticeFriendAdd(context.Context, *EventNoticeFriendAddGRPCWithCli) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method NoticeFriendAdd not implemented")
 }
-func (*UnimplementedOnebotEventGRPCServer) NoticeFriendRecall(context.Context, *model.EventNoticeFriendRecallGRPC) (*emptypb.Empty, error) {
+func (*UnimplementedOnebotEventGRPCServer) NoticeFriendRecall(context.Context, *EventNoticeFriendRecallGRPCWithCli) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method NoticeFriendRecall not implemented")
 }
-func (*UnimplementedOnebotEventGRPCServer) RequestFriend(context.Context, *model.EventRequestFriendGRPC) (*emptypb.Empty, error) {
+func (*UnimplementedOnebotEventGRPCServer) RequestFriend(context.Context, *EventRequestFriendGRPCWithCli) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RequestFriend not implemented")
 }
-func (*UnimplementedOnebotEventGRPCServer) RequestGroup(context.Context, *model.EventRequestGroupGRPC) (*emptypb.Empty, error) {
+func (*UnimplementedOnebotEventGRPCServer) RequestGroup(context.Context, *EventRequestGroupGRPCWithCli) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RequestGroup not implemented")
 }
 
@@ -757,7 +1983,7 @@ func _OnebotEventGRPC_Help_Handler(srv interface{}, ctx context.Context, dec fun
 }
 
 func _OnebotEventGRPC_MessagePrivate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(EventMessagePrivateGRPCWithCliGRPC)
+	in := new(EventMessagePrivateGRPCWithCli)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -769,13 +1995,13 @@ func _OnebotEventGRPC_MessagePrivate_Handler(srv interface{}, ctx context.Contex
 		FullMethod: "/event.OnebotEventGRPC/MessagePrivate",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OnebotEventGRPCServer).MessagePrivate(ctx, req.(*EventMessagePrivateGRPCWithCliGRPC))
+		return srv.(OnebotEventGRPCServer).MessagePrivate(ctx, req.(*EventMessagePrivateGRPCWithCli))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _OnebotEventGRPC_MessageGroup_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(model.EventMessageGroupGRPC)
+	in := new(EventMessageGroupGRPCWithCli)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -787,13 +2013,13 @@ func _OnebotEventGRPC_MessageGroup_Handler(srv interface{}, ctx context.Context,
 		FullMethod: "/event.OnebotEventGRPC/MessageGroup",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OnebotEventGRPCServer).MessageGroup(ctx, req.(*model.EventMessageGroupGRPC))
+		return srv.(OnebotEventGRPCServer).MessageGroup(ctx, req.(*EventMessageGroupGRPCWithCli))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _OnebotEventGRPC_MetaLifecycle_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(model.EventMetaLifecycleGRPC)
+	in := new(EventMetaLifecycleGRPCWithCli)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -805,13 +2031,13 @@ func _OnebotEventGRPC_MetaLifecycle_Handler(srv interface{}, ctx context.Context
 		FullMethod: "/event.OnebotEventGRPC/MetaLifecycle",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OnebotEventGRPCServer).MetaLifecycle(ctx, req.(*model.EventMetaLifecycleGRPC))
+		return srv.(OnebotEventGRPCServer).MetaLifecycle(ctx, req.(*EventMetaLifecycleGRPCWithCli))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _OnebotEventGRPC_MetaHeartbeat_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(model.EventMetaHeartbeatGRPC)
+	in := new(EventMetaHeartbeatGRPCWithCli)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -823,13 +2049,13 @@ func _OnebotEventGRPC_MetaHeartbeat_Handler(srv interface{}, ctx context.Context
 		FullMethod: "/event.OnebotEventGRPC/MetaHeartbeat",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OnebotEventGRPCServer).MetaHeartbeat(ctx, req.(*model.EventMetaHeartbeatGRPC))
+		return srv.(OnebotEventGRPCServer).MetaHeartbeat(ctx, req.(*EventMetaHeartbeatGRPCWithCli))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _OnebotEventGRPC_NoticeGroupUpload_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(model.EventNoticeGroupUploadGRPC)
+	in := new(EventNoticeGroupUploadGRPCWithCli)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -841,13 +2067,13 @@ func _OnebotEventGRPC_NoticeGroupUpload_Handler(srv interface{}, ctx context.Con
 		FullMethod: "/event.OnebotEventGRPC/NoticeGroupUpload",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OnebotEventGRPCServer).NoticeGroupUpload(ctx, req.(*model.EventNoticeGroupUploadGRPC))
+		return srv.(OnebotEventGRPCServer).NoticeGroupUpload(ctx, req.(*EventNoticeGroupUploadGRPCWithCli))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _OnebotEventGRPC_NoticeGroupAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(model.EventNoticeGroupAdminGRPC)
+	in := new(EventNoticeGroupAdminGRPCWithCli)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -859,13 +2085,13 @@ func _OnebotEventGRPC_NoticeGroupAdmin_Handler(srv interface{}, ctx context.Cont
 		FullMethod: "/event.OnebotEventGRPC/NoticeGroupAdmin",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OnebotEventGRPCServer).NoticeGroupAdmin(ctx, req.(*model.EventNoticeGroupAdminGRPC))
+		return srv.(OnebotEventGRPCServer).NoticeGroupAdmin(ctx, req.(*EventNoticeGroupAdminGRPCWithCli))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _OnebotEventGRPC_NoticeGroupDecrease_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(model.EventNoticeGroupDecreaseGRPC)
+	in := new(EventNoticeGroupDecreaseGRPCWithCli)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -877,13 +2103,13 @@ func _OnebotEventGRPC_NoticeGroupDecrease_Handler(srv interface{}, ctx context.C
 		FullMethod: "/event.OnebotEventGRPC/NoticeGroupDecrease",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OnebotEventGRPCServer).NoticeGroupDecrease(ctx, req.(*model.EventNoticeGroupDecreaseGRPC))
+		return srv.(OnebotEventGRPCServer).NoticeGroupDecrease(ctx, req.(*EventNoticeGroupDecreaseGRPCWithCli))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _OnebotEventGRPC_NoticeGroupIncrease_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(model.EventNoticeGroupIncreaseGRPC)
+	in := new(EventNoticeGroupIncreaseGRPCWithCli)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -895,13 +2121,13 @@ func _OnebotEventGRPC_NoticeGroupIncrease_Handler(srv interface{}, ctx context.C
 		FullMethod: "/event.OnebotEventGRPC/NoticeGroupIncrease",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OnebotEventGRPCServer).NoticeGroupIncrease(ctx, req.(*model.EventNoticeGroupIncreaseGRPC))
+		return srv.(OnebotEventGRPCServer).NoticeGroupIncrease(ctx, req.(*EventNoticeGroupIncreaseGRPCWithCli))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _OnebotEventGRPC_NoticeGroupBan_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(model.EventNoticeGroupBanGRPC)
+	in := new(EventNoticeGroupBanGRPCWithCli)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -913,13 +2139,13 @@ func _OnebotEventGRPC_NoticeGroupBan_Handler(srv interface{}, ctx context.Contex
 		FullMethod: "/event.OnebotEventGRPC/NoticeGroupBan",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OnebotEventGRPCServer).NoticeGroupBan(ctx, req.(*model.EventNoticeGroupBanGRPC))
+		return srv.(OnebotEventGRPCServer).NoticeGroupBan(ctx, req.(*EventNoticeGroupBanGRPCWithCli))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _OnebotEventGRPC_NoticeGroupRecall_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(model.EventNoticeGroupRecallGRPC)
+	in := new(EventNoticeGroupRecallGRPCWithCli)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -931,13 +2157,13 @@ func _OnebotEventGRPC_NoticeGroupRecall_Handler(srv interface{}, ctx context.Con
 		FullMethod: "/event.OnebotEventGRPC/NoticeGroupRecall",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OnebotEventGRPCServer).NoticeGroupRecall(ctx, req.(*model.EventNoticeGroupRecallGRPC))
+		return srv.(OnebotEventGRPCServer).NoticeGroupRecall(ctx, req.(*EventNoticeGroupRecallGRPCWithCli))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _OnebotEventGRPC_NoticeGroupNotifyPoke_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(model.EventNoticeGroupNotifyPokeGRPC)
+	in := new(EventNoticeGroupNotifyPokeGRPCWithCli)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -949,13 +2175,13 @@ func _OnebotEventGRPC_NoticeGroupNotifyPoke_Handler(srv interface{}, ctx context
 		FullMethod: "/event.OnebotEventGRPC/NoticeGroupNotifyPoke",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OnebotEventGRPCServer).NoticeGroupNotifyPoke(ctx, req.(*model.EventNoticeGroupNotifyPokeGRPC))
+		return srv.(OnebotEventGRPCServer).NoticeGroupNotifyPoke(ctx, req.(*EventNoticeGroupNotifyPokeGRPCWithCli))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _OnebotEventGRPC_NoticeGroupNotifyLuckyKing_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(model.EventNoticeGroupNotifyLuckyKingGRPC)
+	in := new(EventNoticeGroupNotifyLuckyKingGRPCWithCli)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -967,13 +2193,13 @@ func _OnebotEventGRPC_NoticeGroupNotifyLuckyKing_Handler(srv interface{}, ctx co
 		FullMethod: "/event.OnebotEventGRPC/NoticeGroupNotifyLuckyKing",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OnebotEventGRPCServer).NoticeGroupNotifyLuckyKing(ctx, req.(*model.EventNoticeGroupNotifyLuckyKingGRPC))
+		return srv.(OnebotEventGRPCServer).NoticeGroupNotifyLuckyKing(ctx, req.(*EventNoticeGroupNotifyLuckyKingGRPCWithCli))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _OnebotEventGRPC_NoticeGroupNotifyHonor_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(model.EventNoticeGroupNotifyHonorGRPC)
+	in := new(EventNoticeGroupNotifyHonorGRPCWithCli)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -985,13 +2211,13 @@ func _OnebotEventGRPC_NoticeGroupNotifyHonor_Handler(srv interface{}, ctx contex
 		FullMethod: "/event.OnebotEventGRPC/NoticeGroupNotifyHonor",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OnebotEventGRPCServer).NoticeGroupNotifyHonor(ctx, req.(*model.EventNoticeGroupNotifyHonorGRPC))
+		return srv.(OnebotEventGRPCServer).NoticeGroupNotifyHonor(ctx, req.(*EventNoticeGroupNotifyHonorGRPCWithCli))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _OnebotEventGRPC_NoticeFriendAdd_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(model.EventNoticeFriendAddGRPC)
+	in := new(EventNoticeFriendAddGRPCWithCli)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1003,13 +2229,13 @@ func _OnebotEventGRPC_NoticeFriendAdd_Handler(srv interface{}, ctx context.Conte
 		FullMethod: "/event.OnebotEventGRPC/NoticeFriendAdd",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OnebotEventGRPCServer).NoticeFriendAdd(ctx, req.(*model.EventNoticeFriendAddGRPC))
+		return srv.(OnebotEventGRPCServer).NoticeFriendAdd(ctx, req.(*EventNoticeFriendAddGRPCWithCli))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _OnebotEventGRPC_NoticeFriendRecall_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(model.EventNoticeFriendRecallGRPC)
+	in := new(EventNoticeFriendRecallGRPCWithCli)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1021,13 +2247,13 @@ func _OnebotEventGRPC_NoticeFriendRecall_Handler(srv interface{}, ctx context.Co
 		FullMethod: "/event.OnebotEventGRPC/NoticeFriendRecall",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OnebotEventGRPCServer).NoticeFriendRecall(ctx, req.(*model.EventNoticeFriendRecallGRPC))
+		return srv.(OnebotEventGRPCServer).NoticeFriendRecall(ctx, req.(*EventNoticeFriendRecallGRPCWithCli))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _OnebotEventGRPC_RequestFriend_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(model.EventRequestFriendGRPC)
+	in := new(EventRequestFriendGRPCWithCli)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1039,13 +2265,13 @@ func _OnebotEventGRPC_RequestFriend_Handler(srv interface{}, ctx context.Context
 		FullMethod: "/event.OnebotEventGRPC/RequestFriend",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OnebotEventGRPCServer).RequestFriend(ctx, req.(*model.EventRequestFriendGRPC))
+		return srv.(OnebotEventGRPCServer).RequestFriend(ctx, req.(*EventRequestFriendGRPCWithCli))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _OnebotEventGRPC_RequestGroup_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(model.EventRequestGroupGRPC)
+	in := new(EventRequestGroupGRPCWithCli)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1057,7 +2283,7 @@ func _OnebotEventGRPC_RequestGroup_Handler(srv interface{}, ctx context.Context,
 		FullMethod: "/event.OnebotEventGRPC/RequestGroup",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OnebotEventGRPCServer).RequestGroup(ctx, req.(*model.EventRequestGroupGRPC))
+		return srv.(OnebotEventGRPCServer).RequestGroup(ctx, req.(*EventRequestGroupGRPCWithCli))
 	}
 	return interceptor(ctx, in, info, handler)
 }

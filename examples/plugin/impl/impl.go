@@ -12,13 +12,18 @@ func main() {
 		//设置插件内容
 		Id("test").Name("测试插件").Description("这是测试插件").
 		//回调事件
-		MessageGroup(func(req *model.EventMessageGroup) error {
-			logrus.Infof("收到消息,UserId:[%v]", req.Sender.UserId)
+		MessageGroup(func(req *model.EventMessageGroup, cli cli.OnebotCli) error {
+			logrus.Infof("收到群组消息,UserId:[%v]", req.Sender.UserId)
 			return nil
 		}).
 		MessagePrivate(func(req *model.EventMessagePrivate, cli cli.OnebotCli) error {
-			println(cli.GetMsg(123))
+			logrus.Infof("收到私聊消息,UserId:[%v]", req.Sender.UserId)
 			return nil
+		}).
+		MetaHeartbeat(func(req *model.EventMetaHeartbeat, cli cli.OnebotCli) error {
+			logrus.Infof("收到EventMetaHeartbeat,SelfId:[%v]", req.SelfId)
+			return nil
+
 		}).
 		//构建插件
 		Build().
