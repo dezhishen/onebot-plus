@@ -32,12 +32,12 @@
       "env": {}
     },
     {
-      "name": "example.event.message.private",
+      "name": "example.plugin",
       "type": "go",
       "request": "launch",
       "mode": "debug",
-      "program": "${workspaceFolder}/example/event/message/private/main.go",
-      "cwd": "${workspaceFolder}/example/event/message/private",
+      "program": "${workspaceFolder}/example/plugin/main.go",
+      "cwd": "${workspaceFolder}/example/plugin",
       "env": {}
     }
   ]

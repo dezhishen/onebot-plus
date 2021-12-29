@@ -1,0 +1,54 @@
+syntax = "proto3";
+package event;
+import "onebot-sdk/pkg/proto/event_message.proto";
+import "onebot-sdk/pkg/proto/event_meta.proto";
+import "onebot-sdk/pkg/proto/event_notice.proto";
+import "onebot-sdk/pkg/proto/event_request.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
+option go_package="../plugin";
+
+service OnebotEventGRPC {
+    //插件Id
+    rpc Id(google.protobuf.Empty)returns(google.protobuf.StringValue);
+    //插件名称
+    rpc Name(google.protobuf.Empty)returns(google.protobuf.StringValue);
+    //插件描述
+    rpc Description(google.protobuf.Empty)returns(google.protobuf.StringValue);
+    //插件帮助
+    rpc Help(google.protobuf.Empty)returns(google.protobuf.StringValue);
+    //私聊消息
+	rpc MessagePrivate(model.EventMessagePrivateGRPC)returns(google.protobuf.Empty);
+	//群组消息
+    rpc MessageGroup(model.EventMessageGroupGRPC)returns(google.protobuf.Empty);
+    //
+    rpc MetaLifecycle(model.EventMetaLifecycleGRPC)returns(google.protobuf.Empty);
+    //
+    rpc MetaHeartbeat(model.EventMetaHeartbeatGRPC)returns(google.protobuf.Empty);
+
+    rpc NoticeGroupUpload(model.EventNoticeGroupUploadGRPC) returns(google.protobuf.Empty);
+
+    rpc NoticeGroupAdmin(model.EventNoticeGroupAdminGRPC) returns(google.protobuf.Empty);
+
+    rpc NoticeGroupDecrease(model.EventNoticeGroupDecreaseGRPC) returns(google.protobuf.Empty);
+
+    rpc NoticeGroupIncrease(model.EventNoticeGroupIncreaseGRPC) returns(google.protobuf.Empty);
+
+    rpc NoticeGroupBan(model.EventNoticeGroupBanGRPC) returns(google.protobuf.Empty);
+
+    rpc NoticeGroupRecall(model.EventNoticeGroupRecallGRPC) returns(google.protobuf.Empty);
+
+    rpc NoticeGroupNotifyPoke(model.EventNoticeGroupNotifyPokeGRPC) returns(google.protobuf.Empty);
+
+    rpc NoticeGroupNotifyLuckyKing(model.EventNoticeGroupNotifyLuckyKingGRPC) returns(google.protobuf.Empty);
+
+    rpc NoticeGroupNotifyHonor(model.EventNoticeGroupNotifyHonorGRPC) returns(google.protobuf.Empty);
+
+    rpc NoticeFriendAdd(model.EventNoticeFriendAddGRPC) returns(google.protobuf.Empty);
+
+    rpc NoticeFriendRecall(model.EventNoticeFriendRecallGRPC) returns(google.protobuf.Empty);
+
+    rpc RequestFriend(model.EventRequestFriendGRPC) returns(google.protobuf.Empty);
+    
+    rpc RequestGroup(model.EventRequestGroupGRPC) returns(google.protobuf.Empty);
+}

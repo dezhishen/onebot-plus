@@ -1,10 +1,8 @@
 package api
 
 import (
-	onebotPlugin "github.com/dezhishen/onebot-plus/pkg/plugin"
 	sdk_api "github.com/dezhishen/onebot-sdk/pkg/api"
 	"github.com/dezhishen/onebot-sdk/pkg/model"
-	"github.com/hashicorp/go-plugin"
 )
 
 type MessageCliRealImpl struct {
@@ -42,17 +40,4 @@ func (d MessageCliRealImpl) GetMsg(id int64) (*model.MessageData, error) {
 //获取转发的消息
 func (d MessageCliRealImpl) GetForwardMsg(id int64) (*model.ForwardMessageData, error) {
 	return sdk_api.GetForwardMsg(id)
-}
-
-func StartMessageAPI() {
-	cli := &MessageCliRealImpl{}
-	// pluginMap is the map of plugins we can dispense.
-	var pluginMap = map[string]plugin.Plugin{
-		"main": &MessageCliGRPCPlugin{Impl: cli},
-	}
-	plugin.Serve(&plugin.ServeConfig{
-		HandshakeConfig: onebotPlugin.HandshakeConfig,
-		Plugins:         pluginMap,
-		GRPCServer:      plugin.DefaultGRPCServer,
-	})
 }
