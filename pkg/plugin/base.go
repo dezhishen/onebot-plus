@@ -25,7 +25,7 @@ type OnebotEventPlugin interface {
 	//插件帮助
 	Help() string
 	//私聊消息
-	MessagePrivate(*model.EventMessagePrivate, cli.MessageCli) error
+	MessagePrivate(*model.EventMessagePrivate, cli.OnebotCli) error
 	//群组消息
 	MessageGroup(*model.EventMessageGroup) error
 	//生命周期
@@ -113,7 +113,7 @@ func (p *onebotEventPluginGRPCServerStub) MessagePrivate(ctx context.Context, re
 	}
 	defer conn.Close()
 	client := &cli.MessageCliClientStub{
-		Client: cli.NewMessageGrpcCliClient(conn),
+		Client: cli.NewOnebotGrpcCliClient(conn),
 	}
 	logrus.Infof("创建客户端....%v", client)
 	e := p.Impl.MessagePrivate(req.Message.ToStruct(), client)
@@ -271,15 +271,15 @@ func (m *onebotEventPluginGRPCClientStub) Help() string {
 }
 
 //私聊消息
-func (m *onebotEventPluginGRPCClientStub) MessagePrivate(req *model.EventMessagePrivate, msgCli cli.MessageCli) error {
+func (m *onebotEventPluginGRPCClientStub) MessagePrivate(req *model.EventMessagePrivate, msgCli cli.OnebotCli) error {
 	// 转发
-	messageCliServer := &cli.MessageCliServerStub{
+	messageCliServer := &cli.OnebotCliServerStub{
 		Impl: msgCli,
 	} //{Impl: cli}
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
 		s = grpc.NewServer(opts...)
-		cli.RegisterMessageGrpcCliServer(s, messageCliServer)
+		cli.RegisterOnebotGrpcCliServer(s, messageCliServer)
 		return s
 	}
 	brokerID := m.broker.NextId()

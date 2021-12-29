@@ -43,7 +43,7 @@ func (builder *onebotEventPluginBuilder) Help(help string) *onebotEventPluginBui
 }
 
 //私聊消息
-func (builder *onebotEventPluginBuilder) MessagePrivate(callback func(req *model.EventMessagePrivate, cli cli.MessageCli) error) *onebotEventPluginBuilder {
+func (builder *onebotEventPluginBuilder) MessagePrivate(callback func(req *model.EventMessagePrivate, cli cli.OnebotCli) error) *onebotEventPluginBuilder {
 	builder.impl.messagePrivateCallback = callback
 	return builder
 }

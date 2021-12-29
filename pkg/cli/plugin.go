@@ -12,7 +12,7 @@ import (
 	"github.com/dezhishen/onebot-sdk/pkg/model"
 )
 
-type MessageCli interface {
+type OnebotCli interface {
 	//发送消息
 	SendMsg(msg *model.MsgForSend) (int64, error)
 	//发送私聊消息
@@ -27,66 +27,66 @@ type MessageCli interface {
 	GetForwardMsg(id int64) (*model.ForwardMessageData, error)
 }
 
-type MessageCliGRPCPlugin struct {
+type OnebotCliGRPCPlugin struct {
 	// 需要嵌入插件接口
 	plugin.Plugin
 	// 具体实现，仅当业务接口实现基于Go时该字段有用
-	Impl MessageCli
+	Impl OnebotCli
 }
 
 //插件实现GRPC的接口
-func (p *MessageCliGRPCPlugin) GRPCServer(broker *plugin.GRPCBroker, s *grpc.Server) error {
-	RegisterMessageGrpcCliServer(s, &MessageCliServerStub{Impl: p.Impl})
+func (p *OnebotCliGRPCPlugin) GRPCServer(broker *plugin.GRPCBroker, s *grpc.Server) error {
+	RegisterOnebotGrpcCliServer(s, &OnebotCliServerStub{Impl: p.Impl})
 	return nil
 }
 
-type MessageCliServerStub struct {
+type OnebotCliServerStub struct {
 	// This is the real implementation
-	Impl MessageCli
+	Impl OnebotCli
 }
 
 //删除消息
-func (m *MessageCliServerStub) DelMsg(ctx context.Context, in *wrapperspb.Int64Value) (*emptypb.Empty, error) {
+func (m *OnebotCliServerStub) DelMsg(ctx context.Context, in *wrapperspb.Int64Value) (*emptypb.Empty, error) {
 	e := m.Impl.DelMsg(in.Value)
 	return &emptypb.Empty{}, e
 }
 
 //发送消息
-func (m *MessageCliServerStub) SendMsg(ctx context.Context, in *model.MsgForSendGRPC) (*wrapperspb.Int64Value, error) {
+func (m *OnebotCliServerStub) SendMsg(ctx context.Context, in *model.MsgForSendGRPC) (*wrapperspb.Int64Value, error) {
 	v, e := m.Impl.SendMsg(in.ToStruct())
 	return &wrapperspb.Int64Value{Value: v}, e
 }
 
 //发送私聊消息
-func (m *MessageCliServerStub) SendPrivateMsg(ctx context.Context, in *model.PrivateMsgGRPC) (*wrapperspb.Int64Value, error) {
+func (m *OnebotCliServerStub) SendPrivateMsg(ctx context.Context, in *model.PrivateMsgGRPC) (*wrapperspb.Int64Value, error) {
 	v, e := m.Impl.SendPrivateMsg(in.ToStruct())
 	return &wrapperspb.Int64Value{Value: v}, e
 }
 
 // 发送群消息
-func (m *MessageCliServerStub) SendGroupMsg(ctx context.Context, in *model.GroupMsgGRPC) (*wrapperspb.Int64Value, error) {
+func (m *OnebotCliServerStub) SendGroupMsg(ctx context.Context, in *model.GroupMsgGRPC) (*wrapperspb.Int64Value, error) {
 	v, e := m.Impl.SendGroupMsg(in.ToStruct())
 	return &wrapperspb.Int64Value{Value: v}, e
 }
 
 //获取消息
-func (m *MessageCliServerStub) GetMsg(ctx context.Context, in *wrapperspb.Int64Value) (*model.MessageDataGRPC, error) {
+func (m *OnebotCliServerStub) GetMsg(ctx context.Context, in *wrapperspb.Int64Value) (*model.MessageDataGRPC, error) {
 	v, e := m.Impl.GetMsg(in.Value)
 	return v.ToGRPC(), e
 }
 
 //获取转发的消息
-func (m *MessageCliServerStub) GetForwardMsg(ctx context.Context, in *wrapperspb.Int64Value) (*model.ForwardMessageDataGRPC, error) {
+func (m *OnebotCliServerStub) GetForwardMsg(ctx context.Context, in *wrapperspb.Int64Value) (*model.ForwardMessageDataGRPC, error) {
 	v, e := m.Impl.GetForwardMsg(in.Value)
 	return v.ToGRPC(), e
 }
 
 // 业务接口的实现，通过gRPC客户端转发请求给插件进程
 type MessageCliClientStub struct {
-	Client MessageGrpcCliClient
+	Client OnebotGrpcCliClient
 }
 
-func NewMessageCliClientStub(cli MessageGrpcCliClient) *MessageCliClientStub {
+func NewMessageCliClientStub(cli OnebotGrpcCliClient) *MessageCliClientStub {
 	return &MessageCliClientStub{
 		Client: cli,
 	}
@@ -151,10 +151,10 @@ func (m *MessageCliClientStub) GetForwardMsg(id int64) (*model.ForwardMessageDat
 }
 
 //插件实现GRPC的接口
-func (p *MessageCliGRPCPlugin) GRPCClient(
+func (p *OnebotCliGRPCPlugin) GRPCClient(
 	ctx context.Context,
 	broker *plugin.GRPCBroker,
 	c *grpc.ClientConn,
 ) (interface{}, error) {
-	return &MessageCliClientStub{Client: NewMessageGrpcCliClient(c)}, nil
+	return &MessageCliClientStub{Client: NewOnebotGrpcCliClient(c)}, nil
 }

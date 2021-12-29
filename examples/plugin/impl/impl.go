@@ -16,7 +16,7 @@ func main() {
 			logrus.Infof("收到消息,UserId:[%v]", req.Sender.UserId)
 			return nil
 		}).
-		MessagePrivate(func(req *model.EventMessagePrivate, cli cli.MessageCli) error {
+		MessagePrivate(func(req *model.EventMessagePrivate, cli cli.OnebotCli) error {
 			println(cli.GetMsg(123))
 			return nil
 		}).

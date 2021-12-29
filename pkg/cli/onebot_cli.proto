@@ -5,7 +5,7 @@ import "google/protobuf/wrappers.proto";
 import "google/protobuf/empty.proto";
 option go_package="../cli";
 
-service message_grpc_cli {
+service onebot_grpc_cli {
     //发送消息
 	rpc SendMsg(model.MsgForSendGRPC)returns(google.protobuf.Int64Value);
 	//发送私聊消息
