@@ -1,6 +1,7 @@
 package plugin
 
 import (
+	"github.com/dezhishen/onebot-plus/pkg/cli"
 	"github.com/dezhishen/onebot-sdk/pkg/model"
 	"github.com/hashicorp/go-plugin"
 	"github.com/sirupsen/logrus"
@@ -17,7 +18,7 @@ type onebotEventPluginRealImpl struct {
 	//插件帮助
 	helpCallback func() string
 	//私聊消息
-	messagePrivateCallback func(*model.EventMessagePrivate) error
+	messagePrivateCallback func(*model.EventMessagePrivate, cli.MessageCli) error
 	//群组消息
 	messageGroupCallback func(*model.EventMessageGroup) error
 	//生命周期
@@ -63,7 +64,7 @@ func newDefaultOnebotEventPluginRealImpl() *onebotEventPluginRealImpl {
 		//插件帮助
 		helpCallback: returnEmptyString,
 		//私聊消息
-		messagePrivateCallback: func(*model.EventMessagePrivate) error { return nil },
+		messagePrivateCallback: func(*model.EventMessagePrivate, cli.MessageCli) error { return nil },
 		//群组消息
 		messageGroupCallback: func(*model.EventMessageGroup) error { return nil },
 		//生命周期
@@ -120,8 +121,8 @@ func (m *onebotEventPluginRealImpl) Help() string {
 }
 
 //私聊消息
-func (m *onebotEventPluginRealImpl) MessagePrivate(req *model.EventMessagePrivate) error {
-	return m.messagePrivateCallback(req)
+func (m *onebotEventPluginRealImpl) MessagePrivate(req *model.EventMessagePrivate, cli cli.MessageCli) error {
+	return m.messagePrivateCallback(req, cli)
 }
 
 //群组消息
@@ -206,7 +207,7 @@ func (m *onebotEventPluginRealImpl) RequestGroup(req *model.EventRequestGroup) e
 
 //启动插件
 func (p *onebotEventPluginRealImpl) Start() {
-	logrus.Print("start...")
+	logrus.Info("start...")
 	var pluginMap = map[string]plugin.Plugin{
 		"main": &onebotEventPluginGRPC{Impl: p},
 	}
@@ -215,5 +216,5 @@ func (p *onebotEventPluginRealImpl) Start() {
 		Plugins:         pluginMap,
 		GRPCServer:      plugin.DefaultGRPCServer,
 	})
-	logrus.Print("exit...")
+	logrus.Info("exit...")
 }

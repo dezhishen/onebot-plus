@@ -1,9 +1,9 @@
 syntax = "proto3";
-package api;
+package cli;
 import "onebot-sdk/pkg/proto/message.proto";
 import "google/protobuf/wrappers.proto";
 import "google/protobuf/empty.proto";
-option go_package="../api";
+option go_package="../cli";
 
 service message_grpc_cli {
     //发送消息

@@ -2,9 +2,9 @@
 // versions:
 // 	protoc-gen-go v1.26.0
 // 	protoc        v3.19.1
-// source: onebot-plus/pkg/api/message_cli.proto
+// source: onebot-plus/pkg/cli/message_cli.proto
 
-package api
+package cli
 
 import (
 	model "github.com/dezhishen/onebot-sdk/pkg/model"
@@ -26,12 +26,12 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-var File_onebot_plus_pkg_api_message_cli_proto protoreflect.FileDescriptor
+var File_onebot_plus_pkg_cli_message_cli_proto protoreflect.FileDescriptor
 
-var file_onebot_plus_pkg_api_message_cli_proto_rawDesc = []byte{
+var file_onebot_plus_pkg_cli_message_cli_proto_rawDesc = []byte{
 	0x0a, 0x25, 0x6f, 0x6e, 0x65, 0x62, 0x6f, 0x74, 0x2d, 0x70, 0x6c, 0x75, 0x73, 0x2f, 0x70, 0x6b,
-	0x67, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x5f, 0x63, 0x6c,
-	0x69, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x03, 0x61, 0x70, 0x69, 0x1a, 0x22, 0x6f, 0x6e,
+	0x67, 0x2f, 0x63, 0x6c, 0x69, 0x2f, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x5f, 0x63, 0x6c,
+	0x69, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x03, 0x63, 0x6c, 0x69, 0x1a, 0x22, 0x6f, 0x6e,
 	0x65, 0x62, 0x6f, 0x74, 0x2d, 0x73, 0x64, 0x6b, 0x2f, 0x70, 0x6b, 0x67, 0x2f, 0x70, 0x72, 0x6f,
 	0x74, 0x6f, 0x2f, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f,
 	0x1a, 0x1e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75,
@@ -64,11 +64,11 @@ var file_onebot_plus_pkg_api_message_cli_proto_rawDesc = []byte{
 	0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x49, 0x6e, 0x74, 0x36, 0x34,
 	0x56, 0x61, 0x6c, 0x75, 0x65, 0x1a, 0x1d, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x46, 0x6f,
 	0x72, 0x77, 0x61, 0x72, 0x64, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x44, 0x61, 0x74, 0x61,
-	0x47, 0x52, 0x50, 0x43, 0x42, 0x08, 0x5a, 0x06, 0x2e, 0x2e, 0x2f, 0x61, 0x70, 0x69, 0x62, 0x06,
+	0x47, 0x52, 0x50, 0x43, 0x42, 0x08, 0x5a, 0x06, 0x2e, 0x2e, 0x2f, 0x63, 0x6c, 0x69, 0x62, 0x06,
 	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
-var file_onebot_plus_pkg_api_message_cli_proto_goTypes = []interface{}{
+var file_onebot_plus_pkg_cli_message_cli_proto_goTypes = []interface{}{
 	(*model.MsgForSendGRPC)(nil),         // 0: model.MsgForSendGRPC
 	(*model.PrivateMsgGRPC)(nil),         // 1: model.PrivateMsgGRPC
 	(*model.GroupMsgGRPC)(nil),           // 2: model.GroupMsgGRPC
@@ -77,19 +77,19 @@ var file_onebot_plus_pkg_api_message_cli_proto_goTypes = []interface{}{
 	(*model.MessageDataGRPC)(nil),        // 5: model.MessageDataGRPC
 	(*model.ForwardMessageDataGRPC)(nil), // 6: model.ForwardMessageDataGRPC
 }
-var file_onebot_plus_pkg_api_message_cli_proto_depIdxs = []int32{
-	0, // 0: api.message_grpc_cli.SendMsg:input_type -> model.MsgForSendGRPC
-	1, // 1: api.message_grpc_cli.SendPrivateMsg:input_type -> model.PrivateMsgGRPC
-	2, // 2: api.message_grpc_cli.SendGroupMsg:input_type -> model.GroupMsgGRPC
-	3, // 3: api.message_grpc_cli.DelMsg:input_type -> google.protobuf.Int64Value
-	3, // 4: api.message_grpc_cli.GetMsg:input_type -> google.protobuf.Int64Value
-	3, // 5: api.message_grpc_cli.GetForwardMsg:input_type -> google.protobuf.Int64Value
-	3, // 6: api.message_grpc_cli.SendMsg:output_type -> google.protobuf.Int64Value
-	3, // 7: api.message_grpc_cli.SendPrivateMsg:output_type -> google.protobuf.Int64Value
-	3, // 8: api.message_grpc_cli.SendGroupMsg:output_type -> google.protobuf.Int64Value
-	4, // 9: api.message_grpc_cli.DelMsg:output_type -> google.protobuf.Empty
-	5, // 10: api.message_grpc_cli.GetMsg:output_type -> model.MessageDataGRPC
-	6, // 11: api.message_grpc_cli.GetForwardMsg:output_type -> model.ForwardMessageDataGRPC
+var file_onebot_plus_pkg_cli_message_cli_proto_depIdxs = []int32{
+	0, // 0: cli.message_grpc_cli.SendMsg:input_type -> model.MsgForSendGRPC
+	1, // 1: cli.message_grpc_cli.SendPrivateMsg:input_type -> model.PrivateMsgGRPC
+	2, // 2: cli.message_grpc_cli.SendGroupMsg:input_type -> model.GroupMsgGRPC
+	3, // 3: cli.message_grpc_cli.DelMsg:input_type -> google.protobuf.Int64Value
+	3, // 4: cli.message_grpc_cli.GetMsg:input_type -> google.protobuf.Int64Value
+	3, // 5: cli.message_grpc_cli.GetForwardMsg:input_type -> google.protobuf.Int64Value
+	3, // 6: cli.message_grpc_cli.SendMsg:output_type -> google.protobuf.Int64Value
+	3, // 7: cli.message_grpc_cli.SendPrivateMsg:output_type -> google.protobuf.Int64Value
+	3, // 8: cli.message_grpc_cli.SendGroupMsg:output_type -> google.protobuf.Int64Value
+	4, // 9: cli.message_grpc_cli.DelMsg:output_type -> google.protobuf.Empty
+	5, // 10: cli.message_grpc_cli.GetMsg:output_type -> model.MessageDataGRPC
+	6, // 11: cli.message_grpc_cli.GetForwardMsg:output_type -> model.ForwardMessageDataGRPC
 	6, // [6:12] is the sub-list for method output_type
 	0, // [0:6] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
@@ -97,28 +97,28 @@ var file_onebot_plus_pkg_api_message_cli_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for field type_name
 }
 
-func init() { file_onebot_plus_pkg_api_message_cli_proto_init() }
-func file_onebot_plus_pkg_api_message_cli_proto_init() {
-	if File_onebot_plus_pkg_api_message_cli_proto != nil {
+func init() { file_onebot_plus_pkg_cli_message_cli_proto_init() }
+func file_onebot_plus_pkg_cli_message_cli_proto_init() {
+	if File_onebot_plus_pkg_cli_message_cli_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: file_onebot_plus_pkg_api_message_cli_proto_rawDesc,
+			RawDescriptor: file_onebot_plus_pkg_cli_message_cli_proto_rawDesc,
 			NumEnums:      0,
 			NumMessages:   0,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_onebot_plus_pkg_api_message_cli_proto_goTypes,
-		DependencyIndexes: file_onebot_plus_pkg_api_message_cli_proto_depIdxs,
+		GoTypes:           file_onebot_plus_pkg_cli_message_cli_proto_goTypes,
+		DependencyIndexes: file_onebot_plus_pkg_cli_message_cli_proto_depIdxs,
 	}.Build()
-	File_onebot_plus_pkg_api_message_cli_proto = out.File
-	file_onebot_plus_pkg_api_message_cli_proto_rawDesc = nil
-	file_onebot_plus_pkg_api_message_cli_proto_goTypes = nil
-	file_onebot_plus_pkg_api_message_cli_proto_depIdxs = nil
+	File_onebot_plus_pkg_cli_message_cli_proto = out.File
+	file_onebot_plus_pkg_cli_message_cli_proto_rawDesc = nil
+	file_onebot_plus_pkg_cli_message_cli_proto_goTypes = nil
+	file_onebot_plus_pkg_cli_message_cli_proto_depIdxs = nil
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -157,7 +157,7 @@ func NewMessageGrpcCliClient(cc grpc.ClientConnInterface) MessageGrpcCliClient {
 
 func (c *messageGrpcCliClient) SendMsg(ctx context.Context, in *model.MsgForSendGRPC, opts ...grpc.CallOption) (*wrapperspb.Int64Value, error) {
 	out := new(wrapperspb.Int64Value)
-	err := c.cc.Invoke(ctx, "/api.message_grpc_cli/SendMsg", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/cli.message_grpc_cli/SendMsg", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -166,7 +166,7 @@ func (c *messageGrpcCliClient) SendMsg(ctx context.Context, in *model.MsgForSend
 
 func (c *messageGrpcCliClient) SendPrivateMsg(ctx context.Context, in *model.PrivateMsgGRPC, opts ...grpc.CallOption) (*wrapperspb.Int64Value, error) {
 	out := new(wrapperspb.Int64Value)
-	err := c.cc.Invoke(ctx, "/api.message_grpc_cli/SendPrivateMsg", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/cli.message_grpc_cli/SendPrivateMsg", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -175,7 +175,7 @@ func (c *messageGrpcCliClient) SendPrivateMsg(ctx context.Context, in *model.Pri
 
 func (c *messageGrpcCliClient) SendGroupMsg(ctx context.Context, in *model.GroupMsgGRPC, opts ...grpc.CallOption) (*wrapperspb.Int64Value, error) {
 	out := new(wrapperspb.Int64Value)
-	err := c.cc.Invoke(ctx, "/api.message_grpc_cli/SendGroupMsg", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/cli.message_grpc_cli/SendGroupMsg", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -184,7 +184,7 @@ func (c *messageGrpcCliClient) SendGroupMsg(ctx context.Context, in *model.Group
 
 func (c *messageGrpcCliClient) DelMsg(ctx context.Context, in *wrapperspb.Int64Value, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, "/api.message_grpc_cli/DelMsg", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/cli.message_grpc_cli/DelMsg", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -193,7 +193,7 @@ func (c *messageGrpcCliClient) DelMsg(ctx context.Context, in *wrapperspb.Int64V
 
 func (c *messageGrpcCliClient) GetMsg(ctx context.Context, in *wrapperspb.Int64Value, opts ...grpc.CallOption) (*model.MessageDataGRPC, error) {
 	out := new(model.MessageDataGRPC)
-	err := c.cc.Invoke(ctx, "/api.message_grpc_cli/GetMsg", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/cli.message_grpc_cli/GetMsg", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -202,7 +202,7 @@ func (c *messageGrpcCliClient) GetMsg(ctx context.Context, in *wrapperspb.Int64V
 
 func (c *messageGrpcCliClient) GetForwardMsg(ctx context.Context, in *wrapperspb.Int64Value, opts ...grpc.CallOption) (*model.ForwardMessageDataGRPC, error) {
 	out := new(model.ForwardMessageDataGRPC)
-	err := c.cc.Invoke(ctx, "/api.message_grpc_cli/GetForwardMsg", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/cli.message_grpc_cli/GetForwardMsg", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -262,7 +262,7 @@ func _MessageGrpcCli_SendMsg_Handler(srv interface{}, ctx context.Context, dec f
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/api.message_grpc_cli/SendMsg",
+		FullMethod: "/cli.message_grpc_cli/SendMsg",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(MessageGrpcCliServer).SendMsg(ctx, req.(*model.MsgForSendGRPC))
@@ -280,7 +280,7 @@ func _MessageGrpcCli_SendPrivateMsg_Handler(srv interface{}, ctx context.Context
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/api.message_grpc_cli/SendPrivateMsg",
+		FullMethod: "/cli.message_grpc_cli/SendPrivateMsg",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(MessageGrpcCliServer).SendPrivateMsg(ctx, req.(*model.PrivateMsgGRPC))
@@ -298,7 +298,7 @@ func _MessageGrpcCli_SendGroupMsg_Handler(srv interface{}, ctx context.Context, 
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/api.message_grpc_cli/SendGroupMsg",
+		FullMethod: "/cli.message_grpc_cli/SendGroupMsg",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(MessageGrpcCliServer).SendGroupMsg(ctx, req.(*model.GroupMsgGRPC))
@@ -316,7 +316,7 @@ func _MessageGrpcCli_DelMsg_Handler(srv interface{}, ctx context.Context, dec fu
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/api.message_grpc_cli/DelMsg",
+		FullMethod: "/cli.message_grpc_cli/DelMsg",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(MessageGrpcCliServer).DelMsg(ctx, req.(*wrapperspb.Int64Value))
@@ -334,7 +334,7 @@ func _MessageGrpcCli_GetMsg_Handler(srv interface{}, ctx context.Context, dec fu
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/api.message_grpc_cli/GetMsg",
+		FullMethod: "/cli.message_grpc_cli/GetMsg",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(MessageGrpcCliServer).GetMsg(ctx, req.(*wrapperspb.Int64Value))
@@ -352,7 +352,7 @@ func _MessageGrpcCli_GetForwardMsg_Handler(srv interface{}, ctx context.Context,
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/api.message_grpc_cli/GetForwardMsg",
+		FullMethod: "/cli.message_grpc_cli/GetForwardMsg",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(MessageGrpcCliServer).GetForwardMsg(ctx, req.(*wrapperspb.Int64Value))
@@ -361,7 +361,7 @@ func _MessageGrpcCli_GetForwardMsg_Handler(srv interface{}, ctx context.Context,
 }
 
 var _MessageGrpcCli_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "api.message_grpc_cli",
+	ServiceName: "cli.message_grpc_cli",
 	HandlerType: (*MessageGrpcCliServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -390,5 +390,5 @@ var _MessageGrpcCli_serviceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "onebot-plus/pkg/api/message_cli.proto",
+	Metadata: "onebot-plus/pkg/cli/message_cli.proto",
 }

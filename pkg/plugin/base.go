@@ -5,6 +5,7 @@ import (
 	"log"
 	"os/exec"
 
+	"github.com/dezhishen/onebot-plus/pkg/cli"
 	"github.com/dezhishen/onebot-sdk/pkg/model"
 	"github.com/hashicorp/go-plugin"
 	"github.com/sirupsen/logrus"
@@ -24,7 +25,7 @@ type OnebotEventPlugin interface {
 	//插件帮助
 	Help() string
 	//私聊消息
-	MessagePrivate(*model.EventMessagePrivate) error
+	MessagePrivate(*model.EventMessagePrivate, cli.MessageCli) error
 	//群组消息
 	MessageGroup(*model.EventMessageGroup) error
 	//生命周期
@@ -67,13 +68,14 @@ type onebotEventPluginGRPC struct {
 
 //插件实现GRPC的接口
 func (p *onebotEventPluginGRPC) GRPCServer(broker *plugin.GRPCBroker, s *grpc.Server) error {
-	RegisterOnebotEventGRPCServer(s, &onebotEventPluginGRPCServerStub{Impl: p.Impl})
+	RegisterOnebotEventGRPCServer(s, &onebotEventPluginGRPCServerStub{Impl: p.Impl, broker: broker})
 	return nil
 }
 
 type onebotEventPluginGRPCServerStub struct {
 	// This is the real implementation
-	Impl OnebotEventPlugin
+	broker *plugin.GRPCBroker
+	Impl   OnebotEventPlugin
 }
 
 //插件Id
@@ -101,8 +103,20 @@ func (p *onebotEventPluginGRPCServerStub) Help(ctx context.Context, req *emptypb
 }
 
 //私聊消息
-func (p *onebotEventPluginGRPCServerStub) MessagePrivate(ctx context.Context, req *model.EventMessagePrivateGRPC) (*emptypb.Empty, error) {
-	e := p.Impl.MessagePrivate(req.ToStruct())
+func (p *onebotEventPluginGRPCServerStub) MessagePrivate(ctx context.Context, req *EventMessagePrivateGRPCWithCliGRPC) (*emptypb.Empty, error) {
+	logrus.Infof("req....%v", req)
+	logrus.Info("req.Cli...", req.Cli)
+	conn, err := p.broker.Dial(req.Cli)
+	if err != nil {
+		logrus.Errorf("conn err %v", err)
+		return nil, err
+	}
+	defer conn.Close()
+	client := &cli.MessageCliClientStub{
+		Client: cli.NewMessageGrpcCliClient(conn),
+	}
+	logrus.Infof("创建客户端....%v", client)
+	e := p.Impl.MessagePrivate(req.Message.ToStruct(), client)
 	return &emptypb.Empty{}, e
 }
 
@@ -204,6 +218,7 @@ func (p *onebotEventPluginGRPCServerStub) RequestGroup(ctx context.Context, req 
 
 // 业务接口KV的实现，通过gRPC客户端转发请求给插件进程
 type onebotEventPluginGRPCClientStub struct {
+	broker *plugin.GRPCBroker
 	client OnebotEventGRPCClient
 }
 
@@ -256,10 +271,25 @@ func (m *onebotEventPluginGRPCClientStub) Help() string {
 }
 
 //私聊消息
-func (m *onebotEventPluginGRPCClientStub) MessagePrivate(req *model.EventMessagePrivate) error {
+func (m *onebotEventPluginGRPCClientStub) MessagePrivate(req *model.EventMessagePrivate, msgCli cli.MessageCli) error {
 	// 转发
-	grpc := req.ToGRPC()
-	_, err := m.client.MessagePrivate(context.Background(), grpc)
+	messageCliServer := &cli.MessageCliServerStub{
+		Impl: msgCli,
+	} //{Impl: cli}
+	var s *grpc.Server
+	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
+		s = grpc.NewServer(opts...)
+		cli.RegisterMessageGrpcCliServer(s, messageCliServer)
+		return s
+	}
+	brokerID := m.broker.NextId()
+	go m.broker.AcceptAndServe(brokerID, serverFunc)
+	msg := req.ToGRPC()
+	_, err := m.client.MessagePrivate(context.Background(), &EventMessagePrivateGRPCWithCliGRPC{
+		Message: msg,
+		Cli:     brokerID,
+	})
+	s.Stop()
 	return err
 }
 
@@ -397,7 +427,9 @@ func (p *onebotEventPluginGRPC) GRPCClient(
 	broker *plugin.GRPCBroker,
 	c *grpc.ClientConn,
 ) (interface{}, error) {
-	return &onebotEventPluginGRPCClientStub{client: NewOnebotEventGRPCClient(c)}, nil
+	return &onebotEventPluginGRPCClientStub{
+		broker: broker,
+		client: NewOnebotEventGRPCClient(c)}, nil
 }
 
 func LoadPlugin(path string) (OnebotEventPlugin, *plugin.Client) {

@@ -1,4 +1,4 @@
-MYDIR=C:/github/onebot-plus/pkg/api
+MYDIR=C:/github/onebot-plus/pkg/cli
 INCLUDE=$GOPATH/include
 for file in ./*
 do

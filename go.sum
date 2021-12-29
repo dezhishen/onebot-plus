@@ -90,8 +90,6 @@ github.com/creack/pty v1.1.9/go.mod h1:oKZEueFk5CKHvIhNR5MUki03XCEU+Q6VDXinZuGJ3
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
-github.com/dezhishen/onebot-sdk v0.0.0-20211227081003-8b90708b5fd7 h1:6HKtlBFW/pf7pe0whQuBl1KNmUf5dHXzcrRCV8UH3e8=
-github.com/dezhishen/onebot-sdk v0.0.0-20211227081003-8b90708b5fd7/go.mod h1:ln6RQt0ghfMuPzOOhRQT8SHJOVRLZZQTS4dDMp8nRVI=
 github.com/dezhishen/onebot-sdk v0.0.0-20211227110923-d3134d216047 h1:O+7Bv/UIDGfb1Hc00IdnzvKIkJFyuRdYdj7FJn4oJyI=
 github.com/dezhishen/onebot-sdk v0.0.0-20211227110923-d3134d216047/go.mod h1:ln6RQt0ghfMuPzOOhRQT8SHJOVRLZZQTS4dDMp8nRVI=
 github.com/envoyproxy/go-control-plane v0.9.0/go.mod h1:YTl/9mNaCwkRvm6d1a2C3ymFceY/DCBVvsKhRF0iEA4=

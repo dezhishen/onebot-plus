@@ -1,9 +1,10 @@
-package api
+package cli
 
 import (
 	context "context"
 
 	"github.com/hashicorp/go-plugin"
+	"github.com/sirupsen/logrus"
 	grpc "google.golang.org/grpc"
 	emptypb "google.golang.org/protobuf/types/known/emptypb"
 	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
@@ -44,6 +45,12 @@ type MessageCliServerStub struct {
 	Impl MessageCli
 }
 
+//删除消息
+func (m *MessageCliServerStub) DelMsg(ctx context.Context, in *wrapperspb.Int64Value) (*emptypb.Empty, error) {
+	e := m.Impl.DelMsg(in.Value)
+	return &emptypb.Empty{}, e
+}
+
 //发送消息
 func (m *MessageCliServerStub) SendMsg(ctx context.Context, in *model.MsgForSendGRPC) (*wrapperspb.Int64Value, error) {
 	v, e := m.Impl.SendMsg(in.ToStruct())
@@ -62,12 +69,6 @@ func (m *MessageCliServerStub) SendGroupMsg(ctx context.Context, in *model.Group
 	return &wrapperspb.Int64Value{Value: v}, e
 }
 
-//删除消息
-func (m *MessageCliServerStub) DelMsg(ctx context.Context, in *wrapperspb.Int64Value) (*emptypb.Empty, error) {
-	e := m.Impl.DelMsg(in.Value)
-	return &emptypb.Empty{}, e
-}
-
 //获取消息
 func (m *MessageCliServerStub) GetMsg(ctx context.Context, in *wrapperspb.Int64Value) (*model.MessageDataGRPC, error) {
 	v, e := m.Impl.GetMsg(in.Value)
@@ -82,13 +83,19 @@ func (m *MessageCliServerStub) GetForwardMsg(ctx context.Context, in *wrapperspb
 
 // 业务接口的实现，通过gRPC客户端转发请求给插件进程
 type MessageCliClientStub struct {
-	client MessageGrpcCliClient
+	Client MessageGrpcCliClient
+}
+
+func NewMessageCliClientStub(cli MessageGrpcCliClient) *MessageCliClientStub {
+	return &MessageCliClientStub{
+		Client: cli,
+	}
 }
 
 //发送消息
 func (m *MessageCliClientStub) SendMsg(msg *model.MsgForSend) (int64, error) {
 	// 转发
-	resp, err := m.client.SendMsg(context.Background(), msg.ToGRPC())
+	resp, err := m.Client.SendMsg(context.Background(), msg.ToGRPC())
 	if err != nil {
 		return 0, err
 	}
@@ -98,7 +105,7 @@ func (m *MessageCliClientStub) SendMsg(msg *model.MsgForSend) (int64, error) {
 //发送私聊消息
 func (m *MessageCliClientStub) SendPrivateMsg(msg *model.PrivateMsg) (int64, error) {
 	// 转发
-	resp, err := m.client.SendPrivateMsg(context.Background(), msg.ToGRPC())
+	resp, err := m.Client.SendPrivateMsg(context.Background(), msg.ToGRPC())
 	if err != nil {
 		return 0, err
 	}
@@ -108,7 +115,7 @@ func (m *MessageCliClientStub) SendPrivateMsg(msg *model.PrivateMsg) (int64, err
 //发送群组消息
 func (m *MessageCliClientStub) SendGroupMsg(msg *model.GroupMsg) (int64, error) {
 	// 转发
-	resp, err := m.client.SendGroupMsg(context.Background(), msg.ToGRPC())
+	resp, err := m.Client.SendGroupMsg(context.Background(), msg.ToGRPC())
 	if err != nil {
 		return 0, err
 	}
@@ -118,14 +125,15 @@ func (m *MessageCliClientStub) SendGroupMsg(msg *model.GroupMsg) (int64, error) 
 //删除消息
 func (m *MessageCliClientStub) DelMsg(id int64) error {
 	// 转发
-	_, err := m.client.DelMsg(context.Background(), &wrapperspb.Int64Value{Value: id})
+	_, err := m.Client.DelMsg(context.Background(), &wrapperspb.Int64Value{Value: id})
 	return err
 }
 
 //获取消息
 func (m *MessageCliClientStub) GetMsg(id int64) (*model.MessageData, error) {
 	// 转发
-	resp, err := m.client.GetMsg(context.Background(), &wrapperspb.Int64Value{Value: id})
+	logrus.Infof("获取消息,ID:[%v]", id)
+	resp, err := m.Client.GetMsg(context.Background(), &wrapperspb.Int64Value{Value: id})
 	if err != nil {
 		return nil, err
 	}
@@ -135,7 +143,7 @@ func (m *MessageCliClientStub) GetMsg(id int64) (*model.MessageData, error) {
 //获取转发的消息
 func (m *MessageCliClientStub) GetForwardMsg(id int64) (*model.ForwardMessageData, error) {
 	// 转发
-	resp, err := m.client.GetForwardMsg(context.Background(), &wrapperspb.Int64Value{Value: id})
+	resp, err := m.Client.GetForwardMsg(context.Background(), &wrapperspb.Int64Value{Value: id})
 	if err != nil {
 		return nil, err
 	}
@@ -148,5 +156,5 @@ func (p *MessageCliGRPCPlugin) GRPCClient(
 	broker *plugin.GRPCBroker,
 	c *grpc.ClientConn,
 ) (interface{}, error) {
-	return &MessageCliClientStub{client: NewMessageGrpcCliClient(c)}, nil
+	return &MessageCliClientStub{Client: NewMessageGrpcCliClient(c)}, nil
 }

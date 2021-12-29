@@ -8,6 +8,11 @@ import "google/protobuf/empty.proto";
 import "google/protobuf/wrappers.proto";
 option go_package="../plugin";
 
+message EventMessagePrivateGRPCWithCliGRPC {
+    uint32 cli = 1;
+    model.EventMessagePrivateGRPC message = 2;
+}
+
 service OnebotEventGRPC {
     //插件Id
     rpc Id(google.protobuf.Empty)returns(google.protobuf.StringValue);
@@ -18,7 +23,7 @@ service OnebotEventGRPC {
     //插件帮助
     rpc Help(google.protobuf.Empty)returns(google.protobuf.StringValue);
     //私聊消息
-	rpc MessagePrivate(model.EventMessagePrivateGRPC)returns(google.protobuf.Empty);
+	rpc MessagePrivate(EventMessagePrivateGRPCWithCliGRPC)returns(google.protobuf.Empty);
 	//群组消息
     rpc MessageGroup(model.EventMessageGroupGRPC)returns(google.protobuf.Empty);
     //

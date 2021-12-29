@@ -1,6 +1,9 @@
 package plugin
 
-import "github.com/dezhishen/onebot-sdk/pkg/model"
+import (
+	"github.com/dezhishen/onebot-plus/pkg/cli"
+	"github.com/dezhishen/onebot-sdk/pkg/model"
+)
 
 //插件实现
 type onebotEventPluginBuilder struct {
@@ -40,7 +43,7 @@ func (builder *onebotEventPluginBuilder) Help(help string) *onebotEventPluginBui
 }
 
 //私聊消息
-func (builder *onebotEventPluginBuilder) MessagePrivate(callback func(req *model.EventMessagePrivate) error) *onebotEventPluginBuilder {
+func (builder *onebotEventPluginBuilder) MessagePrivate(callback func(req *model.EventMessagePrivate, cli cli.MessageCli) error) *onebotEventPluginBuilder {
 	builder.impl.messagePrivateCallback = callback
 	return builder
 }
