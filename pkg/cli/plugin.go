@@ -12,21 +12,6 @@ import (
 	"github.com/dezhishen/onebot-sdk/pkg/model"
 )
 
-type OnebotCli interface {
-	//发送消息
-	SendMsg(msg *model.MsgForSend) (int64, error)
-	//发送私聊消息
-	SendPrivateMsg(msg *model.PrivateMsg) (int64, error)
-	// 发送群消息
-	SendGroupMsg(msg *model.GroupMsg) (int64, error)
-	//删除消息
-	DelMsg(id int64) error
-	//获取消息
-	GetMsg(id int64) (*model.MessageData, error)
-	//获取转发的消息
-	GetForwardMsg(id int64) (*model.ForwardMessageData, error)
-}
-
 type OnebotCliGRPCPlugin struct {
 	// 需要嵌入插件接口
 	plugin.Plugin
@@ -81,19 +66,49 @@ func (m *OnebotCliServerStub) GetForwardMsg(ctx context.Context, in *wrapperspb.
 	return v.ToGRPC(), e
 }
 
+//获取登录信息
+func (m *OnebotCliServerStub) GetLoginInfo(ctx context.Context, in *emptypb.Empty) (*model.AccountGRPC, error) {
+	v, e := m.Impl.GetLoginInfo()
+	return v.ToGRPC(), e
+}
+
+//获取陌生人信息
+func (m *OnebotCliServerStub) GetStrangerInfo(ctx context.Context, in *GetStrangerInfoReq) (*model.AccountGRPC, error) {
+	v, e := m.Impl.GetLoginInfo()
+	return v.ToGRPC(), e
+}
+func (m *OnebotCliServerStub) GetCookies(ctx context.Context, in *wrapperspb.StringValue) (*model.CokiesGRPC, error) {
+	v, e := m.Impl.GetCookies(in.Value)
+	return v.ToGRPC(), e
+}
+func (m *OnebotCliServerStub) GetCSRFToken(ctx context.Context, in *emptypb.Empty) (*model.CSRFTokenGRPC, error) {
+	v, e := m.Impl.GetCSRFToken()
+	return v.ToGRPC(), e
+}
+func (m *OnebotCliServerStub) GetCredentials(ctx context.Context, in *wrapperspb.StringValue) (*model.CredentialsGRPC, error) {
+	v, e := m.Impl.GetCredentials(in.Value)
+	return v.ToGRPC(), e
+}
+
+//获取语音
+func (m *OnebotCliServerStub) GetRecord(ctx context.Context, in *GetRecordReq) (*model.FileGRPC, error) {
+	v, e := m.Impl.GetRecord(in.File, in.OutFormat)
+	return v.ToGRPC(), e
+}
+
+//获取图片
+func (m *OnebotCliServerStub) GetImage(ctx context.Context, in *wrapperspb.StringValue) (*model.FileGRPC, error) {
+	v, e := m.Impl.GetImage(in.Value)
+	return v.ToGRPC(), e
+}
+
 // 业务接口的实现，通过gRPC客户端转发请求给插件进程
-type MessageCliClientStub struct {
+type OnebotCliClientStub struct {
 	Client OnebotGrpcCliClient
 }
 
-func NewMessageCliClientStub(cli OnebotGrpcCliClient) *MessageCliClientStub {
-	return &MessageCliClientStub{
-		Client: cli,
-	}
-}
-
 //发送消息
-func (m *MessageCliClientStub) SendMsg(msg *model.MsgForSend) (int64, error) {
+func (m *OnebotCliClientStub) SendMsg(msg *model.MsgForSend) (int64, error) {
 	// 转发
 	resp, err := m.Client.SendMsg(context.Background(), msg.ToGRPC())
 	if err != nil {
@@ -103,7 +118,7 @@ func (m *MessageCliClientStub) SendMsg(msg *model.MsgForSend) (int64, error) {
 }
 
 //发送私聊消息
-func (m *MessageCliClientStub) SendPrivateMsg(msg *model.PrivateMsg) (int64, error) {
+func (m *OnebotCliClientStub) SendPrivateMsg(msg *model.PrivateMsg) (int64, error) {
 	// 转发
 	resp, err := m.Client.SendPrivateMsg(context.Background(), msg.ToGRPC())
 	if err != nil {
@@ -113,7 +128,7 @@ func (m *MessageCliClientStub) SendPrivateMsg(msg *model.PrivateMsg) (int64, err
 }
 
 //发送群组消息
-func (m *MessageCliClientStub) SendGroupMsg(msg *model.GroupMsg) (int64, error) {
+func (m *OnebotCliClientStub) SendGroupMsg(msg *model.GroupMsg) (int64, error) {
 	// 转发
 	resp, err := m.Client.SendGroupMsg(context.Background(), msg.ToGRPC())
 	if err != nil {
@@ -123,14 +138,14 @@ func (m *MessageCliClientStub) SendGroupMsg(msg *model.GroupMsg) (int64, error) 
 }
 
 //删除消息
-func (m *MessageCliClientStub) DelMsg(id int64) error {
+func (m *OnebotCliClientStub) DelMsg(id int64) error {
 	// 转发
 	_, err := m.Client.DelMsg(context.Background(), &wrapperspb.Int64Value{Value: id})
 	return err
 }
 
 //获取消息
-func (m *MessageCliClientStub) GetMsg(id int64) (*model.MessageData, error) {
+func (m *OnebotCliClientStub) GetMsg(id int64) (*model.MessageData, error) {
 	// 转发
 	logrus.Infof("获取消息,ID:[%v]", id)
 	resp, err := m.Client.GetMsg(context.Background(), &wrapperspb.Int64Value{Value: id})
@@ -141,9 +156,80 @@ func (m *MessageCliClientStub) GetMsg(id int64) (*model.MessageData, error) {
 }
 
 //获取转发的消息
-func (m *MessageCliClientStub) GetForwardMsg(id int64) (*model.ForwardMessageData, error) {
+func (m *OnebotCliClientStub) GetForwardMsg(id int64) (*model.ForwardMessageData, error) {
 	// 转发
 	resp, err := m.Client.GetForwardMsg(context.Background(), &wrapperspb.Int64Value{Value: id})
+	if err != nil {
+		return nil, err
+	}
+	return resp.ToStruct(), err
+}
+
+//获取登录信息
+func (m *OnebotCliClientStub) GetLoginInfo() (*model.Account, error) {
+	// 转发
+	resp, err := m.Client.GetLoginInfo(context.Background(), &emptypb.Empty{})
+	if err != nil {
+		return nil, err
+	}
+	return resp.ToStruct(), err
+}
+
+//获取陌生人信息
+func (m *OnebotCliClientStub) GetStrangerInfo(userId int64, noCache bool) (*model.Account, error) {
+	// 转发
+	resp, err := m.Client.GetStrangerInfo(context.Background(), &GetStrangerInfoReq{
+		UserId: userId,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return resp.ToStruct(), err
+}
+
+func (m *OnebotCliClientStub) GetCookies(domin string) (*model.Cokies, error) {
+	// 转发
+	resp, err := m.Client.GetCookies(context.Background(), &wrapperspb.StringValue{
+		Value: domin,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return resp.ToStruct(), err
+}
+
+func (m *OnebotCliClientStub) GetCSRFToken() (*model.CSRFToken, error) {
+	// 转发
+	resp, err := m.Client.GetCSRFToken(context.Background(), &emptypb.Empty{})
+	if err != nil {
+		return nil, err
+	}
+	return resp.ToStruct(), err
+}
+
+func (m *OnebotCliClientStub) GetCredentials(domin string) (*model.Credentials, error) {
+	// 转发
+	resp, err := m.Client.GetCredentials(context.Background(), &wrapperspb.StringValue{Value: domin})
+	if err != nil {
+		return nil, err
+	}
+	return resp.ToStruct(), err
+}
+
+//获取语音
+func (m *OnebotCliClientStub) GetRecord(file string, out_format string) (*model.File, error) {
+	// 转发
+	resp, err := m.Client.GetRecord(context.Background(), &GetRecordReq{File: file, OutFormat: out_format})
+	if err != nil {
+		return nil, err
+	}
+	return resp.ToStruct(), err
+}
+
+//获取图片
+func (m *OnebotCliClientStub) GetImage(file string) (*model.File, error) {
+	// 转发
+	resp, err := m.Client.GetImage(context.Background(), &wrapperspb.StringValue{Value: file})
 	if err != nil {
 		return nil, err
 	}
@@ -156,5 +242,5 @@ func (p *OnebotCliGRPCPlugin) GRPCClient(
 	broker *plugin.GRPCBroker,
 	c *grpc.ClientConn,
 ) (interface{}, error) {
-	return &MessageCliClientStub{Client: NewOnebotGrpcCliClient(c)}, nil
+	return &OnebotCliClientStub{Client: NewOnebotGrpcCliClient(c)}, nil
 }

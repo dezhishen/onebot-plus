@@ -42,6 +42,34 @@ func (d *OnebotCliRealImpl) GetForwardMsg(id int64) (*model.ForwardMessageData, 
 	return sdk_api.GetForwardMsg(id)
 }
 
-func (d *OnebotCliRealImpl) Hi() (string, error) {
-	return "hi", nil
+//获取登录信息
+func (d *OnebotCliRealImpl) GetLoginInfo() (*model.Account, error) {
+	return sdk_api.GetLoginInfo()
+}
+
+//获取陌生人信息
+func (d *OnebotCliRealImpl) GetStrangerInfo(userId int64, noCache bool) (*model.Account, error) {
+	return sdk_api.GetStrangerInfo(userId, noCache)
+}
+
+func (d *OnebotCliRealImpl) GetCookies(domin string) (*model.Cokies, error) {
+	return sdk_api.GetCookies(domin)
+}
+
+func (d *OnebotCliRealImpl) GetCSRFToken() (*model.CSRFToken, error) {
+	return sdk_api.GetCSRFToken()
+}
+
+func (d *OnebotCliRealImpl) GetCredentials(domin string) (*model.Credentials, error) {
+	return sdk_api.GetCredentials(domin)
+}
+
+//获取语音
+func (d *OnebotCliRealImpl) GetRecord(file string, out_format string) (*model.File, error) {
+	return sdk_api.GetRecord(file, out_format)
+}
+
+//获取图片
+func (d *OnebotCliRealImpl) GetImage(file string) (*model.File, error) {
+	return sdk_api.GetImage(file)
 }

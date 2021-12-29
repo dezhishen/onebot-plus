@@ -17,6 +17,7 @@ import (
 	emptypb "google.golang.org/protobuf/types/known/emptypb"
 	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 	reflect "reflect"
+	sync "sync"
 )
 
 const (
@@ -26,6 +27,116 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type GetStrangerInfoReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	UserId  int64 `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	NoCache bool  `protobuf:"varint,2,opt,name=no_cache,json=noCache,proto3" json:"no_cache,omitempty"`
+}
+
+func (x *GetStrangerInfoReq) Reset() {
+	*x = GetStrangerInfoReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[0]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetStrangerInfoReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetStrangerInfoReq) ProtoMessage() {}
+
+func (x *GetStrangerInfoReq) ProtoReflect() protoreflect.Message {
+	mi := &file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[0]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetStrangerInfoReq.ProtoReflect.Descriptor instead.
+func (*GetStrangerInfoReq) Descriptor() ([]byte, []int) {
+	return file_onebot_plus_pkg_cli_onebot_cli_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *GetStrangerInfoReq) GetUserId() int64 {
+	if x != nil {
+		return x.UserId
+	}
+	return 0
+}
+
+func (x *GetStrangerInfoReq) GetNoCache() bool {
+	if x != nil {
+		return x.NoCache
+	}
+	return false
+}
+
+type GetRecordReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	File      string `protobuf:"bytes,1,opt,name=file,proto3" json:"file,omitempty"`
+	OutFormat string `protobuf:"bytes,2,opt,name=out_format,json=outFormat,proto3" json:"out_format,omitempty"`
+}
+
+func (x *GetRecordReq) Reset() {
+	*x = GetRecordReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[1]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetRecordReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetRecordReq) ProtoMessage() {}
+
+func (x *GetRecordReq) ProtoReflect() protoreflect.Message {
+	mi := &file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[1]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetRecordReq.ProtoReflect.Descriptor instead.
+func (*GetRecordReq) Descriptor() ([]byte, []int) {
+	return file_onebot_plus_pkg_cli_onebot_cli_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *GetRecordReq) GetFile() string {
+	if x != nil {
+		return x.File
+	}
+	return ""
+}
+
+func (x *GetRecordReq) GetOutFormat() string {
+	if x != nil {
+		return x.OutFormat
+	}
+	return ""
+}
+
 var File_onebot_plus_pkg_cli_onebot_cli_proto protoreflect.FileDescriptor
 
 var file_onebot_plus_pkg_cli_onebot_cli_proto_rawDesc = []byte{
@@ -34,67 +145,140 @@ var file_onebot_plus_pkg_cli_onebot_cli_proto_rawDesc = []byte{
 	0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x03, 0x63, 0x6c, 0x69, 0x1a, 0x22, 0x6f, 0x6e, 0x65,
 	0x62, 0x6f, 0x74, 0x2d, 0x73, 0x64, 0x6b, 0x2f, 0x70, 0x6b, 0x67, 0x2f, 0x70, 0x72, 0x6f, 0x74,
 	0x6f, 0x2f, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a,
-	0x1e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66,
-	0x2f, 0x77, 0x72, 0x61, 0x70, 0x70, 0x65, 0x72, 0x73, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a,
-	0x1b, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66,
-	0x2f, 0x65, 0x6d, 0x70, 0x74, 0x79, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x32, 0xa3, 0x03, 0x0a,
-	0x0f, 0x6f, 0x6e, 0x65, 0x62, 0x6f, 0x74, 0x5f, 0x67, 0x72, 0x70, 0x63, 0x5f, 0x63, 0x6c, 0x69,
-	0x12, 0x3d, 0x0a, 0x07, 0x53, 0x65, 0x6e, 0x64, 0x4d, 0x73, 0x67, 0x12, 0x15, 0x2e, 0x6d, 0x6f,
-	0x64, 0x65, 0x6c, 0x2e, 0x4d, 0x73, 0x67, 0x46, 0x6f, 0x72, 0x53, 0x65, 0x6e, 0x64, 0x47, 0x52,
-	0x50, 0x43, 0x1a, 0x1b, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74,
-	0x6f, 0x62, 0x75, 0x66, 0x2e, 0x49, 0x6e, 0x74, 0x36, 0x34, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x12,
-	0x44, 0x0a, 0x0e, 0x53, 0x65, 0x6e, 0x64, 0x50, 0x72, 0x69, 0x76, 0x61, 0x74, 0x65, 0x4d, 0x73,
-	0x67, 0x12, 0x15, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x50, 0x72, 0x69, 0x76, 0x61, 0x74,
-	0x65, 0x4d, 0x73, 0x67, 0x47, 0x52, 0x50, 0x43, 0x1a, 0x1b, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c,
-	0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x49, 0x6e, 0x74, 0x36, 0x34,
-	0x56, 0x61, 0x6c, 0x75, 0x65, 0x12, 0x40, 0x0a, 0x0c, 0x53, 0x65, 0x6e, 0x64, 0x47, 0x72, 0x6f,
-	0x75, 0x70, 0x4d, 0x73, 0x67, 0x12, 0x13, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x47, 0x72,
-	0x6f, 0x75, 0x70, 0x4d, 0x73, 0x67, 0x47, 0x52, 0x50, 0x43, 0x1a, 0x1b, 0x2e, 0x67, 0x6f, 0x6f,
-	0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x49, 0x6e, 0x74,
-	0x36, 0x34, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x12, 0x3d, 0x0a, 0x06, 0x44, 0x65, 0x6c, 0x4d, 0x73,
+	0x22, 0x6f, 0x6e, 0x65, 0x62, 0x6f, 0x74, 0x2d, 0x73, 0x64, 0x6b, 0x2f, 0x70, 0x6b, 0x67, 0x2f,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x2e, 0x70, 0x72,
+	0x6f, 0x74, 0x6f, 0x1a, 0x1e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x70, 0x72, 0x6f, 0x74,
+	0x6f, 0x62, 0x75, 0x66, 0x2f, 0x77, 0x72, 0x61, 0x70, 0x70, 0x65, 0x72, 0x73, 0x2e, 0x70, 0x72,
+	0x6f, 0x74, 0x6f, 0x1a, 0x1b, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x70, 0x72, 0x6f, 0x74,
+	0x6f, 0x62, 0x75, 0x66, 0x2f, 0x65, 0x6d, 0x70, 0x74, 0x79, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f,
+	0x22, 0x48, 0x0a, 0x12, 0x47, 0x65, 0x74, 0x53, 0x74, 0x72, 0x61, 0x6e, 0x67, 0x65, 0x72, 0x49,
+	0x6e, 0x66, 0x6f, 0x52, 0x65, 0x71, 0x12, 0x17, 0x0a, 0x07, 0x75, 0x73, 0x65, 0x72, 0x5f, 0x69,
+	0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x06, 0x75, 0x73, 0x65, 0x72, 0x49, 0x64, 0x12,
+	0x19, 0x0a, 0x08, 0x6e, 0x6f, 0x5f, 0x63, 0x61, 0x63, 0x68, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28,
+	0x08, 0x52, 0x07, 0x6e, 0x6f, 0x43, 0x61, 0x63, 0x68, 0x65, 0x22, 0x41, 0x0a, 0x0c, 0x47, 0x65,
+	0x74, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x52, 0x65, 0x71, 0x12, 0x12, 0x0a, 0x04, 0x66, 0x69,
+	0x6c, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x66, 0x69, 0x6c, 0x65, 0x12, 0x1d,
+	0x0a, 0x0a, 0x6f, 0x75, 0x74, 0x5f, 0x66, 0x6f, 0x72, 0x6d, 0x61, 0x74, 0x18, 0x02, 0x20, 0x01,
+	0x28, 0x09, 0x52, 0x09, 0x6f, 0x75, 0x74, 0x46, 0x6f, 0x72, 0x6d, 0x61, 0x74, 0x32, 0xd0, 0x06,
+	0x0a, 0x0f, 0x6f, 0x6e, 0x65, 0x62, 0x6f, 0x74, 0x5f, 0x67, 0x72, 0x70, 0x63, 0x5f, 0x63, 0x6c,
+	0x69, 0x12, 0x3d, 0x0a, 0x07, 0x53, 0x65, 0x6e, 0x64, 0x4d, 0x73, 0x67, 0x12, 0x15, 0x2e, 0x6d,
+	0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x4d, 0x73, 0x67, 0x46, 0x6f, 0x72, 0x53, 0x65, 0x6e, 0x64, 0x47,
+	0x52, 0x50, 0x43, 0x1a, 0x1b, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f,
+	0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x49, 0x6e, 0x74, 0x36, 0x34, 0x56, 0x61, 0x6c, 0x75, 0x65,
+	0x12, 0x44, 0x0a, 0x0e, 0x53, 0x65, 0x6e, 0x64, 0x50, 0x72, 0x69, 0x76, 0x61, 0x74, 0x65, 0x4d,
+	0x73, 0x67, 0x12, 0x15, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x50, 0x72, 0x69, 0x76, 0x61,
+	0x74, 0x65, 0x4d, 0x73, 0x67, 0x47, 0x52, 0x50, 0x43, 0x1a, 0x1b, 0x2e, 0x67, 0x6f, 0x6f, 0x67,
+	0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x49, 0x6e, 0x74, 0x36,
+	0x34, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x12, 0x40, 0x0a, 0x0c, 0x53, 0x65, 0x6e, 0x64, 0x47, 0x72,
+	0x6f, 0x75, 0x70, 0x4d, 0x73, 0x67, 0x12, 0x13, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x47,
+	0x72, 0x6f, 0x75, 0x70, 0x4d, 0x73, 0x67, 0x47, 0x52, 0x50, 0x43, 0x1a, 0x1b, 0x2e, 0x67, 0x6f,
+	0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x49, 0x6e,
+	0x74, 0x36, 0x34, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x12, 0x3d, 0x0a, 0x06, 0x44, 0x65, 0x6c, 0x4d,
+	0x73, 0x67, 0x12, 0x1b, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74,
+	0x6f, 0x62, 0x75, 0x66, 0x2e, 0x49, 0x6e, 0x74, 0x36, 0x34, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x1a,
+	0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75,
+	0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x12, 0x3d, 0x0a, 0x06, 0x47, 0x65, 0x74, 0x4d, 0x73,
 	0x67, 0x12, 0x1b, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f,
 	0x62, 0x75, 0x66, 0x2e, 0x49, 0x6e, 0x74, 0x36, 0x34, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x1a, 0x16,
+	0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x44, 0x61,
+	0x74, 0x61, 0x47, 0x52, 0x50, 0x43, 0x12, 0x4b, 0x0a, 0x0d, 0x47, 0x65, 0x74, 0x46, 0x6f, 0x72,
+	0x77, 0x61, 0x72, 0x64, 0x4d, 0x73, 0x67, 0x12, 0x1b, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65,
+	0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x49, 0x6e, 0x74, 0x36, 0x34, 0x56,
+	0x61, 0x6c, 0x75, 0x65, 0x1a, 0x1d, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x46, 0x6f, 0x72,
+	0x77, 0x61, 0x72, 0x64, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x44, 0x61, 0x74, 0x61, 0x47,
+	0x52, 0x50, 0x43, 0x12, 0x3a, 0x0a, 0x0c, 0x47, 0x65, 0x74, 0x4c, 0x6f, 0x67, 0x69, 0x6e, 0x49,
+	0x6e, 0x66, 0x6f, 0x12, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f,
+	0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x1a, 0x12, 0x2e, 0x6d, 0x6f,
+	0x64, 0x65, 0x6c, 0x2e, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x47, 0x52, 0x50, 0x43, 0x12,
+	0x3e, 0x0a, 0x0f, 0x47, 0x65, 0x74, 0x53, 0x74, 0x72, 0x61, 0x6e, 0x67, 0x65, 0x72, 0x49, 0x6e,
+	0x66, 0x6f, 0x12, 0x17, 0x2e, 0x63, 0x6c, 0x69, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x74, 0x72, 0x61,
+	0x6e, 0x67, 0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x65, 0x71, 0x1a, 0x12, 0x2e, 0x6d, 0x6f,
+	0x64, 0x65, 0x6c, 0x2e, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x47, 0x52, 0x50, 0x43, 0x12,
+	0x3d, 0x0a, 0x0a, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x6f, 0x6b, 0x69, 0x65, 0x73, 0x12, 0x1c, 0x2e,
+	0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e,
+	0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x1a, 0x11, 0x2e, 0x6d, 0x6f,
+	0x64, 0x65, 0x6c, 0x2e, 0x43, 0x6f, 0x6b, 0x69, 0x65, 0x73, 0x47, 0x52, 0x50, 0x43, 0x12, 0x3c,
+	0x0a, 0x0c, 0x47, 0x65, 0x74, 0x43, 0x53, 0x52, 0x46, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x12, 0x16,
 	0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66,
-	0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x12, 0x3d, 0x0a, 0x06, 0x47, 0x65, 0x74, 0x4d, 0x73, 0x67,
-	0x12, 0x1b, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62,
-	0x75, 0x66, 0x2e, 0x49, 0x6e, 0x74, 0x36, 0x34, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x1a, 0x16, 0x2e,
-	0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x44, 0x61, 0x74,
-	0x61, 0x47, 0x52, 0x50, 0x43, 0x12, 0x4b, 0x0a, 0x0d, 0x47, 0x65, 0x74, 0x46, 0x6f, 0x72, 0x77,
-	0x61, 0x72, 0x64, 0x4d, 0x73, 0x67, 0x12, 0x1b, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e,
-	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x49, 0x6e, 0x74, 0x36, 0x34, 0x56, 0x61,
-	0x6c, 0x75, 0x65, 0x1a, 0x1d, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x46, 0x6f, 0x72, 0x77,
-	0x61, 0x72, 0x64, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x44, 0x61, 0x74, 0x61, 0x47, 0x52,
-	0x50, 0x43, 0x42, 0x08, 0x5a, 0x06, 0x2e, 0x2e, 0x2f, 0x63, 0x6c, 0x69, 0x62, 0x06, 0x70, 0x72,
-	0x6f, 0x74, 0x6f, 0x33,
+	0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x1a, 0x14, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x43,
+	0x53, 0x52, 0x46, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x47, 0x52, 0x50, 0x43, 0x12, 0x46, 0x0a, 0x0e,
+	0x47, 0x65, 0x74, 0x43, 0x72, 0x65, 0x64, 0x65, 0x6e, 0x74, 0x69, 0x61, 0x6c, 0x73, 0x12, 0x1c,
+	0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66,
+	0x2e, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x1a, 0x16, 0x2e, 0x6d,
+	0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x43, 0x72, 0x65, 0x64, 0x65, 0x6e, 0x74, 0x69, 0x61, 0x6c, 0x73,
+	0x47, 0x52, 0x50, 0x43, 0x12, 0x2f, 0x0a, 0x09, 0x47, 0x65, 0x74, 0x52, 0x65, 0x63, 0x6f, 0x72,
+	0x64, 0x12, 0x11, 0x2e, 0x63, 0x6c, 0x69, 0x2e, 0x47, 0x65, 0x74, 0x52, 0x65, 0x63, 0x6f, 0x72,
+	0x64, 0x52, 0x65, 0x71, 0x1a, 0x0f, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x46, 0x69, 0x6c,
+	0x65, 0x47, 0x52, 0x50, 0x43, 0x12, 0x39, 0x0a, 0x08, 0x47, 0x65, 0x74, 0x49, 0x6d, 0x61, 0x67,
+	0x65, 0x12, 0x1c, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f,
+	0x62, 0x75, 0x66, 0x2e, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x1a,
+	0x0f, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x46, 0x69, 0x6c, 0x65, 0x47, 0x52, 0x50, 0x43,
+	0x42, 0x08, 0x5a, 0x06, 0x2e, 0x2e, 0x2f, 0x63, 0x6c, 0x69, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74,
+	0x6f, 0x33,
 }
 
+var (
+	file_onebot_plus_pkg_cli_onebot_cli_proto_rawDescOnce sync.Once
+	file_onebot_plus_pkg_cli_onebot_cli_proto_rawDescData = file_onebot_plus_pkg_cli_onebot_cli_proto_rawDesc
+)
+
+func file_onebot_plus_pkg_cli_onebot_cli_proto_rawDescGZIP() []byte {
+	file_onebot_plus_pkg_cli_onebot_cli_proto_rawDescOnce.Do(func() {
+		file_onebot_plus_pkg_cli_onebot_cli_proto_rawDescData = protoimpl.X.CompressGZIP(file_onebot_plus_pkg_cli_onebot_cli_proto_rawDescData)
+	})
+	return file_onebot_plus_pkg_cli_onebot_cli_proto_rawDescData
+}
+
+var file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_onebot_plus_pkg_cli_onebot_cli_proto_goTypes = []interface{}{
-	(*model.MsgForSendGRPC)(nil),         // 0: model.MsgForSendGRPC
-	(*model.PrivateMsgGRPC)(nil),         // 1: model.PrivateMsgGRPC
-	(*model.GroupMsgGRPC)(nil),           // 2: model.GroupMsgGRPC
-	(*wrapperspb.Int64Value)(nil),        // 3: google.protobuf.Int64Value
-	(*emptypb.Empty)(nil),                // 4: google.protobuf.Empty
-	(*model.MessageDataGRPC)(nil),        // 5: model.MessageDataGRPC
-	(*model.ForwardMessageDataGRPC)(nil), // 6: model.ForwardMessageDataGRPC
+	(*GetStrangerInfoReq)(nil),           // 0: cli.GetStrangerInfoReq
+	(*GetRecordReq)(nil),                 // 1: cli.GetRecordReq
+	(*model.MsgForSendGRPC)(nil),         // 2: model.MsgForSendGRPC
+	(*model.PrivateMsgGRPC)(nil),         // 3: model.PrivateMsgGRPC
+	(*model.GroupMsgGRPC)(nil),           // 4: model.GroupMsgGRPC
+	(*wrapperspb.Int64Value)(nil),        // 5: google.protobuf.Int64Value
+	(*emptypb.Empty)(nil),                // 6: google.protobuf.Empty
+	(*wrapperspb.StringValue)(nil),       // 7: google.protobuf.StringValue
+	(*model.MessageDataGRPC)(nil),        // 8: model.MessageDataGRPC
+	(*model.ForwardMessageDataGRPC)(nil), // 9: model.ForwardMessageDataGRPC
+	(*model.AccountGRPC)(nil),            // 10: model.AccountGRPC
+	(*model.CokiesGRPC)(nil),             // 11: model.CokiesGRPC
+	(*model.CSRFTokenGRPC)(nil),          // 12: model.CSRFTokenGRPC
+	(*model.CredentialsGRPC)(nil),        // 13: model.CredentialsGRPC
+	(*model.FileGRPC)(nil),               // 14: model.FileGRPC
 }
 var file_onebot_plus_pkg_cli_onebot_cli_proto_depIdxs = []int32{
-	0, // 0: cli.onebot_grpc_cli.SendMsg:input_type -> model.MsgForSendGRPC
-	1, // 1: cli.onebot_grpc_cli.SendPrivateMsg:input_type -> model.PrivateMsgGRPC
-	2, // 2: cli.onebot_grpc_cli.SendGroupMsg:input_type -> model.GroupMsgGRPC
-	3, // 3: cli.onebot_grpc_cli.DelMsg:input_type -> google.protobuf.Int64Value
-	3, // 4: cli.onebot_grpc_cli.GetMsg:input_type -> google.protobuf.Int64Value
-	3, // 5: cli.onebot_grpc_cli.GetForwardMsg:input_type -> google.protobuf.Int64Value
-	3, // 6: cli.onebot_grpc_cli.SendMsg:output_type -> google.protobuf.Int64Value
-	3, // 7: cli.onebot_grpc_cli.SendPrivateMsg:output_type -> google.protobuf.Int64Value
-	3, // 8: cli.onebot_grpc_cli.SendGroupMsg:output_type -> google.protobuf.Int64Value
-	4, // 9: cli.onebot_grpc_cli.DelMsg:output_type -> google.protobuf.Empty
-	5, // 10: cli.onebot_grpc_cli.GetMsg:output_type -> model.MessageDataGRPC
-	6, // 11: cli.onebot_grpc_cli.GetForwardMsg:output_type -> model.ForwardMessageDataGRPC
-	6, // [6:12] is the sub-list for method output_type
-	0, // [0:6] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	2,  // 0: cli.onebot_grpc_cli.SendMsg:input_type -> model.MsgForSendGRPC
+	3,  // 1: cli.onebot_grpc_cli.SendPrivateMsg:input_type -> model.PrivateMsgGRPC
+	4,  // 2: cli.onebot_grpc_cli.SendGroupMsg:input_type -> model.GroupMsgGRPC
+	5,  // 3: cli.onebot_grpc_cli.DelMsg:input_type -> google.protobuf.Int64Value
+	5,  // 4: cli.onebot_grpc_cli.GetMsg:input_type -> google.protobuf.Int64Value
+	5,  // 5: cli.onebot_grpc_cli.GetForwardMsg:input_type -> google.protobuf.Int64Value
+	6,  // 6: cli.onebot_grpc_cli.GetLoginInfo:input_type -> google.protobuf.Empty
+	0,  // 7: cli.onebot_grpc_cli.GetStrangerInfo:input_type -> cli.GetStrangerInfoReq
+	7,  // 8: cli.onebot_grpc_cli.GetCookies:input_type -> google.protobuf.StringValue
+	6,  // 9: cli.onebot_grpc_cli.GetCSRFToken:input_type -> google.protobuf.Empty
+	7,  // 10: cli.onebot_grpc_cli.GetCredentials:input_type -> google.protobuf.StringValue
+	1,  // 11: cli.onebot_grpc_cli.GetRecord:input_type -> cli.GetRecordReq
+	7,  // 12: cli.onebot_grpc_cli.GetImage:input_type -> google.protobuf.StringValue
+	5,  // 13: cli.onebot_grpc_cli.SendMsg:output_type -> google.protobuf.Int64Value
+	5,  // 14: cli.onebot_grpc_cli.SendPrivateMsg:output_type -> google.protobuf.Int64Value
+	5,  // 15: cli.onebot_grpc_cli.SendGroupMsg:output_type -> google.protobuf.Int64Value
+	6,  // 16: cli.onebot_grpc_cli.DelMsg:output_type -> google.protobuf.Empty
+	8,  // 17: cli.onebot_grpc_cli.GetMsg:output_type -> model.MessageDataGRPC
+	9,  // 18: cli.onebot_grpc_cli.GetForwardMsg:output_type -> model.ForwardMessageDataGRPC
+	10, // 19: cli.onebot_grpc_cli.GetLoginInfo:output_type -> model.AccountGRPC
+	10, // 20: cli.onebot_grpc_cli.GetStrangerInfo:output_type -> model.AccountGRPC
+	11, // 21: cli.onebot_grpc_cli.GetCookies:output_type -> model.CokiesGRPC
+	12, // 22: cli.onebot_grpc_cli.GetCSRFToken:output_type -> model.CSRFTokenGRPC
+	13, // 23: cli.onebot_grpc_cli.GetCredentials:output_type -> model.CredentialsGRPC
+	14, // 24: cli.onebot_grpc_cli.GetRecord:output_type -> model.FileGRPC
+	14, // 25: cli.onebot_grpc_cli.GetImage:output_type -> model.FileGRPC
+	13, // [13:26] is the sub-list for method output_type
+	0,  // [0:13] is the sub-list for method input_type
+	0,  // [0:0] is the sub-list for extension type_name
+	0,  // [0:0] is the sub-list for extension extendee
+	0,  // [0:0] is the sub-list for field type_name
 }
 
 func init() { file_onebot_plus_pkg_cli_onebot_cli_proto_init() }
@@ -102,18 +286,45 @@ func file_onebot_plus_pkg_cli_onebot_cli_proto_init() {
 	if File_onebot_plus_pkg_cli_onebot_cli_proto != nil {
 		return
 	}
+	if !protoimpl.UnsafeEnabled {
+		file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetStrangerInfoReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetRecordReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_onebot_plus_pkg_cli_onebot_cli_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   0,
+			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
 		GoTypes:           file_onebot_plus_pkg_cli_onebot_cli_proto_goTypes,
 		DependencyIndexes: file_onebot_plus_pkg_cli_onebot_cli_proto_depIdxs,
+		MessageInfos:      file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes,
 	}.Build()
 	File_onebot_plus_pkg_cli_onebot_cli_proto = out.File
 	file_onebot_plus_pkg_cli_onebot_cli_proto_rawDesc = nil
@@ -145,6 +356,17 @@ type OnebotGrpcCliClient interface {
 	GetMsg(ctx context.Context, in *wrapperspb.Int64Value, opts ...grpc.CallOption) (*model.MessageDataGRPC, error)
 	//获取转发的消息
 	GetForwardMsg(ctx context.Context, in *wrapperspb.Int64Value, opts ...grpc.CallOption) (*model.ForwardMessageDataGRPC, error)
+	//获取登录信息
+	GetLoginInfo(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*model.AccountGRPC, error)
+	//获取陌生人信息
+	GetStrangerInfo(ctx context.Context, in *GetStrangerInfoReq, opts ...grpc.CallOption) (*model.AccountGRPC, error)
+	GetCookies(ctx context.Context, in *wrapperspb.StringValue, opts ...grpc.CallOption) (*model.CokiesGRPC, error)
+	GetCSRFToken(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*model.CSRFTokenGRPC, error)
+	GetCredentials(ctx context.Context, in *wrapperspb.StringValue, opts ...grpc.CallOption) (*model.CredentialsGRPC, error)
+	//获取语音
+	GetRecord(ctx context.Context, in *GetRecordReq, opts ...grpc.CallOption) (*model.FileGRPC, error)
+	//获取图片
+	GetImage(ctx context.Context, in *wrapperspb.StringValue, opts ...grpc.CallOption) (*model.FileGRPC, error)
 }
 
 type onebotGrpcCliClient struct {
@@ -209,6 +431,69 @@ func (c *onebotGrpcCliClient) GetForwardMsg(ctx context.Context, in *wrapperspb.
 	return out, nil
 }
 
+func (c *onebotGrpcCliClient) GetLoginInfo(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*model.AccountGRPC, error) {
+	out := new(model.AccountGRPC)
+	err := c.cc.Invoke(ctx, "/cli.onebot_grpc_cli/GetLoginInfo", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *onebotGrpcCliClient) GetStrangerInfo(ctx context.Context, in *GetStrangerInfoReq, opts ...grpc.CallOption) (*model.AccountGRPC, error) {
+	out := new(model.AccountGRPC)
+	err := c.cc.Invoke(ctx, "/cli.onebot_grpc_cli/GetStrangerInfo", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *onebotGrpcCliClient) GetCookies(ctx context.Context, in *wrapperspb.StringValue, opts ...grpc.CallOption) (*model.CokiesGRPC, error) {
+	out := new(model.CokiesGRPC)
+	err := c.cc.Invoke(ctx, "/cli.onebot_grpc_cli/GetCookies", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *onebotGrpcCliClient) GetCSRFToken(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*model.CSRFTokenGRPC, error) {
+	out := new(model.CSRFTokenGRPC)
+	err := c.cc.Invoke(ctx, "/cli.onebot_grpc_cli/GetCSRFToken", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *onebotGrpcCliClient) GetCredentials(ctx context.Context, in *wrapperspb.StringValue, opts ...grpc.CallOption) (*model.CredentialsGRPC, error) {
+	out := new(model.CredentialsGRPC)
+	err := c.cc.Invoke(ctx, "/cli.onebot_grpc_cli/GetCredentials", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *onebotGrpcCliClient) GetRecord(ctx context.Context, in *GetRecordReq, opts ...grpc.CallOption) (*model.FileGRPC, error) {
+	out := new(model.FileGRPC)
+	err := c.cc.Invoke(ctx, "/cli.onebot_grpc_cli/GetRecord", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *onebotGrpcCliClient) GetImage(ctx context.Context, in *wrapperspb.StringValue, opts ...grpc.CallOption) (*model.FileGRPC, error) {
+	out := new(model.FileGRPC)
+	err := c.cc.Invoke(ctx, "/cli.onebot_grpc_cli/GetImage", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // OnebotGrpcCliServer is the server API for OnebotGrpcCli service.
 type OnebotGrpcCliServer interface {
 	//发送消息
@@ -223,6 +508,17 @@ type OnebotGrpcCliServer interface {
 	GetMsg(context.Context, *wrapperspb.Int64Value) (*model.MessageDataGRPC, error)
 	//获取转发的消息
 	GetForwardMsg(context.Context, *wrapperspb.Int64Value) (*model.ForwardMessageDataGRPC, error)
+	//获取登录信息
+	GetLoginInfo(context.Context, *emptypb.Empty) (*model.AccountGRPC, error)
+	//获取陌生人信息
+	GetStrangerInfo(context.Context, *GetStrangerInfoReq) (*model.AccountGRPC, error)
+	GetCookies(context.Context, *wrapperspb.StringValue) (*model.CokiesGRPC, error)
+	GetCSRFToken(context.Context, *emptypb.Empty) (*model.CSRFTokenGRPC, error)
+	GetCredentials(context.Context, *wrapperspb.StringValue) (*model.CredentialsGRPC, error)
+	//获取语音
+	GetRecord(context.Context, *GetRecordReq) (*model.FileGRPC, error)
+	//获取图片
+	GetImage(context.Context, *wrapperspb.StringValue) (*model.FileGRPC, error)
 }
 
 // UnimplementedOnebotGrpcCliServer can be embedded to have forward compatible implementations.
@@ -246,6 +542,27 @@ func (*UnimplementedOnebotGrpcCliServer) GetMsg(context.Context, *wrapperspb.Int
 }
 func (*UnimplementedOnebotGrpcCliServer) GetForwardMsg(context.Context, *wrapperspb.Int64Value) (*model.ForwardMessageDataGRPC, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetForwardMsg not implemented")
+}
+func (*UnimplementedOnebotGrpcCliServer) GetLoginInfo(context.Context, *emptypb.Empty) (*model.AccountGRPC, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetLoginInfo not implemented")
+}
+func (*UnimplementedOnebotGrpcCliServer) GetStrangerInfo(context.Context, *GetStrangerInfoReq) (*model.AccountGRPC, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetStrangerInfo not implemented")
+}
+func (*UnimplementedOnebotGrpcCliServer) GetCookies(context.Context, *wrapperspb.StringValue) (*model.CokiesGRPC, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetCookies not implemented")
+}
+func (*UnimplementedOnebotGrpcCliServer) GetCSRFToken(context.Context, *emptypb.Empty) (*model.CSRFTokenGRPC, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetCSRFToken not implemented")
+}
+func (*UnimplementedOnebotGrpcCliServer) GetCredentials(context.Context, *wrapperspb.StringValue) (*model.CredentialsGRPC, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetCredentials not implemented")
+}
+func (*UnimplementedOnebotGrpcCliServer) GetRecord(context.Context, *GetRecordReq) (*model.FileGRPC, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetRecord not implemented")
+}
+func (*UnimplementedOnebotGrpcCliServer) GetImage(context.Context, *wrapperspb.StringValue) (*model.FileGRPC, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetImage not implemented")
 }
 
 func RegisterOnebotGrpcCliServer(s *grpc.Server, srv OnebotGrpcCliServer) {
@@ -360,6 +677,132 @@ func _OnebotGrpcCli_GetForwardMsg_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _OnebotGrpcCli_GetLoginInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(emptypb.Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OnebotGrpcCliServer).GetLoginInfo(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/cli.onebot_grpc_cli/GetLoginInfo",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OnebotGrpcCliServer).GetLoginInfo(ctx, req.(*emptypb.Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _OnebotGrpcCli_GetStrangerInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetStrangerInfoReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OnebotGrpcCliServer).GetStrangerInfo(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/cli.onebot_grpc_cli/GetStrangerInfo",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OnebotGrpcCliServer).GetStrangerInfo(ctx, req.(*GetStrangerInfoReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _OnebotGrpcCli_GetCookies_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(wrapperspb.StringValue)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OnebotGrpcCliServer).GetCookies(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/cli.onebot_grpc_cli/GetCookies",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OnebotGrpcCliServer).GetCookies(ctx, req.(*wrapperspb.StringValue))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _OnebotGrpcCli_GetCSRFToken_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(emptypb.Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OnebotGrpcCliServer).GetCSRFToken(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/cli.onebot_grpc_cli/GetCSRFToken",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OnebotGrpcCliServer).GetCSRFToken(ctx, req.(*emptypb.Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _OnebotGrpcCli_GetCredentials_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(wrapperspb.StringValue)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OnebotGrpcCliServer).GetCredentials(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/cli.onebot_grpc_cli/GetCredentials",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OnebotGrpcCliServer).GetCredentials(ctx, req.(*wrapperspb.StringValue))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _OnebotGrpcCli_GetRecord_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetRecordReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OnebotGrpcCliServer).GetRecord(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/cli.onebot_grpc_cli/GetRecord",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OnebotGrpcCliServer).GetRecord(ctx, req.(*GetRecordReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _OnebotGrpcCli_GetImage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(wrapperspb.StringValue)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OnebotGrpcCliServer).GetImage(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/cli.onebot_grpc_cli/GetImage",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OnebotGrpcCliServer).GetImage(ctx, req.(*wrapperspb.StringValue))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _OnebotGrpcCli_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "cli.onebot_grpc_cli",
 	HandlerType: (*OnebotGrpcCliServer)(nil),
@@ -387,6 +830,34 @@ var _OnebotGrpcCli_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetForwardMsg",
 			Handler:    _OnebotGrpcCli_GetForwardMsg_Handler,
+		},
+		{
+			MethodName: "GetLoginInfo",
+			Handler:    _OnebotGrpcCli_GetLoginInfo_Handler,
+		},
+		{
+			MethodName: "GetStrangerInfo",
+			Handler:    _OnebotGrpcCli_GetStrangerInfo_Handler,
+		},
+		{
+			MethodName: "GetCookies",
+			Handler:    _OnebotGrpcCli_GetCookies_Handler,
+		},
+		{
+			MethodName: "GetCSRFToken",
+			Handler:    _OnebotGrpcCli_GetCSRFToken_Handler,
+		},
+		{
+			MethodName: "GetCredentials",
+			Handler:    _OnebotGrpcCli_GetCredentials_Handler,
+		},
+		{
+			MethodName: "GetRecord",
+			Handler:    _OnebotGrpcCli_GetRecord_Handler,
+		},
+		{
+			MethodName: "GetImage",
+			Handler:    _OnebotGrpcCli_GetImage_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

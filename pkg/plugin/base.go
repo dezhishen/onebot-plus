@@ -110,7 +110,7 @@ func (p *onebotEventPluginGRPCServerStub) MessagePrivate(ctx context.Context, re
 		return nil, err
 	}
 	defer conn.Close()
-	client := &cli.MessageCliClientStub{
+	client := &cli.OnebotCliClientStub{
 		Client: cli.NewOnebotGrpcCliClient(conn),
 	}
 	e := p.Impl.MessagePrivate(req.Message.ToStruct(), client)
@@ -125,7 +125,7 @@ func (p *onebotEventPluginGRPCServerStub) MessageGroup(ctx context.Context, req 
 		return nil, err
 	}
 	defer conn.Close()
-	client := &cli.MessageCliClientStub{
+	client := &cli.OnebotCliClientStub{
 		Client: cli.NewOnebotGrpcCliClient(conn),
 	}
 	e := p.Impl.MessageGroup(req.Message.ToStruct(), client)
@@ -140,7 +140,7 @@ func (p *onebotEventPluginGRPCServerStub) MetaLifecycle(ctx context.Context, req
 		return nil, err
 	}
 	defer conn.Close()
-	client := &cli.MessageCliClientStub{
+	client := &cli.OnebotCliClientStub{
 		Client: cli.NewOnebotGrpcCliClient(conn),
 	}
 	e := p.Impl.MetaLifecycle(req.Message.ToStruct(), client)
@@ -155,7 +155,7 @@ func (p *onebotEventPluginGRPCServerStub) MetaHeartbeat(ctx context.Context, req
 		return nil, err
 	}
 	defer conn.Close()
-	client := &cli.MessageCliClientStub{
+	client := &cli.OnebotCliClientStub{
 		Client: cli.NewOnebotGrpcCliClient(conn),
 	}
 	e := p.Impl.MetaHeartbeat(req.Message.ToStruct(), client)
@@ -170,7 +170,7 @@ func (p *onebotEventPluginGRPCServerStub) NoticeGroupUpload(ctx context.Context,
 		return nil, err
 	}
 	defer conn.Close()
-	client := &cli.MessageCliClientStub{
+	client := &cli.OnebotCliClientStub{
 		Client: cli.NewOnebotGrpcCliClient(conn),
 	}
 	e := p.Impl.NoticeGroupUpload(req.Message.ToStruct(), client)
@@ -185,7 +185,7 @@ func (p *onebotEventPluginGRPCServerStub) NoticeGroupAdmin(ctx context.Context, 
 		return nil, err
 	}
 	defer conn.Close()
-	client := &cli.MessageCliClientStub{
+	client := &cli.OnebotCliClientStub{
 		Client: cli.NewOnebotGrpcCliClient(conn),
 	}
 	e := p.Impl.NoticeGroupAdmin(req.Message.ToStruct(), client)
@@ -200,7 +200,7 @@ func (p *onebotEventPluginGRPCServerStub) NoticeGroupDecrease(ctx context.Contex
 		return nil, err
 	}
 	defer conn.Close()
-	client := &cli.MessageCliClientStub{
+	client := &cli.OnebotCliClientStub{
 		Client: cli.NewOnebotGrpcCliClient(conn),
 	}
 	e := p.Impl.NoticeGroupDecrease(req.Message.ToStruct(), client)
@@ -215,7 +215,7 @@ func (p *onebotEventPluginGRPCServerStub) NoticeGroupIncrease(ctx context.Contex
 		return nil, err
 	}
 	defer conn.Close()
-	client := &cli.MessageCliClientStub{
+	client := &cli.OnebotCliClientStub{
 		Client: cli.NewOnebotGrpcCliClient(conn),
 	}
 	e := p.Impl.NoticeGroupIncrease(req.Message.ToStruct(), client)
@@ -230,7 +230,7 @@ func (p *onebotEventPluginGRPCServerStub) NoticeGroupBan(ctx context.Context, re
 		return nil, err
 	}
 	defer conn.Close()
-	client := &cli.MessageCliClientStub{
+	client := &cli.OnebotCliClientStub{
 		Client: cli.NewOnebotGrpcCliClient(conn),
 	}
 	e := p.Impl.NoticeGroupBan(req.Message.ToStruct(), client)
@@ -245,7 +245,7 @@ func (p *onebotEventPluginGRPCServerStub) NoticeGroupRecall(ctx context.Context,
 		return nil, err
 	}
 	defer conn.Close()
-	client := &cli.MessageCliClientStub{
+	client := &cli.OnebotCliClientStub{
 		Client: cli.NewOnebotGrpcCliClient(conn),
 	}
 	e := p.Impl.NoticeGroupRecall(req.Message.ToStruct(), client)
@@ -260,7 +260,7 @@ func (p *onebotEventPluginGRPCServerStub) NoticeGroupNotifyPoke(ctx context.Cont
 		return nil, err
 	}
 	defer conn.Close()
-	client := &cli.MessageCliClientStub{
+	client := &cli.OnebotCliClientStub{
 		Client: cli.NewOnebotGrpcCliClient(conn),
 	}
 	e := p.Impl.NoticeGroupNotifyPoke(req.Message.ToStruct(), client)
@@ -275,7 +275,7 @@ func (p *onebotEventPluginGRPCServerStub) NoticeGroupNotifyLuckyKing(ctx context
 		return nil, err
 	}
 	defer conn.Close()
-	client := &cli.MessageCliClientStub{
+	client := &cli.OnebotCliClientStub{
 		Client: cli.NewOnebotGrpcCliClient(conn),
 	}
 	e := p.Impl.NoticeGroupNotifyLuckyKing(req.Message.ToStruct(), client)
@@ -290,7 +290,7 @@ func (p *onebotEventPluginGRPCServerStub) NoticeGroupNotifyHonor(ctx context.Con
 		return nil, err
 	}
 	defer conn.Close()
-	client := &cli.MessageCliClientStub{
+	client := &cli.OnebotCliClientStub{
 		Client: cli.NewOnebotGrpcCliClient(conn),
 	}
 	e := p.Impl.NoticeGroupNotifyHonor(req.Message.ToStruct(), client)
@@ -305,7 +305,7 @@ func (p *onebotEventPluginGRPCServerStub) NoticeFriendAdd(ctx context.Context, r
 		return nil, err
 	}
 	defer conn.Close()
-	client := &cli.MessageCliClientStub{
+	client := &cli.OnebotCliClientStub{
 		Client: cli.NewOnebotGrpcCliClient(conn),
 	}
 	e := p.Impl.NoticeFriendAdd(req.Message.ToStruct(), client)
@@ -320,7 +320,7 @@ func (p *onebotEventPluginGRPCServerStub) NoticeFriendRecall(ctx context.Context
 		return nil, err
 	}
 	defer conn.Close()
-	client := &cli.MessageCliClientStub{
+	client := &cli.OnebotCliClientStub{
 		Client: cli.NewOnebotGrpcCliClient(conn),
 	}
 	e := p.Impl.NoticeFriendRecall(req.Message.ToStruct(), client)
@@ -335,7 +335,7 @@ func (p *onebotEventPluginGRPCServerStub) RequestFriend(ctx context.Context, req
 		return nil, err
 	}
 	defer conn.Close()
-	client := &cli.MessageCliClientStub{
+	client := &cli.OnebotCliClientStub{
 		Client: cli.NewOnebotGrpcCliClient(conn),
 	}
 	e := p.Impl.RequestFriend(req.Message.ToStruct(), client)
@@ -350,7 +350,7 @@ func (p *onebotEventPluginGRPCServerStub) RequestGroup(ctx context.Context, req 
 		return nil, err
 	}
 	defer conn.Close()
-	client := &cli.MessageCliClientStub{
+	client := &cli.OnebotCliClientStub{
 		Client: cli.NewOnebotGrpcCliClient(conn),
 	}
 	e := p.Impl.RequestGroup(req.Message.ToStruct(), client)

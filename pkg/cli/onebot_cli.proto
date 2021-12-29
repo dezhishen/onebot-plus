@@ -1,9 +1,20 @@
 syntax = "proto3";
 package cli;
 import "onebot-sdk/pkg/proto/message.proto";
+import "onebot-sdk/pkg/proto/account.proto";
 import "google/protobuf/wrappers.proto";
 import "google/protobuf/empty.proto";
 option go_package="../cli";
+
+message GetStrangerInfoReq {
+	int64 user_id = 1;
+	bool no_cache = 2;
+}
+
+message GetRecordReq{
+	string file = 1 ;
+	string out_format = 2;
+}
 
 service onebot_grpc_cli {
     //发送消息
@@ -18,4 +29,19 @@ service onebot_grpc_cli {
 	rpc GetMsg(google.protobuf.Int64Value) returns (model.MessageDataGRPC);
 	//获取转发的消息
 	rpc GetForwardMsg(google.protobuf.Int64Value) returns (model.ForwardMessageDataGRPC);
+
+	//获取登录信息
+	rpc GetLoginInfo(google.protobuf.Empty) returns(model.AccountGRPC);
+	//获取陌生人信息
+	rpc GetStrangerInfo(GetStrangerInfoReq)returns(model.AccountGRPC);
+
+	rpc GetCookies(google.protobuf.StringValue) returns(model.CokiesGRPC);
+
+	rpc GetCSRFToken(google.protobuf.Empty)returns (model.CSRFTokenGRPC);
+
+	rpc GetCredentials(google.protobuf.StringValue)returns (model.CredentialsGRPC);
+	//获取语音
+	rpc GetRecord(GetRecordReq) returns(model.FileGRPC);
+	//获取图片
+	rpc GetImage(google.protobuf.StringValue) returns(model.FileGRPC);
 }
