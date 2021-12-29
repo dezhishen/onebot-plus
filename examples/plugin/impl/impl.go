@@ -25,6 +25,11 @@ func main() {
 			return nil
 
 		}).
+		MetaLifecycle(func(req *model.EventMetaLifecycle, cli cli.OnebotCli) error {
+			logrus.Info("============status==========")
+			logrus.Info(cli.GetStatus())
+			return nil
+		}).
 		//构建插件
 		Build().
 		//启动

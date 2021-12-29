@@ -2,6 +2,8 @@ syntax = "proto3";
 package cli;
 import "onebot-sdk/pkg/proto/message.proto";
 import "onebot-sdk/pkg/proto/account.proto";
+import "onebot-sdk/pkg/proto/group.proto";
+import "onebot-sdk/pkg/proto/system.proto";
 import "google/protobuf/wrappers.proto";
 import "google/protobuf/empty.proto";
 option go_package="../cli";
@@ -16,6 +18,107 @@ message GetRecordReq{
 	string out_format = 2;
 }
 
+message SendLikeReq{
+	int64 user_id = 1;
+	int64 times = 2;
+}
+
+message SetFriendAddRequestReq{
+	string flag = 1;
+	bool approve = 2;
+	string remark = 3;
+}
+
+
+message GetFriendListResp {
+	repeated model.AccountGRPC data = 1;
+}
+
+message SetGroupKickReq {
+	int64 group_id = 1;
+	int64 user_id = 2;
+	bool reject_rdd_request = 3;
+}
+
+
+message SetGroupBanReq {
+	int64 group_id = 1;
+	int64 user_id = 2;
+	int64 duration = 3;
+}
+message SetGroupAnonymousBanReq {
+	int64 group_id = 1;
+	int64 duration = 2;
+	string anonymous_flag = 3;
+}
+
+message SetGroupWholeBanReq{
+	int64 group_id = 1;
+	bool enable = 2;
+}
+message SetGroupAdminReq{
+	int64 group_id = 1;
+	int64 user_id = 2;
+	bool enable = 3;
+}
+message SetGroupAnonymousReq{
+	int64 group_id = 1;
+	bool enable = 2;
+}
+
+message SetGroupCardReq{
+	int64 group_id = 1;
+	int64 user_id = 2;
+	string card = 3;
+}
+
+message SetGroupNameReq{
+	int64 group_id = 1;
+	string group_name = 2;
+}
+
+message SetGroupLeaveReq{
+	int64 group_id = 1;
+	bool is_dismiss = 2;
+}
+
+message SetGroupSpecialTitleReq{
+	int64 group_id = 1; 
+	int64 user_id = 2;
+	int64 duration = 3;
+	string special_title = 4;
+}
+
+message SetGroupAddRequestReq{
+	string flag = 1;
+	string subType = 2;
+	string reason = 3;
+	bool approve = 4;
+}
+
+message GetGrooupInfoReq{
+	int64 group_id = 1; 
+	bool not_cache = 2;
+
+}
+message GetGroupListResp{
+	repeated model.GroupGRPC data = 1;
+}
+
+message GetGroupMemberInfoReq{
+	int64 group_id = 1; 
+	int64 user_id = 2;
+	bool no_cache = 3;
+}
+
+message GetGroupMemberListInfoResp{
+	repeated model.GroupMemberGRPC data = 1;
+}
+
+message GetGroupHonorInfoReq {
+	int64 group_id = 1;
+	string honor_type = 2;
+}
 service onebot_grpc_cli {
     //发送消息
 	rpc SendMsg(model.MsgForSendGRPC)returns(google.protobuf.Int64Value);
@@ -44,4 +147,66 @@ service onebot_grpc_cli {
 	rpc GetRecord(GetRecordReq) returns(model.FileGRPC);
 	//获取图片
 	rpc GetImage(google.protobuf.StringValue) returns(model.FileGRPC);
+	
+	rpc SendLike(SendLikeReq) returns (google.protobuf.Empty);
+	//处理加好友请求
+	rpc SetFriendAddRequest(SetFriendAddRequestReq) returns (google.protobuf.Empty);
+
+
+	rpc GetFriendList(google.protobuf.Empty) returns (GetFriendListResp);
+	// 群组踢人
+	rpc SetGroupKick(SetGroupKickReq) returns (google.protobuf.Empty);
+
+	// 群组禁言
+	rpc SetGroupBan(SetGroupBanReq) returns (google.protobuf.Empty);
+
+	// 群组匿名用户禁言
+	rpc SetGroupAnonymousBan(SetGroupAnonymousBanReq) returns (google.protobuf.Empty);
+
+	//群组全员禁言
+	rpc SetGroupWholeBan(SetGroupWholeBanReq) returns (google.protobuf.Empty);
+
+	//群组设置管理员
+	rpc SetGroupAdmin(SetGroupAdminReq) returns (google.protobuf.Empty);
+	//群组匿名
+	rpc SetGroupAnonymous(SetGroupAnonymousReq) returns (google.protobuf.Empty);
+	//设置群名片（群备注）
+	rpc SetGroupCard(SetGroupCardReq) returns (google.protobuf.Empty);
+
+	//设置群名
+	rpc SetGroupName(SetGroupNameReq) returns (google.protobuf.Empty);
+
+	//退出群组
+	rpc SetGroupLeave(SetGroupLeaveReq) returns (google.protobuf.Empty);
+	//设置群组专属头衔
+	rpc SetGroupSpecialTitle(SetGroupSpecialTitleReq) returns (google.protobuf.Empty);
+
+	//处理加群请求／邀请
+	rpc SetGroupAddRequest(SetGroupAddRequestReq) returns (google.protobuf.Empty);
+
+	//获取群信息
+	rpc GetGroupInfo(GetGrooupInfoReq)returns(model.GroupGRPC);
+	//获取群列表
+	rpc GetGroupList(google.protobuf.Empty)returns(GetGroupListResp);
+
+	//获取群成员信息
+	rpc GetGroupMemberInfo(GetGroupMemberInfoReq)returns (model.GroupMemberGRPC);
+
+	//获取群成员列表
+	rpc GetGroupMemberListInfo(google.protobuf.Empty) returns (GetGroupMemberListInfoResp);
+
+	//获取群荣誉信息
+	rpc GetGroupHonorInfo(GetGroupHonorInfoReq) returns(model.GroupHonorInfoGRPC);
+
+	rpc CleanCache(google.protobuf.Empty) returns (google.protobuf.Empty);
+
+	rpc SetRestart(google.protobuf.Int64Value) returns (google.protobuf.Empty);
+
+	rpc GetVersionInfo(google.protobuf.Empty)returns (model.VersionInfoDataGRPC);
+
+	rpc GetStatus(google.protobuf.Empty) returns(model.StatusInfoDataGRPC);
+
+	rpc CanSendImage(google.protobuf.Empty) returns(google.protobuf.BoolValue);
+
+	rpc CanSendRecord(google.protobuf.Empty) returns(google.protobuf.BoolValue);
 }

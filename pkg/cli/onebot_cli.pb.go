@@ -137,6 +137,1115 @@ func (x *GetRecordReq) GetOutFormat() string {
 	return ""
 }
 
+type SendLikeReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	UserId int64 `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	Times  int64 `protobuf:"varint,2,opt,name=times,proto3" json:"times,omitempty"`
+}
+
+func (x *SendLikeReq) Reset() {
+	*x = SendLikeReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[2]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *SendLikeReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SendLikeReq) ProtoMessage() {}
+
+func (x *SendLikeReq) ProtoReflect() protoreflect.Message {
+	mi := &file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[2]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SendLikeReq.ProtoReflect.Descriptor instead.
+func (*SendLikeReq) Descriptor() ([]byte, []int) {
+	return file_onebot_plus_pkg_cli_onebot_cli_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *SendLikeReq) GetUserId() int64 {
+	if x != nil {
+		return x.UserId
+	}
+	return 0
+}
+
+func (x *SendLikeReq) GetTimes() int64 {
+	if x != nil {
+		return x.Times
+	}
+	return 0
+}
+
+type SetFriendAddRequestReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Flag    string `protobuf:"bytes,1,opt,name=flag,proto3" json:"flag,omitempty"`
+	Approve bool   `protobuf:"varint,2,opt,name=approve,proto3" json:"approve,omitempty"`
+	Remark  string `protobuf:"bytes,3,opt,name=remark,proto3" json:"remark,omitempty"`
+}
+
+func (x *SetFriendAddRequestReq) Reset() {
+	*x = SetFriendAddRequestReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[3]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *SetFriendAddRequestReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SetFriendAddRequestReq) ProtoMessage() {}
+
+func (x *SetFriendAddRequestReq) ProtoReflect() protoreflect.Message {
+	mi := &file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[3]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SetFriendAddRequestReq.ProtoReflect.Descriptor instead.
+func (*SetFriendAddRequestReq) Descriptor() ([]byte, []int) {
+	return file_onebot_plus_pkg_cli_onebot_cli_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *SetFriendAddRequestReq) GetFlag() string {
+	if x != nil {
+		return x.Flag
+	}
+	return ""
+}
+
+func (x *SetFriendAddRequestReq) GetApprove() bool {
+	if x != nil {
+		return x.Approve
+	}
+	return false
+}
+
+func (x *SetFriendAddRequestReq) GetRemark() string {
+	if x != nil {
+		return x.Remark
+	}
+	return ""
+}
+
+type GetFriendListResp struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Data []*model.AccountGRPC `protobuf:"bytes,1,rep,name=data,proto3" json:"data,omitempty"`
+}
+
+func (x *GetFriendListResp) Reset() {
+	*x = GetFriendListResp{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[4]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetFriendListResp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetFriendListResp) ProtoMessage() {}
+
+func (x *GetFriendListResp) ProtoReflect() protoreflect.Message {
+	mi := &file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[4]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetFriendListResp.ProtoReflect.Descriptor instead.
+func (*GetFriendListResp) Descriptor() ([]byte, []int) {
+	return file_onebot_plus_pkg_cli_onebot_cli_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *GetFriendListResp) GetData() []*model.AccountGRPC {
+	if x != nil {
+		return x.Data
+	}
+	return nil
+}
+
+type SetGroupKickReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	GroupId          int64 `protobuf:"varint,1,opt,name=group_id,json=groupId,proto3" json:"group_id,omitempty"`
+	UserId           int64 `protobuf:"varint,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	RejectRddRequest bool  `protobuf:"varint,3,opt,name=reject_rdd_request,json=rejectRddRequest,proto3" json:"reject_rdd_request,omitempty"`
+}
+
+func (x *SetGroupKickReq) Reset() {
+	*x = SetGroupKickReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[5]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *SetGroupKickReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SetGroupKickReq) ProtoMessage() {}
+
+func (x *SetGroupKickReq) ProtoReflect() protoreflect.Message {
+	mi := &file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[5]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SetGroupKickReq.ProtoReflect.Descriptor instead.
+func (*SetGroupKickReq) Descriptor() ([]byte, []int) {
+	return file_onebot_plus_pkg_cli_onebot_cli_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *SetGroupKickReq) GetGroupId() int64 {
+	if x != nil {
+		return x.GroupId
+	}
+	return 0
+}
+
+func (x *SetGroupKickReq) GetUserId() int64 {
+	if x != nil {
+		return x.UserId
+	}
+	return 0
+}
+
+func (x *SetGroupKickReq) GetRejectRddRequest() bool {
+	if x != nil {
+		return x.RejectRddRequest
+	}
+	return false
+}
+
+type SetGroupBanReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	GroupId  int64 `protobuf:"varint,1,opt,name=group_id,json=groupId,proto3" json:"group_id,omitempty"`
+	UserId   int64 `protobuf:"varint,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	Duration int64 `protobuf:"varint,3,opt,name=duration,proto3" json:"duration,omitempty"`
+}
+
+func (x *SetGroupBanReq) Reset() {
+	*x = SetGroupBanReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[6]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *SetGroupBanReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SetGroupBanReq) ProtoMessage() {}
+
+func (x *SetGroupBanReq) ProtoReflect() protoreflect.Message {
+	mi := &file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[6]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SetGroupBanReq.ProtoReflect.Descriptor instead.
+func (*SetGroupBanReq) Descriptor() ([]byte, []int) {
+	return file_onebot_plus_pkg_cli_onebot_cli_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *SetGroupBanReq) GetGroupId() int64 {
+	if x != nil {
+		return x.GroupId
+	}
+	return 0
+}
+
+func (x *SetGroupBanReq) GetUserId() int64 {
+	if x != nil {
+		return x.UserId
+	}
+	return 0
+}
+
+func (x *SetGroupBanReq) GetDuration() int64 {
+	if x != nil {
+		return x.Duration
+	}
+	return 0
+}
+
+type SetGroupAnonymousBanReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	GroupId       int64  `protobuf:"varint,1,opt,name=group_id,json=groupId,proto3" json:"group_id,omitempty"`
+	Duration      int64  `protobuf:"varint,2,opt,name=duration,proto3" json:"duration,omitempty"`
+	AnonymousFlag string `protobuf:"bytes,3,opt,name=anonymous_flag,json=anonymousFlag,proto3" json:"anonymous_flag,omitempty"`
+}
+
+func (x *SetGroupAnonymousBanReq) Reset() {
+	*x = SetGroupAnonymousBanReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[7]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *SetGroupAnonymousBanReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SetGroupAnonymousBanReq) ProtoMessage() {}
+
+func (x *SetGroupAnonymousBanReq) ProtoReflect() protoreflect.Message {
+	mi := &file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[7]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SetGroupAnonymousBanReq.ProtoReflect.Descriptor instead.
+func (*SetGroupAnonymousBanReq) Descriptor() ([]byte, []int) {
+	return file_onebot_plus_pkg_cli_onebot_cli_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *SetGroupAnonymousBanReq) GetGroupId() int64 {
+	if x != nil {
+		return x.GroupId
+	}
+	return 0
+}
+
+func (x *SetGroupAnonymousBanReq) GetDuration() int64 {
+	if x != nil {
+		return x.Duration
+	}
+	return 0
+}
+
+func (x *SetGroupAnonymousBanReq) GetAnonymousFlag() string {
+	if x != nil {
+		return x.AnonymousFlag
+	}
+	return ""
+}
+
+type SetGroupWholeBanReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	GroupId int64 `protobuf:"varint,1,opt,name=group_id,json=groupId,proto3" json:"group_id,omitempty"`
+	Enable  bool  `protobuf:"varint,2,opt,name=enable,proto3" json:"enable,omitempty"`
+}
+
+func (x *SetGroupWholeBanReq) Reset() {
+	*x = SetGroupWholeBanReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[8]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *SetGroupWholeBanReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SetGroupWholeBanReq) ProtoMessage() {}
+
+func (x *SetGroupWholeBanReq) ProtoReflect() protoreflect.Message {
+	mi := &file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[8]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SetGroupWholeBanReq.ProtoReflect.Descriptor instead.
+func (*SetGroupWholeBanReq) Descriptor() ([]byte, []int) {
+	return file_onebot_plus_pkg_cli_onebot_cli_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *SetGroupWholeBanReq) GetGroupId() int64 {
+	if x != nil {
+		return x.GroupId
+	}
+	return 0
+}
+
+func (x *SetGroupWholeBanReq) GetEnable() bool {
+	if x != nil {
+		return x.Enable
+	}
+	return false
+}
+
+type SetGroupAdminReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	GroupId int64 `protobuf:"varint,1,opt,name=group_id,json=groupId,proto3" json:"group_id,omitempty"`
+	UserId  int64 `protobuf:"varint,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	Enable  bool  `protobuf:"varint,3,opt,name=enable,proto3" json:"enable,omitempty"`
+}
+
+func (x *SetGroupAdminReq) Reset() {
+	*x = SetGroupAdminReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[9]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *SetGroupAdminReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SetGroupAdminReq) ProtoMessage() {}
+
+func (x *SetGroupAdminReq) ProtoReflect() protoreflect.Message {
+	mi := &file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[9]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SetGroupAdminReq.ProtoReflect.Descriptor instead.
+func (*SetGroupAdminReq) Descriptor() ([]byte, []int) {
+	return file_onebot_plus_pkg_cli_onebot_cli_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *SetGroupAdminReq) GetGroupId() int64 {
+	if x != nil {
+		return x.GroupId
+	}
+	return 0
+}
+
+func (x *SetGroupAdminReq) GetUserId() int64 {
+	if x != nil {
+		return x.UserId
+	}
+	return 0
+}
+
+func (x *SetGroupAdminReq) GetEnable() bool {
+	if x != nil {
+		return x.Enable
+	}
+	return false
+}
+
+type SetGroupAnonymousReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	GroupId int64 `protobuf:"varint,1,opt,name=group_id,json=groupId,proto3" json:"group_id,omitempty"`
+	Enable  bool  `protobuf:"varint,2,opt,name=enable,proto3" json:"enable,omitempty"`
+}
+
+func (x *SetGroupAnonymousReq) Reset() {
+	*x = SetGroupAnonymousReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[10]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *SetGroupAnonymousReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SetGroupAnonymousReq) ProtoMessage() {}
+
+func (x *SetGroupAnonymousReq) ProtoReflect() protoreflect.Message {
+	mi := &file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[10]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SetGroupAnonymousReq.ProtoReflect.Descriptor instead.
+func (*SetGroupAnonymousReq) Descriptor() ([]byte, []int) {
+	return file_onebot_plus_pkg_cli_onebot_cli_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *SetGroupAnonymousReq) GetGroupId() int64 {
+	if x != nil {
+		return x.GroupId
+	}
+	return 0
+}
+
+func (x *SetGroupAnonymousReq) GetEnable() bool {
+	if x != nil {
+		return x.Enable
+	}
+	return false
+}
+
+type SetGroupCardReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	GroupId int64  `protobuf:"varint,1,opt,name=group_id,json=groupId,proto3" json:"group_id,omitempty"`
+	UserId  int64  `protobuf:"varint,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	Card    string `protobuf:"bytes,3,opt,name=card,proto3" json:"card,omitempty"`
+}
+
+func (x *SetGroupCardReq) Reset() {
+	*x = SetGroupCardReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[11]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *SetGroupCardReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SetGroupCardReq) ProtoMessage() {}
+
+func (x *SetGroupCardReq) ProtoReflect() protoreflect.Message {
+	mi := &file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[11]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SetGroupCardReq.ProtoReflect.Descriptor instead.
+func (*SetGroupCardReq) Descriptor() ([]byte, []int) {
+	return file_onebot_plus_pkg_cli_onebot_cli_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *SetGroupCardReq) GetGroupId() int64 {
+	if x != nil {
+		return x.GroupId
+	}
+	return 0
+}
+
+func (x *SetGroupCardReq) GetUserId() int64 {
+	if x != nil {
+		return x.UserId
+	}
+	return 0
+}
+
+func (x *SetGroupCardReq) GetCard() string {
+	if x != nil {
+		return x.Card
+	}
+	return ""
+}
+
+type SetGroupNameReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	GroupId   int64  `protobuf:"varint,1,opt,name=group_id,json=groupId,proto3" json:"group_id,omitempty"`
+	GroupName string `protobuf:"bytes,2,opt,name=group_name,json=groupName,proto3" json:"group_name,omitempty"`
+}
+
+func (x *SetGroupNameReq) Reset() {
+	*x = SetGroupNameReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[12]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *SetGroupNameReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SetGroupNameReq) ProtoMessage() {}
+
+func (x *SetGroupNameReq) ProtoReflect() protoreflect.Message {
+	mi := &file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[12]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SetGroupNameReq.ProtoReflect.Descriptor instead.
+func (*SetGroupNameReq) Descriptor() ([]byte, []int) {
+	return file_onebot_plus_pkg_cli_onebot_cli_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *SetGroupNameReq) GetGroupId() int64 {
+	if x != nil {
+		return x.GroupId
+	}
+	return 0
+}
+
+func (x *SetGroupNameReq) GetGroupName() string {
+	if x != nil {
+		return x.GroupName
+	}
+	return ""
+}
+
+type SetGroupLeaveReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	GroupId   int64 `protobuf:"varint,1,opt,name=group_id,json=groupId,proto3" json:"group_id,omitempty"`
+	IsDismiss bool  `protobuf:"varint,2,opt,name=is_dismiss,json=isDismiss,proto3" json:"is_dismiss,omitempty"`
+}
+
+func (x *SetGroupLeaveReq) Reset() {
+	*x = SetGroupLeaveReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[13]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *SetGroupLeaveReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SetGroupLeaveReq) ProtoMessage() {}
+
+func (x *SetGroupLeaveReq) ProtoReflect() protoreflect.Message {
+	mi := &file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[13]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SetGroupLeaveReq.ProtoReflect.Descriptor instead.
+func (*SetGroupLeaveReq) Descriptor() ([]byte, []int) {
+	return file_onebot_plus_pkg_cli_onebot_cli_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *SetGroupLeaveReq) GetGroupId() int64 {
+	if x != nil {
+		return x.GroupId
+	}
+	return 0
+}
+
+func (x *SetGroupLeaveReq) GetIsDismiss() bool {
+	if x != nil {
+		return x.IsDismiss
+	}
+	return false
+}
+
+type SetGroupSpecialTitleReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	GroupId      int64  `protobuf:"varint,1,opt,name=group_id,json=groupId,proto3" json:"group_id,omitempty"`
+	UserId       int64  `protobuf:"varint,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	Duration     int64  `protobuf:"varint,3,opt,name=duration,proto3" json:"duration,omitempty"`
+	SpecialTitle string `protobuf:"bytes,4,opt,name=special_title,json=specialTitle,proto3" json:"special_title,omitempty"`
+}
+
+func (x *SetGroupSpecialTitleReq) Reset() {
+	*x = SetGroupSpecialTitleReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[14]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *SetGroupSpecialTitleReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SetGroupSpecialTitleReq) ProtoMessage() {}
+
+func (x *SetGroupSpecialTitleReq) ProtoReflect() protoreflect.Message {
+	mi := &file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[14]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SetGroupSpecialTitleReq.ProtoReflect.Descriptor instead.
+func (*SetGroupSpecialTitleReq) Descriptor() ([]byte, []int) {
+	return file_onebot_plus_pkg_cli_onebot_cli_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *SetGroupSpecialTitleReq) GetGroupId() int64 {
+	if x != nil {
+		return x.GroupId
+	}
+	return 0
+}
+
+func (x *SetGroupSpecialTitleReq) GetUserId() int64 {
+	if x != nil {
+		return x.UserId
+	}
+	return 0
+}
+
+func (x *SetGroupSpecialTitleReq) GetDuration() int64 {
+	if x != nil {
+		return x.Duration
+	}
+	return 0
+}
+
+func (x *SetGroupSpecialTitleReq) GetSpecialTitle() string {
+	if x != nil {
+		return x.SpecialTitle
+	}
+	return ""
+}
+
+type SetGroupAddRequestReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Flag    string `protobuf:"bytes,1,opt,name=flag,proto3" json:"flag,omitempty"`
+	SubType string `protobuf:"bytes,2,opt,name=subType,proto3" json:"subType,omitempty"`
+	Reason  string `protobuf:"bytes,3,opt,name=reason,proto3" json:"reason,omitempty"`
+	Approve bool   `protobuf:"varint,4,opt,name=approve,proto3" json:"approve,omitempty"`
+}
+
+func (x *SetGroupAddRequestReq) Reset() {
+	*x = SetGroupAddRequestReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[15]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *SetGroupAddRequestReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SetGroupAddRequestReq) ProtoMessage() {}
+
+func (x *SetGroupAddRequestReq) ProtoReflect() protoreflect.Message {
+	mi := &file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[15]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SetGroupAddRequestReq.ProtoReflect.Descriptor instead.
+func (*SetGroupAddRequestReq) Descriptor() ([]byte, []int) {
+	return file_onebot_plus_pkg_cli_onebot_cli_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *SetGroupAddRequestReq) GetFlag() string {
+	if x != nil {
+		return x.Flag
+	}
+	return ""
+}
+
+func (x *SetGroupAddRequestReq) GetSubType() string {
+	if x != nil {
+		return x.SubType
+	}
+	return ""
+}
+
+func (x *SetGroupAddRequestReq) GetReason() string {
+	if x != nil {
+		return x.Reason
+	}
+	return ""
+}
+
+func (x *SetGroupAddRequestReq) GetApprove() bool {
+	if x != nil {
+		return x.Approve
+	}
+	return false
+}
+
+type GetGrooupInfoReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	GroupId  int64 `protobuf:"varint,1,opt,name=group_id,json=groupId,proto3" json:"group_id,omitempty"`
+	NotCache bool  `protobuf:"varint,2,opt,name=not_cache,json=notCache,proto3" json:"not_cache,omitempty"`
+}
+
+func (x *GetGrooupInfoReq) Reset() {
+	*x = GetGrooupInfoReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[16]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetGrooupInfoReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetGrooupInfoReq) ProtoMessage() {}
+
+func (x *GetGrooupInfoReq) ProtoReflect() protoreflect.Message {
+	mi := &file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[16]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetGrooupInfoReq.ProtoReflect.Descriptor instead.
+func (*GetGrooupInfoReq) Descriptor() ([]byte, []int) {
+	return file_onebot_plus_pkg_cli_onebot_cli_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *GetGrooupInfoReq) GetGroupId() int64 {
+	if x != nil {
+		return x.GroupId
+	}
+	return 0
+}
+
+func (x *GetGrooupInfoReq) GetNotCache() bool {
+	if x != nil {
+		return x.NotCache
+	}
+	return false
+}
+
+type GetGroupListResp struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Data []*model.GroupGRPC `protobuf:"bytes,1,rep,name=data,proto3" json:"data,omitempty"`
+}
+
+func (x *GetGroupListResp) Reset() {
+	*x = GetGroupListResp{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[17]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetGroupListResp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetGroupListResp) ProtoMessage() {}
+
+func (x *GetGroupListResp) ProtoReflect() protoreflect.Message {
+	mi := &file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[17]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetGroupListResp.ProtoReflect.Descriptor instead.
+func (*GetGroupListResp) Descriptor() ([]byte, []int) {
+	return file_onebot_plus_pkg_cli_onebot_cli_proto_rawDescGZIP(), []int{17}
+}
+
+func (x *GetGroupListResp) GetData() []*model.GroupGRPC {
+	if x != nil {
+		return x.Data
+	}
+	return nil
+}
+
+type GetGroupMemberInfoReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	GroupId int64 `protobuf:"varint,1,opt,name=group_id,json=groupId,proto3" json:"group_id,omitempty"`
+	UserId  int64 `protobuf:"varint,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	NoCache bool  `protobuf:"varint,3,opt,name=no_cache,json=noCache,proto3" json:"no_cache,omitempty"`
+}
+
+func (x *GetGroupMemberInfoReq) Reset() {
+	*x = GetGroupMemberInfoReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[18]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetGroupMemberInfoReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetGroupMemberInfoReq) ProtoMessage() {}
+
+func (x *GetGroupMemberInfoReq) ProtoReflect() protoreflect.Message {
+	mi := &file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[18]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetGroupMemberInfoReq.ProtoReflect.Descriptor instead.
+func (*GetGroupMemberInfoReq) Descriptor() ([]byte, []int) {
+	return file_onebot_plus_pkg_cli_onebot_cli_proto_rawDescGZIP(), []int{18}
+}
+
+func (x *GetGroupMemberInfoReq) GetGroupId() int64 {
+	if x != nil {
+		return x.GroupId
+	}
+	return 0
+}
+
+func (x *GetGroupMemberInfoReq) GetUserId() int64 {
+	if x != nil {
+		return x.UserId
+	}
+	return 0
+}
+
+func (x *GetGroupMemberInfoReq) GetNoCache() bool {
+	if x != nil {
+		return x.NoCache
+	}
+	return false
+}
+
+type GetGroupMemberListInfoResp struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Data []*model.GroupMemberGRPC `protobuf:"bytes,1,rep,name=data,proto3" json:"data,omitempty"`
+}
+
+func (x *GetGroupMemberListInfoResp) Reset() {
+	*x = GetGroupMemberListInfoResp{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[19]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetGroupMemberListInfoResp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetGroupMemberListInfoResp) ProtoMessage() {}
+
+func (x *GetGroupMemberListInfoResp) ProtoReflect() protoreflect.Message {
+	mi := &file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[19]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetGroupMemberListInfoResp.ProtoReflect.Descriptor instead.
+func (*GetGroupMemberListInfoResp) Descriptor() ([]byte, []int) {
+	return file_onebot_plus_pkg_cli_onebot_cli_proto_rawDescGZIP(), []int{19}
+}
+
+func (x *GetGroupMemberListInfoResp) GetData() []*model.GroupMemberGRPC {
+	if x != nil {
+		return x.Data
+	}
+	return nil
+}
+
+type GetGroupHonorInfoReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	GroupId   int64  `protobuf:"varint,1,opt,name=group_id,json=groupId,proto3" json:"group_id,omitempty"`
+	HonorType string `protobuf:"bytes,2,opt,name=honor_type,json=honorType,proto3" json:"honor_type,omitempty"`
+}
+
+func (x *GetGroupHonorInfoReq) Reset() {
+	*x = GetGroupHonorInfoReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[20]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetGroupHonorInfoReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetGroupHonorInfoReq) ProtoMessage() {}
+
+func (x *GetGroupHonorInfoReq) ProtoReflect() protoreflect.Message {
+	mi := &file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[20]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetGroupHonorInfoReq.ProtoReflect.Descriptor instead.
+func (*GetGroupHonorInfoReq) Descriptor() ([]byte, []int) {
+	return file_onebot_plus_pkg_cli_onebot_cli_proto_rawDescGZIP(), []int{20}
+}
+
+func (x *GetGroupHonorInfoReq) GetGroupId() int64 {
+	if x != nil {
+		return x.GroupId
+	}
+	return 0
+}
+
+func (x *GetGroupHonorInfoReq) GetHonorType() string {
+	if x != nil {
+		return x.HonorType
+	}
+	return ""
+}
+
 var File_onebot_plus_pkg_cli_onebot_cli_proto protoreflect.FileDescriptor
 
 var file_onebot_plus_pkg_cli_onebot_cli_proto_rawDesc = []byte{
@@ -147,74 +1256,290 @@ var file_onebot_plus_pkg_cli_onebot_cli_proto_rawDesc = []byte{
 	0x6f, 0x2f, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a,
 	0x22, 0x6f, 0x6e, 0x65, 0x62, 0x6f, 0x74, 0x2d, 0x73, 0x64, 0x6b, 0x2f, 0x70, 0x6b, 0x67, 0x2f,
 	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x2e, 0x70, 0x72,
-	0x6f, 0x74, 0x6f, 0x1a, 0x1e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x70, 0x72, 0x6f, 0x74,
-	0x6f, 0x62, 0x75, 0x66, 0x2f, 0x77, 0x72, 0x61, 0x70, 0x70, 0x65, 0x72, 0x73, 0x2e, 0x70, 0x72,
-	0x6f, 0x74, 0x6f, 0x1a, 0x1b, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x70, 0x72, 0x6f, 0x74,
-	0x6f, 0x62, 0x75, 0x66, 0x2f, 0x65, 0x6d, 0x70, 0x74, 0x79, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f,
-	0x22, 0x48, 0x0a, 0x12, 0x47, 0x65, 0x74, 0x53, 0x74, 0x72, 0x61, 0x6e, 0x67, 0x65, 0x72, 0x49,
-	0x6e, 0x66, 0x6f, 0x52, 0x65, 0x71, 0x12, 0x17, 0x0a, 0x07, 0x75, 0x73, 0x65, 0x72, 0x5f, 0x69,
-	0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x06, 0x75, 0x73, 0x65, 0x72, 0x49, 0x64, 0x12,
-	0x19, 0x0a, 0x08, 0x6e, 0x6f, 0x5f, 0x63, 0x61, 0x63, 0x68, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28,
-	0x08, 0x52, 0x07, 0x6e, 0x6f, 0x43, 0x61, 0x63, 0x68, 0x65, 0x22, 0x41, 0x0a, 0x0c, 0x47, 0x65,
-	0x74, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x52, 0x65, 0x71, 0x12, 0x12, 0x0a, 0x04, 0x66, 0x69,
-	0x6c, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x66, 0x69, 0x6c, 0x65, 0x12, 0x1d,
-	0x0a, 0x0a, 0x6f, 0x75, 0x74, 0x5f, 0x66, 0x6f, 0x72, 0x6d, 0x61, 0x74, 0x18, 0x02, 0x20, 0x01,
-	0x28, 0x09, 0x52, 0x09, 0x6f, 0x75, 0x74, 0x46, 0x6f, 0x72, 0x6d, 0x61, 0x74, 0x32, 0xd0, 0x06,
-	0x0a, 0x0f, 0x6f, 0x6e, 0x65, 0x62, 0x6f, 0x74, 0x5f, 0x67, 0x72, 0x70, 0x63, 0x5f, 0x63, 0x6c,
-	0x69, 0x12, 0x3d, 0x0a, 0x07, 0x53, 0x65, 0x6e, 0x64, 0x4d, 0x73, 0x67, 0x12, 0x15, 0x2e, 0x6d,
-	0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x4d, 0x73, 0x67, 0x46, 0x6f, 0x72, 0x53, 0x65, 0x6e, 0x64, 0x47,
-	0x52, 0x50, 0x43, 0x1a, 0x1b, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f,
-	0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x49, 0x6e, 0x74, 0x36, 0x34, 0x56, 0x61, 0x6c, 0x75, 0x65,
-	0x12, 0x44, 0x0a, 0x0e, 0x53, 0x65, 0x6e, 0x64, 0x50, 0x72, 0x69, 0x76, 0x61, 0x74, 0x65, 0x4d,
-	0x73, 0x67, 0x12, 0x15, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x50, 0x72, 0x69, 0x76, 0x61,
-	0x74, 0x65, 0x4d, 0x73, 0x67, 0x47, 0x52, 0x50, 0x43, 0x1a, 0x1b, 0x2e, 0x67, 0x6f, 0x6f, 0x67,
-	0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x49, 0x6e, 0x74, 0x36,
-	0x34, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x12, 0x40, 0x0a, 0x0c, 0x53, 0x65, 0x6e, 0x64, 0x47, 0x72,
-	0x6f, 0x75, 0x70, 0x4d, 0x73, 0x67, 0x12, 0x13, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x47,
-	0x72, 0x6f, 0x75, 0x70, 0x4d, 0x73, 0x67, 0x47, 0x52, 0x50, 0x43, 0x1a, 0x1b, 0x2e, 0x67, 0x6f,
-	0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x49, 0x6e,
-	0x74, 0x36, 0x34, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x12, 0x3d, 0x0a, 0x06, 0x44, 0x65, 0x6c, 0x4d,
-	0x73, 0x67, 0x12, 0x1b, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74,
-	0x6f, 0x62, 0x75, 0x66, 0x2e, 0x49, 0x6e, 0x74, 0x36, 0x34, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x1a,
-	0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75,
-	0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x12, 0x3d, 0x0a, 0x06, 0x47, 0x65, 0x74, 0x4d, 0x73,
+	0x6f, 0x74, 0x6f, 0x1a, 0x20, 0x6f, 0x6e, 0x65, 0x62, 0x6f, 0x74, 0x2d, 0x73, 0x64, 0x6b, 0x2f,
+	0x70, 0x6b, 0x67, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x2e,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x21, 0x6f, 0x6e, 0x65, 0x62, 0x6f, 0x74, 0x2d, 0x73, 0x64,
+	0x6b, 0x2f, 0x70, 0x6b, 0x67, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x73, 0x79, 0x73, 0x74,
+	0x65, 0x6d, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x1e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65,
+	0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2f, 0x77, 0x72, 0x61, 0x70, 0x70, 0x65,
+	0x72, 0x73, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x1b, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65,
+	0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2f, 0x65, 0x6d, 0x70, 0x74, 0x79, 0x2e,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x48, 0x0a, 0x12, 0x47, 0x65, 0x74, 0x53, 0x74, 0x72, 0x61,
+	0x6e, 0x67, 0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x65, 0x71, 0x12, 0x17, 0x0a, 0x07, 0x75,
+	0x73, 0x65, 0x72, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x06, 0x75, 0x73,
+	0x65, 0x72, 0x49, 0x64, 0x12, 0x19, 0x0a, 0x08, 0x6e, 0x6f, 0x5f, 0x63, 0x61, 0x63, 0x68, 0x65,
+	0x18, 0x02, 0x20, 0x01, 0x28, 0x08, 0x52, 0x07, 0x6e, 0x6f, 0x43, 0x61, 0x63, 0x68, 0x65, 0x22,
+	0x41, 0x0a, 0x0c, 0x47, 0x65, 0x74, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x52, 0x65, 0x71, 0x12,
+	0x12, 0x0a, 0x04, 0x66, 0x69, 0x6c, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x66,
+	0x69, 0x6c, 0x65, 0x12, 0x1d, 0x0a, 0x0a, 0x6f, 0x75, 0x74, 0x5f, 0x66, 0x6f, 0x72, 0x6d, 0x61,
+	0x74, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x6f, 0x75, 0x74, 0x46, 0x6f, 0x72, 0x6d,
+	0x61, 0x74, 0x22, 0x3c, 0x0a, 0x0b, 0x53, 0x65, 0x6e, 0x64, 0x4c, 0x69, 0x6b, 0x65, 0x52, 0x65,
+	0x71, 0x12, 0x17, 0x0a, 0x07, 0x75, 0x73, 0x65, 0x72, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x03, 0x52, 0x06, 0x75, 0x73, 0x65, 0x72, 0x49, 0x64, 0x12, 0x14, 0x0a, 0x05, 0x74, 0x69,
+	0x6d, 0x65, 0x73, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x05, 0x74, 0x69, 0x6d, 0x65, 0x73,
+	0x22, 0x5e, 0x0a, 0x16, 0x53, 0x65, 0x74, 0x46, 0x72, 0x69, 0x65, 0x6e, 0x64, 0x41, 0x64, 0x64,
+	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x52, 0x65, 0x71, 0x12, 0x12, 0x0a, 0x04, 0x66, 0x6c,
+	0x61, 0x67, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x66, 0x6c, 0x61, 0x67, 0x12, 0x18,
+	0x0a, 0x07, 0x61, 0x70, 0x70, 0x72, 0x6f, 0x76, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x08, 0x52,
+	0x07, 0x61, 0x70, 0x70, 0x72, 0x6f, 0x76, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x72, 0x65, 0x6d, 0x61,
+	0x72, 0x6b, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x72, 0x65, 0x6d, 0x61, 0x72, 0x6b,
+	0x22, 0x3b, 0x0a, 0x11, 0x47, 0x65, 0x74, 0x46, 0x72, 0x69, 0x65, 0x6e, 0x64, 0x4c, 0x69, 0x73,
+	0x74, 0x52, 0x65, 0x73, 0x70, 0x12, 0x26, 0x0a, 0x04, 0x64, 0x61, 0x74, 0x61, 0x18, 0x01, 0x20,
+	0x03, 0x28, 0x0b, 0x32, 0x12, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x41, 0x63, 0x63, 0x6f,
+	0x75, 0x6e, 0x74, 0x47, 0x52, 0x50, 0x43, 0x52, 0x04, 0x64, 0x61, 0x74, 0x61, 0x22, 0x73, 0x0a,
+	0x0f, 0x53, 0x65, 0x74, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x4b, 0x69, 0x63, 0x6b, 0x52, 0x65, 0x71,
+	0x12, 0x19, 0x0a, 0x08, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x03, 0x52, 0x07, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x49, 0x64, 0x12, 0x17, 0x0a, 0x07, 0x75,
+	0x73, 0x65, 0x72, 0x5f, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x06, 0x75, 0x73,
+	0x65, 0x72, 0x49, 0x64, 0x12, 0x2c, 0x0a, 0x12, 0x72, 0x65, 0x6a, 0x65, 0x63, 0x74, 0x5f, 0x72,
+	0x64, 0x64, 0x5f, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x18, 0x03, 0x20, 0x01, 0x28, 0x08,
+	0x52, 0x10, 0x72, 0x65, 0x6a, 0x65, 0x63, 0x74, 0x52, 0x64, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65,
+	0x73, 0x74, 0x22, 0x60, 0x0a, 0x0e, 0x53, 0x65, 0x74, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x42, 0x61,
+	0x6e, 0x52, 0x65, 0x71, 0x12, 0x19, 0x0a, 0x08, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x5f, 0x69, 0x64,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x07, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x49, 0x64, 0x12,
+	0x17, 0x0a, 0x07, 0x75, 0x73, 0x65, 0x72, 0x5f, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03,
+	0x52, 0x06, 0x75, 0x73, 0x65, 0x72, 0x49, 0x64, 0x12, 0x1a, 0x0a, 0x08, 0x64, 0x75, 0x72, 0x61,
+	0x74, 0x69, 0x6f, 0x6e, 0x18, 0x03, 0x20, 0x01, 0x28, 0x03, 0x52, 0x08, 0x64, 0x75, 0x72, 0x61,
+	0x74, 0x69, 0x6f, 0x6e, 0x22, 0x77, 0x0a, 0x17, 0x53, 0x65, 0x74, 0x47, 0x72, 0x6f, 0x75, 0x70,
+	0x41, 0x6e, 0x6f, 0x6e, 0x79, 0x6d, 0x6f, 0x75, 0x73, 0x42, 0x61, 0x6e, 0x52, 0x65, 0x71, 0x12,
+	0x19, 0x0a, 0x08, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28,
+	0x03, 0x52, 0x07, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x49, 0x64, 0x12, 0x1a, 0x0a, 0x08, 0x64, 0x75,
+	0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x08, 0x64, 0x75,
+	0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x25, 0x0a, 0x0e, 0x61, 0x6e, 0x6f, 0x6e, 0x79, 0x6d,
+	0x6f, 0x75, 0x73, 0x5f, 0x66, 0x6c, 0x61, 0x67, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0d,
+	0x61, 0x6e, 0x6f, 0x6e, 0x79, 0x6d, 0x6f, 0x75, 0x73, 0x46, 0x6c, 0x61, 0x67, 0x22, 0x48, 0x0a,
+	0x13, 0x53, 0x65, 0x74, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x57, 0x68, 0x6f, 0x6c, 0x65, 0x42, 0x61,
+	0x6e, 0x52, 0x65, 0x71, 0x12, 0x19, 0x0a, 0x08, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x5f, 0x69, 0x64,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x07, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x49, 0x64, 0x12,
+	0x16, 0x0a, 0x06, 0x65, 0x6e, 0x61, 0x62, 0x6c, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x08, 0x52,
+	0x06, 0x65, 0x6e, 0x61, 0x62, 0x6c, 0x65, 0x22, 0x5e, 0x0a, 0x10, 0x53, 0x65, 0x74, 0x47, 0x72,
+	0x6f, 0x75, 0x70, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x52, 0x65, 0x71, 0x12, 0x19, 0x0a, 0x08, 0x67,
+	0x72, 0x6f, 0x75, 0x70, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x07, 0x67,
+	0x72, 0x6f, 0x75, 0x70, 0x49, 0x64, 0x12, 0x17, 0x0a, 0x07, 0x75, 0x73, 0x65, 0x72, 0x5f, 0x69,
+	0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x06, 0x75, 0x73, 0x65, 0x72, 0x49, 0x64, 0x12,
+	0x16, 0x0a, 0x06, 0x65, 0x6e, 0x61, 0x62, 0x6c, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x08, 0x52,
+	0x06, 0x65, 0x6e, 0x61, 0x62, 0x6c, 0x65, 0x22, 0x49, 0x0a, 0x14, 0x53, 0x65, 0x74, 0x47, 0x72,
+	0x6f, 0x75, 0x70, 0x41, 0x6e, 0x6f, 0x6e, 0x79, 0x6d, 0x6f, 0x75, 0x73, 0x52, 0x65, 0x71, 0x12,
+	0x19, 0x0a, 0x08, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28,
+	0x03, 0x52, 0x07, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x49, 0x64, 0x12, 0x16, 0x0a, 0x06, 0x65, 0x6e,
+	0x61, 0x62, 0x6c, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x08, 0x52, 0x06, 0x65, 0x6e, 0x61, 0x62,
+	0x6c, 0x65, 0x22, 0x59, 0x0a, 0x0f, 0x53, 0x65, 0x74, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x43, 0x61,
+	0x72, 0x64, 0x52, 0x65, 0x71, 0x12, 0x19, 0x0a, 0x08, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x5f, 0x69,
+	0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x07, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x49, 0x64,
+	0x12, 0x17, 0x0a, 0x07, 0x75, 0x73, 0x65, 0x72, 0x5f, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28,
+	0x03, 0x52, 0x06, 0x75, 0x73, 0x65, 0x72, 0x49, 0x64, 0x12, 0x12, 0x0a, 0x04, 0x63, 0x61, 0x72,
+	0x64, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x63, 0x61, 0x72, 0x64, 0x22, 0x4b, 0x0a,
+	0x0f, 0x53, 0x65, 0x74, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x4e, 0x61, 0x6d, 0x65, 0x52, 0x65, 0x71,
+	0x12, 0x19, 0x0a, 0x08, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x03, 0x52, 0x07, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x49, 0x64, 0x12, 0x1d, 0x0a, 0x0a, 0x67,
+	0x72, 0x6f, 0x75, 0x70, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x09, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x4e, 0x61, 0x6d, 0x65, 0x22, 0x4c, 0x0a, 0x10, 0x53, 0x65,
+	0x74, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x4c, 0x65, 0x61, 0x76, 0x65, 0x52, 0x65, 0x71, 0x12, 0x19,
+	0x0a, 0x08, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03,
+	0x52, 0x07, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x49, 0x64, 0x12, 0x1d, 0x0a, 0x0a, 0x69, 0x73, 0x5f,
+	0x64, 0x69, 0x73, 0x6d, 0x69, 0x73, 0x73, 0x18, 0x02, 0x20, 0x01, 0x28, 0x08, 0x52, 0x09, 0x69,
+	0x73, 0x44, 0x69, 0x73, 0x6d, 0x69, 0x73, 0x73, 0x22, 0x8e, 0x01, 0x0a, 0x17, 0x53, 0x65, 0x74,
+	0x47, 0x72, 0x6f, 0x75, 0x70, 0x53, 0x70, 0x65, 0x63, 0x69, 0x61, 0x6c, 0x54, 0x69, 0x74, 0x6c,
+	0x65, 0x52, 0x65, 0x71, 0x12, 0x19, 0x0a, 0x08, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x5f, 0x69, 0x64,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x07, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x49, 0x64, 0x12,
+	0x17, 0x0a, 0x07, 0x75, 0x73, 0x65, 0x72, 0x5f, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03,
+	0x52, 0x06, 0x75, 0x73, 0x65, 0x72, 0x49, 0x64, 0x12, 0x1a, 0x0a, 0x08, 0x64, 0x75, 0x72, 0x61,
+	0x74, 0x69, 0x6f, 0x6e, 0x18, 0x03, 0x20, 0x01, 0x28, 0x03, 0x52, 0x08, 0x64, 0x75, 0x72, 0x61,
+	0x74, 0x69, 0x6f, 0x6e, 0x12, 0x23, 0x0a, 0x0d, 0x73, 0x70, 0x65, 0x63, 0x69, 0x61, 0x6c, 0x5f,
+	0x74, 0x69, 0x74, 0x6c, 0x65, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0c, 0x73, 0x70, 0x65,
+	0x63, 0x69, 0x61, 0x6c, 0x54, 0x69, 0x74, 0x6c, 0x65, 0x22, 0x77, 0x0a, 0x15, 0x53, 0x65, 0x74,
+	0x47, 0x72, 0x6f, 0x75, 0x70, 0x41, 0x64, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x52,
+	0x65, 0x71, 0x12, 0x12, 0x0a, 0x04, 0x66, 0x6c, 0x61, 0x67, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
+	0x52, 0x04, 0x66, 0x6c, 0x61, 0x67, 0x12, 0x18, 0x0a, 0x07, 0x73, 0x75, 0x62, 0x54, 0x79, 0x70,
+	0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x73, 0x75, 0x62, 0x54, 0x79, 0x70, 0x65,
+	0x12, 0x16, 0x0a, 0x06, 0x72, 0x65, 0x61, 0x73, 0x6f, 0x6e, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09,
+	0x52, 0x06, 0x72, 0x65, 0x61, 0x73, 0x6f, 0x6e, 0x12, 0x18, 0x0a, 0x07, 0x61, 0x70, 0x70, 0x72,
+	0x6f, 0x76, 0x65, 0x18, 0x04, 0x20, 0x01, 0x28, 0x08, 0x52, 0x07, 0x61, 0x70, 0x70, 0x72, 0x6f,
+	0x76, 0x65, 0x22, 0x4a, 0x0a, 0x10, 0x47, 0x65, 0x74, 0x47, 0x72, 0x6f, 0x6f, 0x75, 0x70, 0x49,
+	0x6e, 0x66, 0x6f, 0x52, 0x65, 0x71, 0x12, 0x19, 0x0a, 0x08, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x5f,
+	0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x07, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x49,
+	0x64, 0x12, 0x1b, 0x0a, 0x09, 0x6e, 0x6f, 0x74, 0x5f, 0x63, 0x61, 0x63, 0x68, 0x65, 0x18, 0x02,
+	0x20, 0x01, 0x28, 0x08, 0x52, 0x08, 0x6e, 0x6f, 0x74, 0x43, 0x61, 0x63, 0x68, 0x65, 0x22, 0x38,
+	0x0a, 0x10, 0x47, 0x65, 0x74, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65,
+	0x73, 0x70, 0x12, 0x24, 0x0a, 0x04, 0x64, 0x61, 0x74, 0x61, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b,
+	0x32, 0x10, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x47, 0x52,
+	0x50, 0x43, 0x52, 0x04, 0x64, 0x61, 0x74, 0x61, 0x22, 0x66, 0x0a, 0x15, 0x47, 0x65, 0x74, 0x47,
+	0x72, 0x6f, 0x75, 0x70, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x65,
+	0x71, 0x12, 0x19, 0x0a, 0x08, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x03, 0x52, 0x07, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x49, 0x64, 0x12, 0x17, 0x0a, 0x07,
+	0x75, 0x73, 0x65, 0x72, 0x5f, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x06, 0x75,
+	0x73, 0x65, 0x72, 0x49, 0x64, 0x12, 0x19, 0x0a, 0x08, 0x6e, 0x6f, 0x5f, 0x63, 0x61, 0x63, 0x68,
+	0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x08, 0x52, 0x07, 0x6e, 0x6f, 0x43, 0x61, 0x63, 0x68, 0x65,
+	0x22, 0x48, 0x0a, 0x1a, 0x47, 0x65, 0x74, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x4d, 0x65, 0x6d, 0x62,
+	0x65, 0x72, 0x4c, 0x69, 0x73, 0x74, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x65, 0x73, 0x70, 0x12, 0x2a,
+	0x0a, 0x04, 0x64, 0x61, 0x74, 0x61, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x16, 0x2e, 0x6d,
+	0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72,
+	0x47, 0x52, 0x50, 0x43, 0x52, 0x04, 0x64, 0x61, 0x74, 0x61, 0x22, 0x50, 0x0a, 0x14, 0x47, 0x65,
+	0x74, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x48, 0x6f, 0x6e, 0x6f, 0x72, 0x49, 0x6e, 0x66, 0x6f, 0x52,
+	0x65, 0x71, 0x12, 0x19, 0x0a, 0x08, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x5f, 0x69, 0x64, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x03, 0x52, 0x07, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x49, 0x64, 0x12, 0x1d, 0x0a,
+	0x0a, 0x68, 0x6f, 0x6e, 0x6f, 0x72, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x09, 0x68, 0x6f, 0x6e, 0x6f, 0x72, 0x54, 0x79, 0x70, 0x65, 0x32, 0xed, 0x13, 0x0a,
+	0x0f, 0x6f, 0x6e, 0x65, 0x62, 0x6f, 0x74, 0x5f, 0x67, 0x72, 0x70, 0x63, 0x5f, 0x63, 0x6c, 0x69,
+	0x12, 0x3d, 0x0a, 0x07, 0x53, 0x65, 0x6e, 0x64, 0x4d, 0x73, 0x67, 0x12, 0x15, 0x2e, 0x6d, 0x6f,
+	0x64, 0x65, 0x6c, 0x2e, 0x4d, 0x73, 0x67, 0x46, 0x6f, 0x72, 0x53, 0x65, 0x6e, 0x64, 0x47, 0x52,
+	0x50, 0x43, 0x1a, 0x1b, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74,
+	0x6f, 0x62, 0x75, 0x66, 0x2e, 0x49, 0x6e, 0x74, 0x36, 0x34, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x12,
+	0x44, 0x0a, 0x0e, 0x53, 0x65, 0x6e, 0x64, 0x50, 0x72, 0x69, 0x76, 0x61, 0x74, 0x65, 0x4d, 0x73,
+	0x67, 0x12, 0x15, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x50, 0x72, 0x69, 0x76, 0x61, 0x74,
+	0x65, 0x4d, 0x73, 0x67, 0x47, 0x52, 0x50, 0x43, 0x1a, 0x1b, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c,
+	0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x49, 0x6e, 0x74, 0x36, 0x34,
+	0x56, 0x61, 0x6c, 0x75, 0x65, 0x12, 0x40, 0x0a, 0x0c, 0x53, 0x65, 0x6e, 0x64, 0x47, 0x72, 0x6f,
+	0x75, 0x70, 0x4d, 0x73, 0x67, 0x12, 0x13, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x47, 0x72,
+	0x6f, 0x75, 0x70, 0x4d, 0x73, 0x67, 0x47, 0x52, 0x50, 0x43, 0x1a, 0x1b, 0x2e, 0x67, 0x6f, 0x6f,
+	0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x49, 0x6e, 0x74,
+	0x36, 0x34, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x12, 0x3d, 0x0a, 0x06, 0x44, 0x65, 0x6c, 0x4d, 0x73,
 	0x67, 0x12, 0x1b, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f,
 	0x62, 0x75, 0x66, 0x2e, 0x49, 0x6e, 0x74, 0x36, 0x34, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x1a, 0x16,
-	0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x44, 0x61,
-	0x74, 0x61, 0x47, 0x52, 0x50, 0x43, 0x12, 0x4b, 0x0a, 0x0d, 0x47, 0x65, 0x74, 0x46, 0x6f, 0x72,
-	0x77, 0x61, 0x72, 0x64, 0x4d, 0x73, 0x67, 0x12, 0x1b, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65,
-	0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x49, 0x6e, 0x74, 0x36, 0x34, 0x56,
-	0x61, 0x6c, 0x75, 0x65, 0x1a, 0x1d, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x46, 0x6f, 0x72,
-	0x77, 0x61, 0x72, 0x64, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x44, 0x61, 0x74, 0x61, 0x47,
-	0x52, 0x50, 0x43, 0x12, 0x3a, 0x0a, 0x0c, 0x47, 0x65, 0x74, 0x4c, 0x6f, 0x67, 0x69, 0x6e, 0x49,
-	0x6e, 0x66, 0x6f, 0x12, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f,
-	0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x1a, 0x12, 0x2e, 0x6d, 0x6f,
-	0x64, 0x65, 0x6c, 0x2e, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x47, 0x52, 0x50, 0x43, 0x12,
-	0x3e, 0x0a, 0x0f, 0x47, 0x65, 0x74, 0x53, 0x74, 0x72, 0x61, 0x6e, 0x67, 0x65, 0x72, 0x49, 0x6e,
-	0x66, 0x6f, 0x12, 0x17, 0x2e, 0x63, 0x6c, 0x69, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x74, 0x72, 0x61,
-	0x6e, 0x67, 0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x65, 0x71, 0x1a, 0x12, 0x2e, 0x6d, 0x6f,
-	0x64, 0x65, 0x6c, 0x2e, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x47, 0x52, 0x50, 0x43, 0x12,
-	0x3d, 0x0a, 0x0a, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x6f, 0x6b, 0x69, 0x65, 0x73, 0x12, 0x1c, 0x2e,
+	0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66,
+	0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x12, 0x3d, 0x0a, 0x06, 0x47, 0x65, 0x74, 0x4d, 0x73, 0x67,
+	0x12, 0x1b, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62,
+	0x75, 0x66, 0x2e, 0x49, 0x6e, 0x74, 0x36, 0x34, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x1a, 0x16, 0x2e,
+	0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x44, 0x61, 0x74,
+	0x61, 0x47, 0x52, 0x50, 0x43, 0x12, 0x4b, 0x0a, 0x0d, 0x47, 0x65, 0x74, 0x46, 0x6f, 0x72, 0x77,
+	0x61, 0x72, 0x64, 0x4d, 0x73, 0x67, 0x12, 0x1b, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x49, 0x6e, 0x74, 0x36, 0x34, 0x56, 0x61,
+	0x6c, 0x75, 0x65, 0x1a, 0x1d, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x46, 0x6f, 0x72, 0x77,
+	0x61, 0x72, 0x64, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x44, 0x61, 0x74, 0x61, 0x47, 0x52,
+	0x50, 0x43, 0x12, 0x3a, 0x0a, 0x0c, 0x47, 0x65, 0x74, 0x4c, 0x6f, 0x67, 0x69, 0x6e, 0x49, 0x6e,
+	0x66, 0x6f, 0x12, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74,
+	0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x1a, 0x12, 0x2e, 0x6d, 0x6f, 0x64,
+	0x65, 0x6c, 0x2e, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x47, 0x52, 0x50, 0x43, 0x12, 0x3e,
+	0x0a, 0x0f, 0x47, 0x65, 0x74, 0x53, 0x74, 0x72, 0x61, 0x6e, 0x67, 0x65, 0x72, 0x49, 0x6e, 0x66,
+	0x6f, 0x12, 0x17, 0x2e, 0x63, 0x6c, 0x69, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x74, 0x72, 0x61, 0x6e,
+	0x67, 0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x65, 0x71, 0x1a, 0x12, 0x2e, 0x6d, 0x6f, 0x64,
+	0x65, 0x6c, 0x2e, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x47, 0x52, 0x50, 0x43, 0x12, 0x3d,
+	0x0a, 0x0a, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x6f, 0x6b, 0x69, 0x65, 0x73, 0x12, 0x1c, 0x2e, 0x67,
+	0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x53,
+	0x74, 0x72, 0x69, 0x6e, 0x67, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x1a, 0x11, 0x2e, 0x6d, 0x6f, 0x64,
+	0x65, 0x6c, 0x2e, 0x43, 0x6f, 0x6b, 0x69, 0x65, 0x73, 0x47, 0x52, 0x50, 0x43, 0x12, 0x3c, 0x0a,
+	0x0c, 0x47, 0x65, 0x74, 0x43, 0x53, 0x52, 0x46, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x12, 0x16, 0x2e,
 	0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e,
-	0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x1a, 0x11, 0x2e, 0x6d, 0x6f,
-	0x64, 0x65, 0x6c, 0x2e, 0x43, 0x6f, 0x6b, 0x69, 0x65, 0x73, 0x47, 0x52, 0x50, 0x43, 0x12, 0x3c,
-	0x0a, 0x0c, 0x47, 0x65, 0x74, 0x43, 0x53, 0x52, 0x46, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x12, 0x16,
+	0x45, 0x6d, 0x70, 0x74, 0x79, 0x1a, 0x14, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x43, 0x53,
+	0x52, 0x46, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x47, 0x52, 0x50, 0x43, 0x12, 0x46, 0x0a, 0x0e, 0x47,
+	0x65, 0x74, 0x43, 0x72, 0x65, 0x64, 0x65, 0x6e, 0x74, 0x69, 0x61, 0x6c, 0x73, 0x12, 0x1c, 0x2e,
+	0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e,
+	0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x1a, 0x16, 0x2e, 0x6d, 0x6f,
+	0x64, 0x65, 0x6c, 0x2e, 0x43, 0x72, 0x65, 0x64, 0x65, 0x6e, 0x74, 0x69, 0x61, 0x6c, 0x73, 0x47,
+	0x52, 0x50, 0x43, 0x12, 0x2f, 0x0a, 0x09, 0x47, 0x65, 0x74, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64,
+	0x12, 0x11, 0x2e, 0x63, 0x6c, 0x69, 0x2e, 0x47, 0x65, 0x74, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64,
+	0x52, 0x65, 0x71, 0x1a, 0x0f, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x46, 0x69, 0x6c, 0x65,
+	0x47, 0x52, 0x50, 0x43, 0x12, 0x39, 0x0a, 0x08, 0x47, 0x65, 0x74, 0x49, 0x6d, 0x61, 0x67, 0x65,
+	0x12, 0x1c, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62,
+	0x75, 0x66, 0x2e, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x1a, 0x0f,
+	0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x46, 0x69, 0x6c, 0x65, 0x47, 0x52, 0x50, 0x43, 0x12,
+	0x34, 0x0a, 0x08, 0x53, 0x65, 0x6e, 0x64, 0x4c, 0x69, 0x6b, 0x65, 0x12, 0x10, 0x2e, 0x63, 0x6c,
+	0x69, 0x2e, 0x53, 0x65, 0x6e, 0x64, 0x4c, 0x69, 0x6b, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x16, 0x2e,
+	0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e,
+	0x45, 0x6d, 0x70, 0x74, 0x79, 0x12, 0x4a, 0x0a, 0x13, 0x53, 0x65, 0x74, 0x46, 0x72, 0x69, 0x65,
+	0x6e, 0x64, 0x41, 0x64, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x1b, 0x2e, 0x63,
+	0x6c, 0x69, 0x2e, 0x53, 0x65, 0x74, 0x46, 0x72, 0x69, 0x65, 0x6e, 0x64, 0x41, 0x64, 0x64, 0x52,
+	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x52, 0x65, 0x71, 0x1a, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67,
+	0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74,
+	0x79, 0x12, 0x3f, 0x0a, 0x0d, 0x47, 0x65, 0x74, 0x46, 0x72, 0x69, 0x65, 0x6e, 0x64, 0x4c, 0x69,
+	0x73, 0x74, 0x12, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74,
+	0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x1a, 0x16, 0x2e, 0x63, 0x6c, 0x69,
+	0x2e, 0x47, 0x65, 0x74, 0x46, 0x72, 0x69, 0x65, 0x6e, 0x64, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65,
+	0x73, 0x70, 0x12, 0x3c, 0x0a, 0x0c, 0x53, 0x65, 0x74, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x4b, 0x69,
+	0x63, 0x6b, 0x12, 0x14, 0x2e, 0x63, 0x6c, 0x69, 0x2e, 0x53, 0x65, 0x74, 0x47, 0x72, 0x6f, 0x75,
+	0x70, 0x4b, 0x69, 0x63, 0x6b, 0x52, 0x65, 0x71, 0x1a, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c,
+	0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79,
+	0x12, 0x3a, 0x0a, 0x0b, 0x53, 0x65, 0x74, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x42, 0x61, 0x6e, 0x12,
+	0x13, 0x2e, 0x63, 0x6c, 0x69, 0x2e, 0x53, 0x65, 0x74, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x42, 0x61,
+	0x6e, 0x52, 0x65, 0x71, 0x1a, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72,
+	0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x12, 0x4c, 0x0a, 0x14,
+	0x53, 0x65, 0x74, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x41, 0x6e, 0x6f, 0x6e, 0x79, 0x6d, 0x6f, 0x75,
+	0x73, 0x42, 0x61, 0x6e, 0x12, 0x1c, 0x2e, 0x63, 0x6c, 0x69, 0x2e, 0x53, 0x65, 0x74, 0x47, 0x72,
+	0x6f, 0x75, 0x70, 0x41, 0x6e, 0x6f, 0x6e, 0x79, 0x6d, 0x6f, 0x75, 0x73, 0x42, 0x61, 0x6e, 0x52,
+	0x65, 0x71, 0x1a, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74,
+	0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x12, 0x44, 0x0a, 0x10, 0x53, 0x65,
+	0x74, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x57, 0x68, 0x6f, 0x6c, 0x65, 0x42, 0x61, 0x6e, 0x12, 0x18,
+	0x2e, 0x63, 0x6c, 0x69, 0x2e, 0x53, 0x65, 0x74, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x57, 0x68, 0x6f,
+	0x6c, 0x65, 0x42, 0x61, 0x6e, 0x52, 0x65, 0x71, 0x1a, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c,
+	0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79,
+	0x12, 0x3e, 0x0a, 0x0d, 0x53, 0x65, 0x74, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x41, 0x64, 0x6d, 0x69,
+	0x6e, 0x12, 0x15, 0x2e, 0x63, 0x6c, 0x69, 0x2e, 0x53, 0x65, 0x74, 0x47, 0x72, 0x6f, 0x75, 0x70,
+	0x41, 0x64, 0x6d, 0x69, 0x6e, 0x52, 0x65, 0x71, 0x1a, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c,
+	0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79,
+	0x12, 0x46, 0x0a, 0x11, 0x53, 0x65, 0x74, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x41, 0x6e, 0x6f, 0x6e,
+	0x79, 0x6d, 0x6f, 0x75, 0x73, 0x12, 0x19, 0x2e, 0x63, 0x6c, 0x69, 0x2e, 0x53, 0x65, 0x74, 0x47,
+	0x72, 0x6f, 0x75, 0x70, 0x41, 0x6e, 0x6f, 0x6e, 0x79, 0x6d, 0x6f, 0x75, 0x73, 0x52, 0x65, 0x71,
+	0x1a, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62,
+	0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x12, 0x3c, 0x0a, 0x0c, 0x53, 0x65, 0x74, 0x47,
+	0x72, 0x6f, 0x75, 0x70, 0x43, 0x61, 0x72, 0x64, 0x12, 0x14, 0x2e, 0x63, 0x6c, 0x69, 0x2e, 0x53,
+	0x65, 0x74, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x43, 0x61, 0x72, 0x64, 0x52, 0x65, 0x71, 0x1a, 0x16,
 	0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66,
-	0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x1a, 0x14, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x43,
-	0x53, 0x52, 0x46, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x47, 0x52, 0x50, 0x43, 0x12, 0x46, 0x0a, 0x0e,
-	0x47, 0x65, 0x74, 0x43, 0x72, 0x65, 0x64, 0x65, 0x6e, 0x74, 0x69, 0x61, 0x6c, 0x73, 0x12, 0x1c,
-	0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66,
-	0x2e, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x1a, 0x16, 0x2e, 0x6d,
-	0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x43, 0x72, 0x65, 0x64, 0x65, 0x6e, 0x74, 0x69, 0x61, 0x6c, 0x73,
-	0x47, 0x52, 0x50, 0x43, 0x12, 0x2f, 0x0a, 0x09, 0x47, 0x65, 0x74, 0x52, 0x65, 0x63, 0x6f, 0x72,
-	0x64, 0x12, 0x11, 0x2e, 0x63, 0x6c, 0x69, 0x2e, 0x47, 0x65, 0x74, 0x52, 0x65, 0x63, 0x6f, 0x72,
-	0x64, 0x52, 0x65, 0x71, 0x1a, 0x0f, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x46, 0x69, 0x6c,
-	0x65, 0x47, 0x52, 0x50, 0x43, 0x12, 0x39, 0x0a, 0x08, 0x47, 0x65, 0x74, 0x49, 0x6d, 0x61, 0x67,
-	0x65, 0x12, 0x1c, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f,
-	0x62, 0x75, 0x66, 0x2e, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x1a,
-	0x0f, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x46, 0x69, 0x6c, 0x65, 0x47, 0x52, 0x50, 0x43,
-	0x42, 0x08, 0x5a, 0x06, 0x2e, 0x2e, 0x2f, 0x63, 0x6c, 0x69, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74,
-	0x6f, 0x33,
+	0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x12, 0x3c, 0x0a, 0x0c, 0x53, 0x65, 0x74, 0x47, 0x72, 0x6f,
+	0x75, 0x70, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x14, 0x2e, 0x63, 0x6c, 0x69, 0x2e, 0x53, 0x65, 0x74,
+	0x47, 0x72, 0x6f, 0x75, 0x70, 0x4e, 0x61, 0x6d, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x16, 0x2e, 0x67,
+	0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45,
+	0x6d, 0x70, 0x74, 0x79, 0x12, 0x3e, 0x0a, 0x0d, 0x53, 0x65, 0x74, 0x47, 0x72, 0x6f, 0x75, 0x70,
+	0x4c, 0x65, 0x61, 0x76, 0x65, 0x12, 0x15, 0x2e, 0x63, 0x6c, 0x69, 0x2e, 0x53, 0x65, 0x74, 0x47,
+	0x72, 0x6f, 0x75, 0x70, 0x4c, 0x65, 0x61, 0x76, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x16, 0x2e, 0x67,
+	0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45,
+	0x6d, 0x70, 0x74, 0x79, 0x12, 0x4c, 0x0a, 0x14, 0x53, 0x65, 0x74, 0x47, 0x72, 0x6f, 0x75, 0x70,
+	0x53, 0x70, 0x65, 0x63, 0x69, 0x61, 0x6c, 0x54, 0x69, 0x74, 0x6c, 0x65, 0x12, 0x1c, 0x2e, 0x63,
+	0x6c, 0x69, 0x2e, 0x53, 0x65, 0x74, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x53, 0x70, 0x65, 0x63, 0x69,
+	0x61, 0x6c, 0x54, 0x69, 0x74, 0x6c, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x16, 0x2e, 0x67, 0x6f, 0x6f,
+	0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70,
+	0x74, 0x79, 0x12, 0x48, 0x0a, 0x12, 0x53, 0x65, 0x74, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x41, 0x64,
+	0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x1a, 0x2e, 0x63, 0x6c, 0x69, 0x2e, 0x53,
+	0x65, 0x74, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x41, 0x64, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
+	0x74, 0x52, 0x65, 0x71, 0x1a, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72,
+	0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x12, 0x37, 0x0a, 0x0c,
+	0x47, 0x65, 0x74, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x15, 0x2e, 0x63,
+	0x6c, 0x69, 0x2e, 0x47, 0x65, 0x74, 0x47, 0x72, 0x6f, 0x6f, 0x75, 0x70, 0x49, 0x6e, 0x66, 0x6f,
+	0x52, 0x65, 0x71, 0x1a, 0x10, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x47, 0x72, 0x6f, 0x75,
+	0x70, 0x47, 0x52, 0x50, 0x43, 0x12, 0x3d, 0x0a, 0x0c, 0x47, 0x65, 0x74, 0x47, 0x72, 0x6f, 0x75,
+	0x70, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70,
+	0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x1a, 0x15, 0x2e,
+	0x63, 0x6c, 0x69, 0x2e, 0x47, 0x65, 0x74, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x4c, 0x69, 0x73, 0x74,
+	0x52, 0x65, 0x73, 0x70, 0x12, 0x48, 0x0a, 0x12, 0x47, 0x65, 0x74, 0x47, 0x72, 0x6f, 0x75, 0x70,
+	0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x1a, 0x2e, 0x63, 0x6c, 0x69,
+	0x2e, 0x47, 0x65, 0x74, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x49,
+	0x6e, 0x66, 0x6f, 0x52, 0x65, 0x71, 0x1a, 0x16, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x47,
+	0x72, 0x6f, 0x75, 0x70, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x47, 0x52, 0x50, 0x43, 0x12, 0x51,
+	0x0a, 0x16, 0x47, 0x65, 0x74, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72,
+	0x4c, 0x69, 0x73, 0x74, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c,
+	0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79,
+	0x1a, 0x1f, 0x2e, 0x63, 0x6c, 0x69, 0x2e, 0x47, 0x65, 0x74, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x4d,
+	0x65, 0x6d, 0x62, 0x65, 0x72, 0x4c, 0x69, 0x73, 0x74, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x65, 0x73,
+	0x70, 0x12, 0x49, 0x0a, 0x11, 0x47, 0x65, 0x74, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x48, 0x6f, 0x6e,
+	0x6f, 0x72, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x19, 0x2e, 0x63, 0x6c, 0x69, 0x2e, 0x47, 0x65, 0x74,
+	0x47, 0x72, 0x6f, 0x75, 0x70, 0x48, 0x6f, 0x6e, 0x6f, 0x72, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x65,
+	0x71, 0x1a, 0x19, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x48,
+	0x6f, 0x6e, 0x6f, 0x72, 0x49, 0x6e, 0x66, 0x6f, 0x47, 0x52, 0x50, 0x43, 0x12, 0x3c, 0x0a, 0x0a,
+	0x43, 0x6c, 0x65, 0x61, 0x6e, 0x43, 0x61, 0x63, 0x68, 0x65, 0x12, 0x16, 0x2e, 0x67, 0x6f, 0x6f,
+	0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70,
+	0x74, 0x79, 0x1a, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74,
+	0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x12, 0x41, 0x0a, 0x0a, 0x53, 0x65,
+	0x74, 0x52, 0x65, 0x73, 0x74, 0x61, 0x72, 0x74, 0x12, 0x1b, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c,
+	0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x49, 0x6e, 0x74, 0x36, 0x34,
+	0x56, 0x61, 0x6c, 0x75, 0x65, 0x1a, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70,
+	0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x12, 0x44, 0x0a,
+	0x0e, 0x47, 0x65, 0x74, 0x56, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x49, 0x6e, 0x66, 0x6f, 0x12,
+	0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75,
+	0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x1a, 0x1a, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e,
+	0x56, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x49, 0x6e, 0x66, 0x6f, 0x44, 0x61, 0x74, 0x61, 0x47,
+	0x52, 0x50, 0x43, 0x12, 0x3e, 0x0a, 0x09, 0x47, 0x65, 0x74, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73,
+	0x12, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62,
+	0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x1a, 0x19, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c,
+	0x2e, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x49, 0x6e, 0x66, 0x6f, 0x44, 0x61, 0x74, 0x61, 0x47,
+	0x52, 0x50, 0x43, 0x12, 0x42, 0x0a, 0x0c, 0x43, 0x61, 0x6e, 0x53, 0x65, 0x6e, 0x64, 0x49, 0x6d,
+	0x61, 0x67, 0x65, 0x12, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f,
+	0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x1a, 0x1a, 0x2e, 0x67, 0x6f,
+	0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x42, 0x6f,
+	0x6f, 0x6c, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x12, 0x43, 0x0a, 0x0d, 0x43, 0x61, 0x6e, 0x53, 0x65,
+	0x6e, 0x64, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x12, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c,
+	0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79,
+	0x1a, 0x1a, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62,
+	0x75, 0x66, 0x2e, 0x42, 0x6f, 0x6f, 0x6c, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x42, 0x08, 0x5a, 0x06,
+	0x2e, 0x2e, 0x2f, 0x63, 0x6c, 0x69, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -229,56 +1554,134 @@ func file_onebot_plus_pkg_cli_onebot_cli_proto_rawDescGZIP() []byte {
 	return file_onebot_plus_pkg_cli_onebot_cli_proto_rawDescData
 }
 
-var file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes = make([]protoimpl.MessageInfo, 21)
 var file_onebot_plus_pkg_cli_onebot_cli_proto_goTypes = []interface{}{
 	(*GetStrangerInfoReq)(nil),           // 0: cli.GetStrangerInfoReq
 	(*GetRecordReq)(nil),                 // 1: cli.GetRecordReq
-	(*model.MsgForSendGRPC)(nil),         // 2: model.MsgForSendGRPC
-	(*model.PrivateMsgGRPC)(nil),         // 3: model.PrivateMsgGRPC
-	(*model.GroupMsgGRPC)(nil),           // 4: model.GroupMsgGRPC
-	(*wrapperspb.Int64Value)(nil),        // 5: google.protobuf.Int64Value
-	(*emptypb.Empty)(nil),                // 6: google.protobuf.Empty
-	(*wrapperspb.StringValue)(nil),       // 7: google.protobuf.StringValue
-	(*model.MessageDataGRPC)(nil),        // 8: model.MessageDataGRPC
-	(*model.ForwardMessageDataGRPC)(nil), // 9: model.ForwardMessageDataGRPC
-	(*model.AccountGRPC)(nil),            // 10: model.AccountGRPC
-	(*model.CokiesGRPC)(nil),             // 11: model.CokiesGRPC
-	(*model.CSRFTokenGRPC)(nil),          // 12: model.CSRFTokenGRPC
-	(*model.CredentialsGRPC)(nil),        // 13: model.CredentialsGRPC
-	(*model.FileGRPC)(nil),               // 14: model.FileGRPC
+	(*SendLikeReq)(nil),                  // 2: cli.SendLikeReq
+	(*SetFriendAddRequestReq)(nil),       // 3: cli.SetFriendAddRequestReq
+	(*GetFriendListResp)(nil),            // 4: cli.GetFriendListResp
+	(*SetGroupKickReq)(nil),              // 5: cli.SetGroupKickReq
+	(*SetGroupBanReq)(nil),               // 6: cli.SetGroupBanReq
+	(*SetGroupAnonymousBanReq)(nil),      // 7: cli.SetGroupAnonymousBanReq
+	(*SetGroupWholeBanReq)(nil),          // 8: cli.SetGroupWholeBanReq
+	(*SetGroupAdminReq)(nil),             // 9: cli.SetGroupAdminReq
+	(*SetGroupAnonymousReq)(nil),         // 10: cli.SetGroupAnonymousReq
+	(*SetGroupCardReq)(nil),              // 11: cli.SetGroupCardReq
+	(*SetGroupNameReq)(nil),              // 12: cli.SetGroupNameReq
+	(*SetGroupLeaveReq)(nil),             // 13: cli.SetGroupLeaveReq
+	(*SetGroupSpecialTitleReq)(nil),      // 14: cli.SetGroupSpecialTitleReq
+	(*SetGroupAddRequestReq)(nil),        // 15: cli.SetGroupAddRequestReq
+	(*GetGrooupInfoReq)(nil),             // 16: cli.GetGrooupInfoReq
+	(*GetGroupListResp)(nil),             // 17: cli.GetGroupListResp
+	(*GetGroupMemberInfoReq)(nil),        // 18: cli.GetGroupMemberInfoReq
+	(*GetGroupMemberListInfoResp)(nil),   // 19: cli.GetGroupMemberListInfoResp
+	(*GetGroupHonorInfoReq)(nil),         // 20: cli.GetGroupHonorInfoReq
+	(*model.AccountGRPC)(nil),            // 21: model.AccountGRPC
+	(*model.GroupGRPC)(nil),              // 22: model.GroupGRPC
+	(*model.GroupMemberGRPC)(nil),        // 23: model.GroupMemberGRPC
+	(*model.MsgForSendGRPC)(nil),         // 24: model.MsgForSendGRPC
+	(*model.PrivateMsgGRPC)(nil),         // 25: model.PrivateMsgGRPC
+	(*model.GroupMsgGRPC)(nil),           // 26: model.GroupMsgGRPC
+	(*wrapperspb.Int64Value)(nil),        // 27: google.protobuf.Int64Value
+	(*emptypb.Empty)(nil),                // 28: google.protobuf.Empty
+	(*wrapperspb.StringValue)(nil),       // 29: google.protobuf.StringValue
+	(*model.MessageDataGRPC)(nil),        // 30: model.MessageDataGRPC
+	(*model.ForwardMessageDataGRPC)(nil), // 31: model.ForwardMessageDataGRPC
+	(*model.CokiesGRPC)(nil),             // 32: model.CokiesGRPC
+	(*model.CSRFTokenGRPC)(nil),          // 33: model.CSRFTokenGRPC
+	(*model.CredentialsGRPC)(nil),        // 34: model.CredentialsGRPC
+	(*model.FileGRPC)(nil),               // 35: model.FileGRPC
+	(*model.GroupHonorInfoGRPC)(nil),     // 36: model.GroupHonorInfoGRPC
+	(*model.VersionInfoDataGRPC)(nil),    // 37: model.VersionInfoDataGRPC
+	(*model.StatusInfoDataGRPC)(nil),     // 38: model.StatusInfoDataGRPC
+	(*wrapperspb.BoolValue)(nil),         // 39: google.protobuf.BoolValue
 }
 var file_onebot_plus_pkg_cli_onebot_cli_proto_depIdxs = []int32{
-	2,  // 0: cli.onebot_grpc_cli.SendMsg:input_type -> model.MsgForSendGRPC
-	3,  // 1: cli.onebot_grpc_cli.SendPrivateMsg:input_type -> model.PrivateMsgGRPC
-	4,  // 2: cli.onebot_grpc_cli.SendGroupMsg:input_type -> model.GroupMsgGRPC
-	5,  // 3: cli.onebot_grpc_cli.DelMsg:input_type -> google.protobuf.Int64Value
-	5,  // 4: cli.onebot_grpc_cli.GetMsg:input_type -> google.protobuf.Int64Value
-	5,  // 5: cli.onebot_grpc_cli.GetForwardMsg:input_type -> google.protobuf.Int64Value
-	6,  // 6: cli.onebot_grpc_cli.GetLoginInfo:input_type -> google.protobuf.Empty
-	0,  // 7: cli.onebot_grpc_cli.GetStrangerInfo:input_type -> cli.GetStrangerInfoReq
-	7,  // 8: cli.onebot_grpc_cli.GetCookies:input_type -> google.protobuf.StringValue
-	6,  // 9: cli.onebot_grpc_cli.GetCSRFToken:input_type -> google.protobuf.Empty
-	7,  // 10: cli.onebot_grpc_cli.GetCredentials:input_type -> google.protobuf.StringValue
-	1,  // 11: cli.onebot_grpc_cli.GetRecord:input_type -> cli.GetRecordReq
-	7,  // 12: cli.onebot_grpc_cli.GetImage:input_type -> google.protobuf.StringValue
-	5,  // 13: cli.onebot_grpc_cli.SendMsg:output_type -> google.protobuf.Int64Value
-	5,  // 14: cli.onebot_grpc_cli.SendPrivateMsg:output_type -> google.protobuf.Int64Value
-	5,  // 15: cli.onebot_grpc_cli.SendGroupMsg:output_type -> google.protobuf.Int64Value
-	6,  // 16: cli.onebot_grpc_cli.DelMsg:output_type -> google.protobuf.Empty
-	8,  // 17: cli.onebot_grpc_cli.GetMsg:output_type -> model.MessageDataGRPC
-	9,  // 18: cli.onebot_grpc_cli.GetForwardMsg:output_type -> model.ForwardMessageDataGRPC
-	10, // 19: cli.onebot_grpc_cli.GetLoginInfo:output_type -> model.AccountGRPC
-	10, // 20: cli.onebot_grpc_cli.GetStrangerInfo:output_type -> model.AccountGRPC
-	11, // 21: cli.onebot_grpc_cli.GetCookies:output_type -> model.CokiesGRPC
-	12, // 22: cli.onebot_grpc_cli.GetCSRFToken:output_type -> model.CSRFTokenGRPC
-	13, // 23: cli.onebot_grpc_cli.GetCredentials:output_type -> model.CredentialsGRPC
-	14, // 24: cli.onebot_grpc_cli.GetRecord:output_type -> model.FileGRPC
-	14, // 25: cli.onebot_grpc_cli.GetImage:output_type -> model.FileGRPC
-	13, // [13:26] is the sub-list for method output_type
-	0,  // [0:13] is the sub-list for method input_type
-	0,  // [0:0] is the sub-list for extension type_name
-	0,  // [0:0] is the sub-list for extension extendee
-	0,  // [0:0] is the sub-list for field type_name
+	21, // 0: cli.GetFriendListResp.data:type_name -> model.AccountGRPC
+	22, // 1: cli.GetGroupListResp.data:type_name -> model.GroupGRPC
+	23, // 2: cli.GetGroupMemberListInfoResp.data:type_name -> model.GroupMemberGRPC
+	24, // 3: cli.onebot_grpc_cli.SendMsg:input_type -> model.MsgForSendGRPC
+	25, // 4: cli.onebot_grpc_cli.SendPrivateMsg:input_type -> model.PrivateMsgGRPC
+	26, // 5: cli.onebot_grpc_cli.SendGroupMsg:input_type -> model.GroupMsgGRPC
+	27, // 6: cli.onebot_grpc_cli.DelMsg:input_type -> google.protobuf.Int64Value
+	27, // 7: cli.onebot_grpc_cli.GetMsg:input_type -> google.protobuf.Int64Value
+	27, // 8: cli.onebot_grpc_cli.GetForwardMsg:input_type -> google.protobuf.Int64Value
+	28, // 9: cli.onebot_grpc_cli.GetLoginInfo:input_type -> google.protobuf.Empty
+	0,  // 10: cli.onebot_grpc_cli.GetStrangerInfo:input_type -> cli.GetStrangerInfoReq
+	29, // 11: cli.onebot_grpc_cli.GetCookies:input_type -> google.protobuf.StringValue
+	28, // 12: cli.onebot_grpc_cli.GetCSRFToken:input_type -> google.protobuf.Empty
+	29, // 13: cli.onebot_grpc_cli.GetCredentials:input_type -> google.protobuf.StringValue
+	1,  // 14: cli.onebot_grpc_cli.GetRecord:input_type -> cli.GetRecordReq
+	29, // 15: cli.onebot_grpc_cli.GetImage:input_type -> google.protobuf.StringValue
+	2,  // 16: cli.onebot_grpc_cli.SendLike:input_type -> cli.SendLikeReq
+	3,  // 17: cli.onebot_grpc_cli.SetFriendAddRequest:input_type -> cli.SetFriendAddRequestReq
+	28, // 18: cli.onebot_grpc_cli.GetFriendList:input_type -> google.protobuf.Empty
+	5,  // 19: cli.onebot_grpc_cli.SetGroupKick:input_type -> cli.SetGroupKickReq
+	6,  // 20: cli.onebot_grpc_cli.SetGroupBan:input_type -> cli.SetGroupBanReq
+	7,  // 21: cli.onebot_grpc_cli.SetGroupAnonymousBan:input_type -> cli.SetGroupAnonymousBanReq
+	8,  // 22: cli.onebot_grpc_cli.SetGroupWholeBan:input_type -> cli.SetGroupWholeBanReq
+	9,  // 23: cli.onebot_grpc_cli.SetGroupAdmin:input_type -> cli.SetGroupAdminReq
+	10, // 24: cli.onebot_grpc_cli.SetGroupAnonymous:input_type -> cli.SetGroupAnonymousReq
+	11, // 25: cli.onebot_grpc_cli.SetGroupCard:input_type -> cli.SetGroupCardReq
+	12, // 26: cli.onebot_grpc_cli.SetGroupName:input_type -> cli.SetGroupNameReq
+	13, // 27: cli.onebot_grpc_cli.SetGroupLeave:input_type -> cli.SetGroupLeaveReq
+	14, // 28: cli.onebot_grpc_cli.SetGroupSpecialTitle:input_type -> cli.SetGroupSpecialTitleReq
+	15, // 29: cli.onebot_grpc_cli.SetGroupAddRequest:input_type -> cli.SetGroupAddRequestReq
+	16, // 30: cli.onebot_grpc_cli.GetGroupInfo:input_type -> cli.GetGrooupInfoReq
+	28, // 31: cli.onebot_grpc_cli.GetGroupList:input_type -> google.protobuf.Empty
+	18, // 32: cli.onebot_grpc_cli.GetGroupMemberInfo:input_type -> cli.GetGroupMemberInfoReq
+	28, // 33: cli.onebot_grpc_cli.GetGroupMemberListInfo:input_type -> google.protobuf.Empty
+	20, // 34: cli.onebot_grpc_cli.GetGroupHonorInfo:input_type -> cli.GetGroupHonorInfoReq
+	28, // 35: cli.onebot_grpc_cli.CleanCache:input_type -> google.protobuf.Empty
+	27, // 36: cli.onebot_grpc_cli.SetRestart:input_type -> google.protobuf.Int64Value
+	28, // 37: cli.onebot_grpc_cli.GetVersionInfo:input_type -> google.protobuf.Empty
+	28, // 38: cli.onebot_grpc_cli.GetStatus:input_type -> google.protobuf.Empty
+	28, // 39: cli.onebot_grpc_cli.CanSendImage:input_type -> google.protobuf.Empty
+	28, // 40: cli.onebot_grpc_cli.CanSendRecord:input_type -> google.protobuf.Empty
+	27, // 41: cli.onebot_grpc_cli.SendMsg:output_type -> google.protobuf.Int64Value
+	27, // 42: cli.onebot_grpc_cli.SendPrivateMsg:output_type -> google.protobuf.Int64Value
+	27, // 43: cli.onebot_grpc_cli.SendGroupMsg:output_type -> google.protobuf.Int64Value
+	28, // 44: cli.onebot_grpc_cli.DelMsg:output_type -> google.protobuf.Empty
+	30, // 45: cli.onebot_grpc_cli.GetMsg:output_type -> model.MessageDataGRPC
+	31, // 46: cli.onebot_grpc_cli.GetForwardMsg:output_type -> model.ForwardMessageDataGRPC
+	21, // 47: cli.onebot_grpc_cli.GetLoginInfo:output_type -> model.AccountGRPC
+	21, // 48: cli.onebot_grpc_cli.GetStrangerInfo:output_type -> model.AccountGRPC
+	32, // 49: cli.onebot_grpc_cli.GetCookies:output_type -> model.CokiesGRPC
+	33, // 50: cli.onebot_grpc_cli.GetCSRFToken:output_type -> model.CSRFTokenGRPC
+	34, // 51: cli.onebot_grpc_cli.GetCredentials:output_type -> model.CredentialsGRPC
+	35, // 52: cli.onebot_grpc_cli.GetRecord:output_type -> model.FileGRPC
+	35, // 53: cli.onebot_grpc_cli.GetImage:output_type -> model.FileGRPC
+	28, // 54: cli.onebot_grpc_cli.SendLike:output_type -> google.protobuf.Empty
+	28, // 55: cli.onebot_grpc_cli.SetFriendAddRequest:output_type -> google.protobuf.Empty
+	4,  // 56: cli.onebot_grpc_cli.GetFriendList:output_type -> cli.GetFriendListResp
+	28, // 57: cli.onebot_grpc_cli.SetGroupKick:output_type -> google.protobuf.Empty
+	28, // 58: cli.onebot_grpc_cli.SetGroupBan:output_type -> google.protobuf.Empty
+	28, // 59: cli.onebot_grpc_cli.SetGroupAnonymousBan:output_type -> google.protobuf.Empty
+	28, // 60: cli.onebot_grpc_cli.SetGroupWholeBan:output_type -> google.protobuf.Empty
+	28, // 61: cli.onebot_grpc_cli.SetGroupAdmin:output_type -> google.protobuf.Empty
+	28, // 62: cli.onebot_grpc_cli.SetGroupAnonymous:output_type -> google.protobuf.Empty
+	28, // 63: cli.onebot_grpc_cli.SetGroupCard:output_type -> google.protobuf.Empty
+	28, // 64: cli.onebot_grpc_cli.SetGroupName:output_type -> google.protobuf.Empty
+	28, // 65: cli.onebot_grpc_cli.SetGroupLeave:output_type -> google.protobuf.Empty
+	28, // 66: cli.onebot_grpc_cli.SetGroupSpecialTitle:output_type -> google.protobuf.Empty
+	28, // 67: cli.onebot_grpc_cli.SetGroupAddRequest:output_type -> google.protobuf.Empty
+	22, // 68: cli.onebot_grpc_cli.GetGroupInfo:output_type -> model.GroupGRPC
+	17, // 69: cli.onebot_grpc_cli.GetGroupList:output_type -> cli.GetGroupListResp
+	23, // 70: cli.onebot_grpc_cli.GetGroupMemberInfo:output_type -> model.GroupMemberGRPC
+	19, // 71: cli.onebot_grpc_cli.GetGroupMemberListInfo:output_type -> cli.GetGroupMemberListInfoResp
+	36, // 72: cli.onebot_grpc_cli.GetGroupHonorInfo:output_type -> model.GroupHonorInfoGRPC
+	28, // 73: cli.onebot_grpc_cli.CleanCache:output_type -> google.protobuf.Empty
+	28, // 74: cli.onebot_grpc_cli.SetRestart:output_type -> google.protobuf.Empty
+	37, // 75: cli.onebot_grpc_cli.GetVersionInfo:output_type -> model.VersionInfoDataGRPC
+	38, // 76: cli.onebot_grpc_cli.GetStatus:output_type -> model.StatusInfoDataGRPC
+	39, // 77: cli.onebot_grpc_cli.CanSendImage:output_type -> google.protobuf.BoolValue
+	39, // 78: cli.onebot_grpc_cli.CanSendRecord:output_type -> google.protobuf.BoolValue
+	41, // [41:79] is the sub-list for method output_type
+	3,  // [3:41] is the sub-list for method input_type
+	3,  // [3:3] is the sub-list for extension type_name
+	3,  // [3:3] is the sub-list for extension extendee
+	0,  // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_onebot_plus_pkg_cli_onebot_cli_proto_init() }
@@ -311,6 +1714,234 @@ func file_onebot_plus_pkg_cli_onebot_cli_proto_init() {
 				return nil
 			}
 		}
+		file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*SendLikeReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*SetFriendAddRequestReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetFriendListResp); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*SetGroupKickReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*SetGroupBanReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*SetGroupAnonymousBanReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*SetGroupWholeBanReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*SetGroupAdminReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*SetGroupAnonymousReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*SetGroupCardReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*SetGroupNameReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*SetGroupLeaveReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[14].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*SetGroupSpecialTitleReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[15].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*SetGroupAddRequestReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[16].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetGrooupInfoReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[17].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetGroupListResp); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[18].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetGroupMemberInfoReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[19].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetGroupMemberListInfoResp); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_onebot_plus_pkg_cli_onebot_cli_proto_msgTypes[20].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetGroupHonorInfoReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -318,7 +1949,7 @@ func file_onebot_plus_pkg_cli_onebot_cli_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_onebot_plus_pkg_cli_onebot_cli_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   21,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
@@ -367,6 +1998,48 @@ type OnebotGrpcCliClient interface {
 	GetRecord(ctx context.Context, in *GetRecordReq, opts ...grpc.CallOption) (*model.FileGRPC, error)
 	//获取图片
 	GetImage(ctx context.Context, in *wrapperspb.StringValue, opts ...grpc.CallOption) (*model.FileGRPC, error)
+	SendLike(ctx context.Context, in *SendLikeReq, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	//处理加好友请求
+	SetFriendAddRequest(ctx context.Context, in *SetFriendAddRequestReq, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	GetFriendList(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*GetFriendListResp, error)
+	// 群组踢人
+	SetGroupKick(ctx context.Context, in *SetGroupKickReq, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	// 群组禁言
+	SetGroupBan(ctx context.Context, in *SetGroupBanReq, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	// 群组匿名用户禁言
+	SetGroupAnonymousBan(ctx context.Context, in *SetGroupAnonymousBanReq, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	//群组全员禁言
+	SetGroupWholeBan(ctx context.Context, in *SetGroupWholeBanReq, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	//群组设置管理员
+	SetGroupAdmin(ctx context.Context, in *SetGroupAdminReq, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	//群组匿名
+	SetGroupAnonymous(ctx context.Context, in *SetGroupAnonymousReq, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	//设置群名片（群备注）
+	SetGroupCard(ctx context.Context, in *SetGroupCardReq, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	//设置群名
+	SetGroupName(ctx context.Context, in *SetGroupNameReq, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	//退出群组
+	SetGroupLeave(ctx context.Context, in *SetGroupLeaveReq, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	//设置群组专属头衔
+	SetGroupSpecialTitle(ctx context.Context, in *SetGroupSpecialTitleReq, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	//处理加群请求／邀请
+	SetGroupAddRequest(ctx context.Context, in *SetGroupAddRequestReq, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	//获取群信息
+	GetGroupInfo(ctx context.Context, in *GetGrooupInfoReq, opts ...grpc.CallOption) (*model.GroupGRPC, error)
+	//获取群列表
+	GetGroupList(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*GetGroupListResp, error)
+	//获取群成员信息
+	GetGroupMemberInfo(ctx context.Context, in *GetGroupMemberInfoReq, opts ...grpc.CallOption) (*model.GroupMemberGRPC, error)
+	//获取群成员列表
+	GetGroupMemberListInfo(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*GetGroupMemberListInfoResp, error)
+	//获取群荣誉信息
+	GetGroupHonorInfo(ctx context.Context, in *GetGroupHonorInfoReq, opts ...grpc.CallOption) (*model.GroupHonorInfoGRPC, error)
+	CleanCache(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	SetRestart(ctx context.Context, in *wrapperspb.Int64Value, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	GetVersionInfo(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*model.VersionInfoDataGRPC, error)
+	GetStatus(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*model.StatusInfoDataGRPC, error)
+	CanSendImage(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*wrapperspb.BoolValue, error)
+	CanSendRecord(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*wrapperspb.BoolValue, error)
 }
 
 type onebotGrpcCliClient struct {
@@ -494,6 +2167,231 @@ func (c *onebotGrpcCliClient) GetImage(ctx context.Context, in *wrapperspb.Strin
 	return out, nil
 }
 
+func (c *onebotGrpcCliClient) SendLike(ctx context.Context, in *SendLikeReq, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
+	err := c.cc.Invoke(ctx, "/cli.onebot_grpc_cli/SendLike", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *onebotGrpcCliClient) SetFriendAddRequest(ctx context.Context, in *SetFriendAddRequestReq, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
+	err := c.cc.Invoke(ctx, "/cli.onebot_grpc_cli/SetFriendAddRequest", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *onebotGrpcCliClient) GetFriendList(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*GetFriendListResp, error) {
+	out := new(GetFriendListResp)
+	err := c.cc.Invoke(ctx, "/cli.onebot_grpc_cli/GetFriendList", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *onebotGrpcCliClient) SetGroupKick(ctx context.Context, in *SetGroupKickReq, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
+	err := c.cc.Invoke(ctx, "/cli.onebot_grpc_cli/SetGroupKick", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *onebotGrpcCliClient) SetGroupBan(ctx context.Context, in *SetGroupBanReq, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
+	err := c.cc.Invoke(ctx, "/cli.onebot_grpc_cli/SetGroupBan", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *onebotGrpcCliClient) SetGroupAnonymousBan(ctx context.Context, in *SetGroupAnonymousBanReq, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
+	err := c.cc.Invoke(ctx, "/cli.onebot_grpc_cli/SetGroupAnonymousBan", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *onebotGrpcCliClient) SetGroupWholeBan(ctx context.Context, in *SetGroupWholeBanReq, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
+	err := c.cc.Invoke(ctx, "/cli.onebot_grpc_cli/SetGroupWholeBan", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *onebotGrpcCliClient) SetGroupAdmin(ctx context.Context, in *SetGroupAdminReq, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
+	err := c.cc.Invoke(ctx, "/cli.onebot_grpc_cli/SetGroupAdmin", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *onebotGrpcCliClient) SetGroupAnonymous(ctx context.Context, in *SetGroupAnonymousReq, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
+	err := c.cc.Invoke(ctx, "/cli.onebot_grpc_cli/SetGroupAnonymous", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *onebotGrpcCliClient) SetGroupCard(ctx context.Context, in *SetGroupCardReq, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
+	err := c.cc.Invoke(ctx, "/cli.onebot_grpc_cli/SetGroupCard", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *onebotGrpcCliClient) SetGroupName(ctx context.Context, in *SetGroupNameReq, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
+	err := c.cc.Invoke(ctx, "/cli.onebot_grpc_cli/SetGroupName", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *onebotGrpcCliClient) SetGroupLeave(ctx context.Context, in *SetGroupLeaveReq, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
+	err := c.cc.Invoke(ctx, "/cli.onebot_grpc_cli/SetGroupLeave", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *onebotGrpcCliClient) SetGroupSpecialTitle(ctx context.Context, in *SetGroupSpecialTitleReq, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
+	err := c.cc.Invoke(ctx, "/cli.onebot_grpc_cli/SetGroupSpecialTitle", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *onebotGrpcCliClient) SetGroupAddRequest(ctx context.Context, in *SetGroupAddRequestReq, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
+	err := c.cc.Invoke(ctx, "/cli.onebot_grpc_cli/SetGroupAddRequest", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *onebotGrpcCliClient) GetGroupInfo(ctx context.Context, in *GetGrooupInfoReq, opts ...grpc.CallOption) (*model.GroupGRPC, error) {
+	out := new(model.GroupGRPC)
+	err := c.cc.Invoke(ctx, "/cli.onebot_grpc_cli/GetGroupInfo", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *onebotGrpcCliClient) GetGroupList(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*GetGroupListResp, error) {
+	out := new(GetGroupListResp)
+	err := c.cc.Invoke(ctx, "/cli.onebot_grpc_cli/GetGroupList", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *onebotGrpcCliClient) GetGroupMemberInfo(ctx context.Context, in *GetGroupMemberInfoReq, opts ...grpc.CallOption) (*model.GroupMemberGRPC, error) {
+	out := new(model.GroupMemberGRPC)
+	err := c.cc.Invoke(ctx, "/cli.onebot_grpc_cli/GetGroupMemberInfo", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *onebotGrpcCliClient) GetGroupMemberListInfo(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*GetGroupMemberListInfoResp, error) {
+	out := new(GetGroupMemberListInfoResp)
+	err := c.cc.Invoke(ctx, "/cli.onebot_grpc_cli/GetGroupMemberListInfo", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *onebotGrpcCliClient) GetGroupHonorInfo(ctx context.Context, in *GetGroupHonorInfoReq, opts ...grpc.CallOption) (*model.GroupHonorInfoGRPC, error) {
+	out := new(model.GroupHonorInfoGRPC)
+	err := c.cc.Invoke(ctx, "/cli.onebot_grpc_cli/GetGroupHonorInfo", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *onebotGrpcCliClient) CleanCache(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
+	err := c.cc.Invoke(ctx, "/cli.onebot_grpc_cli/CleanCache", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *onebotGrpcCliClient) SetRestart(ctx context.Context, in *wrapperspb.Int64Value, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
+	err := c.cc.Invoke(ctx, "/cli.onebot_grpc_cli/SetRestart", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *onebotGrpcCliClient) GetVersionInfo(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*model.VersionInfoDataGRPC, error) {
+	out := new(model.VersionInfoDataGRPC)
+	err := c.cc.Invoke(ctx, "/cli.onebot_grpc_cli/GetVersionInfo", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *onebotGrpcCliClient) GetStatus(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*model.StatusInfoDataGRPC, error) {
+	out := new(model.StatusInfoDataGRPC)
+	err := c.cc.Invoke(ctx, "/cli.onebot_grpc_cli/GetStatus", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *onebotGrpcCliClient) CanSendImage(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*wrapperspb.BoolValue, error) {
+	out := new(wrapperspb.BoolValue)
+	err := c.cc.Invoke(ctx, "/cli.onebot_grpc_cli/CanSendImage", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *onebotGrpcCliClient) CanSendRecord(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*wrapperspb.BoolValue, error) {
+	out := new(wrapperspb.BoolValue)
+	err := c.cc.Invoke(ctx, "/cli.onebot_grpc_cli/CanSendRecord", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // OnebotGrpcCliServer is the server API for OnebotGrpcCli service.
 type OnebotGrpcCliServer interface {
 	//发送消息
@@ -519,6 +2417,48 @@ type OnebotGrpcCliServer interface {
 	GetRecord(context.Context, *GetRecordReq) (*model.FileGRPC, error)
 	//获取图片
 	GetImage(context.Context, *wrapperspb.StringValue) (*model.FileGRPC, error)
+	SendLike(context.Context, *SendLikeReq) (*emptypb.Empty, error)
+	//处理加好友请求
+	SetFriendAddRequest(context.Context, *SetFriendAddRequestReq) (*emptypb.Empty, error)
+	GetFriendList(context.Context, *emptypb.Empty) (*GetFriendListResp, error)
+	// 群组踢人
+	SetGroupKick(context.Context, *SetGroupKickReq) (*emptypb.Empty, error)
+	// 群组禁言
+	SetGroupBan(context.Context, *SetGroupBanReq) (*emptypb.Empty, error)
+	// 群组匿名用户禁言
+	SetGroupAnonymousBan(context.Context, *SetGroupAnonymousBanReq) (*emptypb.Empty, error)
+	//群组全员禁言
+	SetGroupWholeBan(context.Context, *SetGroupWholeBanReq) (*emptypb.Empty, error)
+	//群组设置管理员
+	SetGroupAdmin(context.Context, *SetGroupAdminReq) (*emptypb.Empty, error)
+	//群组匿名
+	SetGroupAnonymous(context.Context, *SetGroupAnonymousReq) (*emptypb.Empty, error)
+	//设置群名片（群备注）
+	SetGroupCard(context.Context, *SetGroupCardReq) (*emptypb.Empty, error)
+	//设置群名
+	SetGroupName(context.Context, *SetGroupNameReq) (*emptypb.Empty, error)
+	//退出群组
+	SetGroupLeave(context.Context, *SetGroupLeaveReq) (*emptypb.Empty, error)
+	//设置群组专属头衔
+	SetGroupSpecialTitle(context.Context, *SetGroupSpecialTitleReq) (*emptypb.Empty, error)
+	//处理加群请求／邀请
+	SetGroupAddRequest(context.Context, *SetGroupAddRequestReq) (*emptypb.Empty, error)
+	//获取群信息
+	GetGroupInfo(context.Context, *GetGrooupInfoReq) (*model.GroupGRPC, error)
+	//获取群列表
+	GetGroupList(context.Context, *emptypb.Empty) (*GetGroupListResp, error)
+	//获取群成员信息
+	GetGroupMemberInfo(context.Context, *GetGroupMemberInfoReq) (*model.GroupMemberGRPC, error)
+	//获取群成员列表
+	GetGroupMemberListInfo(context.Context, *emptypb.Empty) (*GetGroupMemberListInfoResp, error)
+	//获取群荣誉信息
+	GetGroupHonorInfo(context.Context, *GetGroupHonorInfoReq) (*model.GroupHonorInfoGRPC, error)
+	CleanCache(context.Context, *emptypb.Empty) (*emptypb.Empty, error)
+	SetRestart(context.Context, *wrapperspb.Int64Value) (*emptypb.Empty, error)
+	GetVersionInfo(context.Context, *emptypb.Empty) (*model.VersionInfoDataGRPC, error)
+	GetStatus(context.Context, *emptypb.Empty) (*model.StatusInfoDataGRPC, error)
+	CanSendImage(context.Context, *emptypb.Empty) (*wrapperspb.BoolValue, error)
+	CanSendRecord(context.Context, *emptypb.Empty) (*wrapperspb.BoolValue, error)
 }
 
 // UnimplementedOnebotGrpcCliServer can be embedded to have forward compatible implementations.
@@ -563,6 +2503,81 @@ func (*UnimplementedOnebotGrpcCliServer) GetRecord(context.Context, *GetRecordRe
 }
 func (*UnimplementedOnebotGrpcCliServer) GetImage(context.Context, *wrapperspb.StringValue) (*model.FileGRPC, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetImage not implemented")
+}
+func (*UnimplementedOnebotGrpcCliServer) SendLike(context.Context, *SendLikeReq) (*emptypb.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SendLike not implemented")
+}
+func (*UnimplementedOnebotGrpcCliServer) SetFriendAddRequest(context.Context, *SetFriendAddRequestReq) (*emptypb.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetFriendAddRequest not implemented")
+}
+func (*UnimplementedOnebotGrpcCliServer) GetFriendList(context.Context, *emptypb.Empty) (*GetFriendListResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetFriendList not implemented")
+}
+func (*UnimplementedOnebotGrpcCliServer) SetGroupKick(context.Context, *SetGroupKickReq) (*emptypb.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetGroupKick not implemented")
+}
+func (*UnimplementedOnebotGrpcCliServer) SetGroupBan(context.Context, *SetGroupBanReq) (*emptypb.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetGroupBan not implemented")
+}
+func (*UnimplementedOnebotGrpcCliServer) SetGroupAnonymousBan(context.Context, *SetGroupAnonymousBanReq) (*emptypb.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetGroupAnonymousBan not implemented")
+}
+func (*UnimplementedOnebotGrpcCliServer) SetGroupWholeBan(context.Context, *SetGroupWholeBanReq) (*emptypb.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetGroupWholeBan not implemented")
+}
+func (*UnimplementedOnebotGrpcCliServer) SetGroupAdmin(context.Context, *SetGroupAdminReq) (*emptypb.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetGroupAdmin not implemented")
+}
+func (*UnimplementedOnebotGrpcCliServer) SetGroupAnonymous(context.Context, *SetGroupAnonymousReq) (*emptypb.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetGroupAnonymous not implemented")
+}
+func (*UnimplementedOnebotGrpcCliServer) SetGroupCard(context.Context, *SetGroupCardReq) (*emptypb.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetGroupCard not implemented")
+}
+func (*UnimplementedOnebotGrpcCliServer) SetGroupName(context.Context, *SetGroupNameReq) (*emptypb.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetGroupName not implemented")
+}
+func (*UnimplementedOnebotGrpcCliServer) SetGroupLeave(context.Context, *SetGroupLeaveReq) (*emptypb.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetGroupLeave not implemented")
+}
+func (*UnimplementedOnebotGrpcCliServer) SetGroupSpecialTitle(context.Context, *SetGroupSpecialTitleReq) (*emptypb.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetGroupSpecialTitle not implemented")
+}
+func (*UnimplementedOnebotGrpcCliServer) SetGroupAddRequest(context.Context, *SetGroupAddRequestReq) (*emptypb.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetGroupAddRequest not implemented")
+}
+func (*UnimplementedOnebotGrpcCliServer) GetGroupInfo(context.Context, *GetGrooupInfoReq) (*model.GroupGRPC, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetGroupInfo not implemented")
+}
+func (*UnimplementedOnebotGrpcCliServer) GetGroupList(context.Context, *emptypb.Empty) (*GetGroupListResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetGroupList not implemented")
+}
+func (*UnimplementedOnebotGrpcCliServer) GetGroupMemberInfo(context.Context, *GetGroupMemberInfoReq) (*model.GroupMemberGRPC, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetGroupMemberInfo not implemented")
+}
+func (*UnimplementedOnebotGrpcCliServer) GetGroupMemberListInfo(context.Context, *emptypb.Empty) (*GetGroupMemberListInfoResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetGroupMemberListInfo not implemented")
+}
+func (*UnimplementedOnebotGrpcCliServer) GetGroupHonorInfo(context.Context, *GetGroupHonorInfoReq) (*model.GroupHonorInfoGRPC, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetGroupHonorInfo not implemented")
+}
+func (*UnimplementedOnebotGrpcCliServer) CleanCache(context.Context, *emptypb.Empty) (*emptypb.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CleanCache not implemented")
+}
+func (*UnimplementedOnebotGrpcCliServer) SetRestart(context.Context, *wrapperspb.Int64Value) (*emptypb.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetRestart not implemented")
+}
+func (*UnimplementedOnebotGrpcCliServer) GetVersionInfo(context.Context, *emptypb.Empty) (*model.VersionInfoDataGRPC, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetVersionInfo not implemented")
+}
+func (*UnimplementedOnebotGrpcCliServer) GetStatus(context.Context, *emptypb.Empty) (*model.StatusInfoDataGRPC, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetStatus not implemented")
+}
+func (*UnimplementedOnebotGrpcCliServer) CanSendImage(context.Context, *emptypb.Empty) (*wrapperspb.BoolValue, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CanSendImage not implemented")
+}
+func (*UnimplementedOnebotGrpcCliServer) CanSendRecord(context.Context, *emptypb.Empty) (*wrapperspb.BoolValue, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CanSendRecord not implemented")
 }
 
 func RegisterOnebotGrpcCliServer(s *grpc.Server, srv OnebotGrpcCliServer) {
@@ -803,6 +2818,456 @@ func _OnebotGrpcCli_GetImage_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
+func _OnebotGrpcCli_SendLike_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SendLikeReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OnebotGrpcCliServer).SendLike(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/cli.onebot_grpc_cli/SendLike",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OnebotGrpcCliServer).SendLike(ctx, req.(*SendLikeReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _OnebotGrpcCli_SetFriendAddRequest_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SetFriendAddRequestReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OnebotGrpcCliServer).SetFriendAddRequest(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/cli.onebot_grpc_cli/SetFriendAddRequest",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OnebotGrpcCliServer).SetFriendAddRequest(ctx, req.(*SetFriendAddRequestReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _OnebotGrpcCli_GetFriendList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(emptypb.Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OnebotGrpcCliServer).GetFriendList(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/cli.onebot_grpc_cli/GetFriendList",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OnebotGrpcCliServer).GetFriendList(ctx, req.(*emptypb.Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _OnebotGrpcCli_SetGroupKick_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SetGroupKickReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OnebotGrpcCliServer).SetGroupKick(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/cli.onebot_grpc_cli/SetGroupKick",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OnebotGrpcCliServer).SetGroupKick(ctx, req.(*SetGroupKickReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _OnebotGrpcCli_SetGroupBan_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SetGroupBanReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OnebotGrpcCliServer).SetGroupBan(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/cli.onebot_grpc_cli/SetGroupBan",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OnebotGrpcCliServer).SetGroupBan(ctx, req.(*SetGroupBanReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _OnebotGrpcCli_SetGroupAnonymousBan_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SetGroupAnonymousBanReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OnebotGrpcCliServer).SetGroupAnonymousBan(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/cli.onebot_grpc_cli/SetGroupAnonymousBan",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OnebotGrpcCliServer).SetGroupAnonymousBan(ctx, req.(*SetGroupAnonymousBanReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _OnebotGrpcCli_SetGroupWholeBan_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SetGroupWholeBanReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OnebotGrpcCliServer).SetGroupWholeBan(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/cli.onebot_grpc_cli/SetGroupWholeBan",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OnebotGrpcCliServer).SetGroupWholeBan(ctx, req.(*SetGroupWholeBanReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _OnebotGrpcCli_SetGroupAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SetGroupAdminReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OnebotGrpcCliServer).SetGroupAdmin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/cli.onebot_grpc_cli/SetGroupAdmin",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OnebotGrpcCliServer).SetGroupAdmin(ctx, req.(*SetGroupAdminReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _OnebotGrpcCli_SetGroupAnonymous_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SetGroupAnonymousReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OnebotGrpcCliServer).SetGroupAnonymous(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/cli.onebot_grpc_cli/SetGroupAnonymous",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OnebotGrpcCliServer).SetGroupAnonymous(ctx, req.(*SetGroupAnonymousReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _OnebotGrpcCli_SetGroupCard_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SetGroupCardReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OnebotGrpcCliServer).SetGroupCard(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/cli.onebot_grpc_cli/SetGroupCard",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OnebotGrpcCliServer).SetGroupCard(ctx, req.(*SetGroupCardReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _OnebotGrpcCli_SetGroupName_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SetGroupNameReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OnebotGrpcCliServer).SetGroupName(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/cli.onebot_grpc_cli/SetGroupName",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OnebotGrpcCliServer).SetGroupName(ctx, req.(*SetGroupNameReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _OnebotGrpcCli_SetGroupLeave_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SetGroupLeaveReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OnebotGrpcCliServer).SetGroupLeave(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/cli.onebot_grpc_cli/SetGroupLeave",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OnebotGrpcCliServer).SetGroupLeave(ctx, req.(*SetGroupLeaveReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _OnebotGrpcCli_SetGroupSpecialTitle_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SetGroupSpecialTitleReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OnebotGrpcCliServer).SetGroupSpecialTitle(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/cli.onebot_grpc_cli/SetGroupSpecialTitle",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OnebotGrpcCliServer).SetGroupSpecialTitle(ctx, req.(*SetGroupSpecialTitleReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _OnebotGrpcCli_SetGroupAddRequest_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SetGroupAddRequestReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OnebotGrpcCliServer).SetGroupAddRequest(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/cli.onebot_grpc_cli/SetGroupAddRequest",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OnebotGrpcCliServer).SetGroupAddRequest(ctx, req.(*SetGroupAddRequestReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _OnebotGrpcCli_GetGroupInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetGrooupInfoReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OnebotGrpcCliServer).GetGroupInfo(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/cli.onebot_grpc_cli/GetGroupInfo",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OnebotGrpcCliServer).GetGroupInfo(ctx, req.(*GetGrooupInfoReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _OnebotGrpcCli_GetGroupList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(emptypb.Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OnebotGrpcCliServer).GetGroupList(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/cli.onebot_grpc_cli/GetGroupList",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OnebotGrpcCliServer).GetGroupList(ctx, req.(*emptypb.Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _OnebotGrpcCli_GetGroupMemberInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetGroupMemberInfoReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OnebotGrpcCliServer).GetGroupMemberInfo(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/cli.onebot_grpc_cli/GetGroupMemberInfo",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OnebotGrpcCliServer).GetGroupMemberInfo(ctx, req.(*GetGroupMemberInfoReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _OnebotGrpcCli_GetGroupMemberListInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(emptypb.Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OnebotGrpcCliServer).GetGroupMemberListInfo(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/cli.onebot_grpc_cli/GetGroupMemberListInfo",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OnebotGrpcCliServer).GetGroupMemberListInfo(ctx, req.(*emptypb.Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _OnebotGrpcCli_GetGroupHonorInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetGroupHonorInfoReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OnebotGrpcCliServer).GetGroupHonorInfo(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/cli.onebot_grpc_cli/GetGroupHonorInfo",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OnebotGrpcCliServer).GetGroupHonorInfo(ctx, req.(*GetGroupHonorInfoReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _OnebotGrpcCli_CleanCache_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(emptypb.Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OnebotGrpcCliServer).CleanCache(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/cli.onebot_grpc_cli/CleanCache",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OnebotGrpcCliServer).CleanCache(ctx, req.(*emptypb.Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _OnebotGrpcCli_SetRestart_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(wrapperspb.Int64Value)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OnebotGrpcCliServer).SetRestart(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/cli.onebot_grpc_cli/SetRestart",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OnebotGrpcCliServer).SetRestart(ctx, req.(*wrapperspb.Int64Value))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _OnebotGrpcCli_GetVersionInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(emptypb.Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OnebotGrpcCliServer).GetVersionInfo(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/cli.onebot_grpc_cli/GetVersionInfo",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OnebotGrpcCliServer).GetVersionInfo(ctx, req.(*emptypb.Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _OnebotGrpcCli_GetStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(emptypb.Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OnebotGrpcCliServer).GetStatus(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/cli.onebot_grpc_cli/GetStatus",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OnebotGrpcCliServer).GetStatus(ctx, req.(*emptypb.Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _OnebotGrpcCli_CanSendImage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(emptypb.Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OnebotGrpcCliServer).CanSendImage(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/cli.onebot_grpc_cli/CanSendImage",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OnebotGrpcCliServer).CanSendImage(ctx, req.(*emptypb.Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _OnebotGrpcCli_CanSendRecord_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(emptypb.Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OnebotGrpcCliServer).CanSendRecord(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/cli.onebot_grpc_cli/CanSendRecord",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OnebotGrpcCliServer).CanSendRecord(ctx, req.(*emptypb.Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _OnebotGrpcCli_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "cli.onebot_grpc_cli",
 	HandlerType: (*OnebotGrpcCliServer)(nil),
@@ -858,6 +3323,106 @@ var _OnebotGrpcCli_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetImage",
 			Handler:    _OnebotGrpcCli_GetImage_Handler,
+		},
+		{
+			MethodName: "SendLike",
+			Handler:    _OnebotGrpcCli_SendLike_Handler,
+		},
+		{
+			MethodName: "SetFriendAddRequest",
+			Handler:    _OnebotGrpcCli_SetFriendAddRequest_Handler,
+		},
+		{
+			MethodName: "GetFriendList",
+			Handler:    _OnebotGrpcCli_GetFriendList_Handler,
+		},
+		{
+			MethodName: "SetGroupKick",
+			Handler:    _OnebotGrpcCli_SetGroupKick_Handler,
+		},
+		{
+			MethodName: "SetGroupBan",
+			Handler:    _OnebotGrpcCli_SetGroupBan_Handler,
+		},
+		{
+			MethodName: "SetGroupAnonymousBan",
+			Handler:    _OnebotGrpcCli_SetGroupAnonymousBan_Handler,
+		},
+		{
+			MethodName: "SetGroupWholeBan",
+			Handler:    _OnebotGrpcCli_SetGroupWholeBan_Handler,
+		},
+		{
+			MethodName: "SetGroupAdmin",
+			Handler:    _OnebotGrpcCli_SetGroupAdmin_Handler,
+		},
+		{
+			MethodName: "SetGroupAnonymous",
+			Handler:    _OnebotGrpcCli_SetGroupAnonymous_Handler,
+		},
+		{
+			MethodName: "SetGroupCard",
+			Handler:    _OnebotGrpcCli_SetGroupCard_Handler,
+		},
+		{
+			MethodName: "SetGroupName",
+			Handler:    _OnebotGrpcCli_SetGroupName_Handler,
+		},
+		{
+			MethodName: "SetGroupLeave",
+			Handler:    _OnebotGrpcCli_SetGroupLeave_Handler,
+		},
+		{
+			MethodName: "SetGroupSpecialTitle",
+			Handler:    _OnebotGrpcCli_SetGroupSpecialTitle_Handler,
+		},
+		{
+			MethodName: "SetGroupAddRequest",
+			Handler:    _OnebotGrpcCli_SetGroupAddRequest_Handler,
+		},
+		{
+			MethodName: "GetGroupInfo",
+			Handler:    _OnebotGrpcCli_GetGroupInfo_Handler,
+		},
+		{
+			MethodName: "GetGroupList",
+			Handler:    _OnebotGrpcCli_GetGroupList_Handler,
+		},
+		{
+			MethodName: "GetGroupMemberInfo",
+			Handler:    _OnebotGrpcCli_GetGroupMemberInfo_Handler,
+		},
+		{
+			MethodName: "GetGroupMemberListInfo",
+			Handler:    _OnebotGrpcCli_GetGroupMemberListInfo_Handler,
+		},
+		{
+			MethodName: "GetGroupHonorInfo",
+			Handler:    _OnebotGrpcCli_GetGroupHonorInfo_Handler,
+		},
+		{
+			MethodName: "CleanCache",
+			Handler:    _OnebotGrpcCli_CleanCache_Handler,
+		},
+		{
+			MethodName: "SetRestart",
+			Handler:    _OnebotGrpcCli_SetRestart_Handler,
+		},
+		{
+			MethodName: "GetVersionInfo",
+			Handler:    _OnebotGrpcCli_GetVersionInfo_Handler,
+		},
+		{
+			MethodName: "GetStatus",
+			Handler:    _OnebotGrpcCli_GetStatus_Handler,
+		},
+		{
+			MethodName: "CanSendImage",
+			Handler:    _OnebotGrpcCli_CanSendImage_Handler,
+		},
+		{
+			MethodName: "CanSendRecord",
+			Handler:    _OnebotGrpcCli_CanSendRecord_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
