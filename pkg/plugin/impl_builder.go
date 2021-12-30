@@ -42,9 +42,15 @@ func (builder *onebotEventPluginBuilder) Help(help string) *onebotEventPluginBui
 	return builder
 }
 
-//插件帮助
+//插件初始化回调
 func (builder *onebotEventPluginBuilder) Init(callback func(cli cli.OnebotCli) error) *onebotEventPluginBuilder {
 	builder.impl.initCallback = callback
+	return builder
+}
+
+//插件退出前回调
+func (builder *onebotEventPluginBuilder) BeforeExit(callback func(cli cli.OnebotCli) error) *onebotEventPluginBuilder {
+	builder.impl.beforeExitCallBback = callback
 	return builder
 }
 

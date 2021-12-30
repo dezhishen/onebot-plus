@@ -24,8 +24,14 @@ type OnebotEventPlugin interface {
 	Description() string
 	//插件帮助
 	Help() string
+
+	//=====插件的生命周期=====
+
 	//初始化回调
 	Init(cli.OnebotCli) error
+	//退出前回调
+	BeforeExit(cli.OnebotCli) error
+	//=====Onebot事件回调=====
 	//私聊消息
 	MessagePrivate(*model.EventMessagePrivate, cli.OnebotCli) error
 	//群组消息
@@ -111,12 +117,26 @@ func (p *onebotEventPluginGRPCServerStub) Init(ctx context.Context, req *wrapper
 		logrus.Errorf("conn err %v", err)
 		return nil, err
 	}
-	// Init不会关闭连接
 	// defer conn.Close()
 	client := &cli.OnebotCliClientStub{
 		Client: cli.NewOnebotGrpcCliClient(conn),
 	}
 	e := p.Impl.Init(client)
+	return &emptypb.Empty{}, e
+}
+
+//插件退出前
+func (p *onebotEventPluginGRPCServerStub) BeforeExit(ctx context.Context, req *wrapperspb.UInt32Value) (*emptypb.Empty, error) {
+	conn, err := p.broker.Dial(req.Value)
+	if err != nil {
+		logrus.Errorf("conn err %v", err)
+		return nil, err
+	}
+	defer conn.Close()
+	client := &cli.OnebotCliClientStub{
+		Client: cli.NewOnebotGrpcCliClient(conn),
+	}
+	e := p.Impl.BeforeExit(client)
 	return &emptypb.Empty{}, e
 }
 
@@ -446,6 +466,25 @@ func (m *onebotEventPluginGRPCClientStub) Init(msgCli cli.OnebotCli) error {
 	_, err := m.client.Init(context.Background(), &wrapperspb.UInt32Value{Value: brokerID})
 	// Init不会关闭连接
 	// s.Stop()
+	return err
+}
+
+//退出前回调
+func (m *onebotEventPluginGRPCClientStub) BeforeExit(msgCli cli.OnebotCli) error {
+	// 转发
+	messageCliServer := &cli.OnebotCliServerStub{
+		Impl: msgCli,
+	} //{Impl: cli}
+	var s *grpc.Server
+	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
+		s = grpc.NewServer(opts...)
+		cli.RegisterOnebotGrpcCliServer(s, messageCliServer)
+		return s
+	}
+	brokerID := m.broker.NextId()
+	go m.broker.AcceptAndServe(brokerID, serverFunc)
+	_, err := m.client.BeforeExit(context.Background(), &wrapperspb.UInt32Value{Value: brokerID})
+	s.Stop()
 	return err
 }
 

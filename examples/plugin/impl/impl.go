@@ -39,6 +39,12 @@ func main() {
 			go loop(cli)
 			return nil
 		}).
+		BeforeExit(func(cli cli.OnebotCli) error {
+			d, e := cli.GetVersionInfo()
+			logrus.Info("========exit=======")
+			logrus.Info(d, e)
+			return nil
+		}).
 		//构建插件
 		Build().
 		//启动

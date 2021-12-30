@@ -31,5 +31,6 @@ func main() {
 	d.MetaHeartbeat(&model.EventMetaHeartbeat{}, cli)
 	d.MetaLifecycle(&model.EventMetaLifecycle{}, cli)
 	d.Init(cli)
-	time.Sleep(100 * time.Second)
+	time.Sleep(10 * time.Second)
+	d.BeforeExit(cli)
 }

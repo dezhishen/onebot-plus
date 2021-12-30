@@ -52,6 +52,8 @@ type onebotEventPluginRealImpl struct {
 	requestFriendCallback func(*model.EventRequestFriend, cli.OnebotCli) error
 	//群添加/邀请请求
 	requestGroupCallback func(*model.EventRequestGroup, cli.OnebotCli) error
+	//退出前回调
+	beforeExitCallBback func(cli.OnebotCli) error
 }
 
 func newDefaultOnebotEventPluginRealImpl() *onebotEventPluginRealImpl {
@@ -100,6 +102,7 @@ func newDefaultOnebotEventPluginRealImpl() *onebotEventPluginRealImpl {
 		requestFriendCallback: func(*model.EventRequestFriend, cli.OnebotCli) error { return nil },
 		//群添加/邀请请求
 		requestGroupCallback: func(*model.EventRequestGroup, cli.OnebotCli) error { return nil },
+		beforeExitCallBback:  func(cli cli.OnebotCli) error { return nil },
 	}
 }
 
@@ -211,6 +214,11 @@ func (m *onebotEventPluginRealImpl) RequestFriend(req *model.EventRequestFriend,
 //群添加/邀请请求
 func (m *onebotEventPluginRealImpl) RequestGroup(req *model.EventRequestGroup, cli cli.OnebotCli) error {
 	return m.requestGroupCallback(req, cli)
+}
+
+//群添加/邀请请求
+func (m *onebotEventPluginRealImpl) BeforeExit(cli cli.OnebotCli) error {
+	return m.beforeExitCallBback(cli)
 }
 
 //启动插件
