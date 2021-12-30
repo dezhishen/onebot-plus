@@ -6,12 +6,8 @@ import (
 )
 
 func TestScan(*testing.T) {
-	err := ScanInPath("F:/Test/onebot/onebot-plus/wiki", func(files []string) error {
-
-		for _, file := range files {
-			fmt.Printf("%s\n", file)
-		}
-
+	err := ScanInPath("F:/Test/onebot/onebot-plus/wiki", func(file string) error {
+		fmt.Printf("%s\n", file)
 		return nil
 	})
 	if err != nil {

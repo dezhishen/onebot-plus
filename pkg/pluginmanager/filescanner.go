@@ -5,16 +5,20 @@ import (
 	"os"
 )
 
-type ScanFunc func(files []string) error
+type ScanFunc func(file string) error
 
 func ScanInPath(path string, callBack ScanFunc) error {
-
 	files, err := getAllFiles(path)
 	if err != nil {
 		return err
 	}
-
-	return callBack(files)
+	for _, f := range files {
+		err := callBack(f)
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 func getAllFiles(path string) (files []string, err error) {

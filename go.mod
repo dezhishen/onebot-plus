@@ -4,7 +4,6 @@ go 1.17
 
 require (
 	github.com/dezhishen/onebot-sdk v0.0.0-20211229141532-ba3eb862e5c0
-	github.com/hashicorp/go-hclog v1.0.0
 	github.com/sirupsen/logrus v1.8.1
 	google.golang.org/grpc v1.43.0
 	google.golang.org/protobuf v1.27.1
@@ -14,6 +13,7 @@ require (
 	github.com/fatih/color v1.13.0 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/gorilla/websocket v1.4.2 // indirect
+	github.com/hashicorp/go-hclog v1.0.0 // indirect
 	github.com/hashicorp/yamux v0.0.0-20180604194846-3520598351bb // indirect
 	github.com/kr/text v0.2.0 // indirect
 	github.com/mattn/go-colorable v0.1.12 // indirect
