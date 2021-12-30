@@ -2,7 +2,6 @@ package cmd
 
 import (
 	"context"
-	"time"
 
 	"github.com/dezhishen/onebot-plus/pkg/cli"
 	myplugin "github.com/dezhishen/onebot-plus/pkg/plugin"
@@ -42,7 +41,7 @@ func StartWithContext(ctx context.Context) error {
 
 //启动
 func Start() error {
-	ctx, cancel := context.WithTimeout(context.Background(), time.Minute)
+	ctx, cancel := context.WithCancel(context.Background())
 	onebotCli := &cli.OnebotCliRealImpl{}
 	defer closeAllWithCancel(cancel, onebotCli)
 	err := pluginmanager.ScanInPath("./plugins", func(file string) error {
