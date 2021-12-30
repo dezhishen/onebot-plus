@@ -24,6 +24,8 @@ type OnebotEventPlugin interface {
 	Description() string
 	//插件帮助
 	Help() string
+	//初始化回调
+	Init(cli.OnebotCli) error
 	//私聊消息
 	MessagePrivate(*model.EventMessagePrivate, cli.OnebotCli) error
 	//群组消息
@@ -100,6 +102,22 @@ func (p *onebotEventPluginGRPCServerStub) Description(ctx context.Context, req *
 func (p *onebotEventPluginGRPCServerStub) Help(ctx context.Context, req *emptypb.Empty) (*wrapperspb.StringValue, error) {
 	r := p.Impl.Help()
 	return &wrapperspb.StringValue{Value: r}, nil
+}
+
+//插件初始化
+func (p *onebotEventPluginGRPCServerStub) Init(ctx context.Context, req *wrapperspb.UInt32Value) (*emptypb.Empty, error) {
+	conn, err := p.broker.Dial(req.Value)
+	if err != nil {
+		logrus.Errorf("conn err %v", err)
+		return nil, err
+	}
+	// Init不会关闭连接
+	// defer conn.Close()
+	client := &cli.OnebotCliClientStub{
+		Client: cli.NewOnebotGrpcCliClient(conn),
+	}
+	e := p.Impl.Init(client)
+	return &emptypb.Empty{}, e
 }
 
 //私聊消息
@@ -409,6 +427,26 @@ func (m *onebotEventPluginGRPCClientStub) Help() string {
 		return ""
 	}
 	return r.Value
+}
+
+//初始化
+func (m *onebotEventPluginGRPCClientStub) Init(msgCli cli.OnebotCli) error {
+	// 转发
+	messageCliServer := &cli.OnebotCliServerStub{
+		Impl: msgCli,
+	} //{Impl: cli}
+	var s *grpc.Server
+	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
+		s = grpc.NewServer(opts...)
+		cli.RegisterOnebotGrpcCliServer(s, messageCliServer)
+		return s
+	}
+	brokerID := m.broker.NextId()
+	go m.broker.AcceptAndServe(brokerID, serverFunc)
+	_, err := m.client.Init(context.Background(), &wrapperspb.UInt32Value{Value: brokerID})
+	// Init不会关闭连接
+	// s.Stop()
+	return err
 }
 
 //私聊消息

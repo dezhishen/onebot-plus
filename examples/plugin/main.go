@@ -2,6 +2,7 @@ package main
 
 import (
 	"io/ioutil"
+	"time"
 
 	"github.com/dezhishen/onebot-plus/pkg/cli"
 	"github.com/dezhishen/onebot-plus/pkg/plugin"
@@ -29,4 +30,6 @@ func main() {
 	d.MessagePrivate(pM, cli)
 	d.MetaHeartbeat(&model.EventMetaHeartbeat{}, cli)
 	d.MetaLifecycle(&model.EventMetaLifecycle{}, cli)
+	d.Init(cli)
+	time.Sleep(100 * time.Second)
 }

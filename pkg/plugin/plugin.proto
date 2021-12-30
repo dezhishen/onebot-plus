@@ -96,6 +96,8 @@ service OnebotEventGRPC {
      rpc Description(google.protobuf.Empty)returns(google.protobuf.StringValue);
      //插件帮助
      rpc Help(google.protobuf.Empty)returns(google.protobuf.StringValue);
+     //初始化
+     rpc Init(google.protobuf.UInt32Value) returns(google.protobuf.Empty);
      //私聊消息
      rpc MessagePrivate(EventMessagePrivateGRPCWithCli)returns(google.protobuf.Empty);
      //群组消息

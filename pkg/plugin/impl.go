@@ -17,6 +17,7 @@ type onebotEventPluginRealImpl struct {
 	descriptionCallback func() string
 	//插件帮助
 	helpCallback func() string
+	initCallback func(cli.OnebotCli) error
 	//私聊消息
 	messagePrivateCallback func(*model.EventMessagePrivate, cli.OnebotCli) error
 	//群组消息
@@ -63,6 +64,8 @@ func newDefaultOnebotEventPluginRealImpl() *onebotEventPluginRealImpl {
 		descriptionCallback: returnEmptyString,
 		//插件帮助
 		helpCallback: returnEmptyString,
+		//初始化回调
+		initCallback: func(cli.OnebotCli) error { return nil },
 		//私聊消息
 		messagePrivateCallback: func(*model.EventMessagePrivate, cli.OnebotCli) error { return nil },
 		//群组消息
@@ -118,6 +121,11 @@ func (m *onebotEventPluginRealImpl) Description() string {
 //插件帮助
 func (m *onebotEventPluginRealImpl) Help() string {
 	return m.helpCallback()
+}
+
+//插件初始化
+func (m *onebotEventPluginRealImpl) Init(onebotCli cli.OnebotCli) error {
+	return m.initCallback(onebotCli)
 }
 
 //私聊消息
