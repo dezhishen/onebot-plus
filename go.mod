@@ -3,7 +3,7 @@ module github.com/dezhishen/onebot-plus
 go 1.17
 
 require (
-	github.com/dezhishen/onebot-sdk v0.0.0-20211231030002-ffe19b8713b4
+	github.com/dezhishen/onebot-sdk v0.0.0-20211231044434-cd27229f5155
 	github.com/sirupsen/logrus v1.8.1
 	google.golang.org/grpc v1.43.0
 	google.golang.org/protobuf v1.27.1
