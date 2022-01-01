@@ -61,8 +61,6 @@ func loop(cli cli.OnebotCli) {
 			logrus.Error(e)
 			continue
 		}
-		if r != nil {
-			logrus.Infof("online:%v,good:%v", r.Online, r.Good)
-		}
+		logrus.Infof("Status:%v", r.Data)
 	}
 }

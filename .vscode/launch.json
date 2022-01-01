@@ -14,24 +14,6 @@
       "env": {}
     },
     {
-      "name": "Example_RPC",
-      "type": "go",
-      "request": "launch",
-      "mode": "debug",
-      "program": "${workspaceFolder}/examples/rpc/main.go",
-      "cwd": "${workspaceFolder}/examples/rpc",
-      "env": {}
-    },
-    {
-      "name": "Example_GRPC",
-      "type": "go",
-      "request": "launch",
-      "mode": "debug",
-      "program": "${workspaceFolder}/examples/grpc/main.go",
-      "cwd": "${workspaceFolder}/examples/grpc",
-      "env": {}
-    },
-    {
       "name": "examples.plugin",
       "type": "go",
       "request": "launch",
