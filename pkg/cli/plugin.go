@@ -37,67 +37,67 @@ func (m *OnebotCliServerStub) DelMsg(ctx context.Context, in *wrapperspb.Int64Va
 }
 
 //发送消息
-func (m *OnebotCliServerStub) SendMsg(ctx context.Context, in *model.MsgForSendGRPC) (*wrapperspb.Int64Value, error) {
+func (m *OnebotCliServerStub) SendMsg(ctx context.Context, in *model.MsgForSendGRPC) (*model.SendMessageResultGRPC, error) {
 	v, e := m.Impl.SendMsg(in.ToStruct())
-	return &wrapperspb.Int64Value{Value: v}, e
+	return v.ToGRPC(), e
 }
 
 //发送私聊消息
-func (m *OnebotCliServerStub) SendPrivateMsg(ctx context.Context, in *model.PrivateMsgGRPC) (*wrapperspb.Int64Value, error) {
+func (m *OnebotCliServerStub) SendPrivateMsg(ctx context.Context, in *model.PrivateMsgGRPC) (*model.SendMessageResultGRPC, error) {
 	v, e := m.Impl.SendPrivateMsg(in.ToStruct())
-	return &wrapperspb.Int64Value{Value: v}, e
+	return v.ToGRPC(), e
 }
 
 // 发送群消息
-func (m *OnebotCliServerStub) SendGroupMsg(ctx context.Context, in *model.GroupMsgGRPC) (*wrapperspb.Int64Value, error) {
+func (m *OnebotCliServerStub) SendGroupMsg(ctx context.Context, in *model.GroupMsgGRPC) (*model.SendMessageResultGRPC, error) {
 	v, e := m.Impl.SendGroupMsg(in.ToStruct())
-	return &wrapperspb.Int64Value{Value: v}, e
+	return v.ToGRPC(), e
 }
 
 //获取消息
-func (m *OnebotCliServerStub) GetMsg(ctx context.Context, in *wrapperspb.Int64Value) (*model.MessageDataGRPC, error) {
+func (m *OnebotCliServerStub) GetMsg(ctx context.Context, in *wrapperspb.Int64Value) (*model.MessageDataResultGRPC, error) {
 	v, e := m.Impl.GetMsg(in.Value)
 	return v.ToGRPC(), e
 }
 
 //获取转发的消息
-func (m *OnebotCliServerStub) GetForwardMsg(ctx context.Context, in *wrapperspb.Int64Value) (*model.ForwardMessageDataGRPC, error) {
+func (m *OnebotCliServerStub) GetForwardMsg(ctx context.Context, in *wrapperspb.Int64Value) (*model.ForwardMessageDataResultGRPC, error) {
 	v, e := m.Impl.GetForwardMsg(in.Value)
 	return v.ToGRPC(), e
 }
 
 //获取登录信息
-func (m *OnebotCliServerStub) GetLoginInfo(ctx context.Context, in *emptypb.Empty) (*model.AccountGRPC, error) {
+func (m *OnebotCliServerStub) GetLoginInfo(ctx context.Context, in *emptypb.Empty) (*model.AccountResultGRPC, error) {
 	v, e := m.Impl.GetLoginInfo()
 	return v.ToGRPC(), e
 }
 
 //获取陌生人信息
-func (m *OnebotCliServerStub) GetStrangerInfo(ctx context.Context, in *GetStrangerInfoReq) (*model.AccountGRPC, error) {
+func (m *OnebotCliServerStub) GetStrangerInfo(ctx context.Context, in *GetStrangerInfoReq) (*model.AccountResultGRPC, error) {
 	v, e := m.Impl.GetLoginInfo()
 	return v.ToGRPC(), e
 }
-func (m *OnebotCliServerStub) GetCookies(ctx context.Context, in *wrapperspb.StringValue) (*model.CokiesGRPC, error) {
+func (m *OnebotCliServerStub) GetCookies(ctx context.Context, in *wrapperspb.StringValue) (*model.CokiesResultGRPC, error) {
 	v, e := m.Impl.GetCookies(in.Value)
 	return v.ToGRPC(), e
 }
-func (m *OnebotCliServerStub) GetCSRFToken(ctx context.Context, in *emptypb.Empty) (*model.CSRFTokenGRPC, error) {
+func (m *OnebotCliServerStub) GetCSRFToken(ctx context.Context, in *emptypb.Empty) (*model.CSRFTokenResultGRPC, error) {
 	v, e := m.Impl.GetCSRFToken()
 	return v.ToGRPC(), e
 }
-func (m *OnebotCliServerStub) GetCredentials(ctx context.Context, in *wrapperspb.StringValue) (*model.CredentialsGRPC, error) {
+func (m *OnebotCliServerStub) GetCredentials(ctx context.Context, in *wrapperspb.StringValue) (*model.CredentialsResultGRPC, error) {
 	v, e := m.Impl.GetCredentials(in.Value)
 	return v.ToGRPC(), e
 }
 
 //获取语音
-func (m *OnebotCliServerStub) GetRecord(ctx context.Context, in *GetRecordReq) (*model.FileGRPC, error) {
+func (m *OnebotCliServerStub) GetRecord(ctx context.Context, in *GetRecordReq) (*model.FileResultGRPC, error) {
 	v, e := m.Impl.GetRecord(in.File, in.OutFormat)
 	return v.ToGRPC(), e
 }
 
 //获取图片
-func (m *OnebotCliServerStub) GetImage(ctx context.Context, in *wrapperspb.StringValue) (*model.FileGRPC, error) {
+func (m *OnebotCliServerStub) GetImage(ctx context.Context, in *wrapperspb.StringValue) (*model.FileResultGRPC, error) {
 	v, e := m.Impl.GetImage(in.Value)
 	return v.ToGRPC(), e
 }
@@ -111,9 +111,9 @@ func (m *OnebotCliServerStub) SetFriendAddRequest(ctx context.Context, in *SetFr
 	e := m.Impl.SetFriendAddRequest(in.Flag, in.Approve, in.Remark)
 	return &emptypb.Empty{}, e
 }
-func (m *OnebotCliServerStub) GetFriendList(ctx context.Context, in *emptypb.Empty) (*GetFriendListResp, error) {
+func (m *OnebotCliServerStub) GetFriendList(ctx context.Context, in *emptypb.Empty) (*model.FriendListResultGRPC, error) {
 	v, e := m.Impl.GetFriendList()
-	return &GetFriendListResp{Data: model.AccountArray2AccountGRPCArray(v)}, e
+	return v.ToGRPC(), e
 }
 
 // 群组踢人
@@ -183,7 +183,7 @@ func (m *OnebotCliServerStub) SetGroupAddRequest(ctx context.Context, in *SetGro
 }
 
 //获取群信息
-func (m *OnebotCliServerStub) GetGroupInfo(ctx context.Context, in *GetGrooupInfoReq) (*model.GroupGRPC, error) {
+func (m *OnebotCliServerStub) GetGroupInfo(ctx context.Context, in *GetGrooupInfoReq) (*model.GroupResultGRPC, error) {
 	r, e := m.Impl.GetGroupInfo(in.GroupId, in.NotCache)
 	if e != nil {
 		return nil, e
@@ -192,16 +192,16 @@ func (m *OnebotCliServerStub) GetGroupInfo(ctx context.Context, in *GetGrooupInf
 }
 
 //获取群列表
-func (m *OnebotCliServerStub) GetGroupList(ctx context.Context, in *emptypb.Empty) (*GetGroupListResp, error) {
+func (m *OnebotCliServerStub) GetGroupList(ctx context.Context, in *emptypb.Empty) (*model.GroupListResultGRPC, error) {
 	r, e := m.Impl.GetGroupList()
 	if e != nil {
 		return nil, e
 	}
-	return &GetGroupListResp{Data: model.GroupArray2GroupGRPCArray(r)}, e
+	return r.ToGRPC(), e
 }
 
 //获取群成员信息
-func (m *OnebotCliServerStub) GetGroupMemberInfo(ctx context.Context, in *GetGroupMemberInfoReq) (*model.GroupMemberGRPC, error) {
+func (m *OnebotCliServerStub) GetGroupMemberInfo(ctx context.Context, in *GetGroupMemberInfoReq) (*model.GroupMemberResultGRPC, error) {
 	r, e := m.Impl.GetGroupMemberInfo(in.GroupId, in.UserId, in.NoCache)
 	if e != nil {
 		return nil, e
@@ -210,16 +210,16 @@ func (m *OnebotCliServerStub) GetGroupMemberInfo(ctx context.Context, in *GetGro
 }
 
 //获取群成员列表
-func (m *OnebotCliServerStub) GetGroupMemberListInfo(ctx context.Context, in *emptypb.Empty) (*GetGroupMemberListInfoResp, error) {
+func (m *OnebotCliServerStub) GetGroupMemberListInfo(ctx context.Context, in *emptypb.Empty) (*model.GroupMemberListResultGRPC, error) {
 	r, e := m.Impl.GetGroupMemberListInfo()
 	if e != nil {
 		return nil, e
 	}
-	return &GetGroupMemberListInfoResp{Data: model.GroupMemberArray2GroupMemberGRPCArray(r)}, nil
+	return r.ToGRPC(), nil
 }
 
 //获取群荣誉信息
-func (m *OnebotCliServerStub) GetGroupHonorInfo(ctx context.Context, in *GetGroupHonorInfoReq) (*model.GroupHonorInfoGRPC, error) {
+func (m *OnebotCliServerStub) GetGroupHonorInfo(ctx context.Context, in *GetGroupHonorInfoReq) (*model.GroupHonorInfoResultGRPC, error) {
 	r, e := m.Impl.GetGroupHonorInfo(in.GroupId, in.HonorType)
 	if e != nil {
 		return nil, e
@@ -232,33 +232,33 @@ func (m *OnebotCliServerStub) CleanCache(ctx context.Context, in *emptypb.Empty)
 func (m *OnebotCliServerStub) SetRestart(ctx context.Context, in *wrapperspb.Int64Value) (*emptypb.Empty, error) {
 	return &emptypb.Empty{}, m.Impl.SetRestart(in.Value)
 }
-func (m *OnebotCliServerStub) GetVersionInfo(ctx context.Context, in *emptypb.Empty) (*model.VersionInfoDataGRPC, error) {
+func (m *OnebotCliServerStub) GetVersionInfo(ctx context.Context, in *emptypb.Empty) (*model.VersionInfoResultGRPC, error) {
 	r, e := m.Impl.GetVersionInfo()
 	if e != nil {
 		return nil, e
 	}
 	return r.ToGRPC(), nil
 }
-func (m *OnebotCliServerStub) GetStatus(ctx context.Context, in *emptypb.Empty) (*model.StatusInfoDataGRPC, error) {
+func (m *OnebotCliServerStub) GetStatus(ctx context.Context, in *emptypb.Empty) (*model.StatusInfoResultGRPC, error) {
 	r, e := m.Impl.GetStatus()
 	if e != nil {
 		return nil, e
 	}
 	return r.ToGRPC(), nil
 }
-func (m *OnebotCliServerStub) CanSendImage(ctx context.Context, in *emptypb.Empty) (*wrapperspb.BoolValue, error) {
+func (m *OnebotCliServerStub) CanSendImage(ctx context.Context, in *emptypb.Empty) (*model.BoolYesOfResultGRPC, error) {
 	r, e := m.Impl.CanSendImage()
 	if e != nil {
 		return nil, e
 	}
-	return &wrapperspb.BoolValue{Value: r}, nil
+	return r.ToGRPC(), nil
 }
-func (m *OnebotCliServerStub) CanSendRecord(ctx context.Context, in *emptypb.Empty) (*wrapperspb.BoolValue, error) {
+func (m *OnebotCliServerStub) CanSendRecord(ctx context.Context, in *emptypb.Empty) (*model.BoolYesOfResultGRPC, error) {
 	r, e := m.Impl.CanSendRecord()
 	if e != nil {
 		return nil, e
 	}
-	return &wrapperspb.BoolValue{Value: r}, nil
+	return r.ToGRPC(), nil
 }
 
 // 业务接口的实现，通过gRPC客户端转发请求给插件进程
@@ -267,33 +267,33 @@ type OnebotCliClientStub struct {
 }
 
 //发送消息
-func (m *OnebotCliClientStub) SendMsg(msg *model.MsgForSend) (int64, error) {
+func (m *OnebotCliClientStub) SendMsg(msg *model.MsgForSend) (*model.SendMessageResult, error) {
 	// 转发
 	resp, err := m.Client.SendMsg(context.Background(), msg.ToGRPC())
 	if err != nil {
-		return 0, err
+		return nil, err
 	}
-	return resp.Value, err
+	return resp.ToStruct(), err
 }
 
 //发送私聊消息
-func (m *OnebotCliClientStub) SendPrivateMsg(msg *model.PrivateMsg) (int64, error) {
+func (m *OnebotCliClientStub) SendPrivateMsg(msg *model.PrivateMsg) (*model.SendMessageResult, error) {
 	// 转发
 	resp, err := m.Client.SendPrivateMsg(context.Background(), msg.ToGRPC())
 	if err != nil {
-		return 0, err
+		return nil, err
 	}
-	return resp.Value, err
+	return resp.ToStruct(), err
 }
 
 //发送群组消息
-func (m *OnebotCliClientStub) SendGroupMsg(msg *model.GroupMsg) (int64, error) {
+func (m *OnebotCliClientStub) SendGroupMsg(msg *model.GroupMsg) (*model.SendMessageResult, error) {
 	// 转发
 	resp, err := m.Client.SendGroupMsg(context.Background(), msg.ToGRPC())
 	if err != nil {
-		return 0, err
+		return nil, err
 	}
-	return resp.Value, err
+	return resp.ToStruct(), err
 }
 
 //删除消息
@@ -304,7 +304,7 @@ func (m *OnebotCliClientStub) DelMsg(id int64) error {
 }
 
 //获取消息
-func (m *OnebotCliClientStub) GetMsg(id int64) (*model.MessageData, error) {
+func (m *OnebotCliClientStub) GetMsg(id int64) (*model.MessageDataResult, error) {
 	// 转发
 	logrus.Infof("获取消息,ID:[%v]", id)
 	resp, err := m.Client.GetMsg(context.Background(), &wrapperspb.Int64Value{Value: id})
@@ -315,7 +315,7 @@ func (m *OnebotCliClientStub) GetMsg(id int64) (*model.MessageData, error) {
 }
 
 //获取转发的消息
-func (m *OnebotCliClientStub) GetForwardMsg(id int64) (*model.ForwardMessageData, error) {
+func (m *OnebotCliClientStub) GetForwardMsg(id int64) (*model.ForwardMessageDataResult, error) {
 	// 转发
 	resp, err := m.Client.GetForwardMsg(context.Background(), &wrapperspb.Int64Value{Value: id})
 	if err != nil {
@@ -325,7 +325,7 @@ func (m *OnebotCliClientStub) GetForwardMsg(id int64) (*model.ForwardMessageData
 }
 
 //获取登录信息
-func (m *OnebotCliClientStub) GetLoginInfo() (*model.Account, error) {
+func (m *OnebotCliClientStub) GetLoginInfo() (*model.AccountResult, error) {
 	// 转发
 	resp, err := m.Client.GetLoginInfo(context.Background(), &emptypb.Empty{})
 	if err != nil {
@@ -335,7 +335,7 @@ func (m *OnebotCliClientStub) GetLoginInfo() (*model.Account, error) {
 }
 
 //获取陌生人信息
-func (m *OnebotCliClientStub) GetStrangerInfo(userId int64, noCache bool) (*model.Account, error) {
+func (m *OnebotCliClientStub) GetStrangerInfo(userId int64, noCache bool) (*model.AccountResult, error) {
 	// 转发
 	resp, err := m.Client.GetStrangerInfo(context.Background(), &GetStrangerInfoReq{
 		UserId: userId,
@@ -346,7 +346,7 @@ func (m *OnebotCliClientStub) GetStrangerInfo(userId int64, noCache bool) (*mode
 	return resp.ToStruct(), err
 }
 
-func (m *OnebotCliClientStub) GetCookies(domin string) (*model.Cokies, error) {
+func (m *OnebotCliClientStub) GetCookies(domin string) (*model.CokiesResult, error) {
 	// 转发
 	resp, err := m.Client.GetCookies(context.Background(), &wrapperspb.StringValue{
 		Value: domin,
@@ -357,7 +357,7 @@ func (m *OnebotCliClientStub) GetCookies(domin string) (*model.Cokies, error) {
 	return resp.ToStruct(), err
 }
 
-func (m *OnebotCliClientStub) GetCSRFToken() (*model.CSRFToken, error) {
+func (m *OnebotCliClientStub) GetCSRFToken() (*model.CSRFTokenResult, error) {
 	// 转发
 	resp, err := m.Client.GetCSRFToken(context.Background(), &emptypb.Empty{})
 	if err != nil {
@@ -366,7 +366,7 @@ func (m *OnebotCliClientStub) GetCSRFToken() (*model.CSRFToken, error) {
 	return resp.ToStruct(), err
 }
 
-func (m *OnebotCliClientStub) GetCredentials(domin string) (*model.Credentials, error) {
+func (m *OnebotCliClientStub) GetCredentials(domin string) (*model.CredentialsResult, error) {
 	// 转发
 	resp, err := m.Client.GetCredentials(context.Background(), &wrapperspb.StringValue{Value: domin})
 	if err != nil {
@@ -376,7 +376,7 @@ func (m *OnebotCliClientStub) GetCredentials(domin string) (*model.Credentials, 
 }
 
 //获取语音
-func (m *OnebotCliClientStub) GetRecord(file string, out_format string) (*model.File, error) {
+func (m *OnebotCliClientStub) GetRecord(file string, out_format string) (*model.FileResult, error) {
 	// 转发
 	resp, err := m.Client.GetRecord(context.Background(), &GetRecordReq{File: file, OutFormat: out_format})
 	if err != nil {
@@ -386,7 +386,7 @@ func (m *OnebotCliClientStub) GetRecord(file string, out_format string) (*model.
 }
 
 //获取图片
-func (m *OnebotCliClientStub) GetImage(file string) (*model.File, error) {
+func (m *OnebotCliClientStub) GetImage(file string) (*model.FileResult, error) {
 	// 转发
 	resp, err := m.Client.GetImage(context.Background(), &wrapperspb.StringValue{Value: file})
 	if err != nil {
@@ -411,7 +411,7 @@ func (m *OnebotCliClientStub) SetFriendAddRequest(flag string, approve bool, rem
 }
 
 //获取好友列表
-func (m *OnebotCliClientStub) GetFriendList() ([]*model.Account, error) {
+func (m *OnebotCliClientStub) GetFriendList() (*model.FriendListResult, error) {
 	r, err := m.Client.GetFriendList(
 		context.Background(),
 		&emptypb.Empty{},
@@ -419,7 +419,7 @@ func (m *OnebotCliClientStub) GetFriendList() ([]*model.Account, error) {
 	if err != nil {
 		return nil, err
 	}
-	return model.AccountGRPCArray2AccountArray(r.Data), err
+	return r.ToStruct(), err
 }
 
 // 群组踢人
@@ -522,7 +522,7 @@ func (m *OnebotCliClientStub) SetGroupAddRequest(flag, subType, reason string, a
 }
 
 //获取群信息
-func (m *OnebotCliClientStub) GetGroupInfo(groupId int64, noCache bool) (*model.Group, error) {
+func (m *OnebotCliClientStub) GetGroupInfo(groupId int64, noCache bool) (*model.GroupResult, error) {
 	r, err := m.Client.GetGroupInfo(
 		context.Background(),
 		&GetGrooupInfoReq{GroupId: groupId, NotCache: noCache},
@@ -534,7 +534,7 @@ func (m *OnebotCliClientStub) GetGroupInfo(groupId int64, noCache bool) (*model.
 }
 
 //获取群列表
-func (m *OnebotCliClientStub) GetGroupList() ([]*model.Group, error) {
+func (m *OnebotCliClientStub) GetGroupList() (*model.GroupListResult, error) {
 	r, err := m.Client.GetGroupList(
 		context.Background(),
 		&emptypb.Empty{},
@@ -542,11 +542,11 @@ func (m *OnebotCliClientStub) GetGroupList() ([]*model.Group, error) {
 	if err != nil {
 		return nil, err
 	}
-	return model.GroupGRPCArray2GroupArray(r.Data), err
+	return r.ToStruct(), err
 }
 
 //获取群成员信息
-func (m *OnebotCliClientStub) GetGroupMemberInfo(groupId, userId int64, noCache bool) (*model.GroupMember, error) {
+func (m *OnebotCliClientStub) GetGroupMemberInfo(groupId, userId int64, noCache bool) (*model.GroupMemberResult, error) {
 	r, err := m.Client.GetGroupMemberInfo(
 		context.Background(),
 		&GetGroupMemberInfoReq{
@@ -562,7 +562,7 @@ func (m *OnebotCliClientStub) GetGroupMemberInfo(groupId, userId int64, noCache 
 }
 
 //获取群成员列表
-func (m *OnebotCliClientStub) GetGroupMemberListInfo() ([]*model.GroupMember, error) {
+func (m *OnebotCliClientStub) GetGroupMemberListInfo() (*model.GroupMemberListResult, error) {
 	r, err := m.Client.GetGroupMemberListInfo(
 		context.Background(),
 		&emptypb.Empty{},
@@ -570,11 +570,11 @@ func (m *OnebotCliClientStub) GetGroupMemberListInfo() ([]*model.GroupMember, er
 	if err != nil {
 		return nil, err
 	}
-	return model.GroupMemberGRPCArray2GroupMemberArray(r.Data), err
+	return r.ToStruct(), err
 }
 
 //获取群荣誉信息
-func (m *OnebotCliClientStub) GetGroupHonorInfo(groupId int64, honorType string) (*model.GroupHonorInfo, error) {
+func (m *OnebotCliClientStub) GetGroupHonorInfo(groupId int64, honorType string) (*model.GroupHonorInfoResult, error) {
 	r, err := m.Client.GetGroupHonorInfo(
 		context.Background(),
 		&GetGroupHonorInfoReq{
@@ -604,7 +604,7 @@ func (m *OnebotCliClientStub) SetRestart(delay int64) error {
 	return err
 }
 
-func (m *OnebotCliClientStub) GetVersionInfo() (*model.VersionInfoData, error) {
+func (m *OnebotCliClientStub) GetVersionInfo() (*model.VersionInfoResult, error) {
 	r, err := m.Client.GetVersionInfo(
 		context.Background(),
 		&emptypb.Empty{},
@@ -615,7 +615,7 @@ func (m *OnebotCliClientStub) GetVersionInfo() (*model.VersionInfoData, error) {
 	return r.ToStruct(), err
 }
 
-func (m *OnebotCliClientStub) GetStatus() (*model.StatusInfoData, error) {
+func (m *OnebotCliClientStub) GetStatus() (*model.StatusInfoResult, error) {
 	r, err := m.Client.GetStatus(
 		context.Background(),
 		&emptypb.Empty{},
@@ -626,26 +626,26 @@ func (m *OnebotCliClientStub) GetStatus() (*model.StatusInfoData, error) {
 	return r.ToStruct(), err
 }
 
-func (m *OnebotCliClientStub) CanSendImage() (bool, error) {
+func (m *OnebotCliClientStub) CanSendImage() (*model.BoolYesOfResult, error) {
 	r, err := m.Client.CanSendImage(
 		context.Background(),
 		&emptypb.Empty{},
 	)
 	if err != nil {
-		return false, err
+		return nil, err
 	}
-	return r.Value, err
+	return r.ToStruct(), err
 }
 
-func (m *OnebotCliClientStub) CanSendRecord() (bool, error) {
+func (m *OnebotCliClientStub) CanSendRecord() (*model.BoolYesOfResult, error) {
 	r, err := m.Client.CanSendRecord(
 		context.Background(),
 		&emptypb.Empty{},
 	)
 	if err != nil {
-		return false, err
+		return nil, err
 	}
-	return r.Value, err
+	return r.ToStruct(), err
 }
 
 //插件实现GRPC的接口

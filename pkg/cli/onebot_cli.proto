@@ -29,11 +29,6 @@ message SetFriendAddRequestReq{
 	string remark = 3;
 }
 
-
-message GetFriendListResp {
-	repeated model.AccountGRPC data = 1;
-}
-
 message SetGroupKickReq {
 	int64 group_id = 1;
 	int64 user_id = 2;
@@ -101,18 +96,10 @@ message GetGrooupInfoReq{
 	bool not_cache = 2;
 
 }
-message GetGroupListResp{
-	repeated model.GroupGRPC data = 1;
-}
-
 message GetGroupMemberInfoReq{
 	int64 group_id = 1; 
 	int64 user_id = 2;
 	bool no_cache = 3;
-}
-
-message GetGroupMemberListInfoResp{
-	repeated model.GroupMemberGRPC data = 1;
 }
 
 message GetGroupHonorInfoReq {
@@ -121,39 +108,39 @@ message GetGroupHonorInfoReq {
 }
 service onebot_grpc_cli {
     //发送消息
-	rpc SendMsg(model.MsgForSendGRPC)returns(google.protobuf.Int64Value);
+	rpc SendMsg(model.MsgForSendGRPC)returns(model.SendMessageResultGRPC);
 	//发送私聊消息
-	rpc SendPrivateMsg(model.PrivateMsgGRPC)returns (google.protobuf.Int64Value);
+	rpc SendPrivateMsg(model.PrivateMsgGRPC)returns (model.SendMessageResultGRPC);
 	// 发送群消息
-	rpc SendGroupMsg(model.GroupMsgGRPC)returns (google.protobuf.Int64Value);
+	rpc SendGroupMsg(model.GroupMsgGRPC)returns (model.SendMessageResultGRPC);
 	//删除消息
 	rpc DelMsg(google.protobuf.Int64Value) returns(google.protobuf.Empty);
 	//获取消息
-	rpc GetMsg(google.protobuf.Int64Value) returns (model.MessageDataGRPC);
+	rpc GetMsg(google.protobuf.Int64Value) returns (model.MessageDataResultGRPC);
 	//获取转发的消息
-	rpc GetForwardMsg(google.protobuf.Int64Value) returns (model.ForwardMessageDataGRPC);
+	rpc GetForwardMsg(google.protobuf.Int64Value) returns (model.ForwardMessageDataResultGRPC);
 
 	//获取登录信息
-	rpc GetLoginInfo(google.protobuf.Empty) returns(model.AccountGRPC);
+	rpc GetLoginInfo(google.protobuf.Empty) returns(model.AccountResultGRPC);
 	//获取陌生人信息
-	rpc GetStrangerInfo(GetStrangerInfoReq)returns(model.AccountGRPC);
+	rpc GetStrangerInfo(GetStrangerInfoReq)returns(model.AccountResultGRPC);
 
-	rpc GetCookies(google.protobuf.StringValue) returns(model.CokiesGRPC);
+	rpc GetCookies(google.protobuf.StringValue) returns(model.CokiesResultGRPC);
 
-	rpc GetCSRFToken(google.protobuf.Empty)returns (model.CSRFTokenGRPC);
+	rpc GetCSRFToken(google.protobuf.Empty)returns (model.CSRFTokenResultGRPC);
 
-	rpc GetCredentials(google.protobuf.StringValue)returns (model.CredentialsGRPC);
+	rpc GetCredentials(google.protobuf.StringValue)returns (model.CredentialsResultGRPC);
 	//获取语音
-	rpc GetRecord(GetRecordReq) returns(model.FileGRPC);
+	rpc GetRecord(GetRecordReq) returns(model.FileResultGRPC);
 	//获取图片
-	rpc GetImage(google.protobuf.StringValue) returns(model.FileGRPC);
+	rpc GetImage(google.protobuf.StringValue) returns(model.FileResultGRPC);
 	
 	rpc SendLike(SendLikeReq) returns (google.protobuf.Empty);
 	//处理加好友请求
 	rpc SetFriendAddRequest(SetFriendAddRequestReq) returns (google.protobuf.Empty);
 
 
-	rpc GetFriendList(google.protobuf.Empty) returns (GetFriendListResp);
+	rpc GetFriendList(google.protobuf.Empty) returns (model.FriendListResultGRPC);
 	// 群组踢人
 	rpc SetGroupKick(SetGroupKickReq) returns (google.protobuf.Empty);
 
@@ -185,28 +172,28 @@ service onebot_grpc_cli {
 	rpc SetGroupAddRequest(SetGroupAddRequestReq) returns (google.protobuf.Empty);
 
 	//获取群信息
-	rpc GetGroupInfo(GetGrooupInfoReq)returns(model.GroupGRPC);
+	rpc GetGroupInfo(GetGrooupInfoReq)returns(model.GroupResultGRPC);
 	//获取群列表
-	rpc GetGroupList(google.protobuf.Empty)returns(GetGroupListResp);
+	rpc GetGroupList(google.protobuf.Empty)returns(model.GroupListResultGRPC);
 
 	//获取群成员信息
-	rpc GetGroupMemberInfo(GetGroupMemberInfoReq)returns (model.GroupMemberGRPC);
+	rpc GetGroupMemberInfo(GetGroupMemberInfoReq)returns (model.GroupMemberResultGRPC);
 
 	//获取群成员列表
-	rpc GetGroupMemberListInfo(google.protobuf.Empty) returns (GetGroupMemberListInfoResp);
+	rpc GetGroupMemberListInfo(google.protobuf.Empty) returns (model.GroupMemberListResultGRPC);
 
 	//获取群荣誉信息
-	rpc GetGroupHonorInfo(GetGroupHonorInfoReq) returns(model.GroupHonorInfoGRPC);
+	rpc GetGroupHonorInfo(GetGroupHonorInfoReq) returns(model.GroupHonorInfoResultGRPC);
 
 	rpc CleanCache(google.protobuf.Empty) returns (google.protobuf.Empty);
 
 	rpc SetRestart(google.protobuf.Int64Value) returns (google.protobuf.Empty);
 
-	rpc GetVersionInfo(google.protobuf.Empty)returns (model.VersionInfoDataGRPC);
+	rpc GetVersionInfo(google.protobuf.Empty)returns (model.VersionInfoResultGRPC);
 
-	rpc GetStatus(google.protobuf.Empty) returns(model.StatusInfoDataGRPC);
+	rpc GetStatus(google.protobuf.Empty) returns(model.StatusInfoResultGRPC);
 
-	rpc CanSendImage(google.protobuf.Empty) returns(google.protobuf.BoolValue);
+	rpc CanSendImage(google.protobuf.Empty) returns(model.BoolYesOfResultGRPC);
 
-	rpc CanSendRecord(google.protobuf.Empty) returns(google.protobuf.BoolValue);
+	rpc CanSendRecord(google.protobuf.Empty) returns(model.BoolYesOfResultGRPC);
 }

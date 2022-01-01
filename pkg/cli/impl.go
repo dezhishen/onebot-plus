@@ -9,18 +9,18 @@ type OnebotCliRealImpl struct {
 }
 
 //发送消息
-func (d *OnebotCliRealImpl) SendMsg(msg *model.MsgForSend) (int64, error) {
+func (d *OnebotCliRealImpl) SendMsg(msg *model.MsgForSend) (*model.SendMessageResult, error) {
 	return sdk_api.SendMsg(msg)
 }
 
 //发送私聊消息
-func (d *OnebotCliRealImpl) SendPrivateMsg(msg *model.PrivateMsg) (int64, error) {
+func (d *OnebotCliRealImpl) SendPrivateMsg(msg *model.PrivateMsg) (*model.SendMessageResult, error) {
 	return sdk_api.SendPrivateMsg(msg)
 
 }
 
 // 发送群消息
-func (d *OnebotCliRealImpl) SendGroupMsg(msg *model.GroupMsg) (int64, error) {
+func (d *OnebotCliRealImpl) SendGroupMsg(msg *model.GroupMsg) (*model.SendMessageResult, error) {
 	return sdk_api.SendGroupMsg(msg)
 
 }
@@ -32,45 +32,45 @@ func (d *OnebotCliRealImpl) DelMsg(id int64) error {
 }
 
 //获取消息
-func (d *OnebotCliRealImpl) GetMsg(id int64) (*model.MessageData, error) {
+func (d *OnebotCliRealImpl) GetMsg(id int64) (*model.MessageDataResult, error) {
 	return sdk_api.GetMsg(id)
 
 }
 
 //获取转发的消息
-func (d *OnebotCliRealImpl) GetForwardMsg(id int64) (*model.ForwardMessageData, error) {
+func (d *OnebotCliRealImpl) GetForwardMsg(id int64) (*model.ForwardMessageDataResult, error) {
 	return sdk_api.GetForwardMsg(id)
 }
 
 //获取登录信息
-func (d *OnebotCliRealImpl) GetLoginInfo() (*model.Account, error) {
+func (d *OnebotCliRealImpl) GetLoginInfo() (*model.AccountResult, error) {
 	return sdk_api.GetLoginInfo()
 }
 
 //获取陌生人信息
-func (d *OnebotCliRealImpl) GetStrangerInfo(userId int64, noCache bool) (*model.Account, error) {
+func (d *OnebotCliRealImpl) GetStrangerInfo(userId int64, noCache bool) (*model.AccountResult, error) {
 	return sdk_api.GetStrangerInfo(userId, noCache)
 }
 
-func (d *OnebotCliRealImpl) GetCookies(domin string) (*model.Cokies, error) {
+func (d *OnebotCliRealImpl) GetCookies(domin string) (*model.CokiesResult, error) {
 	return sdk_api.GetCookies(domin)
 }
 
-func (d *OnebotCliRealImpl) GetCSRFToken() (*model.CSRFToken, error) {
+func (d *OnebotCliRealImpl) GetCSRFToken() (*model.CSRFTokenResult, error) {
 	return sdk_api.GetCSRFToken()
 }
 
-func (d *OnebotCliRealImpl) GetCredentials(domin string) (*model.Credentials, error) {
+func (d *OnebotCliRealImpl) GetCredentials(domin string) (*model.CredentialsResult, error) {
 	return sdk_api.GetCredentials(domin)
 }
 
 //获取语音
-func (d *OnebotCliRealImpl) GetRecord(file string, out_format string) (*model.File, error) {
+func (d *OnebotCliRealImpl) GetRecord(file string, out_format string) (*model.FileResult, error) {
 	return sdk_api.GetRecord(file, out_format)
 }
 
 //获取图片
-func (d *OnebotCliRealImpl) GetImage(file string) (*model.File, error) {
+func (d *OnebotCliRealImpl) GetImage(file string) (*model.FileResult, error) {
 	return sdk_api.GetImage(file)
 }
 
@@ -82,7 +82,7 @@ func (d *OnebotCliRealImpl) SendLike(userId int64, times int64) error {
 func (d *OnebotCliRealImpl) SetFriendAddRequest(flag string, approve bool, remark string) error {
 	return sdk_api.SetFriendAddRequest(flag, approve, remark)
 }
-func (d *OnebotCliRealImpl) GetFriendList() ([]*model.Account, error) {
+func (d *OnebotCliRealImpl) GetFriendList() (*model.FriendListResult, error) {
 	return sdk_api.GetFriendList()
 }
 
@@ -142,27 +142,27 @@ func (d *OnebotCliRealImpl) SetGroupAddRequest(flag, subType, reason string, app
 }
 
 //获取群信息
-func (d *OnebotCliRealImpl) GetGroupInfo(groupId int64, noCache bool) (*model.Group, error) {
+func (d *OnebotCliRealImpl) GetGroupInfo(groupId int64, noCache bool) (*model.GroupResult, error) {
 	return sdk_api.GetGroupInfo(groupId, noCache)
 }
 
 //获取群列表
-func (d *OnebotCliRealImpl) GetGroupList() ([]*model.Group, error) {
+func (d *OnebotCliRealImpl) GetGroupList() (*model.GroupListResult, error) {
 	return sdk_api.GetGroupList()
 }
 
 //获取群成员信息
-func (d *OnebotCliRealImpl) GetGroupMemberInfo(groupId, userId int64, noCache bool) (*model.GroupMember, error) {
+func (d *OnebotCliRealImpl) GetGroupMemberInfo(groupId, userId int64, noCache bool) (*model.GroupMemberResult, error) {
 	return sdk_api.GetGroupMemberInfo(groupId, userId, noCache)
 }
 
 //获取群成员列表
-func (d *OnebotCliRealImpl) GetGroupMemberListInfo() ([]*model.GroupMember, error) {
+func (d *OnebotCliRealImpl) GetGroupMemberListInfo() (*model.GroupMemberListResult, error) {
 	return sdk_api.GetGroupMemberListInfo()
 }
 
 //获取群荣誉信息
-func (d *OnebotCliRealImpl) GetGroupHonorInfo(groupId int64, honorType string) (*model.GroupHonorInfo, error) {
+func (d *OnebotCliRealImpl) GetGroupHonorInfo(groupId int64, honorType string) (*model.GroupHonorInfoResult, error) {
 	return sdk_api.GetGroupHonorInfo(groupId, honorType)
 }
 
@@ -174,18 +174,18 @@ func (d *OnebotCliRealImpl) SetRestart(delay int64) error {
 	return sdk_api.SetRestart(delay)
 }
 
-func (d *OnebotCliRealImpl) GetVersionInfo() (*model.VersionInfoData, error) {
+func (d *OnebotCliRealImpl) GetVersionInfo() (*model.VersionInfoResult, error) {
 	return sdk_api.GetVersionInfo()
 }
 
-func (d *OnebotCliRealImpl) GetStatus() (*model.StatusInfoData, error) {
+func (d *OnebotCliRealImpl) GetStatus() (*model.StatusInfoResult, error) {
 	return sdk_api.GetStatus()
 }
 
-func (d *OnebotCliRealImpl) CanSendImage() (bool, error) {
+func (d *OnebotCliRealImpl) CanSendImage() (*model.BoolYesOfResult, error) {
 	return sdk_api.CanSendImage()
 }
 
-func (d *OnebotCliRealImpl) CanSendRecord() (bool, error) {
+func (d *OnebotCliRealImpl) CanSendRecord() (*model.BoolYesOfResult, error) {
 	return sdk_api.CanSendRecord()
 }
