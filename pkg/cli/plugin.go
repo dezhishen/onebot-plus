@@ -38,82 +38,127 @@ func (m *OnebotCliServerStub) DelMsg(ctx context.Context, in *wrapperspb.Int64Va
 
 //发送消息
 func (m *OnebotCliServerStub) SendMsg(ctx context.Context, in *model.MsgForSendGRPC) (*model.SendMessageResultGRPC, error) {
-	v, e := m.Impl.SendMsg(in.ToStruct())
-	return v.ToGRPC(), e
+	r, e := m.Impl.SendMsg(in.ToStruct())
+	if e != nil {
+		return nil, e
+	}
+	return r.ToGRPC(), e
 }
 
 //发送私聊消息
 func (m *OnebotCliServerStub) SendPrivateMsg(ctx context.Context, in *model.PrivateMsgGRPC) (*model.SendMessageResultGRPC, error) {
-	v, e := m.Impl.SendPrivateMsg(in.ToStruct())
-	return v.ToGRPC(), e
+	r, e := m.Impl.SendPrivateMsg(in.ToStruct())
+	if e != nil {
+		return nil, e
+	}
+	return r.ToGRPC(), e
 }
 
 // 发送群消息
 func (m *OnebotCliServerStub) SendGroupMsg(ctx context.Context, in *model.GroupMsgGRPC) (*model.SendMessageResultGRPC, error) {
-	v, e := m.Impl.SendGroupMsg(in.ToStruct())
-	return v.ToGRPC(), e
+	r, e := m.Impl.SendGroupMsg(in.ToStruct())
+	if e != nil {
+		return nil, e
+	}
+	return r.ToGRPC(), e
 }
 
 //获取消息
 func (m *OnebotCliServerStub) GetMsg(ctx context.Context, in *wrapperspb.Int64Value) (*model.MessageDataResultGRPC, error) {
-	v, e := m.Impl.GetMsg(in.Value)
-	return v.ToGRPC(), e
+	r, e := m.Impl.GetMsg(in.Value)
+	if e != nil {
+		return nil, e
+	}
+	return r.ToGRPC(), e
 }
 
 //获取转发的消息
 func (m *OnebotCliServerStub) GetForwardMsg(ctx context.Context, in *wrapperspb.Int64Value) (*model.ForwardMessageDataResultGRPC, error) {
-	v, e := m.Impl.GetForwardMsg(in.Value)
-	return v.ToGRPC(), e
+	r, e := m.Impl.GetForwardMsg(in.Value)
+	if e != nil {
+		return nil, e
+	}
+	return r.ToGRPC(), e
 }
 
 //获取登录信息
 func (m *OnebotCliServerStub) GetLoginInfo(ctx context.Context, in *emptypb.Empty) (*model.AccountResultGRPC, error) {
-	v, e := m.Impl.GetLoginInfo()
-	return v.ToGRPC(), e
+	r, e := m.Impl.GetLoginInfo()
+	if e != nil {
+		return nil, e
+	}
+	return r.ToGRPC(), e
 }
 
 //获取陌生人信息
 func (m *OnebotCliServerStub) GetStrangerInfo(ctx context.Context, in *GetStrangerInfoReq) (*model.AccountResultGRPC, error) {
-	v, e := m.Impl.GetLoginInfo()
-	return v.ToGRPC(), e
+	r, e := m.Impl.GetLoginInfo()
+	if e != nil {
+		return nil, e
+	}
+	return r.ToGRPC(), e
 }
 func (m *OnebotCliServerStub) GetCookies(ctx context.Context, in *wrapperspb.StringValue) (*model.CokiesResultGRPC, error) {
-	v, e := m.Impl.GetCookies(in.Value)
-	return v.ToGRPC(), e
+	r, e := m.Impl.GetCookies(in.Value)
+	if e != nil {
+		return nil, e
+	}
+	return r.ToGRPC(), e
 }
 func (m *OnebotCliServerStub) GetCSRFToken(ctx context.Context, in *emptypb.Empty) (*model.CSRFTokenResultGRPC, error) {
-	v, e := m.Impl.GetCSRFToken()
-	return v.ToGRPC(), e
+	r, e := m.Impl.GetCSRFToken()
+	if e != nil {
+		return nil, e
+	}
+	return r.ToGRPC(), e
 }
 func (m *OnebotCliServerStub) GetCredentials(ctx context.Context, in *wrapperspb.StringValue) (*model.CredentialsResultGRPC, error) {
-	v, e := m.Impl.GetCredentials(in.Value)
-	return v.ToGRPC(), e
+	r, e := m.Impl.GetCredentials(in.Value)
+	if e != nil {
+		return nil, e
+	}
+	return r.ToGRPC(), e
 }
 
 //获取语音
 func (m *OnebotCliServerStub) GetRecord(ctx context.Context, in *GetRecordReq) (*model.FileResultGRPC, error) {
-	v, e := m.Impl.GetRecord(in.File, in.OutFormat)
-	return v.ToGRPC(), e
+	r, e := m.Impl.GetRecord(in.File, in.OutFormat)
+	if e != nil {
+		return nil, e
+	}
+	return r.ToGRPC(), e
 }
 
 //获取图片
 func (m *OnebotCliServerStub) GetImage(ctx context.Context, in *wrapperspb.StringValue) (*model.FileResultGRPC, error) {
-	v, e := m.Impl.GetImage(in.Value)
-	return v.ToGRPC(), e
+	r, e := m.Impl.GetImage(in.Value)
+	if e != nil {
+		return nil, e
+	}
+	return r.ToGRPC(), e
 }
 func (m *OnebotCliServerStub) SendLike(ctx context.Context, in *SendLikeReq) (*emptypb.Empty, error) {
 	e := m.Impl.SendLike(in.UserId, in.Times)
+	if e != nil {
+		return nil, e
+	}
 	return &emptypb.Empty{}, e
 }
 
 //处理加好友请求
 func (m *OnebotCliServerStub) SetFriendAddRequest(ctx context.Context, in *SetFriendAddRequestReq) (*emptypb.Empty, error) {
 	e := m.Impl.SetFriendAddRequest(in.Flag, in.Approve, in.Remark)
+	if e != nil {
+		return nil, e
+	}
 	return &emptypb.Empty{}, e
 }
 func (m *OnebotCliServerStub) GetFriendList(ctx context.Context, in *emptypb.Empty) (*model.FriendListResultGRPC, error) {
-	v, e := m.Impl.GetFriendList()
-	return v.ToGRPC(), e
+	r, e := m.Impl.GetFriendList()
+	if e != nil {
+		return nil, e
+	}
+	return r.ToGRPC(), e
 }
 
 // 群组踢人
