@@ -71,10 +71,16 @@ func closeAll(onebotCli cli.OnebotCli) {
 
 func closeAllWithCancel(cancel context.CancelFunc, onebotCli cli.OnebotCli) {
 	for _, v := range all_plugins {
-		v.plugin.BeforeExit(onebotCli)
-		v.client.Kill()
+		go closePlugin(v, onebotCli)
 	}
 	cancel()
+}
+
+func closePlugin(v *pluginWithClient, onebotCli cli.OnebotCli) {
+
+	v.plugin.BeforeExit(onebotCli)
+	v.client.Kill()
+
 }
 
 func setPluginEvent(file string, onebotCli cli.OnebotCli) error {
