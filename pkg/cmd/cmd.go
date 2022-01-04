@@ -137,5 +137,6 @@ func setPluginEvent(file string, onebotCli cli.OnebotCli) error {
 	event.ListenRequestGroup(func(data model.EventRequestGroup) error {
 		return p.RequestGroup(&data, onebotCli)
 	})
+	p.Init(onebotCli)
 	return nil
 }
