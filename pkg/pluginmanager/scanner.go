@@ -5,9 +5,9 @@ import (
 	"os"
 )
 
-type ScanFunc func(file string) error
+type scanCallback func(file string) error
 
-func ScanInPath(path string, callBack ScanFunc) error {
+func scanPath(path string, callBack scanCallback) error {
 	files, err := getAllFiles(path)
 	if err != nil {
 		return err
@@ -41,9 +41,7 @@ func getAllFiles(path string) (files []string, err error) {
 	// 子文件夹
 	for _, subDir := range dirs {
 		temp, _ := getAllFiles(subDir)
-		for _, temp1 := range temp {
-			files = append(files, temp1)
-		}
+		files = append(files, temp...)
 	}
 
 	return files, nil

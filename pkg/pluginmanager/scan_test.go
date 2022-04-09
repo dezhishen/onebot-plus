@@ -6,7 +6,7 @@ import (
 )
 
 func TestScan(*testing.T) {
-	err := ScanInPath("F:/Test/onebot/onebot-plus/wiki", func(file string) error {
+	err := scanPath("F:/Test/onebot/onebot-plus/wiki", func(file string) error {
 		fmt.Printf("%s\n", file)
 		return nil
 	})

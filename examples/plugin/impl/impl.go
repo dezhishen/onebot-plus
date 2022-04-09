@@ -38,6 +38,7 @@ func main() {
 		}).
 		MetaHeartbeat(func(req *model.EventMetaHeartbeat, cli cli.OnebotCli) error {
 			logrus.Infof("收到EventMetaHeartbeat,SelfId:[%v]", req.SelfId)
+			logrus.Info(cli.GetStatus())
 			return nil
 
 		}).
@@ -54,11 +55,11 @@ func main() {
 
 func loop(cli cli.OnebotCli) {
 	for {
-		time.Sleep(1 * time.Second)
+		time.Sleep(5 * time.Second)
 		logrus.Info("===============alive==============")
 		r, e := cli.GetStatus()
 		if e != nil {
-			logrus.Error(e)
+			logrus.Error("get status err :%v", e)
 			continue
 		}
 		logrus.Infof("Status:%v", r.Data)

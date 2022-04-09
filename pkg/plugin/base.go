@@ -24,9 +24,7 @@ type OnebotEventPlugin interface {
 	Description() string
 	//插件帮助
 	Help() string
-
 	//=====插件的生命周期=====
-
 	//初始化回调
 	Init(cli.OnebotCli) error
 	//退出前回调

@@ -50,7 +50,7 @@ func (builder *onebotEventPluginBuilder) Init(callback func(cli cli.OnebotCli) e
 
 //插件退出前回调
 func (builder *onebotEventPluginBuilder) BeforeExit(callback func(cli cli.OnebotCli) error) *onebotEventPluginBuilder {
-	builder.impl.beforeExitCallBback = callback
+	builder.impl.beforeExitCallback = callback
 	return builder
 }
 
@@ -156,9 +156,6 @@ func (builder *onebotEventPluginBuilder) RequestGroup(callback func(req *model.E
 	return builder
 }
 
-func returnEmptyString() string {
-	return ""
-}
 func (b *onebotEventPluginBuilder) Build() *onebotEventPluginRealImpl {
 	return b.impl
 }
