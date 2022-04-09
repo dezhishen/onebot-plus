@@ -2,3 +2,6 @@
 .vscode/launch.json
 plugins
 fortune
+configs
+jrrp
+bili-live.db

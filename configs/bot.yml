@@ -1,8 +1,8 @@
 http:
   schema: "http"
-  host: 127.0.0.1
+  host: 192.168.31.6
   port: 5700
 websocket:
-  host: 127.0.0.1
+  host: 192.168.31.6
   port: 6700
 plugins-path: "./plugins"

@@ -11,7 +11,9 @@
       "mode": "debug",
       "program": "${workspaceFolder}/cmd/main.go",
       "cwd": "${workspaceFolder}",
-      "env": {}
+      "env": {
+        "PIXIV_PROXY": "socks5://192.168.31.169:20170"
+      }
     },
     {
       "name": "examples.plugin",

@@ -465,7 +465,10 @@ func (m *onebotEventPluginGRPCClientStub) Init(msgCli cli.OnebotCli) error {
 	go m.broker.AcceptAndServe(brokerID, serverFunc)
 	_, err := m.client.Init(context.Background(), &wrapperspb.UInt32Value{Value: brokerID})
 	// Init不会关闭连接
-	// s.Stop()
+	if err != nil {
+		return err
+	}
+	s.Stop()
 	return err
 }
 
@@ -484,6 +487,9 @@ func (m *onebotEventPluginGRPCClientStub) BeforeExit(msgCli cli.OnebotCli) error
 	brokerID := m.broker.NextId()
 	go m.broker.AcceptAndServe(brokerID, serverFunc)
 	_, err := m.client.BeforeExit(context.Background(), &wrapperspb.UInt32Value{Value: brokerID})
+	if err != nil {
+		return err
+	}
 	s.Stop()
 	return err
 }
@@ -507,6 +513,9 @@ func (m *onebotEventPluginGRPCClientStub) MessagePrivate(req *model.EventMessage
 		Message: msg,
 		Cli:     brokerID,
 	})
+	if err != nil {
+		return err
+	}
 	s.Stop()
 	return err
 }
@@ -530,6 +539,9 @@ func (m *onebotEventPluginGRPCClientStub) MessageGroup(req *model.EventMessageGr
 		Message: msg,
 		Cli:     brokerID,
 	})
+	if err != nil {
+		return err
+	}
 	s.Stop()
 	return err
 }
@@ -553,6 +565,9 @@ func (m *onebotEventPluginGRPCClientStub) MetaLifecycle(req *model.EventMetaLife
 		Message: msg,
 		Cli:     brokerID,
 	})
+	if err != nil {
+		return err
+	}
 	s.Stop()
 	return err
 }
@@ -576,6 +591,9 @@ func (m *onebotEventPluginGRPCClientStub) MetaHeartbeat(req *model.EventMetaHear
 		Message: msg,
 		Cli:     brokerID,
 	})
+	if err != nil {
+		return err
+	}
 	s.Stop()
 	return err
 }
@@ -599,6 +617,9 @@ func (m *onebotEventPluginGRPCClientStub) NoticeGroupUpload(req *model.EventNoti
 		Message: msg,
 		Cli:     brokerID,
 	})
+	if err != nil {
+		return err
+	}
 	s.Stop()
 	return err
 }
@@ -622,6 +643,9 @@ func (m *onebotEventPluginGRPCClientStub) NoticeGroupAdmin(req *model.EventNotic
 		Message: msg,
 		Cli:     brokerID,
 	})
+	if err != nil {
+		return err
+	}
 	s.Stop()
 	return err
 }
@@ -645,6 +669,9 @@ func (m *onebotEventPluginGRPCClientStub) NoticeGroupDecrease(req *model.EventNo
 		Message: msg,
 		Cli:     brokerID,
 	})
+	if err != nil {
+		return err
+	}
 	s.Stop()
 	return err
 }
@@ -668,6 +695,9 @@ func (m *onebotEventPluginGRPCClientStub) NoticeGroupIncrease(req *model.EventNo
 		Message: msg,
 		Cli:     brokerID,
 	})
+	if err != nil {
+		return err
+	}
 	s.Stop()
 	return err
 }
@@ -691,6 +721,9 @@ func (m *onebotEventPluginGRPCClientStub) NoticeGroupBan(req *model.EventNoticeG
 		Message: msg,
 		Cli:     brokerID,
 	})
+	if err != nil {
+		return err
+	}
 	s.Stop()
 	return err
 }
@@ -714,6 +747,9 @@ func (m *onebotEventPluginGRPCClientStub) NoticeGroupRecall(req *model.EventNoti
 		Message: msg,
 		Cli:     brokerID,
 	})
+	if err != nil {
+		return err
+	}
 	s.Stop()
 	return err
 }
@@ -737,6 +773,9 @@ func (m *onebotEventPluginGRPCClientStub) NoticeGroupNotifyPoke(req *model.Event
 		Message: msg,
 		Cli:     brokerID,
 	})
+	if err != nil {
+		return err
+	}
 	s.Stop()
 	return err
 }
@@ -760,6 +799,9 @@ func (m *onebotEventPluginGRPCClientStub) NoticeGroupNotifyLuckyKing(req *model.
 		Message: msg,
 		Cli:     brokerID,
 	})
+	if err != nil {
+		return err
+	}
 	s.Stop()
 	return err
 }
@@ -783,6 +825,9 @@ func (m *onebotEventPluginGRPCClientStub) NoticeGroupNotifyHonor(req *model.Even
 		Message: msg,
 		Cli:     brokerID,
 	})
+	if err != nil {
+		return err
+	}
 	s.Stop()
 	return err
 }
@@ -806,6 +851,9 @@ func (m *onebotEventPluginGRPCClientStub) NoticeFriendAdd(req *model.EventNotice
 		Message: msg,
 		Cli:     brokerID,
 	})
+	if err != nil {
+		return err
+	}
 	s.Stop()
 	return err
 }
@@ -829,6 +877,9 @@ func (m *onebotEventPluginGRPCClientStub) NoticeFriendRecall(req *model.EventNot
 		Message: msg,
 		Cli:     brokerID,
 	})
+	if err != nil {
+		return err
+	}
 	s.Stop()
 	return err
 }
@@ -852,6 +903,9 @@ func (m *onebotEventPluginGRPCClientStub) RequestFriend(req *model.EventRequestF
 		Message: msg,
 		Cli:     brokerID,
 	})
+	if err != nil {
+		return err
+	}
 	s.Stop()
 	return err
 }
@@ -875,6 +929,9 @@ func (m *onebotEventPluginGRPCClientStub) RequestGroup(req *model.EventRequestGr
 		Message: msg,
 		Cli:     brokerID,
 	})
+	if err != nil {
+		return err
+	}
 	s.Stop()
 	return err
 }
