@@ -21,7 +21,7 @@
       "request": "launch",
       "mode": "debug",
       "program": "${workspaceFolder}/examples/plugin/main.go",
-      "cwd": "${workspaceFolder}/examples/plugin",
+      "cwd": "${workspaceFolder}",
       "env": {}
     }
   ]

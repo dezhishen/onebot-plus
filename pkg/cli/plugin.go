@@ -289,6 +289,9 @@ func (m *OnebotCliServerStub) GetStatus(ctx context.Context, in *emptypb.Empty) 
 	if e != nil {
 		return nil, e
 	}
+	if r == nil {
+		return nil, nil
+	}
 	return r.ToGRPC(), nil
 }
 func (m *OnebotCliServerStub) CanSendImage(ctx context.Context, in *emptypb.Empty) (*model.BoolYesOfResultGRPC, error) {

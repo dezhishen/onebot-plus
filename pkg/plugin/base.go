@@ -462,11 +462,10 @@ func (m *onebotEventPluginGRPCClientStub) Init(msgCli cli.OnebotCli) error {
 	brokerID := m.broker.NextId()
 	go m.broker.AcceptAndServe(brokerID, serverFunc)
 	_, err := m.client.Init(context.Background(), &wrapperspb.UInt32Value{Value: brokerID})
-	// Init不会关闭连接
 	if err != nil {
 		return err
 	}
-	s.Stop()
+	// s.Stop()
 	return err
 }
 
