@@ -277,7 +277,7 @@ func genMsgText(messgae []*model.MessageSegment) (bool, string) {
 			var envKey string
 			var envVal string
 			envKey = commands[2]
-			if len(command) >= 3 {
+			if len(commands) > 3 {
 				envVal = commands[3]
 			}
 			env.SetEnv(envKey, envVal)
