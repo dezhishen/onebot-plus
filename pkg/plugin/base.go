@@ -2,7 +2,6 @@ package plugin
 
 import (
 	context "context"
-	"log"
 	"os/exec"
 
 	"github.com/dezhishen/onebot-plus/pkg/cli"
@@ -944,7 +943,7 @@ func (p *onebotEventPluginGRPC) GRPCClient(
 		client: NewOnebotEventGRPCClient(c)}, nil
 }
 
-func LoadPlugin(path string) (OnebotEventPlugin, *plugin.Client) {
+func LoadPlugin(path string) (OnebotEventPlugin, *plugin.Client, error) {
 	// We're a host! Start by launching the plugin process.
 	client := plugin.NewClient(&plugin.ClientConfig{
 		HandshakeConfig: HandshakeConfig,
@@ -960,12 +959,13 @@ func LoadPlugin(path string) (OnebotEventPlugin, *plugin.Client) {
 	rpcClient, err := client.Client()
 	if err != nil {
 		logrus.Error(err)
+		return nil, nil, err
 	}
 	// Request the plugin
 	raw, err := rpcClient.Dispense("main")
 	if err != nil {
-		log.Fatal(err)
+		return nil, nil, err
 	}
 	d := raw.(OnebotEventPlugin)
-	return d, client
+	return d, client, nil
 }

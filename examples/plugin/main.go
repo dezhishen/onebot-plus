@@ -12,7 +12,10 @@ import (
 func main() {
 	logrus.SetOutput(ioutil.Discard)
 	path := "./examples/plugin/impl/plugin-windows-amd64.exe"
-	d, c := plugin.LoadPlugin(path)
+	d, c, e := plugin.LoadPlugin(path)
+	if e != nil {
+		panic(e)
+	}
 	defer c.Kill()
 	logrus.Infof("插件启动,id[%v],name[%v]", d.Id(), d.Name())
 	d.Init(&cli.OnebotCliRealImpl{})

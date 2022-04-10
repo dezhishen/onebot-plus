@@ -5,7 +5,7 @@ import (
 	"os"
 )
 
-type scanCallback func(file string) error
+type scanCallback func(filePath string) error
 
 func scanPath(path string, callBack scanCallback) error {
 	files, err := getAllFiles(path)

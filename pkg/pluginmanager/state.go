@@ -1,22 +1,22 @@
 package pluginmanager
 
 import (
-	"context"
+	"fmt"
 
 	"github.com/dezhishen/onebot-plus/pkg/cli"
 	"github.com/dezhishen/onebot-plus/pkg/plugin"
-	"github.com/dezhishen/onebot-sdk/pkg/event"
 
 	rpcPlugin "github.com/hashicorp/go-plugin"
 )
 
 var allPlugins = make(map[string]*containerOfPlugin)
+var allPluginFileInfo = make(map[string]string)
 
 type PluginStatus int
 
 const (
 	PluginStatusHealthy PluginStatus = iota
-	PluginStatusError
+	PluginStatusUnhealthy
 )
 
 type containerOfPlugin struct {
@@ -44,25 +44,7 @@ func GetAllPlugins() []*containerOfPlugin {
 	return result
 }
 
-func Init(ctx context.Context) error {
-	//注册插件管理事件
-	registerManageEventToWebsocket(&cli.OnebotCliRealImpl{})
-	err := scanPath("./plugins", func(file string) error {
-		p, rpcCli := plugin.LoadPlugin(file)
-		return Register(p, rpcCli, &cli.OnebotCliRealImpl{})
-	})
-	if err != nil {
-		return err
-	}
-	//注册监听事件
-	registerPluginEventToWebsocket()
-	//开启监听
-	err = event.StartWsWithContext(ctx)
-	return err
-
-}
-
-func Register(plugin plugin.OnebotEventPlugin, rpcCli *rpcPlugin.Client, onebotCli cli.OnebotCli) error {
+func Register(filePath string, plugin plugin.OnebotEventPlugin, rpcCli *rpcPlugin.Client, onebotCli cli.OnebotCli) error {
 	err := plugin.Init(onebotCli)
 	if err != nil {
 		return err
@@ -73,6 +55,20 @@ func Register(plugin plugin.OnebotEventPlugin, rpcCli *rpcPlugin.Client, onebotC
 		RPClient:  rpcCli,
 		OnebotCli: onebotCli,
 	}
-	allPlugins[plugin.Id()] = value
+	id := plugin.Id()
+	if id == "" {
+		return fmt.Errorf("组件[%v]未提供ID", filePath)
+	}
+	allPlugins[id] = value
+	allPluginFileInfo[filePath] = id
+	return nil
+}
+
+func GetPluginByFilePath(filePath string) *containerOfPlugin {
+	if id, ok := allPluginFileInfo[filePath]; ok {
+		if plugin, ok := allPlugins[id]; ok {
+			return plugin
+		}
+	}
 	return nil
 }
