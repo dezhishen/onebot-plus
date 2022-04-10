@@ -1,31 +1,11 @@
 package pluginmanager
 
 import (
-	"context"
-
-	"github.com/dezhishen/onebot-plus/pkg/cli"
-	"github.com/dezhishen/onebot-plus/pkg/plugin"
 	"github.com/dezhishen/onebot-sdk/pkg/event"
 	"github.com/dezhishen/onebot-sdk/pkg/model"
 )
 
-func Init(ctx context.Context) error {
-	err := scanPath("./plugins", func(file string) error {
-		p, rpcCli := plugin.LoadPlugin(file)
-		return Register(p, rpcCli, &cli.OnebotCliRealImpl{})
-	})
-	if err != nil {
-		return err
-	}
-	//注册监听事件
-	registerEventToWebsocket()
-	//开启监听
-	err = event.StartWsWithContext(ctx)
-	return err
-
-}
-
-func registerEventToWebsocket() {
+func registerPluginEventToWebsocket() {
 	event.ListenMessageGroup(func(data model.EventMessageGroup) error {
 		for _, p := range GetAllPlugins() {
 			if p.Status != PluginStatusHealthy {

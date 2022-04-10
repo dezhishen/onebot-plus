@@ -12,33 +12,25 @@ type onebotEventPluginBuilder struct {
 
 //插件Id
 func (builder *onebotEventPluginBuilder) Id(id string) *onebotEventPluginBuilder {
-	builder.impl.idCallback = func() string {
-		return id
-	}
+	builder.impl.id = id
 	return builder
 }
 
 //插件名称
 func (builder *onebotEventPluginBuilder) Name(name string) *onebotEventPluginBuilder {
-	builder.impl.nameCallback = func() string {
-		return name
-	}
+	builder.impl.name = name
 	return builder
 }
 
 //插件描述
 func (builder *onebotEventPluginBuilder) Description(description string) *onebotEventPluginBuilder {
-	builder.impl.descriptionCallback = func() string {
-		return description
-	}
+	builder.impl.description = description
 	return builder
 }
 
 //插件帮助
 func (builder *onebotEventPluginBuilder) Help(help string) *onebotEventPluginBuilder {
-	builder.impl.helpCallback = func() string {
-		return help
-	}
+	builder.impl.help = help
 	return builder
 }
 

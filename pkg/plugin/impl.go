@@ -10,13 +10,13 @@ import (
 //插件实现
 type onebotEventPluginRealImpl struct {
 	//插件Id
-	idCallback func() string
+	id string
 	//插件名称
-	nameCallback func() string
+	name string
 	//插件描述
-	descriptionCallback func() string
+	description string
 	//插件帮助
-	helpCallback func() string
+	help         string
 	initCallback func(cli.OnebotCli) error
 	//是否禁用某个事件
 	isEventDisabledSetting map[PluginEventType]bool
@@ -68,22 +68,22 @@ func newDefaultOnebotEventPluginRealImpl() *onebotEventPluginRealImpl {
 
 //插件Id
 func (m *onebotEventPluginRealImpl) Id() string {
-	return m.idCallback()
+	return m.id
 }
 
 //插件名称
 func (m *onebotEventPluginRealImpl) Name() string {
-	return m.nameCallback()
+	return m.name
 }
 
 //插件描述
 func (m *onebotEventPluginRealImpl) Description() string {
-	return m.descriptionCallback()
+	return m.description
 }
 
 //插件帮助
 func (m *onebotEventPluginRealImpl) Help() string {
-	return m.helpCallback()
+	return m.help
 }
 
 //插件初始化
