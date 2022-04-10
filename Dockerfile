@@ -5,7 +5,7 @@ WORKDIR /build
 COPY ./ .
 RUN cd /build && go build -tags netgo -ldflags="-w -s" -o onebotplus cmd/main.go 
 
-FROM golang:1.17.0-alpine3.13
+FROM alpine
 LABEL MAINTAINER=github.com/dezhiShen
 WORKDIR /data
 RUN apk add -U --repository http://mirrors.ustc.edu.cn/alpine/v3.13/main/ tzdata 
