@@ -96,7 +96,7 @@ func genMsgText(messgae []*model.MessageSegment) (bool, string) {
 			for i, p := range plugins {
 				msgText += fmt.Sprintf("[%v] %v %v\n", i+1, p.Plugin.Id(), p.Plugin.Name())
 			}
-			msgText += "请输入 .onebot help $id 查看插件的帮助指令"
+			msgText += "请输入[.onebot help --id $id]查看指定插件的帮助指令"
 			return true, msgText
 		}
 		if command == "help" {
