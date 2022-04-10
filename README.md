@@ -83,4 +83,6 @@ onebot拓展平台
 - [x] 插件状态管理
 - [x] 插件文件夹监听
 - [x] plus自身管理事件
-- [x] 环境变量设置命令
+ - [x] 插件清单 `.onebot list`
+ - [x] 插件帮助指令 `.onebot help --id xxx`
+ - [x] 环境变量设置命令 `.onebot env foo bar`
