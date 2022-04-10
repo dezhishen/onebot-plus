@@ -448,10 +448,10 @@ func (m *onebotEventPluginGRPCClientStub) Help() string {
 }
 
 //初始化
-func (m *onebotEventPluginGRPCClientStub) Init(msgCli cli.OnebotCli) error {
+func (m *onebotEventPluginGRPCClientStub) Init(onebotCli cli.OnebotCli) error {
 	// 转发
 	messageCliServer := &cli.OnebotCliServerStub{
-		Impl: msgCli,
+		Impl: onebotCli,
 	} //{Impl: cli}
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
@@ -470,10 +470,10 @@ func (m *onebotEventPluginGRPCClientStub) Init(msgCli cli.OnebotCli) error {
 }
 
 //退出前回调
-func (m *onebotEventPluginGRPCClientStub) BeforeExit(msgCli cli.OnebotCli) error {
+func (m *onebotEventPluginGRPCClientStub) BeforeExit(onebotCli cli.OnebotCli) error {
 	// 转发
 	messageCliServer := &cli.OnebotCliServerStub{
-		Impl: msgCli,
+		Impl: onebotCli,
 	} //{Impl: cli}
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
@@ -492,10 +492,10 @@ func (m *onebotEventPluginGRPCClientStub) BeforeExit(msgCli cli.OnebotCli) error
 }
 
 //私聊消息
-func (m *onebotEventPluginGRPCClientStub) MessagePrivate(req *model.EventMessagePrivate, msgCli cli.OnebotCli) error {
+func (m *onebotEventPluginGRPCClientStub) MessagePrivate(req *model.EventMessagePrivate, onebotCli cli.OnebotCli) error {
 	// 转发
 	messageCliServer := &cli.OnebotCliServerStub{
-		Impl: msgCli,
+		Impl: onebotCli,
 	} //{Impl: cli}
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
@@ -518,10 +518,10 @@ func (m *onebotEventPluginGRPCClientStub) MessagePrivate(req *model.EventMessage
 }
 
 //群组消息
-func (m *onebotEventPluginGRPCClientStub) MessageGroup(req *model.EventMessageGroup, msgCli cli.OnebotCli) error {
+func (m *onebotEventPluginGRPCClientStub) MessageGroup(req *model.EventMessageGroup, onebotCli cli.OnebotCli) error {
 	// 转发
 	messageCliServer := &cli.OnebotCliServerStub{
-		Impl: msgCli,
+		Impl: onebotCli,
 	} //{Impl: cli}
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
@@ -544,10 +544,10 @@ func (m *onebotEventPluginGRPCClientStub) MessageGroup(req *model.EventMessageGr
 }
 
 //生命周期
-func (m *onebotEventPluginGRPCClientStub) MetaLifecycle(req *model.EventMetaLifecycle, msgCli cli.OnebotCli) error {
+func (m *onebotEventPluginGRPCClientStub) MetaLifecycle(req *model.EventMetaLifecycle, onebotCli cli.OnebotCli) error {
 	// 转发
 	messageCliServer := &cli.OnebotCliServerStub{
-		Impl: msgCli,
+		Impl: onebotCli,
 	} //{Impl: cli}
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
@@ -570,10 +570,10 @@ func (m *onebotEventPluginGRPCClientStub) MetaLifecycle(req *model.EventMetaLife
 }
 
 //心跳
-func (m *onebotEventPluginGRPCClientStub) MetaHeartbeat(req *model.EventMetaHeartbeat, msgCli cli.OnebotCli) error {
+func (m *onebotEventPluginGRPCClientStub) MetaHeartbeat(req *model.EventMetaHeartbeat, onebotCli cli.OnebotCli) error {
 	// 转发
 	messageCliServer := &cli.OnebotCliServerStub{
-		Impl: msgCli,
+		Impl: onebotCli,
 	} //{Impl: cli}
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
@@ -596,10 +596,10 @@ func (m *onebotEventPluginGRPCClientStub) MetaHeartbeat(req *model.EventMetaHear
 }
 
 //群文件上传
-func (m *onebotEventPluginGRPCClientStub) NoticeGroupUpload(req *model.EventNoticeGroupUpload, msgCli cli.OnebotCli) error {
+func (m *onebotEventPluginGRPCClientStub) NoticeGroupUpload(req *model.EventNoticeGroupUpload, onebotCli cli.OnebotCli) error {
 	// 转发
 	messageCliServer := &cli.OnebotCliServerStub{
-		Impl: msgCli,
+		Impl: onebotCli,
 	} //{Impl: cli}
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
@@ -622,10 +622,10 @@ func (m *onebotEventPluginGRPCClientStub) NoticeGroupUpload(req *model.EventNoti
 }
 
 //群管理员变动
-func (m *onebotEventPluginGRPCClientStub) NoticeGroupAdmin(req *model.EventNoticeGroupAdmin, msgCli cli.OnebotCli) error {
+func (m *onebotEventPluginGRPCClientStub) NoticeGroupAdmin(req *model.EventNoticeGroupAdmin, onebotCli cli.OnebotCli) error {
 	// 转发
 	messageCliServer := &cli.OnebotCliServerStub{
-		Impl: msgCli,
+		Impl: onebotCli,
 	} //{Impl: cli}
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
@@ -648,10 +648,10 @@ func (m *onebotEventPluginGRPCClientStub) NoticeGroupAdmin(req *model.EventNotic
 }
 
 //群成员减少
-func (m *onebotEventPluginGRPCClientStub) NoticeGroupDecrease(req *model.EventNoticeGroupDecrease, msgCli cli.OnebotCli) error {
+func (m *onebotEventPluginGRPCClientStub) NoticeGroupDecrease(req *model.EventNoticeGroupDecrease, onebotCli cli.OnebotCli) error {
 	// 转发
 	messageCliServer := &cli.OnebotCliServerStub{
-		Impl: msgCli,
+		Impl: onebotCli,
 	} //{Impl: cli}
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
@@ -674,10 +674,10 @@ func (m *onebotEventPluginGRPCClientStub) NoticeGroupDecrease(req *model.EventNo
 }
 
 //群成员增加
-func (m *onebotEventPluginGRPCClientStub) NoticeGroupIncrease(req *model.EventNoticeGroupIncrease, msgCli cli.OnebotCli) error {
+func (m *onebotEventPluginGRPCClientStub) NoticeGroupIncrease(req *model.EventNoticeGroupIncrease, onebotCli cli.OnebotCli) error {
 	// 转发
 	messageCliServer := &cli.OnebotCliServerStub{
-		Impl: msgCli,
+		Impl: onebotCli,
 	} //{Impl: cli}
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
@@ -700,10 +700,10 @@ func (m *onebotEventPluginGRPCClientStub) NoticeGroupIncrease(req *model.EventNo
 }
 
 //群禁言
-func (m *onebotEventPluginGRPCClientStub) NoticeGroupBan(req *model.EventNoticeGroupBan, msgCli cli.OnebotCli) error {
+func (m *onebotEventPluginGRPCClientStub) NoticeGroupBan(req *model.EventNoticeGroupBan, onebotCli cli.OnebotCli) error {
 	// 转发
 	messageCliServer := &cli.OnebotCliServerStub{
-		Impl: msgCli,
+		Impl: onebotCli,
 	} //{Impl: cli}
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
@@ -726,10 +726,10 @@ func (m *onebotEventPluginGRPCClientStub) NoticeGroupBan(req *model.EventNoticeG
 }
 
 //群消息撤回
-func (m *onebotEventPluginGRPCClientStub) NoticeGroupRecall(req *model.EventNoticeGroupRecall, msgCli cli.OnebotCli) error {
+func (m *onebotEventPluginGRPCClientStub) NoticeGroupRecall(req *model.EventNoticeGroupRecall, onebotCli cli.OnebotCli) error {
 	// 转发
 	messageCliServer := &cli.OnebotCliServerStub{
-		Impl: msgCli,
+		Impl: onebotCli,
 	} //{Impl: cli}
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
@@ -752,10 +752,10 @@ func (m *onebotEventPluginGRPCClientStub) NoticeGroupRecall(req *model.EventNoti
 }
 
 //群内戳一戳
-func (m *onebotEventPluginGRPCClientStub) NoticeGroupNotifyPoke(req *model.EventNoticeGroupNotifyPoke, msgCli cli.OnebotCli) error {
+func (m *onebotEventPluginGRPCClientStub) NoticeGroupNotifyPoke(req *model.EventNoticeGroupNotifyPoke, onebotCli cli.OnebotCli) error {
 	// 转发
 	messageCliServer := &cli.OnebotCliServerStub{
-		Impl: msgCli,
+		Impl: onebotCli,
 	} //{Impl: cli}
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
@@ -778,10 +778,10 @@ func (m *onebotEventPluginGRPCClientStub) NoticeGroupNotifyPoke(req *model.Event
 }
 
 //群红包运气王
-func (m *onebotEventPluginGRPCClientStub) NoticeGroupNotifyLuckyKing(req *model.EventNoticeGroupNotifyLuckyKing, msgCli cli.OnebotCli) error {
+func (m *onebotEventPluginGRPCClientStub) NoticeGroupNotifyLuckyKing(req *model.EventNoticeGroupNotifyLuckyKing, onebotCli cli.OnebotCli) error {
 	// 转发
 	messageCliServer := &cli.OnebotCliServerStub{
-		Impl: msgCli,
+		Impl: onebotCli,
 	} //{Impl: cli}
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
@@ -804,10 +804,10 @@ func (m *onebotEventPluginGRPCClientStub) NoticeGroupNotifyLuckyKing(req *model.
 }
 
 //群成员荣誉变更
-func (m *onebotEventPluginGRPCClientStub) NoticeGroupNotifyHonor(req *model.EventNoticeGroupNotifyHonor, msgCli cli.OnebotCli) error {
+func (m *onebotEventPluginGRPCClientStub) NoticeGroupNotifyHonor(req *model.EventNoticeGroupNotifyHonor, onebotCli cli.OnebotCli) error {
 	// 转发
 	messageCliServer := &cli.OnebotCliServerStub{
-		Impl: msgCli,
+		Impl: onebotCli,
 	} //{Impl: cli}
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
@@ -830,10 +830,10 @@ func (m *onebotEventPluginGRPCClientStub) NoticeGroupNotifyHonor(req *model.Even
 }
 
 //好友添加
-func (m *onebotEventPluginGRPCClientStub) NoticeFriendAdd(req *model.EventNoticeFriendAdd, msgCli cli.OnebotCli) error {
+func (m *onebotEventPluginGRPCClientStub) NoticeFriendAdd(req *model.EventNoticeFriendAdd, onebotCli cli.OnebotCli) error {
 	// 转发
 	messageCliServer := &cli.OnebotCliServerStub{
-		Impl: msgCli,
+		Impl: onebotCli,
 	} //{Impl: cli}
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
@@ -856,10 +856,10 @@ func (m *onebotEventPluginGRPCClientStub) NoticeFriendAdd(req *model.EventNotice
 }
 
 //好友消息撤回
-func (m *onebotEventPluginGRPCClientStub) NoticeFriendRecall(req *model.EventNoticeFriendRecall, msgCli cli.OnebotCli) error {
+func (m *onebotEventPluginGRPCClientStub) NoticeFriendRecall(req *model.EventNoticeFriendRecall, onebotCli cli.OnebotCli) error {
 	// 转发
 	messageCliServer := &cli.OnebotCliServerStub{
-		Impl: msgCli,
+		Impl: onebotCli,
 	} //{Impl: cli}
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
@@ -882,10 +882,10 @@ func (m *onebotEventPluginGRPCClientStub) NoticeFriendRecall(req *model.EventNot
 }
 
 //好友添加请求
-func (m *onebotEventPluginGRPCClientStub) RequestFriend(req *model.EventRequestFriend, msgCli cli.OnebotCli) error {
+func (m *onebotEventPluginGRPCClientStub) RequestFriend(req *model.EventRequestFriend, onebotCli cli.OnebotCli) error {
 	// 转发
 	messageCliServer := &cli.OnebotCliServerStub{
-		Impl: msgCli,
+		Impl: onebotCli,
 	} //{Impl: cli}
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
@@ -908,10 +908,10 @@ func (m *onebotEventPluginGRPCClientStub) RequestFriend(req *model.EventRequestF
 }
 
 //群添加/邀请请求
-func (m *onebotEventPluginGRPCClientStub) RequestGroup(req *model.EventRequestGroup, msgCli cli.OnebotCli) error {
+func (m *onebotEventPluginGRPCClientStub) RequestGroup(req *model.EventRequestGroup, onebotCli cli.OnebotCli) error {
 	// 转发
 	messageCliServer := &cli.OnebotCliServerStub{
-		Impl: msgCli,
+		Impl: onebotCli,
 	} //{Impl: cli}
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
