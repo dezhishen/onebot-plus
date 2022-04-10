@@ -277,10 +277,11 @@ func genMsgText(messgae []*model.MessageSegment) (bool, string) {
 			var envKey string
 			var envVal string
 			envKey = commands[2]
-			if len(command) > 3 {
+			if len(command) >= 3 {
 				envVal = commands[3]
 			}
 			env.SetEnv(envKey, envVal)
+			return true, fmt.Sprintf("成功设置环境变量 [%v]", envKey)
 		}
 	}
 	return false, ""
