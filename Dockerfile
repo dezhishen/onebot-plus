@@ -9,7 +9,6 @@ FROM golang:1.17.0-alpine3.13
 LABEL MAINTAINER=github.com/dezhiShen
 WORKDIR /data
 RUN apk add -U --repository http://mirrors.ustc.edu.cn/alpine/v3.13/main/ tzdata 
-RUN apk add -U --repository http://mirrors.ustc.edu.cn/alpine/v3.13/main/ build-base 
 COPY --from=builder /build/onebotplus /usr/bin/onebotplus 
 RUN chmod +x /usr/bin/onebotplus
 VOLUME /data
