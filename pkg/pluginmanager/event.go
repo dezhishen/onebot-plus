@@ -7,6 +7,7 @@ import (
 	"github.com/dezhishen/onebot-plus/pkg/cli"
 	"github.com/dezhishen/onebot-plus/pkg/command"
 	"github.com/dezhishen/onebot-plus/pkg/env"
+	"github.com/dezhishen/onebot-sdk/pkg/config"
 	"github.com/dezhishen/onebot-sdk/pkg/event"
 	"github.com/dezhishen/onebot-sdk/pkg/model"
 )
@@ -174,7 +175,7 @@ func registerPluginEventToWebsocket() {
 func registerManageEventToWebsocket(onebotCli cli.OnebotCli) error {
 	event.ListenMessageGroup(func(data model.EventMessageGroup) error {
 		if data.Sender.Role == "admin" {
-			ok, msgText := genMsgText(data.Message)
+			ok, msgText := genMsgText(data.Sender, data.Message)
 			if !ok {
 				return nil
 			}
@@ -183,7 +184,7 @@ func registerManageEventToWebsocket(onebotCli cli.OnebotCli) error {
 		return nil
 	})
 	event.ListenMessagePrivate(func(data model.EventMessagePrivate) error {
-		ok, msgText := genMsgText(data.Message)
+		ok, msgText := genMsgText(data.Sender, data.Message)
 		if !ok {
 			return nil
 		}
@@ -221,7 +222,7 @@ func genGroupTextMsg(groupId int64, text string) *model.GroupMsg {
 	}
 }
 
-func genMsgText(messgae []*model.MessageSegment) (bool, string) {
+func genMsgText(sender *model.Sender, messgae []*model.MessageSegment) (bool, string) {
 	if len(messgae) == 0 {
 		return false, ""
 	}
@@ -271,6 +272,9 @@ func genMsgText(messgae []*model.MessageSegment) (bool, string) {
 			return true, fmt.Sprintf("[%v]:%v", p.Plugin.Name(), p.Plugin.Help())
 		}
 		if command == "env" {
+			if !isSuperUser(sender.UserId) {
+				return true, "只允许超级用户操作"
+			}
 			if len(commands) <= 2 {
 				return false, ""
 			}
@@ -285,4 +289,25 @@ func genMsgText(messgae []*model.MessageSegment) (bool, string) {
 		}
 	}
 	return false, ""
+}
+
+func getSuperUsers() []int {
+	c := config.GetViper()
+	if c == nil {
+		return nil
+	}
+	return c.GetIntSlice("SUPERUSERS")
+}
+
+func isSuperUser(userId int64) bool {
+	allUsers := getSuperUsers()
+	if len(allUsers) == 0 {
+		return false
+	}
+	for _, uid := range allUsers {
+		if int64(uid) == userId {
+			return true
+		}
+	}
+	return false
 }

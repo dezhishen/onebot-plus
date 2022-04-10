@@ -3,7 +3,7 @@ module github.com/dezhishen/onebot-plus
 go 1.17
 
 require (
-	github.com/dezhishen/onebot-sdk v0.0.0-20220409082522-a2a5f0fe4560
+	github.com/dezhishen/onebot-sdk v0.0.0-20220410115929-303069295a98
 	github.com/sirupsen/logrus v1.8.1
 	google.golang.org/grpc v1.43.0
 	google.golang.org/protobuf v1.27.1
@@ -37,7 +37,7 @@ require (
 	github.com/spf13/cast v1.4.1 // indirect
 	github.com/spf13/jwalterweatherman v1.1.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
-	github.com/spf13/viper v1.10.1 // indirect
+	github.com/spf13/viper v1.10.1
 	github.com/subosito/gotenv v1.2.0 // indirect
 	github.com/tidwall/gjson v1.12.1 // indirect
 	github.com/tidwall/match v1.1.1 // indirect

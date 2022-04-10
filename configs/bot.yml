@@ -5,4 +5,5 @@ http:
 websocket:
   host: 192.168.31.6
   port: 6700
-plugins-path: "./plugins"
+SUPERUSERS:
+  - 1179551960
