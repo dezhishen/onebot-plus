@@ -6,6 +6,7 @@ import (
 
 	"github.com/dezhishen/onebot-plus/pkg/cli"
 	"github.com/dezhishen/onebot-plus/pkg/command"
+	"github.com/dezhishen/onebot-plus/pkg/env"
 	"github.com/dezhishen/onebot-sdk/pkg/event"
 	"github.com/dezhishen/onebot-sdk/pkg/model"
 )
@@ -239,10 +240,11 @@ func genMsgText(messgae []*model.MessageSegment) (bool, string) {
 	if err != nil {
 		return false, fmt.Sprintf("%v", err)
 	}
-	for i, command := range commands {
-		if i == 0 {
-			continue
-		}
+	if len(commands) == 0 {
+		return false, ""
+	}
+	if len(commands) > 1 {
+		command := commands[1]
 		if command == "list" {
 			plugins := GetAllPlugins()
 			if len(plugins) == 0 {
@@ -267,6 +269,18 @@ func genMsgText(messgae []*model.MessageSegment) (bool, string) {
 				return true, fmt.Sprintf("[%v]:%v", p.Plugin.Name(), "没有发现帮助说明")
 			}
 			return true, fmt.Sprintf("[%v]:%v", p.Plugin.Name(), p.Plugin.Help())
+		}
+		if command == "env" {
+			if len(commands) <= 2 {
+				return false, ""
+			}
+			var envKey string
+			var envVal string
+			envKey = commands[2]
+			if len(command) > 3 {
+				envVal = commands[3]
+			}
+			env.SetEnv(envKey, envVal)
 		}
 	}
 	return false, ""

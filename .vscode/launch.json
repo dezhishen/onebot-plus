@@ -12,7 +12,9 @@
       "program": "${workspaceFolder}/cmd/main.go",
       "cwd": "${workspaceFolder}",
       "env": {
-        "PIXIV_PROXY": "socks5://192.168.31.169:20170"
+        "PIXIV_PROXY": "socks5://192.168.31.169:20170",
+        "BOT_BAIDU_FANYI_ID": "20210524000840019",
+        "BOT_BAIDU_FANYI_KEY": "JS33t5WMHTFbM7axtTd1"
       }
     },
     {
