@@ -1,9 +1,9 @@
 http:
   schema: "http"
-  host: 192.168.31.6
+  host: 192.168.31.169
   port: 5700
 websocket:
-  host: 192.168.31.6
+  host: 192.168.31.169
   port: 6700
 SUPERUSERS:
   - 1179551960
