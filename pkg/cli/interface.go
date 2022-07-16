@@ -7,8 +7,12 @@ type OnebotCli interface {
 	SendMsg(msg *model.MsgForSend) (*model.SendMessageResult, error)
 	//发送私聊消息
 	SendPrivateMsg(msg *model.PrivateMsg) (*model.SendMessageResult, error)
-	// 发送群消息
+	//发送群消息
 	SendGroupMsg(msg *model.GroupMsg) (*model.SendMessageResult, error)
+	//转发合并消息(群)
+	SendGroupForwardMessage(groupId int64, messages []*model.MessageSegment) (*model.SendGroupForwardMessageDataResult, error)
+	//转发合并消息到群
+	SendGroupForwardMessageByRawMsg(groupId, userId int64, name string, messages []*model.MessageSegment) (*model.SendGroupForwardMessageDataResult, error)
 	//删除消息
 	DelMsg(id int64) error
 	//获取消息

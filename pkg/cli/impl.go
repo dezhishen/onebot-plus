@@ -25,6 +25,16 @@ func (d *OnebotCliRealImpl) SendGroupMsg(msg *model.GroupMsg) (*model.SendMessag
 
 }
 
+//转发合并消息(群)
+func (d *OnebotCliRealImpl) SendGroupForwardMessage(groupId int64, messages []*model.MessageSegment) (*model.SendGroupForwardMessageDataResult, error) {
+	return sdk_api.SendGroupForwardMsg(groupId, messages)
+}
+
+//转发合并消息到群
+func (d *OnebotCliRealImpl) SendGroupForwardMessageByRawMsg(groupId, userId int64, name string, messages []*model.MessageSegment) (*model.SendGroupForwardMessageDataResult, error) {
+	return sdk_api.SendGroupForwardMsgByRawMsg(groupId, userId, name, messages)
+}
+
 //删除消息
 func (d *OnebotCliRealImpl) DelMsg(id int64) error {
 	return sdk_api.DelMsg(id)

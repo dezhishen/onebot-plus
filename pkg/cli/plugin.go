@@ -63,6 +63,21 @@ func (m *OnebotCliServerStub) SendGroupMsg(ctx context.Context, in *model.GroupM
 	return r.ToGRPC(), e
 }
 
+func (m *OnebotCliServerStub) SendGroupForwardMessage(ctx context.Context, in *SendGroupForwardMessageReq) (*model.SendGroupForwardMessageDataResultGRPC, error) {
+	r, e := m.Impl.SendGroupForwardMessage(in.GroupId, model.MessageSegmentGRPCArray2MessageSegmentArray(in.Message))
+	if e != nil {
+		return nil, e
+	}
+	return r.ToGRPC(), e
+}
+func (m *OnebotCliServerStub) SendGroupForwardMessageByRawMsg(ctx context.Context, in *SendGroupForwardMessageByRawMsgReq) (*model.SendGroupForwardMessageDataResultGRPC, error) {
+	r, e := m.Impl.SendGroupForwardMessageByRawMsg(in.GroupId, in.UserId, in.Name, model.MessageSegmentGRPCArray2MessageSegmentArray(in.Message))
+	if e != nil {
+		return nil, e
+	}
+	return r.ToGRPC(), e
+}
+
 //获取消息
 func (m *OnebotCliServerStub) GetMsg(ctx context.Context, in *wrapperspb.Int64Value) (*model.MessageDataResultGRPC, error) {
 	r, e := m.Impl.GetMsg(in.Value)
@@ -338,6 +353,35 @@ func (m *OnebotCliClientStub) SendPrivateMsg(msg *model.PrivateMsg) (*model.Send
 func (m *OnebotCliClientStub) SendGroupMsg(msg *model.GroupMsg) (*model.SendMessageResult, error) {
 	// 转发
 	resp, err := m.Client.SendGroupMsg(context.Background(), msg.ToGRPC())
+	if err != nil {
+		return nil, err
+	}
+	return resp.ToStruct(), err
+}
+
+//发送合并消息(群)
+func (m *OnebotCliClientStub) SendGroupForwardMessage(groupId int64, messages []*model.MessageSegment) (*model.SendGroupForwardMessageDataResult, error) {
+	// 转发
+	resp, err := m.Client.SendGroupForwardMessage(context.Background(), &SendGroupForwardMessageReq{
+		GroupId: groupId,
+		Message: model.MessageSegmentArray2MessageSegmentGRPCArray(messages),
+	})
+	if err != nil {
+		return nil, err
+	}
+	return resp.ToStruct(), err
+}
+
+//发送合并消息到群
+
+func (m *OnebotCliClientStub) SendGroupForwardMessageByRawMsg(groupId, userId int64, name string, messages []*model.MessageSegment) (*model.SendGroupForwardMessageDataResult, error) {
+	// 转发
+	resp, err := m.Client.SendGroupForwardMessageByRawMsg(context.Background(), &SendGroupForwardMessageByRawMsgReq{
+		GroupId: groupId,
+		UserId:  userId,
+		Name:    name,
+		Message: model.MessageSegmentArray2MessageSegmentGRPCArray(messages),
+	})
 	if err != nil {
 		return nil, err
 	}

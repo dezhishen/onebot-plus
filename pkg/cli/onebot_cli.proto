@@ -1,11 +1,13 @@
 syntax = "proto3";
 package cli;
+import "message_element.proto";
 import "onebot-sdk/pkg/proto/message.proto";
 import "onebot-sdk/pkg/proto/account.proto";
 import "onebot-sdk/pkg/proto/group.proto";
 import "onebot-sdk/pkg/proto/system.proto";
 import "google/protobuf/wrappers.proto";
 import "google/protobuf/empty.proto";
+
 option go_package="../cli";
 
 message GetStrangerInfoReq {
@@ -106,11 +108,28 @@ message GetGroupHonorInfoReq {
 	int64 group_id = 1;
 	string honor_type = 2;
 }
+
+message SendGroupForwardMessageReq {
+	int64 group_id = 1;
+	repeated model.MessageSegmentGRPC message = 2;
+}
+
+message SendGroupForwardMessageByRawMsgReq {
+	int64 group_id = 1;
+	int64 user_id = 2;
+	string name = 3;
+	repeated model.MessageSegmentGRPC message = 4;
+}
+
 service onebot_grpc_cli {
     //发送消息
 	rpc SendMsg(model.MsgForSendGRPC)returns(model.SendMessageResultGRPC);
 	//发送私聊消息
 	rpc SendPrivateMsg(model.PrivateMsgGRPC)returns (model.SendMessageResultGRPC);
+	//转发合并消息(群)
+	rpc SendGroupForwardMessage(SendGroupForwardMessageReq) returns (model.SendGroupForwardMessageDataResultGRPC);
+	//转发合并消息到群
+	rpc SendGroupForwardMessageByRawMsg(SendGroupForwardMessageByRawMsgReq) returns (model.SendGroupForwardMessageDataResultGRPC);
 	// 发送群消息
 	rpc SendGroupMsg(model.GroupMsgGRPC)returns (model.SendMessageResultGRPC);
 	//删除消息
