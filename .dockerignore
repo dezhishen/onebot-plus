@@ -1,0 +1,8 @@
+*.exe
+.vscode
+plugins
+fortune
+configs
+jrrp
+bili-live.db
+.bot.env
