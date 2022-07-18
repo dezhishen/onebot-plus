@@ -90,10 +90,8 @@ github.com/creack/pty v1.1.9/go.mod h1:oKZEueFk5CKHvIhNR5MUki03XCEU+Q6VDXinZuGJ3
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
-github.com/dezhishen/onebot-sdk v0.0.0-20220716113847-4e9647e3e2c1 h1:NTub77VmSXOyz3lQgw9sBxhYsc4grAotQCOS0ABcBBw=
-github.com/dezhishen/onebot-sdk v0.0.0-20220716113847-4e9647e3e2c1/go.mod h1:6QUuwA2jnGzTxF+ivPPdRgNeVqMhpg1hRQfRWZtOy/s=
-github.com/dezhishen/onebot-sdk v0.0.0-20220718132040-570dfe07811f h1:t8hPITejCtY2ASi5yi37eBhEMjEVUPhBKxnjtdweWuI=
-github.com/dezhishen/onebot-sdk v0.0.0-20220718132040-570dfe07811f/go.mod h1:6QUuwA2jnGzTxF+ivPPdRgNeVqMhpg1hRQfRWZtOy/s=
+github.com/dezhishen/onebot-sdk v0.0.0-20220718153852-997a503aeef1 h1:+itXQ9od+Ek1MeUdsH8V9avVXPYmiXAbC4h617AOwhE=
+github.com/dezhishen/onebot-sdk v0.0.0-20220718153852-997a503aeef1/go.mod h1:6QUuwA2jnGzTxF+ivPPdRgNeVqMhpg1hRQfRWZtOy/s=
 github.com/envoyproxy/go-control-plane v0.9.0/go.mod h1:YTl/9mNaCwkRvm6d1a2C3ymFceY/DCBVvsKhRF0iEA4=
 github.com/envoyproxy/go-control-plane v0.9.1-0.20191026205805-5f8ba28d4473/go.mod h1:YTl/9mNaCwkRvm6d1a2C3ymFceY/DCBVvsKhRF0iEA4=
 github.com/envoyproxy/go-control-plane v0.9.4/go.mod h1:6rpuAdCZL397s3pYoYcLgu1mIlRU8Am5FuJP05cCM98=
@@ -214,8 +212,6 @@ github.com/hashicorp/go-immutable-radix v1.3.1/go.mod h1:0y9vanUI8NX6FsYoO3zeMjh
 github.com/hashicorp/go-msgpack v0.5.3/go.mod h1:ahLV/dePpqEmjfWmKiqvPkv/twdG7iPBM1vqhUKIvfM=
 github.com/hashicorp/go-multierror v1.0.0/go.mod h1:dHtQlpGsu+cZNNAkkCN/P3hoUDHhCYQXV3UM06sGGrk=
 github.com/hashicorp/go-multierror v1.1.0/go.mod h1:spPvp8C1qA32ftKqdAHm4hHTbPw+vmowP0z+KUhOZdA=
-github.com/hashicorp/go-plugin v1.4.3 h1:DXmvivbWD5qdiBts9TpBC7BYL1Aia5sxbRgQB+v6UZM=
-github.com/hashicorp/go-plugin v1.4.3/go.mod h1:5fGEH17QVwTTcR0zV7yhDPLLmFX9YSZ38b18Udy6vYQ=
 github.com/hashicorp/go-plugin v1.4.4 h1:NVdrSdFRt3SkZtNckJ6tog7gbpRrcbOjQi/rgF7JYWQ=
 github.com/hashicorp/go-plugin v1.4.4/go.mod h1:viDMjcLJuDui6pXb8U4HVfb8AamCWhHGUjr2IrTF67s=
 github.com/hashicorp/go-retryablehttp v0.5.3/go.mod h1:9B5zBasrRhHXnJnui7y6sL7es7NDiJgTc6Er0maI1Xs=
