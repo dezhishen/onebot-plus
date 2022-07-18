@@ -454,7 +454,10 @@ func (m *onebotEventPluginGRPCClientStub) Init(onebotCli cli.OnebotCli) error {
 	} //{Impl: cli}
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
-		s = grpc.NewServer(opts...)
+		var finalOpts []grpc.ServerOption
+		finalOpts = append(finalOpts, opts...)
+		finalOpts = append(finalOpts, grpc.MaxRecvMsgSize(256*1024*1024), grpc.MaxSendMsgSize(256*1024*1024))
+		s = grpc.NewServer(finalOpts...)
 		cli.RegisterOnebotGrpcCliServer(s, messageCliServer)
 		return s
 	}
@@ -476,7 +479,10 @@ func (m *onebotEventPluginGRPCClientStub) BeforeExit(onebotCli cli.OnebotCli) er
 	} //{Impl: cli}
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
-		s = grpc.NewServer(opts...)
+		var finalOpts []grpc.ServerOption
+		finalOpts = append(finalOpts, opts...)
+		finalOpts = append(finalOpts, grpc.MaxRecvMsgSize(256*1024*1024), grpc.MaxSendMsgSize(256*1024*1024))
+		s = grpc.NewServer(finalOpts...)
 		cli.RegisterOnebotGrpcCliServer(s, messageCliServer)
 		return s
 	}
@@ -498,7 +504,10 @@ func (m *onebotEventPluginGRPCClientStub) MessagePrivate(req *model.EventMessage
 	} //{Impl: cli}
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
-		s = grpc.NewServer(opts...)
+		var finalOpts []grpc.ServerOption
+		finalOpts = append(finalOpts, opts...)
+		finalOpts = append(finalOpts, grpc.MaxRecvMsgSize(256*1024*1024), grpc.MaxSendMsgSize(256*1024*1024))
+		s = grpc.NewServer(finalOpts...)
 		cli.RegisterOnebotGrpcCliServer(s, messageCliServer)
 		return s
 	}
@@ -524,7 +533,10 @@ func (m *onebotEventPluginGRPCClientStub) MessageGroup(req *model.EventMessageGr
 	} //{Impl: cli}
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
-		s = grpc.NewServer(opts...)
+		var finalOpts []grpc.ServerOption
+		finalOpts = append(finalOpts, opts...)
+		finalOpts = append(finalOpts, grpc.MaxRecvMsgSize(256*1024*1024), grpc.MaxSendMsgSize(256*1024*1024))
+		s = grpc.NewServer(finalOpts...)
 		cli.RegisterOnebotGrpcCliServer(s, messageCliServer)
 		return s
 	}
@@ -550,7 +562,10 @@ func (m *onebotEventPluginGRPCClientStub) MetaLifecycle(req *model.EventMetaLife
 	} //{Impl: cli}
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
-		s = grpc.NewServer(opts...)
+		var finalOpts []grpc.ServerOption
+		finalOpts = append(finalOpts, opts...)
+		finalOpts = append(finalOpts, grpc.MaxRecvMsgSize(256*1024*1024), grpc.MaxSendMsgSize(256*1024*1024))
+		s = grpc.NewServer(finalOpts...)
 		cli.RegisterOnebotGrpcCliServer(s, messageCliServer)
 		return s
 	}
@@ -576,7 +591,10 @@ func (m *onebotEventPluginGRPCClientStub) MetaHeartbeat(req *model.EventMetaHear
 	} //{Impl: cli}
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
-		s = grpc.NewServer(opts...)
+		var finalOpts []grpc.ServerOption
+		finalOpts = append(finalOpts, opts...)
+		finalOpts = append(finalOpts, grpc.MaxRecvMsgSize(256*1024*1024), grpc.MaxSendMsgSize(256*1024*1024))
+		s = grpc.NewServer(finalOpts...)
 		cli.RegisterOnebotGrpcCliServer(s, messageCliServer)
 		return s
 	}
@@ -602,7 +620,10 @@ func (m *onebotEventPluginGRPCClientStub) NoticeGroupUpload(req *model.EventNoti
 	} //{Impl: cli}
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
-		s = grpc.NewServer(opts...)
+		var finalOpts []grpc.ServerOption
+		finalOpts = append(finalOpts, opts...)
+		finalOpts = append(finalOpts, grpc.MaxRecvMsgSize(256*1024*1024), grpc.MaxSendMsgSize(256*1024*1024))
+		s = grpc.NewServer(finalOpts...)
 		cli.RegisterOnebotGrpcCliServer(s, messageCliServer)
 		return s
 	}
@@ -628,7 +649,10 @@ func (m *onebotEventPluginGRPCClientStub) NoticeGroupAdmin(req *model.EventNotic
 	} //{Impl: cli}
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
-		s = grpc.NewServer(opts...)
+		var finalOpts []grpc.ServerOption
+		finalOpts = append(finalOpts, opts...)
+		finalOpts = append(finalOpts, grpc.MaxRecvMsgSize(256*1024*1024), grpc.MaxSendMsgSize(256*1024*1024))
+		s = grpc.NewServer(finalOpts...)
 		cli.RegisterOnebotGrpcCliServer(s, messageCliServer)
 		return s
 	}
@@ -654,7 +678,10 @@ func (m *onebotEventPluginGRPCClientStub) NoticeGroupDecrease(req *model.EventNo
 	} //{Impl: cli}
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
-		s = grpc.NewServer(opts...)
+		var finalOpts []grpc.ServerOption
+		finalOpts = append(finalOpts, opts...)
+		finalOpts = append(finalOpts, grpc.MaxRecvMsgSize(256*1024*1024), grpc.MaxSendMsgSize(256*1024*1024))
+		s = grpc.NewServer(finalOpts...)
 		cli.RegisterOnebotGrpcCliServer(s, messageCliServer)
 		return s
 	}
@@ -680,7 +707,10 @@ func (m *onebotEventPluginGRPCClientStub) NoticeGroupIncrease(req *model.EventNo
 	} //{Impl: cli}
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
-		s = grpc.NewServer(opts...)
+		var finalOpts []grpc.ServerOption
+		finalOpts = append(finalOpts, opts...)
+		finalOpts = append(finalOpts, grpc.MaxRecvMsgSize(256*1024*1024), grpc.MaxSendMsgSize(256*1024*1024))
+		s = grpc.NewServer(finalOpts...)
 		cli.RegisterOnebotGrpcCliServer(s, messageCliServer)
 		return s
 	}
@@ -706,7 +736,10 @@ func (m *onebotEventPluginGRPCClientStub) NoticeGroupBan(req *model.EventNoticeG
 	} //{Impl: cli}
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
-		s = grpc.NewServer(opts...)
+		var finalOpts []grpc.ServerOption
+		finalOpts = append(finalOpts, opts...)
+		finalOpts = append(finalOpts, grpc.MaxRecvMsgSize(256*1024*1024), grpc.MaxSendMsgSize(256*1024*1024))
+		s = grpc.NewServer(finalOpts...)
 		cli.RegisterOnebotGrpcCliServer(s, messageCliServer)
 		return s
 	}
@@ -732,7 +765,10 @@ func (m *onebotEventPluginGRPCClientStub) NoticeGroupRecall(req *model.EventNoti
 	} //{Impl: cli}
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
-		s = grpc.NewServer(opts...)
+		var finalOpts []grpc.ServerOption
+		finalOpts = append(finalOpts, opts...)
+		finalOpts = append(finalOpts, grpc.MaxRecvMsgSize(256*1024*1024), grpc.MaxSendMsgSize(256*1024*1024))
+		s = grpc.NewServer(finalOpts...)
 		cli.RegisterOnebotGrpcCliServer(s, messageCliServer)
 		return s
 	}
@@ -758,7 +794,10 @@ func (m *onebotEventPluginGRPCClientStub) NoticeGroupNotifyPoke(req *model.Event
 	} //{Impl: cli}
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
-		s = grpc.NewServer(opts...)
+		var finalOpts []grpc.ServerOption
+		finalOpts = append(finalOpts, opts...)
+		finalOpts = append(finalOpts, grpc.MaxRecvMsgSize(256*1024*1024), grpc.MaxSendMsgSize(256*1024*1024))
+		s = grpc.NewServer(finalOpts...)
 		cli.RegisterOnebotGrpcCliServer(s, messageCliServer)
 		return s
 	}
@@ -784,7 +823,10 @@ func (m *onebotEventPluginGRPCClientStub) NoticeGroupNotifyLuckyKing(req *model.
 	} //{Impl: cli}
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
-		s = grpc.NewServer(opts...)
+		var finalOpts []grpc.ServerOption
+		finalOpts = append(finalOpts, opts...)
+		finalOpts = append(finalOpts, grpc.MaxRecvMsgSize(256*1024*1024), grpc.MaxSendMsgSize(256*1024*1024))
+		s = grpc.NewServer(finalOpts...)
 		cli.RegisterOnebotGrpcCliServer(s, messageCliServer)
 		return s
 	}
@@ -810,7 +852,10 @@ func (m *onebotEventPluginGRPCClientStub) NoticeGroupNotifyHonor(req *model.Even
 	} //{Impl: cli}
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
-		s = grpc.NewServer(opts...)
+		var finalOpts []grpc.ServerOption
+		finalOpts = append(finalOpts, opts...)
+		finalOpts = append(finalOpts, grpc.MaxRecvMsgSize(256*1024*1024), grpc.MaxSendMsgSize(256*1024*1024))
+		s = grpc.NewServer(finalOpts...)
 		cli.RegisterOnebotGrpcCliServer(s, messageCliServer)
 		return s
 	}
@@ -836,7 +881,10 @@ func (m *onebotEventPluginGRPCClientStub) NoticeFriendAdd(req *model.EventNotice
 	} //{Impl: cli}
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
-		s = grpc.NewServer(opts...)
+		var finalOpts []grpc.ServerOption
+		finalOpts = append(finalOpts, opts...)
+		finalOpts = append(finalOpts, grpc.MaxRecvMsgSize(256*1024*1024), grpc.MaxSendMsgSize(256*1024*1024))
+		s = grpc.NewServer(finalOpts...)
 		cli.RegisterOnebotGrpcCliServer(s, messageCliServer)
 		return s
 	}
@@ -862,7 +910,10 @@ func (m *onebotEventPluginGRPCClientStub) NoticeFriendRecall(req *model.EventNot
 	} //{Impl: cli}
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
-		s = grpc.NewServer(opts...)
+		var finalOpts []grpc.ServerOption
+		finalOpts = append(finalOpts, opts...)
+		finalOpts = append(finalOpts, grpc.MaxRecvMsgSize(256*1024*1024), grpc.MaxSendMsgSize(256*1024*1024))
+		s = grpc.NewServer(finalOpts...)
 		cli.RegisterOnebotGrpcCliServer(s, messageCliServer)
 		return s
 	}
@@ -888,7 +939,10 @@ func (m *onebotEventPluginGRPCClientStub) RequestFriend(req *model.EventRequestF
 	} //{Impl: cli}
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
-		s = grpc.NewServer(opts...)
+		var finalOpts []grpc.ServerOption
+		finalOpts = append(finalOpts, opts...)
+		finalOpts = append(finalOpts, grpc.MaxRecvMsgSize(256*1024*1024), grpc.MaxSendMsgSize(256*1024*1024))
+		s = grpc.NewServer(finalOpts...)
 		cli.RegisterOnebotGrpcCliServer(s, messageCliServer)
 		return s
 	}
@@ -914,7 +968,10 @@ func (m *onebotEventPluginGRPCClientStub) RequestGroup(req *model.EventRequestGr
 	} //{Impl: cli}
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
-		s = grpc.NewServer(opts...)
+		var finalOpts []grpc.ServerOption
+		finalOpts = append(finalOpts, opts...)
+		finalOpts = append(finalOpts, grpc.MaxRecvMsgSize(256*1024*1024), grpc.MaxSendMsgSize(256*1024*1024))
+		s = grpc.NewServer(finalOpts...)
 		cli.RegisterOnebotGrpcCliServer(s, messageCliServer)
 		return s
 	}
