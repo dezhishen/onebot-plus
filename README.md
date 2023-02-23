@@ -16,6 +16,8 @@ onebot拓展平台
 **本项目仍在开发阶段，功能设计和实现可能会有变化**
 ## 功能
 ### 核心
+- [ ] secret支持
+- [ ] 正向websocket支持
 - [x] 引入[`dezhishen/onebot-sdk`](https://github.com/dezhishen/onebot-sdk)
 - [x] 引入[`hashicorp/go-plugin`](https://github.com/hashicorp/go-plugin)
 ### 将onebot-sdk中的API写成插件让其他插件可以调用
