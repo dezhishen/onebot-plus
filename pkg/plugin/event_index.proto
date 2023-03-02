@@ -1,0 +1,146 @@
+syntax = "proto3";
+package plugin;
+import "event_message.proto";
+import "event_meta.proto";
+import "event_notice.proto";
+import "event_request.proto";
+import "google/protobuf/empty.proto";
+option go_package="github.com/dezhishen/onebot-plus/pkg/plugin;plugin";
+
+message EventMessagePrivateGRPCWithOnebotApi { 
+    uint32 onebotApi = 1;
+    model.EventMessagePrivateGRPC message = 2;
+}
+
+message EventMessageGroupGRPCWithOnebotApi { 
+    uint32 onebotApi = 1;
+    model.EventMessageGroupGRPC message = 2;
+}
+message EventNoticeGroupUploadGRPCWithOnebotApi { 
+    uint32 onebotApi = 1;
+    model.EventNoticeGroupUploadGRPC message = 2;
+}
+
+message EventNoticeGroupAdminGRPCWithOnebotApi { 
+    uint32 onebotApi = 1;
+    model.EventNoticeGroupAdminGRPC message = 2;
+}
+
+message EventNoticeGroupDecreaseGRPCWithOnebotApi { 
+    uint32 onebotApi = 1;
+    model.EventNoticeGroupDecreaseGRPC message = 2;
+}
+
+message EventNoticeGroupIncreaseGRPCWithOnebotApi { 
+    uint32 onebotApi = 1;
+    model.EventNoticeGroupIncreaseGRPC message = 2;
+}
+
+message EventNoticeGroupBanGRPCWithOnebotApi { 
+    uint32 onebotApi = 1;
+    model.EventNoticeGroupBanGRPC message = 2;
+}
+
+message EventNoticeFriendAddGRPCWithOnebotApi { 
+    uint32 onebotApi = 1;
+    model.EventNoticeFriendAddGRPC message = 2;
+}
+
+message EventNoticeGroupRecallGRPCWithOnebotApi { 
+    uint32 onebotApi = 1;
+    model.EventNoticeGroupRecallGRPC message = 2;
+}
+
+message EventNoticeFriendRecallGRPCWithOnebotApi { 
+    uint32 onebotApi = 1;
+    model.EventNoticeFriendRecallGRPC message = 2;
+}
+
+message EventNoticeGroupNotifyPokeGRPCWithOnebotApi { 
+    uint32 onebotApi = 1;
+    model.EventNoticeGroupNotifyPokeGRPC message = 2;
+}
+
+message EventNoticeGroupNotifyHonorGRPCWithOnebotApi { 
+    uint32 onebotApi = 1;
+    model.EventNoticeGroupNotifyHonorGRPC message = 2;
+}
+
+message EventNoticeGroupNotifyLuckyKingGRPCWithOnebotApi { 
+    uint32 onebotApi = 1;
+    model.EventNoticeGroupNotifyLuckyKingGRPC message = 2;
+}
+
+message EventRequestFriendGRPCWithOnebotApi { 
+    uint32 onebotApi = 1;
+    model.EventRequestFriendGRPC message = 2;
+}
+
+message EventRequestGroupGRPCWithOnebotApi { 
+    uint32 onebotApi = 1;
+    model.EventRequestGroupGRPC message = 2;
+}
+
+message EventMetaLifecycleGRPCWithOnebotApi {
+    uint32 onebotApi = 1;
+    model.EventMetaLifecycleGRPC message = 2;
+}
+
+message EventMetaHeartbeatGRPCWithOnebotApi { 
+    uint32 onebotApi = 1;
+    model.EventMetaHeartbeatGRPC message = 2;
+}
+
+
+service EventCallbackGRPC {
+    // HandleMessagePrivate(data *model.EventMessagePrivate, onebotApi api.OnebotAPiClientInterface) error
+    rpc HandleMessagePrivate(EventMessagePrivateGRPCWithOnebotApi) returns (google.protobuf.Empty);
+
+	// HandleMessageGroup(data *model.EventMessageGroup, onebotApi api.OnebotAPiClientInterface) error
+    rpc HandleMessageGroup(EventMessageGroupGRPCWithOnebotApi) returns (google.protobuf.Empty);
+
+    // HandleNoticeGroupUpload(data *model.EventNoticeGroupUpload, onebotApi api.OnebotAPiClientInterface) error
+    rpc HandleNoticeGroupUpload(EventNoticeGroupUploadGRPCWithOnebotApi) returns (google.protobuf.Empty);
+
+	// HandleNoticeGroupAdmin(data *model.EventNoticeGroupAdmin, onebotApi api.OnebotAPiClientInterface) error
+    rpc HandleNoticeGroupAdmin(EventNoticeGroupAdminGRPCWithOnebotApi) returns (google.protobuf.Empty);
+
+	// HandleNoticeGroupDecrease(data *model.EventNoticeGroupDecrease, onebotApi api.OnebotAPiClientInterface) error
+    rpc HandleNoticeGroupDecrease(EventNoticeGroupDecreaseGRPCWithOnebotApi) returns (google.protobuf.Empty);
+
+	// HandleNoticeGroupIncrease(data *model.EventNoticeGroupIncrease, onebotApi api.OnebotAPiClientInterface) error
+    rpc HandleNoticeGroupIncrease(EventNoticeGroupIncreaseGRPCWithOnebotApi) returns (google.protobuf.Empty);
+
+	// HandleNoticeGroupBan(data *model.EventNoticeGroupBan, onebotApi api.OnebotAPiClientInterface) error
+	rpc HandleNoticeGroupBan(EventNoticeGroupBanGRPCWithOnebotApi) returns (google.protobuf.Empty);
+    
+    // HandleNoticeFriendAdd(data *model.EventNoticeFriendAdd, onebotApi api.OnebotAPiClientInterface) error
+    rpc HandleNoticeFriendAdd(EventNoticeFriendAddGRPCWithOnebotApi) returns (google.protobuf.Empty);
+
+	// HandleNoticeGroupRecall(data *model.EventNoticeGroupRecall, onebotApi api.OnebotAPiClientInterface) error
+    rpc HandleNoticeGroupRecall(EventNoticeGroupRecallGRPCWithOnebotApi) returns (google.protobuf.Empty);
+
+	// HandleNoticeFriendRecall(data *model.EventNoticeFriendRecall, onebotApi api.OnebotAPiClientInterface) error
+    rpc HandleNoticeFriendRecall(EventNoticeFriendRecallGRPCWithOnebotApi) returns (google.protobuf.Empty);
+
+	// HandleNoticeGroupNotifyPoke(data *model.EventNoticeGroupNotifyPoke, onebotApi api.OnebotAPiClientInterface) error
+    rpc HandleNoticeGroupNotifyPoke(EventNoticeGroupNotifyPokeGRPCWithOnebotApi) returns (google.protobuf.Empty);
+
+	// HandleNoticeGroupNotifyHonor(data *model.EventNoticeGroupNotifyHonor, onebotApi api.OnebotAPiClientInterface) error
+    rpc HandleNoticeGroupNotifyHonor(EventNoticeGroupNotifyHonorGRPCWithOnebotApi) returns (google.protobuf.Empty);
+
+	// HandleNoticeGroupNotifyLuckyKing(data *model.EventNoticeGroupNotifyLuckyKing, onebotApi api.OnebotAPiClientInterface) error
+    rpc HandleNoticeGroupNotifyLuckyKing(EventNoticeGroupNotifyLuckyKingGRPCWithOnebotApi) returns (google.protobuf.Empty);
+
+	// HandleRequestFriend(data *model.EventRequestFriend, onebotApi api.OnebotAPiClientInterface) error
+    rpc HandleRequestFriend(EventRequestFriendGRPCWithOnebotApi) returns (google.protobuf.Empty);
+
+	// HandleRequestGroup(data *model.EventRequestGroup, onebotApi api.OnebotAPiClientInterface) error
+    rpc HandleRequestGroup(EventRequestGroupGRPCWithOnebotApi) returns (google.protobuf.Empty);
+
+	// HandleMetaLifecycle(data *model.EventMetaLifecycle, onebotApi api.OnebotAPiClientInterface) error
+    rpc HandleMetaLifecycle(EventMetaLifecycleGRPCWithOnebotApi) returns (google.protobuf.Empty);
+
+	// HandleMetaHeartBeat(data *model.EventMetaHeartbeat, onebotApi api.OnebotAPiClientInterface) error
+    rpc HandleMetaHeartBeat(EventMetaHeartbeatGRPCWithOnebotApi) returns (google.protobuf.Empty);
+}

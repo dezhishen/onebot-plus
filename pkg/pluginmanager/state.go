@@ -3,8 +3,8 @@ package pluginmanager
 import (
 	"fmt"
 
-	"github.com/dezhishen/onebot-plus/pkg/cli"
 	"github.com/dezhishen/onebot-plus/pkg/plugin"
+	"github.com/dezhishen/onebot-sdk/pkg/api"
 
 	rpcPlugin "github.com/hashicorp/go-plugin"
 )
@@ -20,10 +20,10 @@ const (
 )
 
 type containerOfPlugin struct {
-	Plugin    plugin.OnebotEventPlugin
+	Plugin    plugin.OnebotPlugin
 	Status    PluginStatus
 	RPClient  *rpcPlugin.Client
-	OnebotCli cli.OnebotCli
+	OnebotCli api.OnebotAPiClientInterface
 }
 
 func GetPluginById(id string) *containerOfPlugin {
@@ -44,11 +44,7 @@ func GetAllPlugins() []*containerOfPlugin {
 	return result
 }
 
-func Register(filePath string, plugin plugin.OnebotEventPlugin, rpcCli *rpcPlugin.Client, onebotCli cli.OnebotCli) error {
-	err := plugin.Init(onebotCli)
-	if err != nil {
-		return err
-	}
+func Register(filePath string, plugin plugin.OnebotPlugin, rpcCli *rpcPlugin.Client, onebotCli api.OnebotAPiClientInterface) error {
 	value := &containerOfPlugin{
 		Plugin:    plugin,
 		Status:    PluginStatusHealthy,

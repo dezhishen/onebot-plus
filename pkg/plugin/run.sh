@@ -1,18 +1,22 @@
-MYDIR=C:/github/onebot-plus/pkg/plugin
+# !/bin/bash
+MYDIR=`dirname $0`
 INCLUDE=$GOPATH/include
+SDK_PATH=$MYDIR/../../../onebot-sdk
+echo $MYDIR
+echo $INCLUDE
+echo $SDK_PATH
 for file in ./*
 do
     if [ "${file##*.}"x = "proto"x ]; then
-        # a="${file/message_element_/}"
-        # b="${a/\.\//}"
-        # c="${b/.proto/}"
-        # echo "case \"$c\":
-		# result.Data = &MessageSegmentGRPC_MessageElement${c^}{
-		# 	MessageElement${c^}: msg.Data.(*MessageElement${c^}).ToGRPC(),
-		# }"
-        # echo "$file" 
-        #echo "protoc --proto_path=$INCLUDE --proto_path=$MYDIR --go_out=plugins=grpc:\model\  $MYDIR/$file"
-        protoc --proto_path=$INCLUDE --proto_path=C:/github --proto_path=C:/github/onebot-sdk/pkg/proto --proto_path=$MYDIR --go_out=plugins=grpc:../plugin  $MYDIR/$file
-        #echo "$x $file $file = 2;"
+        echo "$file"
+        protoc --proto_path=$INCLUDE \
+        --proto_path=$MYDIR \
+        --proto_path=${SDK_PATH}/pkg/model \
+        --go_out=plugins=grpc:./  \
+        $file
+
     fi
 done   
+
+mv ./github.com/dezhishen/onebot-plus/pkg/plugin/*.pb.go ./
+rm -rf ./github.com

@@ -43,6 +43,5 @@ func getAllFiles(path string) (files []string, err error) {
 		temp, _ := getAllFiles(subDir)
 		files = append(files, temp...)
 	}
-
 	return files, nil
 }
