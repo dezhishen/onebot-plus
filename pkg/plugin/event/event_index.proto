@@ -1,11 +1,11 @@
 syntax = "proto3";
-package plugin;
+package event;
 import "event_message.proto";
 import "event_meta.proto";
 import "event_notice.proto";
 import "event_request.proto";
 import "google/protobuf/empty.proto";
-option go_package="github.com/dezhishen/onebot-plus/pkg/plugin;plugin";
+option go_package="github.com/dezhishen/onebot-plus/pkg/plugin/event;event";
 
 message EventMessagePrivateGRPCWithOnebotApi { 
     uint32 onebotApi = 1;
@@ -92,7 +92,7 @@ message EventMetaHeartbeatGRPCWithOnebotApi {
 }
 
 
-service EventCallbackGRPC {
+service OnebotEventCallbackGRPC {
     // HandleMessagePrivate(data *model.EventMessagePrivate, onebotApi api.OnebotAPiClientInterface) error
     rpc HandleMessagePrivate(EventMessagePrivateGRPCWithOnebotApi) returns (google.protobuf.Empty);
 

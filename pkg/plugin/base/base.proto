@@ -1,0 +1,15 @@
+syntax = "proto3";
+package base;
+import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
+option go_package="github.com/dezhishen/onebot-plus/pkg/plugin/base;base";
+
+
+service OnebotPluginBaseGRPC {
+    rpc Id(google.protobuf.Empty) returns (google.protobuf.StringValue);
+    rpc Name(google.protobuf.Empty) returns (google.protobuf.StringValue);
+    rpc Description(google.protobuf.Empty) returns (google.protobuf.StringValue);
+    rpc Help(google.protobuf.Empty) returns (google.protobuf.StringValue);
+    rpc Init(google.protobuf.UInt32Value) returns (google.protobuf.Empty);
+    rpc BeforeExit(google.protobuf.UInt32Value) returns (google.protobuf.Empty);
+}

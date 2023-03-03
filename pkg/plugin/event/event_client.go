@@ -1,24 +1,23 @@
-package plugin
+package event
 
 import (
 	"context"
 
-	"github.com/dezhishen/onebot-sdk/pkg/api"
-	_ "github.com/dezhishen/onebot-sdk/pkg/event"
+	"github.com/dezhishen/onebot-plus/pkg/plugin/api"
+	sdk_api "github.com/dezhishen/onebot-sdk/pkg/api"
 	"github.com/dezhishen/onebot-sdk/pkg/model"
 	"github.com/hashicorp/go-plugin"
 	"google.golang.org/grpc"
 )
 
 // 业务接口的实现，通过gRPC客户端转发请求给插件进程
-type OnebotEventClientStub struct {
+type OnebotEventCallbackClientStub struct {
 	broker *plugin.GRPCBroker
-	client EventCallbackGRPCClient
-	// Client EventCallbackGRPCServer
+	client OnebotEventCallbackGRPCClient
 }
 
-func (eCli *OnebotEventClientStub) HandleMessagePrivate(data *model.EventMessagePrivate, onebotApi api.OnebotAPiClientInterface) error {
-	oneApiServer := &OnebotApiServerStub{
+func (eCli *OnebotEventCallbackClientStub) HandleMessagePrivate(data *model.EventMessagePrivate, onebotApi sdk_api.OnebotAPiClientInterface) error {
+	oneApiServer := &api.OnebotApiServerStub{
 		Impl: onebotApi,
 	}
 	var s *grpc.Server
@@ -27,7 +26,7 @@ func (eCli *OnebotEventClientStub) HandleMessagePrivate(data *model.EventMessage
 		finalOpts = append(finalOpts, opts...)
 		finalOpts = append(finalOpts, grpc.MaxRecvMsgSize(256*1024*1024), grpc.MaxSendMsgSize(256*1024*1024))
 		s = grpc.NewServer(finalOpts...)
-		RegisterOnebotApiGRPCServiceServer(s, oneApiServer)
+		api.RegisterOnebotApiGRPCServiceServer(s, oneApiServer)
 		return s
 	}
 	brokerID := eCli.broker.NextId()
@@ -44,15 +43,15 @@ func (eCli *OnebotEventClientStub) HandleMessagePrivate(data *model.EventMessage
 	return nil
 }
 
-func (eCli *OnebotEventClientStub) HandleMessageGroup(data *model.EventMessageGroup, onebotApi api.OnebotAPiClientInterface) error {
+func (eCli *OnebotEventCallbackClientStub) HandleMessageGroup(data *model.EventMessageGroup, onebotApi sdk_api.OnebotAPiClientInterface) error {
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
 		var finalOpts []grpc.ServerOption
 		finalOpts = append(finalOpts, opts...)
 		finalOpts = append(finalOpts, grpc.MaxRecvMsgSize(256*1024*1024), grpc.MaxSendMsgSize(256*1024*1024))
 		s = grpc.NewServer(finalOpts...)
-		RegisterOnebotApiGRPCServiceServer(s,
-			&OnebotApiServerStub{
+		api.RegisterOnebotApiGRPCServiceServer(s,
+			&api.OnebotApiServerStub{
 				Impl: onebotApi,
 			},
 		)
@@ -72,15 +71,15 @@ func (eCli *OnebotEventClientStub) HandleMessageGroup(data *model.EventMessageGr
 	return nil
 }
 
-func (eCli *OnebotEventClientStub) HandleNoticeGroupUpload(data *model.EventNoticeGroupUpload, onebotApi api.OnebotAPiClientInterface) error {
+func (eCli *OnebotEventCallbackClientStub) HandleNoticeGroupUpload(data *model.EventNoticeGroupUpload, onebotApi sdk_api.OnebotAPiClientInterface) error {
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
 		var finalOpts []grpc.ServerOption
 		finalOpts = append(finalOpts, opts...)
 		finalOpts = append(finalOpts, grpc.MaxRecvMsgSize(256*1024*1024), grpc.MaxSendMsgSize(256*1024*1024))
 		s = grpc.NewServer(finalOpts...)
-		RegisterOnebotApiGRPCServiceServer(s,
-			&OnebotApiServerStub{
+		api.RegisterOnebotApiGRPCServiceServer(s,
+			&api.OnebotApiServerStub{
 				Impl: onebotApi,
 			},
 		)
@@ -100,15 +99,15 @@ func (eCli *OnebotEventClientStub) HandleNoticeGroupUpload(data *model.EventNoti
 	return nil
 }
 
-func (eCli *OnebotEventClientStub) HandleNoticeGroupAdmin(data *model.EventNoticeGroupAdmin, onebotApi api.OnebotAPiClientInterface) error {
+func (eCli *OnebotEventCallbackClientStub) HandleNoticeGroupAdmin(data *model.EventNoticeGroupAdmin, onebotApi sdk_api.OnebotAPiClientInterface) error {
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
 		var finalOpts []grpc.ServerOption
 		finalOpts = append(finalOpts, opts...)
 		finalOpts = append(finalOpts, grpc.MaxRecvMsgSize(256*1024*1024), grpc.MaxSendMsgSize(256*1024*1024))
 		s = grpc.NewServer(finalOpts...)
-		RegisterOnebotApiGRPCServiceServer(s,
-			&OnebotApiServerStub{
+		api.RegisterOnebotApiGRPCServiceServer(s,
+			&api.OnebotApiServerStub{
 				Impl: onebotApi,
 			},
 		)
@@ -128,15 +127,15 @@ func (eCli *OnebotEventClientStub) HandleNoticeGroupAdmin(data *model.EventNotic
 	return nil
 }
 
-func (eCli *OnebotEventClientStub) HandleNoticeGroupDecrease(data *model.EventNoticeGroupDecrease, onebotApi api.OnebotAPiClientInterface) error {
+func (eCli *OnebotEventCallbackClientStub) HandleNoticeGroupDecrease(data *model.EventNoticeGroupDecrease, onebotApi sdk_api.OnebotAPiClientInterface) error {
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
 		var finalOpts []grpc.ServerOption
 		finalOpts = append(finalOpts, opts...)
 		finalOpts = append(finalOpts, grpc.MaxRecvMsgSize(256*1024*1024), grpc.MaxSendMsgSize(256*1024*1024))
 		s = grpc.NewServer(finalOpts...)
-		RegisterOnebotApiGRPCServiceServer(s,
-			&OnebotApiServerStub{
+		api.RegisterOnebotApiGRPCServiceServer(s,
+			&api.OnebotApiServerStub{
 				Impl: onebotApi,
 			},
 		)
@@ -156,15 +155,15 @@ func (eCli *OnebotEventClientStub) HandleNoticeGroupDecrease(data *model.EventNo
 	return nil
 }
 
-func (eCli *OnebotEventClientStub) HandleNoticeGroupIncrease(data *model.EventNoticeGroupIncrease, onebotApi api.OnebotAPiClientInterface) error {
+func (eCli *OnebotEventCallbackClientStub) HandleNoticeGroupIncrease(data *model.EventNoticeGroupIncrease, onebotApi sdk_api.OnebotAPiClientInterface) error {
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
 		var finalOpts []grpc.ServerOption
 		finalOpts = append(finalOpts, opts...)
 		finalOpts = append(finalOpts, grpc.MaxRecvMsgSize(256*1024*1024), grpc.MaxSendMsgSize(256*1024*1024))
 		s = grpc.NewServer(finalOpts...)
-		RegisterOnebotApiGRPCServiceServer(s,
-			&OnebotApiServerStub{
+		api.RegisterOnebotApiGRPCServiceServer(s,
+			&api.OnebotApiServerStub{
 				Impl: onebotApi,
 			},
 		)
@@ -184,15 +183,15 @@ func (eCli *OnebotEventClientStub) HandleNoticeGroupIncrease(data *model.EventNo
 	return nil
 }
 
-func (eCli *OnebotEventClientStub) HandleNoticeGroupBan(data *model.EventNoticeGroupBan, onebotApi api.OnebotAPiClientInterface) error {
+func (eCli *OnebotEventCallbackClientStub) HandleNoticeGroupBan(data *model.EventNoticeGroupBan, onebotApi sdk_api.OnebotAPiClientInterface) error {
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
 		var finalOpts []grpc.ServerOption
 		finalOpts = append(finalOpts, opts...)
 		finalOpts = append(finalOpts, grpc.MaxRecvMsgSize(256*1024*1024), grpc.MaxSendMsgSize(256*1024*1024))
 		s = grpc.NewServer(finalOpts...)
-		RegisterOnebotApiGRPCServiceServer(s,
-			&OnebotApiServerStub{
+		api.RegisterOnebotApiGRPCServiceServer(s,
+			&api.OnebotApiServerStub{
 				Impl: onebotApi,
 			},
 		)
@@ -212,15 +211,15 @@ func (eCli *OnebotEventClientStub) HandleNoticeGroupBan(data *model.EventNoticeG
 	return nil
 }
 
-func (eCli *OnebotEventClientStub) HandleNoticeFriendAdd(data *model.EventNoticeFriendAdd, onebotApi api.OnebotAPiClientInterface) error {
+func (eCli *OnebotEventCallbackClientStub) HandleNoticeFriendAdd(data *model.EventNoticeFriendAdd, onebotApi sdk_api.OnebotAPiClientInterface) error {
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
 		var finalOpts []grpc.ServerOption
 		finalOpts = append(finalOpts, opts...)
 		finalOpts = append(finalOpts, grpc.MaxRecvMsgSize(256*1024*1024), grpc.MaxSendMsgSize(256*1024*1024))
 		s = grpc.NewServer(finalOpts...)
-		RegisterOnebotApiGRPCServiceServer(s,
-			&OnebotApiServerStub{
+		api.RegisterOnebotApiGRPCServiceServer(s,
+			&api.OnebotApiServerStub{
 				Impl: onebotApi,
 			},
 		)
@@ -241,15 +240,15 @@ func (eCli *OnebotEventClientStub) HandleNoticeFriendAdd(data *model.EventNotice
 
 }
 
-func (eCli *OnebotEventClientStub) HandleNoticeGroupRecall(data *model.EventNoticeGroupRecall, onebotApi api.OnebotAPiClientInterface) error {
+func (eCli *OnebotEventCallbackClientStub) HandleNoticeGroupRecall(data *model.EventNoticeGroupRecall, onebotApi sdk_api.OnebotAPiClientInterface) error {
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
 		var finalOpts []grpc.ServerOption
 		finalOpts = append(finalOpts, opts...)
 		finalOpts = append(finalOpts, grpc.MaxRecvMsgSize(256*1024*1024), grpc.MaxSendMsgSize(256*1024*1024))
 		s = grpc.NewServer(finalOpts...)
-		RegisterOnebotApiGRPCServiceServer(s,
-			&OnebotApiServerStub{
+		api.RegisterOnebotApiGRPCServiceServer(s,
+			&api.OnebotApiServerStub{
 				Impl: onebotApi,
 			},
 		)
@@ -269,15 +268,15 @@ func (eCli *OnebotEventClientStub) HandleNoticeGroupRecall(data *model.EventNoti
 	return nil
 }
 
-func (eCli *OnebotEventClientStub) HandleNoticeFriendRecall(data *model.EventNoticeFriendRecall, onebotApi api.OnebotAPiClientInterface) error {
+func (eCli *OnebotEventCallbackClientStub) HandleNoticeFriendRecall(data *model.EventNoticeFriendRecall, onebotApi sdk_api.OnebotAPiClientInterface) error {
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
 		var finalOpts []grpc.ServerOption
 		finalOpts = append(finalOpts, opts...)
 		finalOpts = append(finalOpts, grpc.MaxRecvMsgSize(256*1024*1024), grpc.MaxSendMsgSize(256*1024*1024))
 		s = grpc.NewServer(finalOpts...)
-		RegisterOnebotApiGRPCServiceServer(s,
-			&OnebotApiServerStub{
+		api.RegisterOnebotApiGRPCServiceServer(s,
+			&api.OnebotApiServerStub{
 				Impl: onebotApi,
 			},
 		)
@@ -298,15 +297,15 @@ func (eCli *OnebotEventClientStub) HandleNoticeFriendRecall(data *model.EventNot
 
 }
 
-func (eCli *OnebotEventClientStub) HandleNoticeGroupNotifyPoke(data *model.EventNoticeGroupNotifyPoke, onebotApi api.OnebotAPiClientInterface) error {
+func (eCli *OnebotEventCallbackClientStub) HandleNoticeGroupNotifyPoke(data *model.EventNoticeGroupNotifyPoke, onebotApi sdk_api.OnebotAPiClientInterface) error {
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
 		var finalOpts []grpc.ServerOption
 		finalOpts = append(finalOpts, opts...)
 		finalOpts = append(finalOpts, grpc.MaxRecvMsgSize(256*1024*1024), grpc.MaxSendMsgSize(256*1024*1024))
 		s = grpc.NewServer(finalOpts...)
-		RegisterOnebotApiGRPCServiceServer(s,
-			&OnebotApiServerStub{
+		api.RegisterOnebotApiGRPCServiceServer(s,
+			&api.OnebotApiServerStub{
 				Impl: onebotApi,
 			},
 		)
@@ -326,15 +325,15 @@ func (eCli *OnebotEventClientStub) HandleNoticeGroupNotifyPoke(data *model.Event
 	return nil
 }
 
-func (eCli *OnebotEventClientStub) HandleNoticeGroupNotifyHonor(data *model.EventNoticeGroupNotifyHonor, onebotApi api.OnebotAPiClientInterface) error {
+func (eCli *OnebotEventCallbackClientStub) HandleNoticeGroupNotifyHonor(data *model.EventNoticeGroupNotifyHonor, onebotApi sdk_api.OnebotAPiClientInterface) error {
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
 		var finalOpts []grpc.ServerOption
 		finalOpts = append(finalOpts, opts...)
 		finalOpts = append(finalOpts, grpc.MaxRecvMsgSize(256*1024*1024), grpc.MaxSendMsgSize(256*1024*1024))
 		s = grpc.NewServer(finalOpts...)
-		RegisterOnebotApiGRPCServiceServer(s,
-			&OnebotApiServerStub{
+		api.RegisterOnebotApiGRPCServiceServer(s,
+			&api.OnebotApiServerStub{
 				Impl: onebotApi,
 			},
 		)
@@ -354,15 +353,15 @@ func (eCli *OnebotEventClientStub) HandleNoticeGroupNotifyHonor(data *model.Even
 	return nil
 }
 
-func (eCli *OnebotEventClientStub) HandleNoticeGroupNotifyLuckyKing(data *model.EventNoticeGroupNotifyLuckyKing, onebotApi api.OnebotAPiClientInterface) error {
+func (eCli *OnebotEventCallbackClientStub) HandleNoticeGroupNotifyLuckyKing(data *model.EventNoticeGroupNotifyLuckyKing, onebotApi sdk_api.OnebotAPiClientInterface) error {
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
 		var finalOpts []grpc.ServerOption
 		finalOpts = append(finalOpts, opts...)
 		finalOpts = append(finalOpts, grpc.MaxRecvMsgSize(256*1024*1024), grpc.MaxSendMsgSize(256*1024*1024))
 		s = grpc.NewServer(finalOpts...)
-		RegisterOnebotApiGRPCServiceServer(s,
-			&OnebotApiServerStub{
+		api.RegisterOnebotApiGRPCServiceServer(s,
+			&api.OnebotApiServerStub{
 				Impl: onebotApi,
 			},
 		)
@@ -382,15 +381,15 @@ func (eCli *OnebotEventClientStub) HandleNoticeGroupNotifyLuckyKing(data *model.
 	return nil
 }
 
-func (eCli *OnebotEventClientStub) HandleRequestFriend(data *model.EventRequestFriend, onebotApi api.OnebotAPiClientInterface) error {
+func (eCli *OnebotEventCallbackClientStub) HandleRequestFriend(data *model.EventRequestFriend, onebotApi sdk_api.OnebotAPiClientInterface) error {
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
 		var finalOpts []grpc.ServerOption
 		finalOpts = append(finalOpts, opts...)
 		finalOpts = append(finalOpts, grpc.MaxRecvMsgSize(256*1024*1024), grpc.MaxSendMsgSize(256*1024*1024))
 		s = grpc.NewServer(finalOpts...)
-		RegisterOnebotApiGRPCServiceServer(s,
-			&OnebotApiServerStub{
+		api.RegisterOnebotApiGRPCServiceServer(s,
+			&api.OnebotApiServerStub{
 				Impl: onebotApi,
 			},
 		)
@@ -410,15 +409,15 @@ func (eCli *OnebotEventClientStub) HandleRequestFriend(data *model.EventRequestF
 	return nil
 }
 
-func (eCli *OnebotEventClientStub) HandleRequestGroup(data *model.EventRequestGroup, onebotApi api.OnebotAPiClientInterface) error {
+func (eCli *OnebotEventCallbackClientStub) HandleRequestGroup(data *model.EventRequestGroup, onebotApi sdk_api.OnebotAPiClientInterface) error {
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
 		var finalOpts []grpc.ServerOption
 		finalOpts = append(finalOpts, opts...)
 		finalOpts = append(finalOpts, grpc.MaxRecvMsgSize(256*1024*1024), grpc.MaxSendMsgSize(256*1024*1024))
 		s = grpc.NewServer(finalOpts...)
-		RegisterOnebotApiGRPCServiceServer(s,
-			&OnebotApiServerStub{
+		api.RegisterOnebotApiGRPCServiceServer(s,
+			&api.OnebotApiServerStub{
 				Impl: onebotApi,
 			},
 		)
@@ -438,15 +437,15 @@ func (eCli *OnebotEventClientStub) HandleRequestGroup(data *model.EventRequestGr
 	return nil
 }
 
-func (eCli *OnebotEventClientStub) HandleMetaLifecycle(data *model.EventMetaLifecycle, onebotApi api.OnebotAPiClientInterface) error {
+func (eCli *OnebotEventCallbackClientStub) HandleMetaLifecycle(data *model.EventMetaLifecycle, onebotApi sdk_api.OnebotAPiClientInterface) error {
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
 		var finalOpts []grpc.ServerOption
 		finalOpts = append(finalOpts, opts...)
 		finalOpts = append(finalOpts, grpc.MaxRecvMsgSize(256*1024*1024), grpc.MaxSendMsgSize(256*1024*1024))
 		s = grpc.NewServer(finalOpts...)
-		RegisterOnebotApiGRPCServiceServer(s,
-			&OnebotApiServerStub{
+		api.RegisterOnebotApiGRPCServiceServer(s,
+			&api.OnebotApiServerStub{
 				Impl: onebotApi,
 			},
 		)
@@ -466,15 +465,15 @@ func (eCli *OnebotEventClientStub) HandleMetaLifecycle(data *model.EventMetaLife
 	return nil
 }
 
-func (eCli *OnebotEventClientStub) HandleMetaHeartBeat(data *model.EventMetaHeartbeat, onebotApi api.OnebotAPiClientInterface) error {
+func (eCli *OnebotEventCallbackClientStub) HandleMetaHeartBeat(data *model.EventMetaHeartbeat, onebotApi sdk_api.OnebotAPiClientInterface) error {
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
 		var finalOpts []grpc.ServerOption
 		finalOpts = append(finalOpts, opts...)
 		finalOpts = append(finalOpts, grpc.MaxRecvMsgSize(256*1024*1024), grpc.MaxSendMsgSize(256*1024*1024))
 		s = grpc.NewServer(finalOpts...)
-		RegisterOnebotApiGRPCServiceServer(s,
-			&OnebotApiServerStub{
+		api.RegisterOnebotApiGRPCServiceServer(s,
+			&api.OnebotApiServerStub{
 				Impl: onebotApi,
 			},
 		)

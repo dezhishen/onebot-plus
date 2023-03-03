@@ -1,4 +1,4 @@
-package plugin
+package event
 
 import (
 	"github.com/dezhishen/onebot-sdk/pkg/api"

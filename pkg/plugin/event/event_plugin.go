@@ -1,4 +1,4 @@
-package plugin
+package event
 
 import (
 	"context"
@@ -6,9 +6,6 @@ import (
 	"github.com/hashicorp/go-plugin"
 	"google.golang.org/grpc"
 )
-
-type OnebotEventInterface interface {
-}
 
 type OnebotEventGRPCPlugin struct {
 	// 需要嵌入插件接口
@@ -20,10 +17,10 @@ type OnebotEventGRPCPlugin struct {
 // 插件实现GRPC的接口
 func (p *OnebotEventGRPCPlugin) GRPCServer(broker *plugin.GRPCBroker, s *grpc.Server) error {
 	// svcStub := &On{Impl: p.Impl}
-	svcStub := &OnebotEventServerStub{
+	svcStub := &OnebotEventCallbackServerStub{
 		Impl: p.Impl,
 	}
-	RegisterEventCallbackGRPCServer(s, svcStub)
+	RegisterOnebotEventCallbackGRPCServer(s, svcStub)
 	return nil
 }
 
@@ -33,5 +30,5 @@ func (p *OnebotEventGRPCPlugin) GRPCClient(
 	broker *plugin.GRPCBroker,
 	c *grpc.ClientConn,
 ) (interface{}, error) {
-	return &OnebotEventClientStub{client: NewEventCallbackGRPCClient(c)}, nil
+	return &OnebotEventCallbackClientStub{client: NewOnebotEventCallbackGRPCClient(c)}, nil
 }
