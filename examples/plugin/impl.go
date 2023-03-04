@@ -22,11 +22,19 @@ func main() {
 			logrus.Infof(result.Data.Nickname)
 			return nil
 		}).
-		HandleMessagePrivate(func(data *model.EventMessagePrivate, onebotApi api.OnebotApiClientInterface) error {
-			onebotApi.SendPrivateMsg(
-				&model.PrivateMsg{
-					UserId:  data.Sender.UserId,
-					Message: data.Message,
+		HandleMessageGroup(func(data *model.EventMessageGroup, onebotApi api.OnebotApiClientInterface) error {
+			var msgs []*model.MessageSegment
+			msgs = append(msgs, &model.MessageSegment{
+				Type: "text",
+				Data: &model.MessageElementText{
+					Text: "你好,我复读机\n",
+				},
+			})
+			msg := append(msgs, data.Message...)
+			onebotApi.SendGroupMsg(
+				&model.GroupMsg{
+					GroupId: data.GroupId,
+					Message: msg,
 				},
 			)
 			return nil

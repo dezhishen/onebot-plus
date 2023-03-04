@@ -9,6 +9,10 @@ github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/dezhishen/onebot-sdk v0.0.0-20230304124603-b7728565d59e h1:gGqRrd22Qq9z+3NJ6ehnmKTrguHbCXUssZG0iGfSXKE=
 github.com/dezhishen/onebot-sdk v0.0.0-20230304124603-b7728565d59e/go.mod h1:/bS/UXOPgePagyd5+eH0oJPAM4mZlbrL+XofhUbRLHE=
+github.com/dezhishen/onebot-sdk v0.0.0-20230304140806-72a8fe89d30a h1:zXzy4CzPC50LoTm3L23+Gp5X4n3ckGgHjN4SkVEgZbs=
+github.com/dezhishen/onebot-sdk v0.0.0-20230304140806-72a8fe89d30a/go.mod h1:/bS/UXOPgePagyd5+eH0oJPAM4mZlbrL+XofhUbRLHE=
+github.com/dezhishen/onebot-sdk v0.0.0-20230304143804-a785125e5e78 h1:FEHRhko/+5jzldk1x9IaOPXW8XmWqj0IAKqtEPBlG+4=
+github.com/dezhishen/onebot-sdk v0.0.0-20230304143804-a785125e5e78/go.mod h1:JlXjYb5+aQ7AWqVimbpAK/pEJmWpAqlRODYfn48qk3Q=
 github.com/fatih/color v1.7.0/go.mod h1:Zm6kSWBoL9eyXnKyktHP6abPY2pDugNf5KwzbycvMj4=
 github.com/fatih/color v1.13.0 h1:8LOYc1KYPPmyKMuN8QV2DNRWNbLo6LZ0iLs8+mlH53w=
 github.com/fatih/color v1.13.0/go.mod h1:kLAiJbzzSOZDVNGyDpeOxJ47H46qBXwg5ILebYFFOfk=

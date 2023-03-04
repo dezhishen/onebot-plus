@@ -50,6 +50,7 @@ func Start(ctx context.Context) error {
 	if err != nil {
 		return err
 	}
+	// into
 	for _, p := range GetAllPlugins() {
 		err := p.Plugin.Init(channelCli)
 		if err != nil {
@@ -63,23 +64,14 @@ func Start(ctx context.Context) error {
 			p.RPClient.Kill()
 		}
 	}()
-	// listen callback
-	eventCli.ListenMessageGroup(func(data model.EventMessageGroup) error {
-		plugins := GetAllPlugins()
-		for _, p := range plugins {
-			// recover
-			defer func() {
-				if err := recover(); err != nil {
-					logrus.Error(err)
-				}
-			}()
-			err := p.Plugin.HandleMessageGroup(&data, channelCli)
-			if err != nil {
-				logrus.Error(err)
-			}
-		}
-		return nil
-	})
+	err = StartListenEvent(ctx, eventCli, channelCli)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+func StartListenEvent(ctx context.Context, eventCli *event.OnebotEventClient, apiCli api.OnebotApiClientInterface) error {
 	eventCli.ListenMessagePrivate(
 		func(data model.EventMessagePrivate) error {
 			plugins := GetAllPlugins()
@@ -90,7 +82,7 @@ func Start(ctx context.Context) error {
 						logrus.Error(err)
 					}
 				}()
-				err := p.Plugin.HandleMessagePrivate(&data, channelCli)
+				err := p.Plugin.HandleMessagePrivate(&data, apiCli)
 				if err != nil {
 					logrus.Error(err)
 				}
@@ -98,6 +90,262 @@ func Start(ctx context.Context) error {
 			return nil
 		},
 	)
+	eventCli.ListenMessageGroup(func(data model.EventMessageGroup) error {
+		plugins := GetAllPlugins()
+		for _, p := range plugins {
+			// recover
+			defer func() {
+				if err := recover(); err != nil {
+					logrus.Error(err)
+				}
+			}()
+			err := p.Plugin.HandleMessageGroup(&data, apiCli)
+			if err != nil {
+				logrus.Error(err)
+			}
+		}
+		return nil
+	})
+	eventCli.ListenNoticeGroupUpload(func(data model.EventNoticeGroupUpload) error {
+		plugins := GetAllPlugins()
+		for _, p := range plugins {
+			// recover
+			defer func() {
+				if err := recover(); err != nil {
+					logrus.Error(err)
+				}
+			}()
+			err := p.Plugin.HandleNoticeGroupUpload(&data, apiCli)
+			if err != nil {
+				logrus.Error(err)
+			}
+		}
+		return nil
+	})
+	eventCli.ListenNoticeGroupAdmin(func(data model.EventNoticeGroupAdmin) error {
+		plugins := GetAllPlugins()
+		for _, p := range plugins {
+			// recover
+			defer func() {
+				if err := recover(); err != nil {
+					logrus.Error(err)
+				}
+			}()
+			err := p.Plugin.HandleNoticeGroupAdmin(&data, apiCli)
+			if err != nil {
+				logrus.Error(err)
+			}
+		}
+		return nil
+	})
+	eventCli.ListenNoticeGroupDecrease(func(data model.EventNoticeGroupDecrease) error {
+		plugins := GetAllPlugins()
+		for _, p := range plugins {
+			// recover
+			defer func() {
+				if err := recover(); err != nil {
+					logrus.Error(err)
+				}
+			}()
+			err := p.Plugin.HandleNoticeGroupDecrease(&data, apiCli)
+			if err != nil {
+				logrus.Error(err)
+			}
+		}
+		return nil
+	})
+	eventCli.ListenNoticeGroupIncrease(func(data model.EventNoticeGroupIncrease) error {
+		plugins := GetAllPlugins()
+		for _, p := range plugins {
+			// recover
+			defer func() {
+				if err := recover(); err != nil {
+					logrus.Error(err)
+				}
+			}()
+			err := p.Plugin.HandleNoticeGroupIncrease(&data, apiCli)
+			if err != nil {
+				logrus.Error(err)
+			}
+		}
+		return nil
+	})
+	eventCli.ListenNoticeGroupBan(func(data model.EventNoticeGroupBan) error {
+		plugins := GetAllPlugins()
+		for _, p := range plugins {
+			// recover
+			defer func() {
+				if err := recover(); err != nil {
+					logrus.Error(err)
+				}
+			}()
+			err := p.Plugin.HandleNoticeGroupBan(&data, apiCli)
+			if err != nil {
+				logrus.Error(err)
+			}
+		}
+		return nil
+	})
+	eventCli.ListenNoticeFriendAdd(func(data model.EventNoticeFriendAdd) error {
+		plugins := GetAllPlugins()
+		for _, p := range plugins {
+			// recover
+			defer func() {
+				if err := recover(); err != nil {
+					logrus.Error(err)
+				}
+			}()
+			err := p.Plugin.HandleNoticeFriendAdd(&data, apiCli)
+			if err != nil {
+				logrus.Error(err)
+			}
+		}
+		return nil
+	})
+	eventCli.ListenNoticeGroupRecall(func(data model.EventNoticeGroupRecall) error {
+		plugins := GetAllPlugins()
+		for _, p := range plugins {
+			// recover
+			defer func() {
+				if err := recover(); err != nil {
+					logrus.Error(err)
+				}
+			}()
+			err := p.Plugin.HandleNoticeGroupRecall(&data, apiCli)
+			if err != nil {
+				logrus.Error(err)
+			}
+		}
+		return nil
+	})
+	eventCli.ListenNoticeFriendRecall(func(data model.EventNoticeFriendRecall) error {
+		plugins := GetAllPlugins()
+		for _, p := range plugins {
+			// recover
+			defer func() {
+				if err := recover(); err != nil {
+					logrus.Error(err)
+				}
+			}()
+			err := p.Plugin.HandleNoticeFriendRecall(&data, apiCli)
+			if err != nil {
+				logrus.Error(err)
+			}
+		}
+		return nil
+	})
+	eventCli.ListenNoticeGroupNotifyPoke(func(data model.EventNoticeGroupNotifyPoke) error {
+		plugins := GetAllPlugins()
+		for _, p := range plugins {
+			// recover
+			defer func() {
+				if err := recover(); err != nil {
+					logrus.Error(err)
+				}
+			}()
+			err := p.Plugin.HandleNoticeGroupNotifyPoke(&data, apiCli)
+			if err != nil {
+				logrus.Error(err)
+			}
+		}
+		return nil
+	})
+	eventCli.ListenNoticeGroupNotifyHonor(func(data model.EventNoticeGroupNotifyHonor) error {
+		plugins := GetAllPlugins()
+		for _, p := range plugins {
+			// recover
+			defer func() {
+				if err := recover(); err != nil {
+					logrus.Error(err)
+				}
+			}()
+			err := p.Plugin.HandleNoticeGroupNotifyHonor(&data, apiCli)
+			if err != nil {
+				logrus.Error(err)
+			}
+		}
+		return nil
+	})
+	eventCli.ListenNoticeGroupNotifyLuckyKing(func(data model.EventNoticeGroupNotifyLuckyKing) error {
+		plugins := GetAllPlugins()
+		for _, p := range plugins {
+			// recover
+			defer func() {
+				if err := recover(); err != nil {
+					logrus.Error(err)
+				}
+			}()
+			err := p.Plugin.HandleNoticeGroupNotifyLuckyKing(&data, apiCli)
+			if err != nil {
+				logrus.Error(err)
+			}
+		}
+		return nil
+	})
+	eventCli.ListenRequestFriend(func(data model.EventRequestFriend) error {
+		plugins := GetAllPlugins()
+		for _, p := range plugins {
+			// recover
+			defer func() {
+				if err := recover(); err != nil {
+					logrus.Error(err)
+				}
+			}()
+			err := p.Plugin.HandleRequestFriend(&data, apiCli)
+			if err != nil {
+				logrus.Error(err)
+			}
+		}
+		return nil
+	})
+	eventCli.ListenRequestGroup(func(data model.EventRequestGroup) error {
+		plugins := GetAllPlugins()
+		for _, p := range plugins {
+			// recover
+			defer func() {
+				if err := recover(); err != nil {
+					logrus.Error(err)
+				}
+			}()
+			err := p.Plugin.HandleRequestGroup(&data, apiCli)
+			if err != nil {
+				logrus.Error(err)
+			}
+		}
+		return nil
+	})
+	eventCli.ListenMetaLifecycle(func(data model.EventMetaLifecycle) error {
+		plugins := GetAllPlugins()
+		for _, p := range plugins {
+			// recover
+			defer func() {
+				if err := recover(); err != nil {
+					logrus.Error(err)
+				}
+			}()
+			err := p.Plugin.HandleMetaLifecycle(&data, apiCli)
+			if err != nil {
+				logrus.Error(err)
+			}
+		}
+		return nil
+	})
+	eventCli.ListenMetaHeartBeat(func(data model.EventMetaHeartbeat) error {
+		plugins := GetAllPlugins()
+		for _, p := range plugins {
+			// recover
+			defer func() {
+				if err := recover(); err != nil {
+					logrus.Error(err)
+				}
+			}()
+			err := p.Plugin.HandleMetaHeartBeat(&data, apiCli)
+			if err != nil {
+				logrus.Error(err)
+			}
+		}
+		return nil
+	})
 	eventCli.StartListenWithCtx(ctx)
 	return nil
 }

@@ -633,7 +633,11 @@ func (svc *OnebotApiServerStub) SetGroupWholeBan(ctx context.Context, in *groupo
 // 上面的 anonymous 和 anonymous_flag 两者任选其一传入即可, 若都传入, 则使用 anonymous。
 // duration 禁言时长，单位秒，不能超过 30 天
 func (svc *OnebotApiServerStub) SetGroupAnonymousBan(ctx context.Context, in *groupopt.SetGroupAnonymousBanRequest) (*emptypb.Empty, error) {
-	if err := svc.Impl.SetGroupAnonymousBan(in.GetGroupId(), in.GetAnonymous(), in.GetAnonymousFlag(), in.GetDuration()); err != nil {
+	var anonymous *model.Anonymous = nil
+	if in.GetAnonymous() != nil {
+		anonymous = in.GetAnonymous().ToStruct()
+	}
+	if err := svc.Impl.SetGroupAnonymousBan(in.GetGroupId(), anonymous, in.GetAnonymousFlag(), in.GetDuration()); err != nil {
 		return nil, err
 	}
 	return &emptypb.Empty{}, nil
