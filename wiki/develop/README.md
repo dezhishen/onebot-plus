@@ -16,6 +16,8 @@
 ### go语言
 本项目提供了一套`plugin.Buidler`用于插件开发
 
+> 提供模板项目[onebot-plus-plugin-template](https://github.com/dezhishen/onebot-plus-plugin-template)
+
 可以定义插件的配置、插件生命周期的回调函数、onebot机器人事件的回调函数
 ```
 package main
