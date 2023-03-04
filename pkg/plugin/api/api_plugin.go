@@ -23,7 +23,7 @@ type OnebotApiGRPCPlugin struct {
 	// 需要嵌入插件接口
 	plugin.Plugin
 	// 具体实现，仅当业务接口实现基于Go时该字段有用
-	Impl api.OnebotAPiClientInterface
+	Impl api.OnebotApiClientInterface
 }
 
 // 插件实现GRPC的接口

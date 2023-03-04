@@ -1,9 +1,9 @@
 syntax = "proto3";
 package event;
-import "event_message.proto";
-import "event_meta.proto";
-import "event_notice.proto";
-import "event_request.proto";
+import "model_event_message.proto";
+import "model_event_meta.proto";
+import "model_event_notice.proto";
+import "model_event_request.proto";
 import "google/protobuf/empty.proto";
 option go_package="github.com/dezhishen/onebot-plus/pkg/plugin/event;event";
 
@@ -93,54 +93,54 @@ message EventMetaHeartbeatGRPCWithOnebotApi {
 
 
 service OnebotEventCallbackGRPC {
-    // HandleMessagePrivate(data *model.EventMessagePrivate, onebotApi api.OnebotAPiClientInterface) error
+    // HandleMessagePrivate(data *model.EventMessagePrivate, onebotApi api.OnebotApiClientInterface) error
     rpc HandleMessagePrivate(EventMessagePrivateGRPCWithOnebotApi) returns (google.protobuf.Empty);
 
-	// HandleMessageGroup(data *model.EventMessageGroup, onebotApi api.OnebotAPiClientInterface) error
+	// HandleMessageGroup(data *model.EventMessageGroup, onebotApi api.OnebotApiClientInterface) error
     rpc HandleMessageGroup(EventMessageGroupGRPCWithOnebotApi) returns (google.protobuf.Empty);
 
-    // HandleNoticeGroupUpload(data *model.EventNoticeGroupUpload, onebotApi api.OnebotAPiClientInterface) error
+    // HandleNoticeGroupUpload(data *model.EventNoticeGroupUpload, onebotApi api.OnebotApiClientInterface) error
     rpc HandleNoticeGroupUpload(EventNoticeGroupUploadGRPCWithOnebotApi) returns (google.protobuf.Empty);
 
-	// HandleNoticeGroupAdmin(data *model.EventNoticeGroupAdmin, onebotApi api.OnebotAPiClientInterface) error
+	// HandleNoticeGroupAdmin(data *model.EventNoticeGroupAdmin, onebotApi api.OnebotApiClientInterface) error
     rpc HandleNoticeGroupAdmin(EventNoticeGroupAdminGRPCWithOnebotApi) returns (google.protobuf.Empty);
 
-	// HandleNoticeGroupDecrease(data *model.EventNoticeGroupDecrease, onebotApi api.OnebotAPiClientInterface) error
+	// HandleNoticeGroupDecrease(data *model.EventNoticeGroupDecrease, onebotApi api.OnebotApiClientInterface) error
     rpc HandleNoticeGroupDecrease(EventNoticeGroupDecreaseGRPCWithOnebotApi) returns (google.protobuf.Empty);
 
-	// HandleNoticeGroupIncrease(data *model.EventNoticeGroupIncrease, onebotApi api.OnebotAPiClientInterface) error
+	// HandleNoticeGroupIncrease(data *model.EventNoticeGroupIncrease, onebotApi api.OnebotApiClientInterface) error
     rpc HandleNoticeGroupIncrease(EventNoticeGroupIncreaseGRPCWithOnebotApi) returns (google.protobuf.Empty);
 
-	// HandleNoticeGroupBan(data *model.EventNoticeGroupBan, onebotApi api.OnebotAPiClientInterface) error
+	// HandleNoticeGroupBan(data *model.EventNoticeGroupBan, onebotApi api.OnebotApiClientInterface) error
 	rpc HandleNoticeGroupBan(EventNoticeGroupBanGRPCWithOnebotApi) returns (google.protobuf.Empty);
     
-    // HandleNoticeFriendAdd(data *model.EventNoticeFriendAdd, onebotApi api.OnebotAPiClientInterface) error
+    // HandleNoticeFriendAdd(data *model.EventNoticeFriendAdd, onebotApi api.OnebotApiClientInterface) error
     rpc HandleNoticeFriendAdd(EventNoticeFriendAddGRPCWithOnebotApi) returns (google.protobuf.Empty);
 
-	// HandleNoticeGroupRecall(data *model.EventNoticeGroupRecall, onebotApi api.OnebotAPiClientInterface) error
+	// HandleNoticeGroupRecall(data *model.EventNoticeGroupRecall, onebotApi api.OnebotApiClientInterface) error
     rpc HandleNoticeGroupRecall(EventNoticeGroupRecallGRPCWithOnebotApi) returns (google.protobuf.Empty);
 
-	// HandleNoticeFriendRecall(data *model.EventNoticeFriendRecall, onebotApi api.OnebotAPiClientInterface) error
+	// HandleNoticeFriendRecall(data *model.EventNoticeFriendRecall, onebotApi api.OnebotApiClientInterface) error
     rpc HandleNoticeFriendRecall(EventNoticeFriendRecallGRPCWithOnebotApi) returns (google.protobuf.Empty);
 
-	// HandleNoticeGroupNotifyPoke(data *model.EventNoticeGroupNotifyPoke, onebotApi api.OnebotAPiClientInterface) error
+	// HandleNoticeGroupNotifyPoke(data *model.EventNoticeGroupNotifyPoke, onebotApi api.OnebotApiClientInterface) error
     rpc HandleNoticeGroupNotifyPoke(EventNoticeGroupNotifyPokeGRPCWithOnebotApi) returns (google.protobuf.Empty);
 
-	// HandleNoticeGroupNotifyHonor(data *model.EventNoticeGroupNotifyHonor, onebotApi api.OnebotAPiClientInterface) error
+	// HandleNoticeGroupNotifyHonor(data *model.EventNoticeGroupNotifyHonor, onebotApi api.OnebotApiClientInterface) error
     rpc HandleNoticeGroupNotifyHonor(EventNoticeGroupNotifyHonorGRPCWithOnebotApi) returns (google.protobuf.Empty);
 
-	// HandleNoticeGroupNotifyLuckyKing(data *model.EventNoticeGroupNotifyLuckyKing, onebotApi api.OnebotAPiClientInterface) error
+	// HandleNoticeGroupNotifyLuckyKing(data *model.EventNoticeGroupNotifyLuckyKing, onebotApi api.OnebotApiClientInterface) error
     rpc HandleNoticeGroupNotifyLuckyKing(EventNoticeGroupNotifyLuckyKingGRPCWithOnebotApi) returns (google.protobuf.Empty);
 
-	// HandleRequestFriend(data *model.EventRequestFriend, onebotApi api.OnebotAPiClientInterface) error
+	// HandleRequestFriend(data *model.EventRequestFriend, onebotApi api.OnebotApiClientInterface) error
     rpc HandleRequestFriend(EventRequestFriendGRPCWithOnebotApi) returns (google.protobuf.Empty);
 
-	// HandleRequestGroup(data *model.EventRequestGroup, onebotApi api.OnebotAPiClientInterface) error
+	// HandleRequestGroup(data *model.EventRequestGroup, onebotApi api.OnebotApiClientInterface) error
     rpc HandleRequestGroup(EventRequestGroupGRPCWithOnebotApi) returns (google.protobuf.Empty);
 
-	// HandleMetaLifecycle(data *model.EventMetaLifecycle, onebotApi api.OnebotAPiClientInterface) error
+	// HandleMetaLifecycle(data *model.EventMetaLifecycle, onebotApi api.OnebotApiClientInterface) error
     rpc HandleMetaLifecycle(EventMetaLifecycleGRPCWithOnebotApi) returns (google.protobuf.Empty);
 
-	// HandleMetaHeartBeat(data *model.EventMetaHeartbeat, onebotApi api.OnebotAPiClientInterface) error
+	// HandleMetaHeartBeat(data *model.EventMetaHeartbeat, onebotApi api.OnebotApiClientInterface) error
     rpc HandleMetaHeartBeat(EventMetaHeartbeatGRPCWithOnebotApi) returns (google.protobuf.Empty);
 }

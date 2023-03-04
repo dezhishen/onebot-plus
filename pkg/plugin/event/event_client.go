@@ -12,11 +12,11 @@ import (
 
 // 业务接口的实现，通过gRPC客户端转发请求给插件进程
 type OnebotEventCallbackClientStub struct {
-	broker *plugin.GRPCBroker
-	client OnebotEventCallbackGRPCClient
+	Broker *plugin.GRPCBroker
+	Client OnebotEventCallbackGRPCClient
 }
 
-func (eCli *OnebotEventCallbackClientStub) HandleMessagePrivate(data *model.EventMessagePrivate, onebotApi sdk_api.OnebotAPiClientInterface) error {
+func (eCli *OnebotEventCallbackClientStub) HandleMessagePrivate(data *model.EventMessagePrivate, onebotApi sdk_api.OnebotApiClientInterface) error {
 	oneApiServer := &api.OnebotApiServerStub{
 		Impl: onebotApi,
 	}
@@ -29,10 +29,10 @@ func (eCli *OnebotEventCallbackClientStub) HandleMessagePrivate(data *model.Even
 		api.RegisterOnebotApiGRPCServiceServer(s, oneApiServer)
 		return s
 	}
-	brokerID := eCli.broker.NextId()
-	go eCli.broker.AcceptAndServe(brokerID, serverFunc)
+	brokerID := eCli.Broker.NextId()
+	go eCli.Broker.AcceptAndServe(brokerID, serverFunc)
 	msg := data.ToGRPC()
-	_, err := eCli.client.HandleMessagePrivate(context.Background(), &EventMessagePrivateGRPCWithOnebotApi{
+	_, err := eCli.Client.HandleMessagePrivate(context.Background(), &EventMessagePrivateGRPCWithOnebotApi{
 		Message:   msg,
 		OnebotApi: brokerID,
 	})
@@ -43,7 +43,7 @@ func (eCli *OnebotEventCallbackClientStub) HandleMessagePrivate(data *model.Even
 	return nil
 }
 
-func (eCli *OnebotEventCallbackClientStub) HandleMessageGroup(data *model.EventMessageGroup, onebotApi sdk_api.OnebotAPiClientInterface) error {
+func (eCli *OnebotEventCallbackClientStub) HandleMessageGroup(data *model.EventMessageGroup, onebotApi sdk_api.OnebotApiClientInterface) error {
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
 		var finalOpts []grpc.ServerOption
@@ -57,10 +57,10 @@ func (eCli *OnebotEventCallbackClientStub) HandleMessageGroup(data *model.EventM
 		)
 		return s
 	}
-	brokerID := eCli.broker.NextId()
-	go eCli.broker.AcceptAndServe(brokerID, serverFunc)
+	brokerID := eCli.Broker.NextId()
+	go eCli.Broker.AcceptAndServe(brokerID, serverFunc)
 	msg := data.ToGRPC()
-	_, err := eCli.client.HandleMessageGroup(context.Background(), &EventMessageGroupGRPCWithOnebotApi{
+	_, err := eCli.Client.HandleMessageGroup(context.Background(), &EventMessageGroupGRPCWithOnebotApi{
 		Message:   msg,
 		OnebotApi: brokerID,
 	})
@@ -71,7 +71,7 @@ func (eCli *OnebotEventCallbackClientStub) HandleMessageGroup(data *model.EventM
 	return nil
 }
 
-func (eCli *OnebotEventCallbackClientStub) HandleNoticeGroupUpload(data *model.EventNoticeGroupUpload, onebotApi sdk_api.OnebotAPiClientInterface) error {
+func (eCli *OnebotEventCallbackClientStub) HandleNoticeGroupUpload(data *model.EventNoticeGroupUpload, onebotApi sdk_api.OnebotApiClientInterface) error {
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
 		var finalOpts []grpc.ServerOption
@@ -85,10 +85,10 @@ func (eCli *OnebotEventCallbackClientStub) HandleNoticeGroupUpload(data *model.E
 		)
 		return s
 	}
-	brokerID := eCli.broker.NextId()
-	go eCli.broker.AcceptAndServe(brokerID, serverFunc)
+	brokerID := eCli.Broker.NextId()
+	go eCli.Broker.AcceptAndServe(brokerID, serverFunc)
 	msg := data.ToGRPC()
-	_, err := eCli.client.HandleNoticeGroupUpload(context.Background(), &EventNoticeGroupUploadGRPCWithOnebotApi{
+	_, err := eCli.Client.HandleNoticeGroupUpload(context.Background(), &EventNoticeGroupUploadGRPCWithOnebotApi{
 		Message:   msg,
 		OnebotApi: brokerID,
 	})
@@ -99,7 +99,7 @@ func (eCli *OnebotEventCallbackClientStub) HandleNoticeGroupUpload(data *model.E
 	return nil
 }
 
-func (eCli *OnebotEventCallbackClientStub) HandleNoticeGroupAdmin(data *model.EventNoticeGroupAdmin, onebotApi sdk_api.OnebotAPiClientInterface) error {
+func (eCli *OnebotEventCallbackClientStub) HandleNoticeGroupAdmin(data *model.EventNoticeGroupAdmin, onebotApi sdk_api.OnebotApiClientInterface) error {
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
 		var finalOpts []grpc.ServerOption
@@ -113,10 +113,10 @@ func (eCli *OnebotEventCallbackClientStub) HandleNoticeGroupAdmin(data *model.Ev
 		)
 		return s
 	}
-	brokerID := eCli.broker.NextId()
-	go eCli.broker.AcceptAndServe(brokerID, serverFunc)
+	brokerID := eCli.Broker.NextId()
+	go eCli.Broker.AcceptAndServe(brokerID, serverFunc)
 	msg := data.ToGRPC()
-	_, err := eCli.client.HandleNoticeGroupAdmin(context.Background(), &EventNoticeGroupAdminGRPCWithOnebotApi{
+	_, err := eCli.Client.HandleNoticeGroupAdmin(context.Background(), &EventNoticeGroupAdminGRPCWithOnebotApi{
 		Message:   msg,
 		OnebotApi: brokerID,
 	})
@@ -127,7 +127,7 @@ func (eCli *OnebotEventCallbackClientStub) HandleNoticeGroupAdmin(data *model.Ev
 	return nil
 }
 
-func (eCli *OnebotEventCallbackClientStub) HandleNoticeGroupDecrease(data *model.EventNoticeGroupDecrease, onebotApi sdk_api.OnebotAPiClientInterface) error {
+func (eCli *OnebotEventCallbackClientStub) HandleNoticeGroupDecrease(data *model.EventNoticeGroupDecrease, onebotApi sdk_api.OnebotApiClientInterface) error {
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
 		var finalOpts []grpc.ServerOption
@@ -141,10 +141,10 @@ func (eCli *OnebotEventCallbackClientStub) HandleNoticeGroupDecrease(data *model
 		)
 		return s
 	}
-	brokerID := eCli.broker.NextId()
-	go eCli.broker.AcceptAndServe(brokerID, serverFunc)
+	brokerID := eCli.Broker.NextId()
+	go eCli.Broker.AcceptAndServe(brokerID, serverFunc)
 	msg := data.ToGRPC()
-	_, err := eCli.client.HandleNoticeGroupDecrease(context.Background(), &EventNoticeGroupDecreaseGRPCWithOnebotApi{
+	_, err := eCli.Client.HandleNoticeGroupDecrease(context.Background(), &EventNoticeGroupDecreaseGRPCWithOnebotApi{
 		Message:   msg,
 		OnebotApi: brokerID,
 	})
@@ -155,7 +155,7 @@ func (eCli *OnebotEventCallbackClientStub) HandleNoticeGroupDecrease(data *model
 	return nil
 }
 
-func (eCli *OnebotEventCallbackClientStub) HandleNoticeGroupIncrease(data *model.EventNoticeGroupIncrease, onebotApi sdk_api.OnebotAPiClientInterface) error {
+func (eCli *OnebotEventCallbackClientStub) HandleNoticeGroupIncrease(data *model.EventNoticeGroupIncrease, onebotApi sdk_api.OnebotApiClientInterface) error {
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
 		var finalOpts []grpc.ServerOption
@@ -169,10 +169,10 @@ func (eCli *OnebotEventCallbackClientStub) HandleNoticeGroupIncrease(data *model
 		)
 		return s
 	}
-	brokerID := eCli.broker.NextId()
-	go eCli.broker.AcceptAndServe(brokerID, serverFunc)
+	brokerID := eCli.Broker.NextId()
+	go eCli.Broker.AcceptAndServe(brokerID, serverFunc)
 	msg := data.ToGRPC()
-	_, err := eCli.client.HandleNoticeGroupIncrease(context.Background(), &EventNoticeGroupIncreaseGRPCWithOnebotApi{
+	_, err := eCli.Client.HandleNoticeGroupIncrease(context.Background(), &EventNoticeGroupIncreaseGRPCWithOnebotApi{
 		Message:   msg,
 		OnebotApi: brokerID,
 	})
@@ -183,7 +183,7 @@ func (eCli *OnebotEventCallbackClientStub) HandleNoticeGroupIncrease(data *model
 	return nil
 }
 
-func (eCli *OnebotEventCallbackClientStub) HandleNoticeGroupBan(data *model.EventNoticeGroupBan, onebotApi sdk_api.OnebotAPiClientInterface) error {
+func (eCli *OnebotEventCallbackClientStub) HandleNoticeGroupBan(data *model.EventNoticeGroupBan, onebotApi sdk_api.OnebotApiClientInterface) error {
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
 		var finalOpts []grpc.ServerOption
@@ -197,10 +197,10 @@ func (eCli *OnebotEventCallbackClientStub) HandleNoticeGroupBan(data *model.Even
 		)
 		return s
 	}
-	brokerID := eCli.broker.NextId()
-	go eCli.broker.AcceptAndServe(brokerID, serverFunc)
+	brokerID := eCli.Broker.NextId()
+	go eCli.Broker.AcceptAndServe(brokerID, serverFunc)
 	msg := data.ToGRPC()
-	_, err := eCli.client.HandleNoticeGroupBan(context.Background(), &EventNoticeGroupBanGRPCWithOnebotApi{
+	_, err := eCli.Client.HandleNoticeGroupBan(context.Background(), &EventNoticeGroupBanGRPCWithOnebotApi{
 		Message:   msg,
 		OnebotApi: brokerID,
 	})
@@ -211,7 +211,7 @@ func (eCli *OnebotEventCallbackClientStub) HandleNoticeGroupBan(data *model.Even
 	return nil
 }
 
-func (eCli *OnebotEventCallbackClientStub) HandleNoticeFriendAdd(data *model.EventNoticeFriendAdd, onebotApi sdk_api.OnebotAPiClientInterface) error {
+func (eCli *OnebotEventCallbackClientStub) HandleNoticeFriendAdd(data *model.EventNoticeFriendAdd, onebotApi sdk_api.OnebotApiClientInterface) error {
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
 		var finalOpts []grpc.ServerOption
@@ -225,10 +225,10 @@ func (eCli *OnebotEventCallbackClientStub) HandleNoticeFriendAdd(data *model.Eve
 		)
 		return s
 	}
-	brokerID := eCli.broker.NextId()
-	go eCli.broker.AcceptAndServe(brokerID, serverFunc)
+	brokerID := eCli.Broker.NextId()
+	go eCli.Broker.AcceptAndServe(brokerID, serverFunc)
 	msg := data.ToGRPC()
-	_, err := eCli.client.HandleNoticeFriendAdd(context.Background(), &EventNoticeFriendAddGRPCWithOnebotApi{
+	_, err := eCli.Client.HandleNoticeFriendAdd(context.Background(), &EventNoticeFriendAddGRPCWithOnebotApi{
 		Message:   msg,
 		OnebotApi: brokerID,
 	})
@@ -240,7 +240,7 @@ func (eCli *OnebotEventCallbackClientStub) HandleNoticeFriendAdd(data *model.Eve
 
 }
 
-func (eCli *OnebotEventCallbackClientStub) HandleNoticeGroupRecall(data *model.EventNoticeGroupRecall, onebotApi sdk_api.OnebotAPiClientInterface) error {
+func (eCli *OnebotEventCallbackClientStub) HandleNoticeGroupRecall(data *model.EventNoticeGroupRecall, onebotApi sdk_api.OnebotApiClientInterface) error {
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
 		var finalOpts []grpc.ServerOption
@@ -254,10 +254,10 @@ func (eCli *OnebotEventCallbackClientStub) HandleNoticeGroupRecall(data *model.E
 		)
 		return s
 	}
-	brokerID := eCli.broker.NextId()
-	go eCli.broker.AcceptAndServe(brokerID, serverFunc)
+	brokerID := eCli.Broker.NextId()
+	go eCli.Broker.AcceptAndServe(brokerID, serverFunc)
 	msg := data.ToGRPC()
-	_, err := eCli.client.HandleNoticeGroupRecall(context.Background(), &EventNoticeGroupRecallGRPCWithOnebotApi{
+	_, err := eCli.Client.HandleNoticeGroupRecall(context.Background(), &EventNoticeGroupRecallGRPCWithOnebotApi{
 		Message:   msg,
 		OnebotApi: brokerID,
 	})
@@ -268,7 +268,7 @@ func (eCli *OnebotEventCallbackClientStub) HandleNoticeGroupRecall(data *model.E
 	return nil
 }
 
-func (eCli *OnebotEventCallbackClientStub) HandleNoticeFriendRecall(data *model.EventNoticeFriendRecall, onebotApi sdk_api.OnebotAPiClientInterface) error {
+func (eCli *OnebotEventCallbackClientStub) HandleNoticeFriendRecall(data *model.EventNoticeFriendRecall, onebotApi sdk_api.OnebotApiClientInterface) error {
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
 		var finalOpts []grpc.ServerOption
@@ -282,10 +282,10 @@ func (eCli *OnebotEventCallbackClientStub) HandleNoticeFriendRecall(data *model.
 		)
 		return s
 	}
-	brokerID := eCli.broker.NextId()
-	go eCli.broker.AcceptAndServe(brokerID, serverFunc)
+	brokerID := eCli.Broker.NextId()
+	go eCli.Broker.AcceptAndServe(brokerID, serverFunc)
 	msg := data.ToGRPC()
-	_, err := eCli.client.HandleNoticeFriendRecall(context.Background(), &EventNoticeFriendRecallGRPCWithOnebotApi{
+	_, err := eCli.Client.HandleNoticeFriendRecall(context.Background(), &EventNoticeFriendRecallGRPCWithOnebotApi{
 		Message:   msg,
 		OnebotApi: brokerID,
 	})
@@ -297,7 +297,7 @@ func (eCli *OnebotEventCallbackClientStub) HandleNoticeFriendRecall(data *model.
 
 }
 
-func (eCli *OnebotEventCallbackClientStub) HandleNoticeGroupNotifyPoke(data *model.EventNoticeGroupNotifyPoke, onebotApi sdk_api.OnebotAPiClientInterface) error {
+func (eCli *OnebotEventCallbackClientStub) HandleNoticeGroupNotifyPoke(data *model.EventNoticeGroupNotifyPoke, onebotApi sdk_api.OnebotApiClientInterface) error {
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
 		var finalOpts []grpc.ServerOption
@@ -311,10 +311,10 @@ func (eCli *OnebotEventCallbackClientStub) HandleNoticeGroupNotifyPoke(data *mod
 		)
 		return s
 	}
-	brokerID := eCli.broker.NextId()
-	go eCli.broker.AcceptAndServe(brokerID, serverFunc)
+	brokerID := eCli.Broker.NextId()
+	go eCli.Broker.AcceptAndServe(brokerID, serverFunc)
 	msg := data.ToGRPC()
-	_, err := eCli.client.HandleNoticeGroupNotifyPoke(context.Background(), &EventNoticeGroupNotifyPokeGRPCWithOnebotApi{
+	_, err := eCli.Client.HandleNoticeGroupNotifyPoke(context.Background(), &EventNoticeGroupNotifyPokeGRPCWithOnebotApi{
 		Message:   msg,
 		OnebotApi: brokerID,
 	})
@@ -325,7 +325,7 @@ func (eCli *OnebotEventCallbackClientStub) HandleNoticeGroupNotifyPoke(data *mod
 	return nil
 }
 
-func (eCli *OnebotEventCallbackClientStub) HandleNoticeGroupNotifyHonor(data *model.EventNoticeGroupNotifyHonor, onebotApi sdk_api.OnebotAPiClientInterface) error {
+func (eCli *OnebotEventCallbackClientStub) HandleNoticeGroupNotifyHonor(data *model.EventNoticeGroupNotifyHonor, onebotApi sdk_api.OnebotApiClientInterface) error {
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
 		var finalOpts []grpc.ServerOption
@@ -339,10 +339,10 @@ func (eCli *OnebotEventCallbackClientStub) HandleNoticeGroupNotifyHonor(data *mo
 		)
 		return s
 	}
-	brokerID := eCli.broker.NextId()
-	go eCli.broker.AcceptAndServe(brokerID, serverFunc)
+	brokerID := eCli.Broker.NextId()
+	go eCli.Broker.AcceptAndServe(brokerID, serverFunc)
 	msg := data.ToGRPC()
-	_, err := eCli.client.HandleNoticeGroupNotifyHonor(context.Background(), &EventNoticeGroupNotifyHonorGRPCWithOnebotApi{
+	_, err := eCli.Client.HandleNoticeGroupNotifyHonor(context.Background(), &EventNoticeGroupNotifyHonorGRPCWithOnebotApi{
 		Message:   msg,
 		OnebotApi: brokerID,
 	})
@@ -353,7 +353,7 @@ func (eCli *OnebotEventCallbackClientStub) HandleNoticeGroupNotifyHonor(data *mo
 	return nil
 }
 
-func (eCli *OnebotEventCallbackClientStub) HandleNoticeGroupNotifyLuckyKing(data *model.EventNoticeGroupNotifyLuckyKing, onebotApi sdk_api.OnebotAPiClientInterface) error {
+func (eCli *OnebotEventCallbackClientStub) HandleNoticeGroupNotifyLuckyKing(data *model.EventNoticeGroupNotifyLuckyKing, onebotApi sdk_api.OnebotApiClientInterface) error {
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
 		var finalOpts []grpc.ServerOption
@@ -367,10 +367,10 @@ func (eCli *OnebotEventCallbackClientStub) HandleNoticeGroupNotifyLuckyKing(data
 		)
 		return s
 	}
-	brokerID := eCli.broker.NextId()
-	go eCli.broker.AcceptAndServe(brokerID, serverFunc)
+	brokerID := eCli.Broker.NextId()
+	go eCli.Broker.AcceptAndServe(brokerID, serverFunc)
 	msg := data.ToGRPC()
-	_, err := eCli.client.HandleNoticeGroupNotifyLuckyKing(context.Background(), &EventNoticeGroupNotifyLuckyKingGRPCWithOnebotApi{
+	_, err := eCli.Client.HandleNoticeGroupNotifyLuckyKing(context.Background(), &EventNoticeGroupNotifyLuckyKingGRPCWithOnebotApi{
 		Message:   msg,
 		OnebotApi: brokerID,
 	})
@@ -381,7 +381,7 @@ func (eCli *OnebotEventCallbackClientStub) HandleNoticeGroupNotifyLuckyKing(data
 	return nil
 }
 
-func (eCli *OnebotEventCallbackClientStub) HandleRequestFriend(data *model.EventRequestFriend, onebotApi sdk_api.OnebotAPiClientInterface) error {
+func (eCli *OnebotEventCallbackClientStub) HandleRequestFriend(data *model.EventRequestFriend, onebotApi sdk_api.OnebotApiClientInterface) error {
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
 		var finalOpts []grpc.ServerOption
@@ -395,10 +395,10 @@ func (eCli *OnebotEventCallbackClientStub) HandleRequestFriend(data *model.Event
 		)
 		return s
 	}
-	brokerID := eCli.broker.NextId()
-	go eCli.broker.AcceptAndServe(brokerID, serverFunc)
+	brokerID := eCli.Broker.NextId()
+	go eCli.Broker.AcceptAndServe(brokerID, serverFunc)
 	msg := data.ToGRPC()
-	_, err := eCli.client.HandleRequestFriend(context.Background(), &EventRequestFriendGRPCWithOnebotApi{
+	_, err := eCli.Client.HandleRequestFriend(context.Background(), &EventRequestFriendGRPCWithOnebotApi{
 		Message:   msg,
 		OnebotApi: brokerID,
 	})
@@ -409,7 +409,7 @@ func (eCli *OnebotEventCallbackClientStub) HandleRequestFriend(data *model.Event
 	return nil
 }
 
-func (eCli *OnebotEventCallbackClientStub) HandleRequestGroup(data *model.EventRequestGroup, onebotApi sdk_api.OnebotAPiClientInterface) error {
+func (eCli *OnebotEventCallbackClientStub) HandleRequestGroup(data *model.EventRequestGroup, onebotApi sdk_api.OnebotApiClientInterface) error {
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
 		var finalOpts []grpc.ServerOption
@@ -423,10 +423,10 @@ func (eCli *OnebotEventCallbackClientStub) HandleRequestGroup(data *model.EventR
 		)
 		return s
 	}
-	brokerID := eCli.broker.NextId()
-	go eCli.broker.AcceptAndServe(brokerID, serverFunc)
+	brokerID := eCli.Broker.NextId()
+	go eCli.Broker.AcceptAndServe(brokerID, serverFunc)
 	msg := data.ToGRPC()
-	_, err := eCli.client.HandleRequestGroup(context.Background(), &EventRequestGroupGRPCWithOnebotApi{
+	_, err := eCli.Client.HandleRequestGroup(context.Background(), &EventRequestGroupGRPCWithOnebotApi{
 		Message:   msg,
 		OnebotApi: brokerID,
 	})
@@ -437,7 +437,7 @@ func (eCli *OnebotEventCallbackClientStub) HandleRequestGroup(data *model.EventR
 	return nil
 }
 
-func (eCli *OnebotEventCallbackClientStub) HandleMetaLifecycle(data *model.EventMetaLifecycle, onebotApi sdk_api.OnebotAPiClientInterface) error {
+func (eCli *OnebotEventCallbackClientStub) HandleMetaLifecycle(data *model.EventMetaLifecycle, onebotApi sdk_api.OnebotApiClientInterface) error {
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
 		var finalOpts []grpc.ServerOption
@@ -451,10 +451,10 @@ func (eCli *OnebotEventCallbackClientStub) HandleMetaLifecycle(data *model.Event
 		)
 		return s
 	}
-	brokerID := eCli.broker.NextId()
-	go eCli.broker.AcceptAndServe(brokerID, serverFunc)
+	brokerID := eCli.Broker.NextId()
+	go eCli.Broker.AcceptAndServe(brokerID, serverFunc)
 	msg := data.ToGRPC()
-	_, err := eCli.client.HandleMetaLifecycle(context.Background(), &EventMetaLifecycleGRPCWithOnebotApi{
+	_, err := eCli.Client.HandleMetaLifecycle(context.Background(), &EventMetaLifecycleGRPCWithOnebotApi{
 		Message:   msg,
 		OnebotApi: brokerID,
 	})
@@ -465,7 +465,7 @@ func (eCli *OnebotEventCallbackClientStub) HandleMetaLifecycle(data *model.Event
 	return nil
 }
 
-func (eCli *OnebotEventCallbackClientStub) HandleMetaHeartBeat(data *model.EventMetaHeartbeat, onebotApi sdk_api.OnebotAPiClientInterface) error {
+func (eCli *OnebotEventCallbackClientStub) HandleMetaHeartBeat(data *model.EventMetaHeartbeat, onebotApi sdk_api.OnebotApiClientInterface) error {
 	var s *grpc.Server
 	serverFunc := func(opts []grpc.ServerOption) *grpc.Server {
 		var finalOpts []grpc.ServerOption
@@ -479,10 +479,10 @@ func (eCli *OnebotEventCallbackClientStub) HandleMetaHeartBeat(data *model.Event
 		)
 		return s
 	}
-	brokerID := eCli.broker.NextId()
-	go eCli.broker.AcceptAndServe(brokerID, serverFunc)
+	brokerID := eCli.Broker.NextId()
+	go eCli.Broker.AcceptAndServe(brokerID, serverFunc)
 	msg := data.ToGRPC()
-	_, err := eCli.client.HandleMetaHeartBeat(context.Background(), &EventMetaHeartbeatGRPCWithOnebotApi{
+	_, err := eCli.Client.HandleMetaHeartBeat(context.Background(), &EventMetaHeartbeatGRPCWithOnebotApi{
 		Message:   msg,
 		OnebotApi: brokerID,
 	})

@@ -30,5 +30,5 @@ func (p *OnebotEventGRPCPlugin) GRPCClient(
 	broker *plugin.GRPCBroker,
 	c *grpc.ClientConn,
 ) (interface{}, error) {
-	return &OnebotEventCallbackClientStub{client: NewOnebotEventCallbackGRPCClient(c)}, nil
+	return &OnebotEventCallbackClientStub{Client: NewOnebotEventCallbackGRPCClient(c)}, nil
 }

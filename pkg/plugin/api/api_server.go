@@ -56,7 +56,7 @@ type OnebotApiClient struct{}
 type OnebotApiServerStub struct {
 	plugin.Plugin
 	// 具体实现，仅当业务接口实现基于Go时该字段有用
-	Impl api.OnebotAPiClientInterface
+	Impl api.OnebotApiClientInterface
 }
 
 func (svc *OnebotApiServerStub) GetLoginInfo(ctx context.Context, in *emptypb.Empty) (*model.AccountResultGRPC, error) {

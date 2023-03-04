@@ -1,6 +1,8 @@
 package base
 
-import "github.com/dezhishen/onebot-sdk/pkg/api"
+import (
+	"github.com/dezhishen/onebot-sdk/pkg/api"
+)
 
 type OnebotPluginBase interface {
 	// 插件Id
@@ -12,5 +14,7 @@ type OnebotPluginBase interface {
 	// 插件帮助
 	Help() string
 	// 生命周期
-	Init(cli api.OnebotAPiClientInterface) error
+	Init(cli api.OnebotApiClientInterface) error
+	// 退出前
+	BeforeExit(cli api.OnebotApiClientInterface) error
 }

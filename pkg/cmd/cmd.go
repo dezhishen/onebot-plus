@@ -8,11 +8,11 @@ import (
 
 func StartWithContext(ctx context.Context) error {
 	// onebotCli := &cli.OnebotCliRealImpl{}
-	return pluginmanager.Init(ctx)
+	return pluginmanager.Start(ctx)
 }
 
-//启动
+// 启动
 func Start() error {
 	ctx := context.Background()
-	return pluginmanager.Init(ctx)
+	return pluginmanager.Start(ctx)
 }

@@ -104,13 +104,25 @@ func (cli *OnebotApiClientStub) GetModelShow() (*model.ModelShowResult, error) {
 // model: 机型
 // modelshow: 机型展示
 func (cli *OnebotApiClientStub) SetModelShow(model string, modelshow string) error {
-	panic("not implemented") // TODO: Implement
+	req := &account.SetModelShowRequest{
+		Model:     model,
+		Modelshow: modelshow,
+	}
+	if _, err := cli.Client.SetModelShow(context.Background(), req); err != nil {
+		return err
+	}
+	return nil
 }
 
 // 获取在线客户端列表
 // get_online_clients
 func (cli *OnebotApiClientStub) GetOnlineClients() (*model.OnlineClientsResult, error) {
-	panic("not implemented") // TODO: Implement
+	if res, err := cli.Client.GetOnlineClients(context.Background(), &emptypb.Empty{}); err != nil {
+		return nil, err
+	} else if res != nil {
+		return res.ToStruct(), nil
+	}
+	return nil, nil
 }
 
 // 获取 Cookies
