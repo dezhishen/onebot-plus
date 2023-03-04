@@ -1,6 +1,8 @@
 package main
 
 import (
+	"time"
+
 	"github.com/dezhishen/onebot-plus/pkg/plugin"
 	"github.com/dezhishen/onebot-sdk/pkg/api"
 	"github.com/dezhishen/onebot-sdk/pkg/model"
@@ -15,11 +17,17 @@ func main() {
 		Description("这是测试插件").
 		Help("测试查询,无操作指令").
 		Init(func(cli api.OnebotApiClientInterface) error {
-			result, err := cli.GetLoginInfo()
-			if err != nil {
-				return err
-			}
-			logrus.Infof(result.Data.Nickname)
+			go func() {
+				for {
+					result, err := cli.GetLoginInfo()
+					if err != nil {
+						logrus.Errorf("GetLoginInfo err %v", err)
+					} else {
+						logrus.Infof(result.Data.Nickname)
+					}
+					time.Sleep(time.Second * 5)
+				}
+			}()
 			return nil
 		}).
 		HandleMessageGroup(func(data *model.EventMessageGroup, onebotApi api.OnebotApiClientInterface) error {

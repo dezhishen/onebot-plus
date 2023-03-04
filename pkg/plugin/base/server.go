@@ -37,7 +37,7 @@ func (s *OnebotPluginBaseServerStub) Init(ctx context.Context, in *wrapperspb.UI
 		logrus.Errorf("conn err %v", err)
 		return nil, err
 	}
-	defer conn.Close()
+	// defer conn.Close()
 	client := &api.OnebotApiClientStub{
 		Client: api.NewOnebotAPiClientInterfaceGRPCServiceClient(conn),
 	}

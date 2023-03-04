@@ -23,73 +23,60 @@ package main
 import (
 	"time"
 
-	"github.com/dezhishen/onebot-plus/pkg/cli"
 	"github.com/dezhishen/onebot-plus/pkg/plugin"
+	"github.com/dezhishen/onebot-sdk/pkg/api"
 	"github.com/dezhishen/onebot-sdk/pkg/model"
 	"github.com/sirupsen/logrus"
 )
 
 func main() {
-	plugin.NewOnebotEventPluginBuilder().
+	plugin.OnebotPluginBuilder().
 		//设置插件内容
-		Id("test").Name("测试插件").Description("这是测试插件").
-		//设置生命周期函数
-		Init(func(cli cli.OnebotCli) error {
-			d, e := cli.GetVersionInfo()
-			logrus.Info("============ version info ==========")
-			logrus.Info(d, e)
-			go loop(cli)
+		Id("test").
+		Name("测试插件").
+		Description("这是测试插件").
+		Help("测试查询,无操作指令").
+		Init(func(cli api.OnebotApiClientInterface) error {
+			go func() {
+				for {
+					result, err := cli.GetLoginInfo()
+					if err != nil {
+						logrus.Errorf("GetLoginInfo err %v", err)
+					} else {
+						logrus.Infof(result.Data.Nickname)
+					}
+					time.Sleep(time.Second * 5)
+				}
+			}()
 			return nil
 		}).
-		BeforeExit(func(cli cli.OnebotCli) error {
-			d, e := cli.GetVersionInfo()
-			logrus.Info("========exit=======")
-			logrus.Info(d, e)
-			return nil
-		}).
-		//Onebot回调事件
-		MessageGroup(func(req *model.EventMessageGroup, cli cli.OnebotCli) error {
-			logrus.Infof("收到群组消息,UserId:[%v]", req.Sender.UserId)
-			return nil
-		}).
-		MessagePrivate(func(req *model.EventMessagePrivate, cli cli.OnebotCli) error {
-			logrus.Infof("收到私聊消息,UserId:[%v]", req.Sender.UserId)
-			return nil
-		}).
-		MetaHeartbeat(func(req *model.EventMetaHeartbeat, cli cli.OnebotCli) error {
-			logrus.Infof("收到EventMetaHeartbeat,SelfId:[%v]", req.SelfId)
-			return nil
-
-		}).
-		MetaLifecycle(func(req *model.EventMetaLifecycle, cli cli.OnebotCli) error {
-			logrus.Info("============status==========")
-			logrus.Info(cli.GetStatus())
+		HandleMessageGroup(func(data *model.EventMessageGroup, onebotApi api.OnebotApiClientInterface) error {
+			var msgs []*model.MessageSegment
+			msgs = append(msgs, &model.MessageSegment{
+				Type: "text",
+				Data: &model.MessageElementText{
+					Text: "你好,我复读机\n",
+				},
+			})
+			msg := append(msgs, data.Message...)
+			onebotApi.SendGroupMsg(
+				&model.GroupMsg{
+					GroupId: data.GroupId,
+					Message: msg,
+				},
+			)
 			return nil
 		}).
 		//构建插件
 		Build().
-		//启动
 		Start()
-}
-
-func loop(cli cli.OnebotCli) {
-	for {
-		time.Sleep(1 * time.Second)
-		r, e := cli.GetStatus()
-		if e != nil {
-			logrus.Error(e)
-			continue
-		}
-		if r != nil {
-			logrus.Infof("online:%v,good:%v", r.Online, r.Good)
-		}
-	}
 }
 
 ```
 
 ### 其他语言
 * proto文件
-    * [plugin.proto](../../pkg/plugin/plugin.proto)
-* 插件库
+    * [plus_base.proto](../../pkg/plugin/base/plus_base.proto)
+    * [plus_event.proto](../../pkg/plugin/event/plus_event.proto)
+* 插件开发方式
     * [`hashicorp/go-plugin`](https://github.com/hashicorp/go-plugin)

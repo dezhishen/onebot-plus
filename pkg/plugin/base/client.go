@@ -80,7 +80,7 @@ func (c *OnebotPluginBaseClientStub) Init(onebotApi sdk_api.OnebotApiClientInter
 	if err != nil {
 		return err
 	}
-	s.Stop()
+	// s.Stop()
 	return nil
 }
 
