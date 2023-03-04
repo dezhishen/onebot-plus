@@ -12,6 +12,7 @@ onebot拓展平台
 - 使用docker部署，降低部署和运维难度
 - 插件开发支持
   - [x] [wiki](./wiki/develop)
+  - [x] [examples](./examples)
   - [x] builder工厂提供
   - [ ] 模板仓库[onebot-plus-plugin-template](https://github.com/dezhishen/onebot-plus-plugin-template)
   - [ ] 根据模板的脚手架
