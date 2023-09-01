@@ -1,6 +1,10 @@
 {
+    "name": "onebot-plust",
     "image": "mcr.microsoft.com/devcontainers/go",
     "build": {
         "dockerfile": "DevContainerDockerfile"
-    }
+    },
+    "mounts": [
+        "source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,type=bind"
+    ]
 }
