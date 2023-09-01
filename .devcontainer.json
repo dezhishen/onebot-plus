@@ -1,0 +1,6 @@
+{
+    "image": "mcr.microsoft.com/devcontainers/go",
+    "build": {
+        "dockerfile": "DevContainerDockerfile"
+    }
+}
